@@ -8,6 +8,8 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 0px 10px;
+  position: fixed;
+  width: 100%;
 `;
 
 const HeaderLogo = styled.div``;

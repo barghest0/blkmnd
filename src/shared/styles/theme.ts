@@ -3,6 +3,7 @@ const ThemeColors = {
   secondColor: '#00FFF7',
   headerColor: '#0D0D0D',
   white: '#ffffff',
+  black: '#000',
 };
 
 export default ThemeColors;
