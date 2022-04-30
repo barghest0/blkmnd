@@ -1,2 +1,2 @@
-# blkmnd
-blackmind website
+# Black mind
+
