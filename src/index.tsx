@@ -3,15 +3,16 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import App from './App';
+import store from './redux/store';
 
-// const AppStore = store();
+const AppStore = store();
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      {/* <Provider store={AppStore}> */}
-      <App />
-      {/* </Provider> */}
+      <Provider store={AppStore}>
+        <App />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
