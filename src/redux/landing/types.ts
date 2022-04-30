@@ -1,6 +1,4 @@
-import { Bit } from '../beats/types';
-import { Collab } from '../collabs/types';
-import { SoundKit } from '../soundKits/types';
+import { Beat } from '../beats/types';
 
 type License = {
   name: string;
@@ -8,11 +6,9 @@ type License = {
 };
 
 type LandingState = {
-  previewBit: Bit | null;
-  bit: Bit[];
-  licenses: License[];
-  soundKits: SoundKit[];
-  collabs: Collab[];
+  previewBeat: Beat | null;
+  isFetching: boolean;
+  error: string;
 };
 
 export { License, LandingState };

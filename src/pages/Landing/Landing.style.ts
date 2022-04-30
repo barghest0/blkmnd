@@ -24,9 +24,11 @@ const IntroTitle = styled.h1`
   margin: 10px 0;
 `;
 
-const IntroSearch = styled.div`
+const Search = styled.div`
   margin-bottom: 40px;
   height: 70px;
 `;
 
-export { Landing, Intro, IntroTitle, IntroSearch, IntroInner };
+const PreviewBeat = styled.div``;
+
+export { Landing, Intro, IntroTitle, Search, IntroInner, PreviewBeat };

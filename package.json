@@ -51,10 +51,13 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "@reduxjs/toolkit": "^1.8.1",
     "@types/styled-components": "^5.1.25",
+    "axios": "^0.27.2",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.1",
+    "json-server": "^0.17.0",
     "prettier": "^2.6.2",
     "react-redux": "^7.2.8",
     "styled-components": "^5.3.5",

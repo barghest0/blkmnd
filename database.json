@@ -1,0 +1,16 @@
+{
+  "beats": [
+    {
+      "id": 1,
+      "title": "Future Mask off type beat",
+      "price": 33,
+      "tags": [{ "name": "future" }, { "name": "mask off" }],
+      "bpm": 155,
+      "date": "01.02.2021",
+      "time": "02:12",
+      "author": "someone",
+      "image": "beat-image.jpg",
+      "track": "something track"
+    }
+  ]
+}

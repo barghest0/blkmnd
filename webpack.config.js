@@ -11,7 +11,7 @@ const PATHS = {
 };
 
 const config = {
-  entry: `${PATHS.src}/index.tsx`,
+  entry: ['@babel/polyfill', `${PATHS.src}/index.tsx`],
 
   output: {
     filename: 'index.js',
@@ -44,7 +44,6 @@ const config = {
                   runtime: 'automatic',
                 },
               ],
-
               '@babel/preset-typescript',
             ],
           },

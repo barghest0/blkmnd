@@ -2,7 +2,7 @@ type Tag = {
   name: string;
 };
 
-type Bit = {
+type Beat = {
   title: string;
   bpm: number;
   accord: string;
@@ -10,6 +10,8 @@ type Bit = {
   tags: Tag[];
   price: number;
   time: string;
+  author: string;
+  track: string;
 };
 
-export { Bit, Tag };
+export { Beat, Tag };
