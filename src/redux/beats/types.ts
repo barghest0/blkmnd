@@ -10,6 +10,7 @@ type Beat = {
   tags: Tag[];
   price: number;
   time: string;
+  image: string;
   author: string;
   track: string;
 };

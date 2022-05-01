@@ -85,6 +85,7 @@ const config = {
           filename: `${PATHS.assets}/images/[name][ext]`,
         },
       },
+
       {
         test: /\.mp3$/,
         type: 'asset/resource',
@@ -100,13 +101,7 @@ const config = {
           filename: '[name][ext]',
         },
       },
-      {
-        test: /\.fbx/,
-        type: 'asset/resource',
-        generator: {
-          filename: `${PATHS.assets}/fbx-models/[name][ext]`,
-        },
-      },
+
       {
         test: /\.svg$/,
         use: ['@svgr/webpack'],

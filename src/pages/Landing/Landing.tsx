@@ -7,6 +7,7 @@ import PreviewBeat from '../../components/PreviewBeat/PreviewBeat';
 import SearchField from '../../components/SearchField/SearchField';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import { getPreviewBeat } from '../../redux/beats/actions';
+import Preloader from '../../components/Preloader/Preloader';
 
 const Landing = () => {
   const { previewBeat, isFetching } = useTypedSelector(state => state.landing);
@@ -26,7 +27,11 @@ const Landing = () => {
             <SearchField hasButton buttonText={'search'} />
           </S.Search>
           <S.PreviewBeat>
-            {isBeatFetching ? 'Preloader' : <PreviewBeat beat={previewBeat} />}
+            {isBeatFetching ? (
+              <Preloader />
+            ) : (
+              <PreviewBeat beat={previewBeat} />
+            )}
           </S.PreviewBeat>
         </S.IntroInner>
       </S.Intro>

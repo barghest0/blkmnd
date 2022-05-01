@@ -7,16 +7,14 @@
   "scripts": {
     "test": "test",
     "dev": "webpack serve --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "server": "npm json-server --watch database.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/barghest0/blkmnd.git"
   },
-  "keywords": [
-    "black",
-    "mind"
-  ],
+  "keywords": ["black", "mind"],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -52,12 +50,19 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.6.2",
+    "@mui/material": "^5.6.3",
+    "@mui/styled-engine": "^5.6.1",
     "@reduxjs/toolkit": "^1.8.1",
     "@types/styled-components": "^5.1.25",
     "axios": "^0.27.2",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.1",
+    "i": "^0.3.7",
     "json-server": "^0.17.0",
+    "npm": "^8.8.0",
     "prettier": "^2.6.2",
     "react-music-visualizer": "^1.1.0",
     "react-redux": "^7.2.8",
