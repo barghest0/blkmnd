@@ -4,12 +4,45 @@
       "id": 1,
       "title": "Future Mask off type beat",
       "price": 33,
-      "tags": [{ "name": "future" }, { "name": "mask off" }],
+      "tags": [
+        { "id": 1, "name": "future" },
+        { "id": 2, "name": "mask off" }
+      ],
       "bpm": 155,
       "date": "01.02.2021",
       "time": "02:12",
       "author": "someone",
-      "image": "preview-beat.png",
+      "image": "featured-beat.png",
+      "track": "test.mp3"
+    },
+    {
+      "id": 2,
+      "title": "Future Mask off type beat",
+      "price": 33,
+      "tags": [
+        { "id": 1, "name": "future" },
+        { "id": 2, "name": "mask off" }
+      ],
+      "bpm": 155,
+      "date": "01.02.2021",
+      "time": "02:12",
+      "author": "someone",
+      "image": "featured-beat.png",
+      "track": "test.mp3"
+    },
+    {
+      "id": 3,
+      "title": "Future Mask off type beat",
+      "price": 33,
+      "tags": [
+        { "id": 1, "name": "future" },
+        { "id": 2, "name": "mask off" }
+      ],
+      "bpm": 155,
+      "date": "01.02.2021",
+      "time": "02:12",
+      "author": "someone",
+      "image": "featured-beat.png",
       "track": "test.mp3"
     }
   ]

@@ -5,6 +5,8 @@ const instance = axios.create({
   baseURL: 'http://localhost:3000/',
 });
 
-const fetchPreviewBeat = (id: number) => instance.get<Beat>(`beats/${id}`);
+const fetchFeaturedBeat = (id: number) => instance.get<Beat>(`beats/${id}`);
 
-export { fetchPreviewBeat };
+const fetchPreviewBeats = () => instance.get<Beat[]>('beats/');
+
+export { fetchFeaturedBeat, fetchPreviewBeats };

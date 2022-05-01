@@ -6,9 +6,9 @@ import { ButtonThemes } from './types';
 import ThemeColors from '../../shared/styles/theme';
 
 const Button = styled.button<Props>`
-  ${({ rounded, theme }) => {
-    const color = theme === ButtonThemes.dark ? '#757575' : ThemeColors.black;
-    const borderRadius = rounded ? '20px' : '4px';
+  ${({ theme }) => {
+    const color =
+      theme === ButtonThemes.dark ? ThemeColors.actionColor : ThemeColors.black;
     const background =
       theme === ButtonThemes.dark ? ThemeColors.black : ThemeColors.secondColor;
 
@@ -17,11 +17,11 @@ const Button = styled.button<Props>`
       height: 100%;
       color: ${color};
       background-color: ${background};
-      border-radius: ${borderRadius};
+      border-radius: 4px;
       border: none;
       outline: none;
       text-transform: uppercase;
-      font-size: 16px;
+      font-size: inherit;
       font-weight: 600;
       cursor: pointer;
       text-description: none;
@@ -29,6 +29,11 @@ const Button = styled.button<Props>`
       justify-content: center;
       align-items: center;
       padding: 0 1rem;
+      transition: all 0.2s linear;
+
+      &:hover {
+        filter: brightness(0.8);
+      }
     `;
   }}
 `;

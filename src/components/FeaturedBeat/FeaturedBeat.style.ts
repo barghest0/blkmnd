@@ -2,13 +2,12 @@ import styled from 'styled-components';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import ThemeColors from '../../shared/styles/theme';
 import PauseSharpIcon from '@mui/icons-material/PauseSharp';
-import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
-import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined';
 
-const PreviewBeat = styled.div`
-  display: flex;
-  column-gap: 20px;
+const FeaturedBeat = styled.div`
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  grid-template-rows: 130px 100px;
+  gap: 20px;
 `;
 
 const ThumbnailContainer = styled.div`
@@ -74,14 +73,10 @@ const Actions = styled.div`
   column-gap: 10px;
 `;
 
-const AddToCartIcon = styled(ShoppingBagOutlinedIcon)``;
-
-const DownloadIcon = styled(FileDownloadOutlinedIcon)``;
-
-const ShareIcon = styled(ShareOutlinedIcon)``;
+const Visualizer = styled.div``;
 
 export {
-  PreviewBeat,
+  FeaturedBeat,
   Title,
   Thumbnail,
   ThumbnailContainer,
@@ -93,7 +88,5 @@ export {
   Featured,
   Bpm,
   Actions,
-  AddToCartIcon,
-  DownloadIcon,
-  ShareIcon,
+  Visualizer,
 };

@@ -12,8 +12,12 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const StyledLink = styled(NavLink)`
-  color: ${ThemeColors.white};
+  color: inherit;
   text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export { StyledNavLink, StyledLink };

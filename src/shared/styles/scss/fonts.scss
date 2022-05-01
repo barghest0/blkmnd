@@ -17,6 +17,7 @@
   font-style: normal;
   font-weight: 700;
 }
+
 @font-face {
   font-family: 'Poppins';
   src: url('../../../../public/fonts/poppins/poppins-v20-latin-600.woff2')
@@ -25,4 +26,14 @@
       format('woff');
   font-style: normal;
   font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('../../../../public/fonts/poppins/poppins-v20-latin-500.woff2')
+      format('woff2'),
+    url('../../../../public/fonts/poppins/poppins-v20-latin-500.woff')
+      format('woff');
+  font-style: normal;
+  font-weight: 500;
 }

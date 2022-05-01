@@ -3,6 +3,7 @@ import ThemeColors from '../../shared/styles/theme';
 
 const Header = styled.header`
   background-color: ${ThemeColors.headerColor};
+  z-index: 100;
   min-height: 4rem;
   display: flex;
   justify-content: space-between;

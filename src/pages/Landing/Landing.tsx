@@ -3,19 +3,23 @@ import { useDispatch } from 'react-redux';
 
 import * as S from './Landing.style';
 
-import PreviewBeat from '../../components/PreviewBeat/PreviewBeat';
+import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
 import SearchField from '../../components/SearchField/SearchField';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import { getPreviewBeat } from '../../redux/beats/actions';
+import { getFeaturedBeat, getPreviewBeats } from '../../redux/beats/actions';
 import Preloader from '../../components/Preloader/Preloader';
+import BeatsList from '../../components/BeatsList/BeatsList';
 
 const Landing = () => {
-  const { previewBeat, isFetching } = useTypedSelector(state => state.landing);
+  const { featuredBeat, beats, isFetching } = useTypedSelector(
+    state => state.beats,
+  );
   const dispatch = useDispatch();
-  const isBeatFetching = isFetching || !previewBeat;
+  const isBeatFetching = isFetching || !featuredBeat;
 
   useEffect(() => {
-    dispatch(getPreviewBeat(1));
+    dispatch(getFeaturedBeat(1));
+    dispatch(getPreviewBeats());
   }, []);
 
   return (
@@ -26,15 +30,20 @@ const Landing = () => {
           <S.Search>
             <SearchField hasButton buttonText={'search'} />
           </S.Search>
-          <S.PreviewBeat>
+          <S.FeaturedBeat>
             {isBeatFetching ? (
               <Preloader />
             ) : (
-              <PreviewBeat beat={previewBeat} />
+              <FeaturedBeat beat={featuredBeat} />
             )}
-          </S.PreviewBeat>
+          </S.FeaturedBeat>
         </S.IntroInner>
       </S.Intro>
+      <S.Container>
+        <S.BeatsList>
+          {isFetching ? <Preloader /> : <BeatsList beats={beats} />}
+        </S.BeatsList>
+      </S.Container>
     </S.Landing>
   );
 };

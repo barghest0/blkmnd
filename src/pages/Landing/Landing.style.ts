@@ -1,12 +1,18 @@
 import styled from 'styled-components';
+import { container } from '../../shared/styles/mixins';
 import ThemeColors from '../../shared/styles/theme';
 
 const Landing = styled.section``;
+
+const Container = styled.div`
+  ${container}
+`;
 
 const Intro = styled.div`
   background: url(${require('./images/main-background.jpg')}) top center;
   background-size: scale;
   padding-top: 10rem;
+  margin-bottom: 20px;
 `;
 
 const IntroInner = styled.div`
@@ -29,6 +35,17 @@ const Search = styled.div`
   height: 70px;
 `;
 
-const PreviewBeat = styled.div``;
+const FeaturedBeat = styled.div``;
 
-export { Landing, Intro, IntroTitle, Search, IntroInner, PreviewBeat };
+const BeatsList = styled.div``;
+
+export {
+  Landing,
+  Intro,
+  IntroTitle,
+  Search,
+  IntroInner,
+  FeaturedBeat,
+  Container,
+  BeatsList,
+};

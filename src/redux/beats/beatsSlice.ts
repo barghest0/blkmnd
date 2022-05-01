@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Beat } from '../beats/types';
-import { getPreviewBeat } from './actions';
+import { getFeaturedBeat, getPreviewBeats } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
 const beatsSlice = createSlice({
@@ -8,17 +8,35 @@ const beatsSlice = createSlice({
   initialState: BEATS_INITIAL_STATE,
   reducers: {},
   extraReducers: {
-    [getPreviewBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
+    [getFeaturedBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
       state.isFetching = false;
       state.error = '';
-      state.previewBeat = action.payload;
+      state.featuredBeat = action.payload;
     },
 
-    [getPreviewBeat.pending.type]: state => {
+    [getFeaturedBeat.pending.type]: state => {
       state.isFetching = true;
     },
 
-    [getPreviewBeat.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getFeaturedBeat.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    },
+
+    [getPreviewBeats.fulfilled.type]: (
+      state,
+      action: PayloadAction<Beat[]>,
+    ) => {
+      state.isFetching = false;
+      state.error = '';
+      state.beats = action.payload;
+    },
+
+    [getPreviewBeats.pending.type]: state => {
+      state.isFetching = true;
+    },
+
+    [getPreviewBeats.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
       state.error = action.payload;
     },

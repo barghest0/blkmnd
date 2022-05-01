@@ -1,8 +1,10 @@
 type Tag = {
+  id: number;
   name: string;
 };
 
 type Beat = {
+  id: number;
   title: string;
   bpm: number;
   accord: string;
@@ -16,7 +18,7 @@ type Beat = {
 };
 
 type BeatsState = {
-  previewBeat: Beat | null;
+  featuredBeat: Beat | null;
   beats: Beat[];
   isFetching: boolean;
   error: string;
