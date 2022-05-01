@@ -85,6 +85,13 @@ const config = {
           filename: `${PATHS.assets}/images/[name][ext]`,
         },
       },
+      {
+        test: /\.mp3$/,
+        type: 'asset/resource',
+        generator: {
+          filename: `${PATHS.assets}/audio/[name][ext]`,
+        },
+      },
 
       {
         test: /\.ico$/,

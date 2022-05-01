@@ -1,8 +1,8 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import landingSlice from './landing/landingSlice';
+import beatsSlice from './beats/beatsSlice';
 
 const rootReducer = combineReducers({
-  landing: landingSlice.reducer,
+  landing: beatsSlice.reducer,
 });
 
 const store = () => configureStore({ reducer: rootReducer });
