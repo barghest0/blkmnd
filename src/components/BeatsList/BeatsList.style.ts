@@ -5,16 +5,17 @@ const BeatsList = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-rows: repeat(10, 50px);
   padding: 0 5px;
-  row-gap: 20px;
+  row-gap: 10px;
 `;
 
 const Row = styled.div`
   display: grid;
-  grid-template-columns: 5% 45% 10% 5% 20% 1fr;
+  grid-template-columns: 1fr 5fr 1fr 1fr 3fr 3fr;
+  grid-template-rows: 40px;
   align-items: center;
   column-gap: 10px;
+  padding: 10px 0;
 `;
 
 const HeadColumn = styled.div`
@@ -34,15 +35,8 @@ const Column = styled.div`
   align-items: center;
 `;
 
-const ThumbnailContainer = styled.div`
-  width: 100%;
-  height: 100%;
-`;
-
 const Thumbnail = styled.img`
   border-radius: 4px;
-  width: 100%;
-  height: auto;
   display: block;
 `;
 
@@ -53,12 +47,10 @@ const Tags = styled.div`
   height: 100%;
 `;
 
-export {
-  BeatsList,
-  Row,
-  HeadColumn,
-  Column,
-  Thumbnail,
-  ThumbnailContainer,
-  Tags,
-};
+const Actions = styled.div`
+  display: flex;
+  column-gap: 10px;
+  height: 100%;
+`;
+
+export { BeatsList, Row, HeadColumn, Column, Thumbnail, Actions, Tags };

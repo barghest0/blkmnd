@@ -37,7 +37,15 @@ const Search = styled.div`
 
 const FeaturedBeat = styled.div``;
 
-const BeatsList = styled.div``;
+const BeatsList = styled.div`
+  margin-bottom: 20px;
+`;
+
+const AllTracksLink = styled.div`
+  margin: 0 auto;
+  width: 200px;
+  height: 50px;
+`;
 
 export {
   Landing,
@@ -48,4 +56,5 @@ export {
   FeaturedBeat,
   Container,
   BeatsList,
+  AllTracksLink,
 };

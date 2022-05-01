@@ -9,6 +9,8 @@ import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import { getFeaturedBeat, getPreviewBeats } from '../../redux/beats/actions';
 import Preloader from '../../components/Preloader/Preloader';
 import BeatsList from '../../components/BeatsList/BeatsList';
+import { ButtonLink, StyledLink } from '../../shared/styles/links';
+import { RouterPaths } from '../../shared/router/types';
 
 const Landing = () => {
   const { featuredBeat, beats, isFetching } = useTypedSelector(
@@ -43,6 +45,9 @@ const Landing = () => {
         <S.BeatsList>
           {isFetching ? <Preloader /> : <BeatsList beats={beats} />}
         </S.BeatsList>
+        <S.AllTracksLink>
+          <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>
+        </S.AllTracksLink>
       </S.Container>
     </S.Landing>
   );
