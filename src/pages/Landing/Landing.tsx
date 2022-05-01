@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import * as S from './Landing.style';
@@ -9,8 +9,9 @@ import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import { getFeaturedBeat, getPreviewBeats } from '../../redux/beats/actions';
 import Preloader from '../../components/Preloader/Preloader';
 import BeatsList from '../../components/BeatsList/BeatsList';
-import { ButtonLink, StyledLink } from '../../shared/styles/links';
+import { ButtonLink } from '../../shared/styles/links';
 import { RouterPaths } from '../../shared/router/types';
+import Modal from '../../components/Modal/Modal';
 
 const Landing = () => {
   const { featuredBeat, beats, isFetching } = useTypedSelector(
@@ -18,6 +19,18 @@ const Landing = () => {
   );
   const dispatch = useDispatch();
   const isBeatFetching = isFetching || !featuredBeat;
+  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
+  const [isShareOpen, setIsShareOpen] = useState(false);
+
+  const onDownloadButtonClick = () => {
+    setIsDownloadOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const onShareButtonClick = () => {
+    setIsShareOpen(true);
+    document.body.style.overflow = 'hidden';
+  };
 
   useEffect(() => {
     dispatch(getFeaturedBeat(1));
@@ -36,7 +49,11 @@ const Landing = () => {
             {isBeatFetching ? (
               <Preloader />
             ) : (
-              <FeaturedBeat beat={featuredBeat} />
+              <FeaturedBeat
+                beat={featuredBeat}
+                onDownloadClick={onDownloadButtonClick}
+                onShareClick={onShareButtonClick}
+              />
             )}
           </S.FeaturedBeat>
         </S.IntroInner>
@@ -49,6 +66,12 @@ const Landing = () => {
           <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>
         </S.AllTracksLink>
       </S.Container>
+      <Modal isOpen={isDownloadOpen} setIsOpen={setIsDownloadOpen}>
+        download modal
+      </Modal>
+      <Modal isOpen={isShareOpen} setIsOpen={setIsShareOpen}>
+        share modal
+      </Modal>
     </S.Landing>
   );
 };

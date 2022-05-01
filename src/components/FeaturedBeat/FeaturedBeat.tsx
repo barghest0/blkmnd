@@ -12,9 +12,11 @@ import ShareButton from '../ShareButton/ShareButton';
 
 type Props = {
   beat: Beat;
+  onDownloadClick: () => void;
+  onShareClick: () => void;
 };
 
-const FeaturedBeat: FC<Props> = ({ beat }) => {
+const FeaturedBeat: FC<Props> = ({ beat, onDownloadClick, onShareClick }) => {
   const { id, title, image, bpm, price, tags } = beat;
   const [played, setPlayed] = useState(false);
 
@@ -49,9 +51,15 @@ const FeaturedBeat: FC<Props> = ({ beat }) => {
           <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>
         </S.Title>
         <S.Actions>
-          <AddToCardButton price={price} />
-          <DownloadButton />
-          <ShareButton />
+          <S.Action>
+            <AddToCardButton price={price} />
+          </S.Action>
+          <S.Action onClick={onDownloadClick}>
+            <DownloadButton />
+          </S.Action>
+          <S.Action onClick={onShareClick}>
+            <ShareButton />
+          </S.Action>
           {tagsLinks}
         </S.Actions>
       </S.Info>

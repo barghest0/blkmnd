@@ -15,7 +15,8 @@ const GlobalStyle = createGlobalStyle`
   body{
     font-family: Poppins;
     background-color: ${ThemeColors.mainColor};
-    color:${ThemeColors.white}
+    color:${ThemeColors.white};
+    overflow-x:hidden;
   }
 `;
 

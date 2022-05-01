@@ -1,5 +1,5 @@
 import Button from '../Button/Button';
-import {ButtonThemes} from '../Button/types';
+import { ButtonThemes } from '../Button/types';
 import * as S from './DownloadButton.style';
 
 const DownloadButton = () => {

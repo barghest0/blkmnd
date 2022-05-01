@@ -73,6 +73,8 @@ const Actions = styled.div`
   column-gap: 10px;
 `;
 
+const Action = styled.div``;
+
 const Visualizer = styled.div``;
 
 export {
@@ -88,5 +90,6 @@ export {
   Featured,
   Bpm,
   Actions,
+  Action,
   Visualizer,
 };
