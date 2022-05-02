@@ -48,9 +48,13 @@ const Tags = styled.div`
 `;
 
 const Actions = styled.div`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 3fr;
   column-gap: 10px;
   height: 100%;
+  width: 100%;
 `;
 
-export { BeatsList, Row, HeadColumn, Column, Thumbnail, Actions, Tags };
+const Action = styled.div``;
+
+export { BeatsList, Row, HeadColumn, Column, Thumbnail, Actions, Tags, Action };

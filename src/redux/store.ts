@@ -1,8 +1,11 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import beatSlice from './beat/beatSlice';
 import beatsSlice from './beats/beatsSlice';
 
 const rootReducer = combineReducers({
   beats: beatsSlice.reducer,
+  beat: beatSlice.reducer,
+
 });
 
 const store = () => configureStore({ reducer: rootReducer });

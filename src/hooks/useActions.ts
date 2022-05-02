@@ -1,12 +1,16 @@
 import { bindActionCreators } from '@reduxjs/toolkit';
+import beatSlice from '../redux/beat/beatSlice';
 
 import beatsSlice from '../redux/beats/beatsSlice';
 import useTypedDispatch from './redux/useTypedSelector';
 
-const landingActions = beatsSlice.actions;
+
+const beatsActions = beatsSlice.actions;
+const beatSliceActions = beatSlice.actions;
 
 const rootActionCreator = {
-  ...landingActions,
+  ...beatsActions,
+  ...beatSliceActions
 };
 
 const useActions = () => {

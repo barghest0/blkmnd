@@ -15,8 +15,7 @@ const Modal = styled.div<ModalProps>`
       height: 100%;
       overflow: hidden;
       pointer-events: ${pointerEvents};
-      background-color: ${ThemeColors.mainColor}7d;
-
+      background: ${ThemeColors.black}0008d;
       opacity: ${visability};
       display: flex;
       justify-content: center;
@@ -34,9 +33,10 @@ const Content = styled.div<ModalProps>`
       display: flex;
       justify-content: center;
       align-self: center;
-      width: 300px;
-      height: 300px;
+      width: 400px;
+      height: 450px;
       background: ${ThemeColors.mainColor};
+      background-size: cover;
       transition: all 0.3s linear;
       opacity: ${opacity};
       transform: translateY(${translate});

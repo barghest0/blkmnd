@@ -9,4 +9,6 @@ const fetchFeaturedBeat = (id: number) => instance.get<Beat>(`beats/${id}`);
 
 const fetchPreviewBeats = () => instance.get<Beat[]>('beats/');
 
-export { fetchFeaturedBeat, fetchPreviewBeats };
+const fetchBeat = (id: number) => instance.get<Beat>(`beats/${id}`);
+
+export { fetchFeaturedBeat, fetchPreviewBeats, fetchBeat };

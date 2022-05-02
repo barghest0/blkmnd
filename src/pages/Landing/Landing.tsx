@@ -1,34 +1,49 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-
 import * as S from './Landing.style';
-
 import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
 import SearchField from '../../components/SearchField/SearchField';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import { getFeaturedBeat, getPreviewBeats } from '../../redux/beats/actions';
+import { getPreviewBeats } from '../../redux/beats/actions';
 import Preloader from '../../components/Preloader/Preloader';
 import BeatsList from '../../components/BeatsList/BeatsList';
 import { ButtonLink } from '../../shared/styles/links';
 import { RouterPaths } from '../../shared/router/types';
 import Modal from '../../components/Modal/Modal';
+import { getBeat, getFeaturedBeat } from '../../redux/beat/actions';
+import DownloadModal from '../../components/DownloadModal/DownloadModal';
+import ShareModal from '../../components/ShareModal/ShareModal';
 
 const Landing = () => {
-  const { featuredBeat, beats, isFetching } = useTypedSelector(
-    state => state.beats,
-  );
+  const { beats, isFetching } = useTypedSelector(state => state.beats);
+
+  const { featuredBeat, beat } = useTypedSelector(state => state.beat);
+
   const dispatch = useDispatch();
-  const isBeatFetching = isFetching || !featuredBeat;
+
+  const isFeaturedBeatFetching = !featuredBeat;
+
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
 
-  const onDownloadButtonClick = () => {
+  const getContent = (id: number) => {
+    dispatch(getBeat(id));
+  };
+
+  const getModalContent = useCallback(getContent, [
+    isShareOpen,
+    isDownloadOpen,
+  ]);
+
+  const onDownloadButtonClick = (id: number) => {
     setIsDownloadOpen(true);
+    getModalContent(id);
     document.body.style.overflow = 'hidden';
   };
 
-  const onShareButtonClick = () => {
+  const onShareButtonClick = (id: number) => {
     setIsShareOpen(true);
+    getModalContent(id);
     document.body.style.overflow = 'hidden';
   };
 
@@ -46,7 +61,7 @@ const Landing = () => {
             <SearchField hasButton buttonText={'search'} />
           </S.Search>
           <S.FeaturedBeat>
-            {isBeatFetching ? (
+            {isFeaturedBeatFetching ? (
               <Preloader />
             ) : (
               <FeaturedBeat
@@ -60,18 +75,30 @@ const Landing = () => {
       </S.Intro>
       <S.Container>
         <S.BeatsList>
-          {isFetching ? <Preloader /> : <BeatsList beats={beats} />}
+          {isFetching ? (
+            <Preloader />
+          ) : (
+            <BeatsList
+              onDownloadClick={onDownloadButtonClick}
+              onShareClick={onShareButtonClick}
+              beats={beats}
+            />
+          )}
         </S.BeatsList>
         <S.AllTracksLink>
           <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>
         </S.AllTracksLink>
       </S.Container>
-      <Modal isOpen={isDownloadOpen} setIsOpen={setIsDownloadOpen}>
-        download modal
-      </Modal>
-      <Modal isOpen={isShareOpen} setIsOpen={setIsShareOpen}>
-        share modal
-      </Modal>
+      <DownloadModal
+        isOpen={isDownloadOpen}
+        setIsOpen={setIsDownloadOpen}
+        beat={beat}
+      />
+      <ShareModal
+        isOpen={isShareOpen}
+        setIsOpen={setIsShareOpen}
+        link={'something link'}
+      />
     </S.Landing>
   );
 };

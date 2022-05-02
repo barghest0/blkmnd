@@ -12,8 +12,8 @@ import ShareButton from '../ShareButton/ShareButton';
 
 type Props = {
   beat: Beat;
-  onDownloadClick: () => void;
-  onShareClick: () => void;
+  onDownloadClick: (id: number) => void;
+  onShareClick: (id: number) => void;
 };
 
 const FeaturedBeat: FC<Props> = ({ beat, onDownloadClick, onShareClick }) => {
@@ -54,10 +54,10 @@ const FeaturedBeat: FC<Props> = ({ beat, onDownloadClick, onShareClick }) => {
           <S.Action>
             <AddToCardButton price={price} />
           </S.Action>
-          <S.Action onClick={onDownloadClick}>
+          <S.Action onClick={() => onDownloadClick(id)}>
             <DownloadButton />
           </S.Action>
-          <S.Action onClick={onShareClick}>
+          <S.Action onClick={() => onShareClick(id)}>
             <ShareButton />
           </S.Action>
           {tagsLinks}

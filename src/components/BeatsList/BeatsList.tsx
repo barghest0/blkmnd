@@ -1,5 +1,4 @@
 import * as S from './BeatsList.style';
-import { Beat } from '../../redux/beats/types';
 import { FC } from 'react';
 import { StyledLink } from '../../shared/styles/links';
 import { RouterPaths } from '../../shared/router/types';
@@ -7,15 +6,19 @@ import TagLink from '../TagLink/TagLink';
 import DownloadButton from '../DownloadButton/DownloadButton';
 import ShareButton from '../ShareButton/ShareButton';
 import AddToCardButton from '../AddToCardButton/AddToCardButton';
+import { Beat } from '../../redux/beat/types';
 
 type Props = {
   beats: Beat[];
+  onDownloadClick: (id: number) => void;
+  onShareClick: (id: number) => void;
 };
 
-const BeatsList: FC<Props> = ({ beats }) => {
+const BeatsList: FC<Props> = ({ beats, onDownloadClick, onShareClick }) => {
   const beatsRows = beats.map(
     ({ image, id, title, time, bpm, tags, price }) => {
       const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
+
       return (
         <S.Row key={id}>
           <S.Column>
@@ -35,9 +38,15 @@ const BeatsList: FC<Props> = ({ beats }) => {
           </S.Column>
           <S.Column>
             <S.Actions>
-              <DownloadButton />
-              <ShareButton />
-              <AddToCardButton price={price} />
+              <S.Action onClick={() => onDownloadClick(id)}>
+                <DownloadButton />
+              </S.Action>
+              <S.Action onClick={() => onShareClick(id)}>
+                <ShareButton />
+              </S.Action>
+              <S.Action>
+                <AddToCardButton price={price} />
+              </S.Action>
             </S.Actions>
           </S.Column>
         </S.Row>
