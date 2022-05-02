@@ -35,11 +35,7 @@ const FeaturedBeat: FC<Props> = ({
   return (
     <S.FeaturedBeat>
       <S.ThumbnailContainer onClick={onThumbnailClick}>
-        <S.Thumbnail
-          src={require(`./images/${image}`)}
-          width={130}
-          height={130}
-        />
+        <S.Thumbnail src={image} width={130} height={130} />
         <S.ActionCircle>
           {played ? (
             <S.PauseButton className={'override'} />

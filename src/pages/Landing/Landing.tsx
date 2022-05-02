@@ -15,14 +15,17 @@ import ShareModal from '../../components/ShareModal/ShareModal';
 import LicensesModal from '../../components/LicensesModal/LicensesModal';
 import { getLicenses } from '../../redux/licenses/actions';
 import LicensesList from '../../components/LicensesList/LicensesList';
+import { getPreviewSoundKits } from '../../redux/soundKits/actions';
+import SoundKitsList from '../../components/SoundKitsList/SoundKitsList';
 
 const Landing = () => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
-
   const { featuredBeat, beat } = useTypedSelector(state => state.beat);
-
   const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
     state => state.licenses,
+  );
+  const { soundKits, isFetching: isSoundKitsFetching } = useTypedSelector(
+    state => state.soundKits,
   );
 
   const dispatch = useDispatch();
@@ -50,9 +53,10 @@ const Landing = () => {
     };
 
   useEffect(() => {
-    dispatch(getFeaturedBeat(1));
+    dispatch(getFeaturedBeat());
     dispatch(getPreviewBeats());
     dispatch(getLicenses());
+    dispatch(getPreviewSoundKits());
   }, []);
 
   return (
@@ -108,6 +112,16 @@ const Landing = () => {
           </S.LicensesList>
         </S.Container>
       </S.Licenses>
+      <S.SoundKits>
+        <S.Container>
+          {isSoundKitsFetching ? (
+            <Preloader />
+          ) : (
+            <SoundKitsList kits={soundKits} />
+          )}
+        </S.Container>
+      </S.SoundKits>
+
       <DownloadModal
         isOpen={isDownloadOpen}
         setIsOpen={setIsDownloadOpen}

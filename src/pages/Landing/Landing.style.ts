@@ -51,6 +51,7 @@ const AllTracksLink = styled.div`
 const Licenses = styled.section`
   padding: 50px 0;
   background-color: ${ThemeColors.black};
+  margin-bottom: 50px;
 `;
 
 const LicensesTitle = styled.h2`
@@ -61,6 +62,8 @@ const LicensesTitle = styled.h2`
 `;
 
 const LicensesList = styled.div``;
+
+const SoundKits = styled.div``;
 
 export {
   Landing,
@@ -75,4 +78,5 @@ export {
   Licenses,
   LicensesTitle,
   LicensesList,
+  SoundKits,
 };

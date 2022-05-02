@@ -28,11 +28,7 @@ const BeatsList: FC<Props> = ({
       return (
         <S.Row key={id}>
           <S.Column>
-            <S.Thumbnail
-              src={require(`./images/${image}`)}
-              width={50}
-              height={50}
-            />
+            <S.Thumbnail src={image} width={50} height={50} />
           </S.Column>
           <S.Column>
             <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>

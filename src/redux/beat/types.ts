@@ -17,6 +17,7 @@ type Beat = {
   date: string;
   tags: Tag[];
   price: number;
+  featured: boolean;
   time: string;
   image: string;
   author: string;

@@ -10,7 +10,7 @@ type Props = {
 };
 const LicensesList: FC<Props> = ({ licenses }) => {
   const licensesItems = licenses.map(license => (
-    <S.Column>
+    <S.Column key={license.id}>
       <S.Title>{license.name} License</S.Title>
       <S.Price>${license.price.toFixed(2)}</S.Price>
       <S.Details>
