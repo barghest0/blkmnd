@@ -2,13 +2,13 @@ import styled from 'styled-components';
 import { container } from '../../shared/styles/mixins';
 import ThemeColors from '../../shared/styles/theme';
 
-const Landing = styled.section``;
+const Landing = styled.div``;
 
 const Container = styled.div`
   ${container}
 `;
 
-const Intro = styled.div`
+const Intro = styled.section`
   background: url(${require('./images/main-background.jpg')}) top center;
   background-size: scale;
   padding-top: 10rem;
@@ -37,7 +37,7 @@ const Search = styled.div`
 
 const FeaturedBeat = styled.div``;
 
-const BeatsList = styled.div`
+const BeatsList = styled.section`
   margin-bottom: 20px;
 `;
 
@@ -45,7 +45,22 @@ const AllTracksLink = styled.div`
   margin: 0 auto;
   width: 200px;
   height: 50px;
+  margin-bottom: 50px;
 `;
+
+const Licenses = styled.section`
+  padding: 50px 0;
+  background-color: ${ThemeColors.black};
+`;
+
+const LicensesTitle = styled.h2`
+  font-size: 28px;
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 50px;
+`;
+
+const LicensesList = styled.div``;
 
 export {
   Landing,
@@ -57,4 +72,7 @@ export {
   Container,
   BeatsList,
   AllTracksLink,
+  Licenses,
+  LicensesTitle,
+  LicensesList,
 };

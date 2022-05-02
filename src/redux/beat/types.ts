@@ -3,6 +3,12 @@ type Tag = {
   name: string;
 };
 
+type License = {
+  id: number;
+  name: string;
+  price: number;
+};
+
 type Beat = {
   id: number;
   title: string;
@@ -15,6 +21,7 @@ type Beat = {
   image: string;
   author: string;
   track: string;
+  licenses: License[];
 };
 
 type BeatState = {
@@ -23,4 +30,4 @@ type BeatState = {
   error: string;
 };
 
-export { Beat, Tag, BeatState };
+export { Beat, Tag, BeatState, License };

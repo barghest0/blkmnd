@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Beat } from '../beat/types';
-;
 import { getPreviewBeats } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
@@ -26,7 +25,6 @@ const beatsSlice = createSlice({
       state.isFetching = false;
       state.error = action.payload;
     },
-
   },
 });
 

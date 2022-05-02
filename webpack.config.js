@@ -44,7 +44,17 @@ const config = {
                   runtime: 'automatic',
                 },
               ],
+
               '@babel/preset-typescript',
+            ],
+            plugins: [
+              [
+                'styled-components',
+                {
+                  displayName: true,
+                  fileName: false,
+                },
+              ],
             ],
           },
         },

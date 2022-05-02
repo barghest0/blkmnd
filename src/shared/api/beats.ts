@@ -1,9 +1,6 @@
-import axios from 'axios';
-import { Beat } from '../../redux/beats/types';
+import instance from './instanse';
 
-const instance = axios.create({
-  baseURL: 'http://localhost:3000/',
-});
+import { Beat } from '../../redux/beat/types';
 
 const fetchFeaturedBeat = (id: number) => instance.get<Beat>(`beats/${id}`);
 

@@ -12,9 +12,15 @@ type Props = {
   beats: Beat[];
   onDownloadClick: (id: number) => void;
   onShareClick: (id: number) => void;
+  onBuyClick: (id: number) => void;
 };
 
-const BeatsList: FC<Props> = ({ beats, onDownloadClick, onShareClick }) => {
+const BeatsList: FC<Props> = ({
+  beats,
+  onDownloadClick,
+  onShareClick,
+  onBuyClick,
+}) => {
   const beatsRows = beats.map(
     ({ image, id, title, time, bpm, tags, price }) => {
       const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
@@ -44,7 +50,7 @@ const BeatsList: FC<Props> = ({ beats, onDownloadClick, onShareClick }) => {
               <S.Action onClick={() => onShareClick(id)}>
                 <ShareButton />
               </S.Action>
-              <S.Action>
+              <S.Action onClick={() => onBuyClick(id)}>
                 <AddToCardButton price={price} />
               </S.Action>
             </S.Actions>

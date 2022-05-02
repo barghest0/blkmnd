@@ -9,15 +9,21 @@ import Preloader from '../../components/Preloader/Preloader';
 import BeatsList from '../../components/BeatsList/BeatsList';
 import { ButtonLink } from '../../shared/styles/links';
 import { RouterPaths } from '../../shared/router/types';
-import Modal from '../../components/Modal/Modal';
 import { getBeat, getFeaturedBeat } from '../../redux/beat/actions';
 import DownloadModal from '../../components/DownloadModal/DownloadModal';
 import ShareModal from '../../components/ShareModal/ShareModal';
+import LicensesModal from '../../components/LicensesModal/LicensesModal';
+import { getLicenses } from '../../redux/licenses/actions';
+import LicensesList from '../../components/LicensesList/LicensesList';
 
 const Landing = () => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
 
   const { featuredBeat, beat } = useTypedSelector(state => state.beat);
+
+  const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
+    state => state.licenses,
+  );
 
   const dispatch = useDispatch();
 
@@ -25,6 +31,7 @@ const Landing = () => {
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
+  const [isLicensesOpen, setIsLecensesOpen] = useState(false);
 
   const getContent = (id: number) => {
     dispatch(getBeat(id));
@@ -35,43 +42,42 @@ const Landing = () => {
     isDownloadOpen,
   ]);
 
-  const onDownloadButtonClick = (id: number) => {
-    setIsDownloadOpen(true);
-    getModalContent(id);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const onShareButtonClick = (id: number) => {
-    setIsShareOpen(true);
-    getModalContent(id);
-    document.body.style.overflow = 'hidden';
-  };
+  const makeOnActionClick =
+    (setAction: (state: boolean) => void) => (id: number) => {
+      setAction(true);
+      getModalContent(id);
+      document.body.style.overflow = 'hidden';
+    };
 
   useEffect(() => {
     dispatch(getFeaturedBeat(1));
     dispatch(getPreviewBeats());
+    dispatch(getLicenses());
   }, []);
 
   return (
     <S.Landing>
       <S.Intro>
-        <S.IntroInner>
-          <S.IntroTitle>Someone beatstore</S.IntroTitle>
-          <S.Search>
-            <SearchField hasButton buttonText={'search'} />
-          </S.Search>
-          <S.FeaturedBeat>
-            {isFeaturedBeatFetching ? (
-              <Preloader />
-            ) : (
-              <FeaturedBeat
-                beat={featuredBeat}
-                onDownloadClick={onDownloadButtonClick}
-                onShareClick={onShareButtonClick}
-              />
-            )}
-          </S.FeaturedBeat>
-        </S.IntroInner>
+        <S.Container>
+          <S.IntroInner>
+            <S.IntroTitle>Someone beatstore</S.IntroTitle>
+            <S.Search>
+              <SearchField hasButton buttonText={'search'} />
+            </S.Search>
+            <S.FeaturedBeat>
+              {isFeaturedBeatFetching ? (
+                <Preloader />
+              ) : (
+                <FeaturedBeat
+                  beat={featuredBeat}
+                  onDownloadClick={makeOnActionClick(setIsDownloadOpen)}
+                  onShareClick={makeOnActionClick(setIsShareOpen)}
+                  onBuyClick={makeOnActionClick(setIsLecensesOpen)}
+                />
+              )}
+            </S.FeaturedBeat>
+          </S.IntroInner>
+        </S.Container>
       </S.Intro>
       <S.Container>
         <S.BeatsList>
@@ -79,8 +85,9 @@ const Landing = () => {
             <Preloader />
           ) : (
             <BeatsList
-              onDownloadClick={onDownloadButtonClick}
-              onShareClick={onShareButtonClick}
+              onDownloadClick={makeOnActionClick(setIsDownloadOpen)}
+              onShareClick={makeOnActionClick(setIsShareOpen)}
+              onBuyClick={makeOnActionClick(setIsLecensesOpen)}
               beats={beats}
             />
           )}
@@ -89,6 +96,18 @@ const Landing = () => {
           <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>
         </S.AllTracksLink>
       </S.Container>
+      <S.Licenses>
+        <S.Container>
+          <S.LicensesTitle>Licensing Info</S.LicensesTitle>
+          <S.LicensesList>
+            {isLicensesFetching ? (
+              <Preloader />
+            ) : (
+              <LicensesList licenses={licenses} />
+            )}
+          </S.LicensesList>
+        </S.Container>
+      </S.Licenses>
       <DownloadModal
         isOpen={isDownloadOpen}
         setIsOpen={setIsDownloadOpen}
@@ -98,6 +117,11 @@ const Landing = () => {
         isOpen={isShareOpen}
         setIsOpen={setIsShareOpen}
         link={'something link'}
+      />
+      <LicensesModal
+        isOpen={isLicensesOpen}
+        setIsOpen={setIsLecensesOpen}
+        beat={beat}
       />
     </S.Landing>
   );

@@ -13,7 +13,14 @@
       "time": "02:12",
       "author": "someone",
       "image": "featured-beat.png",
-      "track": "test.mp3"
+      "track": "test.mp3",
+      "licenses": [
+        { "id": 1, "name": "Basic", "price": 33 },
+        { "id": 2, "name": "Premium", "price": 55 },
+        { "id": 3, "name": "Premium plus", "price": 111 },
+        { "id": 4, "name": "Unlimited", "price": 333 },
+        { "id": 5, "name": "Exclusive", "price": 1111 }
+      ]
     },
     {
       "id": 2,
@@ -28,7 +35,14 @@
       "time": "02:12",
       "author": "someone",
       "image": "featured-beat.png",
-      "track": "test.mp3"
+      "track": "test.mp3",
+      "licenses": [
+        { "id": 1, "name": "Basic", "price": 33 },
+        { "id": 2, "name": "Premium", "price": 55 },
+        { "id": 3, "name": "Premium plus", "price": 111 },
+        { "id": 4, "name": "Unlimited", "price": 333 },
+        { "id": 5, "name": "Exclusive", "price": 1111 }
+      ]
     },
     {
       "id": 3,
@@ -43,7 +57,22 @@
       "time": "02:12",
       "author": "someone",
       "image": "featured-beat.png",
-      "track": "test.mp3"
+      "track": "test.mp3",
+      "licenses": [
+        { "id": 1, "name": "Basic", "price": 33 },
+        { "id": 2, "name": "Premium", "price": 55 },
+        { "id": 3, "name": "Premium plus", "price": 111 },
+        { "id": 4, "name": "Unlimited", "price": 333 },
+        { "id": 5, "name": "Exclusive", "price": 1111 }
+      ]
     }
+  ],
+
+  "licenses": [
+    { "id": 1, "name": "Basic", "price": 33 },
+    { "id": 2, "name": "Premium", "price": 55 },
+    { "id": 3, "name": "Premium plus", "price": 111 },
+    { "id": 4, "name": "Unlimited", "price": 333 },
+    { "id": 5, "name": "Exclusive", "price": 1111 }
   ]
 }
