@@ -8,4 +8,6 @@ const fetchPreviewBeats = () => instance.get<Beat[]>('beats?_limit=10');
 
 const fetchBeat = (id: number) => instance.get<Beat>(`beats/${id}`);
 
-export { fetchFeaturedBeat, fetchPreviewBeats, fetchBeat };
+const fetchAllBeats = () => instance.get<Beat[]>('beats/');
+
+export { fetchFeaturedBeat, fetchPreviewBeats, fetchBeat, fetchAllBeats };

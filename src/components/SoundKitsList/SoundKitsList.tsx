@@ -15,8 +15,8 @@ const SoundKitsList: FC<Props> = ({ kits }) => {
     const { imagesPreloaded } = useImagePreloader([image]);
 
     return (
-      <S.SoundKit key={id}>
-        <StyledLink to={`${RouterPaths.soundKits}/${id}`}>
+      <StyledLink to={`${RouterPaths.soundKits}/${id}`}>
+        <S.SoundKit key={id}>
           {!imagesPreloaded ? (
             <Preloader />
           ) : (
@@ -24,8 +24,8 @@ const SoundKitsList: FC<Props> = ({ kits }) => {
           )}
           <S.Title>{title}</S.Title>
           <S.Price>{price > 0 ? `$${price.toFixed(2)}` : 'FREE'}</S.Price>
-        </StyledLink>
-      </S.SoundKit>
+        </S.SoundKit>
+      </StyledLink>
     );
   });
 

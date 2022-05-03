@@ -2,15 +2,18 @@ import styled from 'styled-components';
 
 const CollabsList = styled.div`
   display: grid;
+  margin: 0 auto;
   grid-auto-flow: column;
+  column-gap: 40px;
 `;
 
 const Collab = styled.div`
-  display: flex;
-  justify-content: center;
+  width: 175px;
 `;
 
-const Thumbnail = styled.img``;
+const Thumbnail = styled.img`
+  margin-bottom: 5px;
+`;
 
 const Title = styled.h3`
   text-align: center;

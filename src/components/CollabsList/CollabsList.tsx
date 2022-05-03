@@ -14,8 +14,8 @@ const CollabsList: FC<Props> = ({ collabs }) => {
   const collabsItems = collabs.map(({ image, title, id, price }) => {
     const { imagesPreloaded } = useImagePreloader([image]);
     return (
-      <S.Collab key={id}>
-        <StyledLink to={`${RouterPaths}/${id}`}>
+      <StyledLink to={`${RouterPaths}/${id}`}>
+        <S.Collab key={id}>
           {!imagesPreloaded ? (
             <Preloader />
           ) : (
@@ -23,8 +23,8 @@ const CollabsList: FC<Props> = ({ collabs }) => {
           )}
           <S.Title>{title}</S.Title>
           <S.Price>{price}</S.Price>
-        </StyledLink>
-      </S.Collab>
+        </S.Collab>
+      </StyledLink>
     );
   });
 

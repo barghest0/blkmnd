@@ -6,6 +6,10 @@ const container = css`
   padding: 0 20px;
 `;
 
+const page = css`
+  padding: 30px 0;
+`;
+
 const button = css`
   width: 100%;
   height: 100%;
@@ -27,4 +31,8 @@ const button = css`
   }
 `;
 
-export { container, button };
+const pageTitle = css`
+  font-size: 40px;
+  text-align: center;
+`;
+export { container, button, pageTitle, page };

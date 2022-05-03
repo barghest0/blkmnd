@@ -3,13 +3,16 @@ import styled from 'styled-components';
 const SoundKitsList = styled.div`
   display: grid;
   margin: 0 auto;
-  grid-auto-flow:column;
+  grid-auto-flow: column;
   column-gap: 40px;
 `;
 
-const SoundKit = styled.div``;
+const SoundKit = styled.div`
+  width: 175px;
+`;
 
 const Thumbnail = styled.img`
+  margin-bottom: 5px;
 `;
 
 const Title = styled.h3`
