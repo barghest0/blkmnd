@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import beatSlice from './beat/beatSlice';
 import beatsSlice from './beats/beatsSlice';
+import { collabsSlice } from './collabs/collabsSlice';
 import licensesSlice from './licenses/licensesSlice';
 import soundKitsSlice from './soundKits/soundKitsSlice';
 
@@ -9,6 +10,7 @@ const rootReducer = combineReducers({
   beat: beatSlice.reducer,
   licenses: licensesSlice.reducer,
   soundKits: soundKitsSlice.reducer,
+  collabs: collabsSlice.reducer,
 });
 
 const store = () => configureStore({ reducer: rootReducer });

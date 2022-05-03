@@ -1,22 +1,18 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
 import * as S from './Landing.style';
 import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
 import SearchField from '../../components/SearchField/SearchField';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import { getPreviewBeats } from '../../redux/beats/actions';
 import Preloader from '../../components/Preloader/Preloader';
 import BeatsList from '../../components/BeatsList/BeatsList';
 import { ButtonLink } from '../../shared/styles/links';
 import { RouterPaths } from '../../shared/router/types';
-import { getBeat, getFeaturedBeat } from '../../redux/beat/actions';
 import DownloadModal from '../../components/DownloadModal/DownloadModal';
 import ShareModal from '../../components/ShareModal/ShareModal';
 import LicensesModal from '../../components/LicensesModal/LicensesModal';
-import { getLicenses } from '../../redux/licenses/actions';
 import LicensesList from '../../components/LicensesList/LicensesList';
-import { getPreviewSoundKits } from '../../redux/soundKits/actions';
 import SoundKitsList from '../../components/SoundKitsList/SoundKitsList';
+import useActions from '../../hooks/useActions';
 
 const Landing = () => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
@@ -24,11 +20,16 @@ const Landing = () => {
   const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
     state => state.licenses,
   );
+  const {
+    getBeat,
+    getFeaturedBeat,
+    getLicenses,
+    getPreviewSoundKits,
+    getPreviewBeats,
+  } = useActions();
   const { soundKits, isFetching: isSoundKitsFetching } = useTypedSelector(
     state => state.soundKits,
   );
-
-  const dispatch = useDispatch();
 
   const isFeaturedBeatFetching = !featuredBeat;
 
@@ -37,7 +38,7 @@ const Landing = () => {
   const [isLicensesOpen, setIsLecensesOpen] = useState(false);
 
   const getContent = (id: number) => {
-    dispatch(getBeat(id));
+    getBeat(id);
   };
 
   const getModalContent = useCallback(getContent, [
@@ -53,10 +54,10 @@ const Landing = () => {
     };
 
   useEffect(() => {
-    dispatch(getFeaturedBeat());
-    dispatch(getPreviewBeats());
-    dispatch(getLicenses());
-    dispatch(getPreviewSoundKits());
+    getFeaturedBeat();
+    getPreviewBeats();
+    getLicenses();
+    getPreviewSoundKits();
   }, []);
 
   return (

@@ -66,6 +66,7 @@ const LicensesList = styled.div``;
 const SoundKits = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 `;
 
 const SoundKitsTitle = styled.h2`
@@ -85,6 +86,7 @@ const Services = styled.div``;
 const AllServices = styled.div`
   height: 50px;
   width: 200px;
+  margin: 0 auto;
 `;
 
 export {

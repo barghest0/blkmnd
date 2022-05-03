@@ -1,8 +1,15 @@
 type Collab = {
-  name: string;
+  id: number;
+  title: string;
   description: string;
   price: string;
   image: string;
 };
 
-export { Collab };
+type CollabsState = {
+  collabs: Collab[];
+  isFetching: boolean;
+  error: string;
+};
+
+export { Collab, CollabsState };

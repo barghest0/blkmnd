@@ -1,16 +1,17 @@
 import { bindActionCreators } from '@reduxjs/toolkit';
-import beatSlice from '../redux/beat/beatSlice';
-
-import beatsSlice from '../redux/beats/beatsSlice';
 import useTypedDispatch from './redux/useTypedSelector';
-
-
-const beatsActions = beatsSlice.actions;
-const beatSliceActions = beatSlice.actions;
+import * as beatsActions from '../redux/beats/actions';
+import * as beatActions from '../redux/beat/actions';
+import * as licensesActions from '../redux/licenses/actions';
+import * as soundKitsActions from '../redux/soundKits/actions';
+import * as collabsActions from '../redux/collabs/actions';
 
 const rootActionCreator = {
   ...beatsActions,
-  ...beatSliceActions
+  ...beatActions,
+  ...licensesActions,
+  ...soundKitsActions,
+  ...collabsActions,
 };
 
 const useActions = () => {

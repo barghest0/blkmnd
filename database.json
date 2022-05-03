@@ -91,7 +91,7 @@
       "title": "BLACK NOVEMBER MIDI MELODY PACK",
       "description": "something description",
       "image": "https://main.v2.beatstars.com/fit-in/soundkits/600x600/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/image/1638287755/black-november.jpg",
-      "price": 0
+      "price": 30
     },
     {
       "id": 4,
@@ -99,6 +99,15 @@
       "description": "something description",
       "image": "https://main.v2.beatstars.com/fit-in/soundkits/600x600/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/image/1638287755/black-november.jpg",
       "price": 0
+    }
+  ],
+
+  "collabs": [
+    {
+      "id": 1,
+      "title": "Beat Collabs",
+      "price": 29.99,
+      "description": "something description"
     }
   ],
 

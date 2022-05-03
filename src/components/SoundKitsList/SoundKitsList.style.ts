@@ -15,6 +15,7 @@ const Thumbnail = styled.img`
 
 const Title = styled.h3`
   white-space: nowrap;
+  text-overflow: ellipsis;
   text-align: center;
   overflow: hidden;
   font-size: 14px;
