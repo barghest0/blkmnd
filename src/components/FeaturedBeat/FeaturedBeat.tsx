@@ -24,10 +24,20 @@ const FeaturedBeat: FC<Props> = ({
   onBuyClick,
 }) => {
   const { id, title, image, bpm, price, tags } = beat;
-  const [played, setPlayed] = useState(false);
+  const [audio, setAudio] = useState(new Audio(require('./audio/test.mp3')));
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const onThumbnailClick = () => {
-    setPlayed(!played);
+    if (isPlaying) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  const jopa = () => {
+    audio.pause();
   };
 
   const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
@@ -37,14 +47,14 @@ const FeaturedBeat: FC<Props> = ({
       <S.ThumbnailContainer onClick={onThumbnailClick}>
         <S.Thumbnail src={image} width={130} height={130} />
         <S.ActionCircle>
-          {played ? (
+          {isPlaying ? (
             <S.PauseButton className={'override'} />
           ) : (
             <S.PlayButton className={'override'} />
           )}
         </S.ActionCircle>
       </S.ThumbnailContainer>
-      <S.Info>
+      <S.Info onClick={jopa}>
         <S.Description>
           <S.Featured>Featured track</S.Featured>
           <S.Bpm> • {bpm}BPM</S.Bpm>
