@@ -6,9 +6,20 @@ import ThemeColors from './theme';
 const StyledNavLink = styled(NavLink)`
   color: ${ThemeColors.white};
   text-decoration: none;
+  position: relative;
 
   &.active {
-    color: ${ThemeColors.secondColor};
+    ::after {
+      content: '';
+      background-color: ${ThemeColors.white};
+      position: absolute;
+      height: 2px;
+      width: 100%;
+      opacity: 1;
+      bottom: -20px;
+      left: 0;
+      transition: all 0.2s linear;
+    }
   }
 `;
 
