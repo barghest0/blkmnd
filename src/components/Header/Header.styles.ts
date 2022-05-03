@@ -17,4 +17,9 @@ const HeaderLogo = styled.div``;
 
 const HeaderNav = styled.div``;
 
-export { Header, HeaderLogo, HeaderNav };
+const RightNav = styled.div`
+  display: flex;
+  column-gap: 20px;
+`;
+
+export { Header, HeaderLogo, HeaderNav, RightNav };

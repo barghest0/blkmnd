@@ -15,7 +15,7 @@ const SoundKitsList: FC<Props> = ({ kits }) => {
     const { imagesPreloaded } = useImagePreloader([image]);
 
     return (
-      <StyledLink to={`${RouterPaths.soundKits}/${id}`}>
+      <StyledLink to={`${RouterPaths.soundKits}/${id}`} key={id}>
         <S.SoundKit key={id}>
           {!imagesPreloaded ? (
             <Preloader />

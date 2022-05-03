@@ -14,7 +14,7 @@ const CollabsList: FC<Props> = ({ collabs }) => {
   const collabsItems = collabs.map(({ image, title, id, price }) => {
     const { imagesPreloaded } = useImagePreloader([image]);
     return (
-      <StyledLink to={`${RouterPaths}/${id}`}>
+      <StyledLink to={`${RouterPaths}/${id}`} key={id}>
         <S.Collab key={id}>
           {!imagesPreloaded ? (
             <Preloader />
