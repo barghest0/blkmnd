@@ -107,7 +107,8 @@
       "id": 1,
       "title": "Beat Collabs",
       "price": 29.99,
-      "description": "something description"
+      "description": "something description",
+      "image": "https://main.v2.beatstars.com/fit-in/services/800x800/filters:format(.jpeg):quality(50):fill(000000)//users/prod/1062484/imrtgzyv4.jpg"
     }
   ],
 

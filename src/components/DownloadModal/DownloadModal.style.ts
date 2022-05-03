@@ -1,9 +1,6 @@
 import styled from 'styled-components';
 
-const DownloadModal = styled.div`
-  width: 1000px;
-  height: 1000px;
-`;
+const DownloadModal = styled.div``;
 
 const Title = styled.h2`
   text-align: start;

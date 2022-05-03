@@ -48,29 +48,24 @@ const AllTracksLink = styled.div`
   margin-bottom: 50px;
 `;
 
+const SectionTitle = styled.h2`
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 50px;
+`;
+
 const Licenses = styled.section`
   padding: 50px 0;
   background-color: ${ThemeColors.black};
   margin-bottom: 50px;
 `;
 
-const LicensesTitle = styled.h2`
-  font-size: 28px;
-  text-align: center;
-  font-weight: 600;
-  margin-bottom: 50px;
-`;
-
 const LicensesList = styled.div``;
 
-const SoundKits = styled.div`
+const SoundKits = styled.section`
   display: flex;
   justify-content: center;
-  margin-bottom: 50px;
-`;
-
-const SoundKitsTitle = styled.h2`
-  text-align: center;
   margin-bottom: 50px;
 `;
 
@@ -81,12 +76,16 @@ const AllSoundKits = styled.div`
   margin-top: 50px;
 `;
 
-const Services = styled.div``;
+const Services = styled.section`
+  display: flex;
+  justify-content: center;
+`;
 
 const AllServices = styled.div`
   height: 50px;
   width: 200px;
   margin: 0 auto;
+  margin-top: 50px;
 `;
 
 export {
@@ -100,11 +99,10 @@ export {
   BeatsList,
   AllTracksLink,
   Licenses,
-  LicensesTitle,
   LicensesList,
   SoundKits,
-  SoundKitsTitle,
   AllSoundKits,
   Services,
   AllServices,
+  SectionTitle,
 };

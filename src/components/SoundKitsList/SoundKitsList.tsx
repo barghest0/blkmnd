@@ -17,7 +17,11 @@ const SoundKitsList: FC<Props> = ({ kits }) => {
     return (
       <S.SoundKit key={id}>
         <StyledLink to={`${RouterPaths.soundKits}/${id}`}>
-          {!imagesPreloaded ? <Preloader /> : <S.Thumbnail src={image} />}
+          {!imagesPreloaded ? (
+            <Preloader />
+          ) : (
+            <S.Thumbnail src={image} width={175} height={175} />
+          )}
           <S.Title>{title}</S.Title>
           <S.Price>{price > 0 ? `$${price.toFixed(2)}` : 'FREE'}</S.Price>
         </StyledLink>

@@ -13,6 +13,7 @@ import LicensesModal from '../../components/LicensesModal/LicensesModal';
 import LicensesList from '../../components/LicensesList/LicensesList';
 import SoundKitsList from '../../components/SoundKitsList/SoundKitsList';
 import useActions from '../../hooks/useActions';
+import CollabsList from '../../components/CollabsList/CollabsList';
 
 const Landing = () => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
@@ -20,15 +21,22 @@ const Landing = () => {
   const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
     state => state.licenses,
   );
+
   const {
     getBeat,
     getFeaturedBeat,
     getLicenses,
     getPreviewSoundKits,
     getPreviewBeats,
+    getPreviewCollabs,
   } = useActions();
+
   const { soundKits, isFetching: isSoundKitsFetching } = useTypedSelector(
     state => state.soundKits,
+  );
+
+  const { collabs, isFetching: isCollabsFetching } = useTypedSelector(
+    state => state.collabs,
   );
 
   const isFeaturedBeatFetching = !featuredBeat;
@@ -58,6 +66,7 @@ const Landing = () => {
     getPreviewBeats();
     getLicenses();
     getPreviewSoundKits();
+    getPreviewCollabs();
   }, []);
 
   return (
@@ -103,7 +112,7 @@ const Landing = () => {
       </S.Container>
       <S.Licenses>
         <S.Container>
-          <S.LicensesTitle>Licensing Info</S.LicensesTitle>
+          <S.SectionTitle>Licensing Info</S.SectionTitle>
           <S.LicensesList>
             {isLicensesFetching ? (
               <Preloader />
@@ -116,7 +125,7 @@ const Landing = () => {
 
       <S.SoundKits>
         <S.Container>
-          <S.SoundKitsTitle>Sound Kits</S.SoundKitsTitle>
+          <S.SectionTitle>Sound Kits</S.SectionTitle>
           {isSoundKitsFetching ? (
             <Preloader />
           ) : (
@@ -132,6 +141,12 @@ const Landing = () => {
 
       <S.Services>
         <S.Container>
+          <S.SectionTitle>Services</S.SectionTitle>
+          {isCollabsFetching ? (
+            <Preloader />
+          ) : (
+            <CollabsList collabs={collabs} />
+          )}
           <S.AllServices>
             <ButtonLink to={`${RouterPaths.collabs}`}>
               Browse all services
