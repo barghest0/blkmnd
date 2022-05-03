@@ -5,7 +5,9 @@ type Props = {
   kits: SoundKit[];
 };
 const SoundKits: FC<Props> = ({ kits }) => {
-  const soundKitsItems = kits.map(kit => kit.image);
+  {
+    /* const soundKitsItems = kits.map(kit => kit.image); */
+  }
   return <div>Sound Kits</div>;
 };
 

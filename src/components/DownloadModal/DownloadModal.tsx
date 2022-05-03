@@ -22,7 +22,7 @@ const DownloadModal: FC<Props> = ({ isOpen, setIsOpen, beat }) => {
           <Preloader />
         ) : (
           <>
-            <S.Background src={require(`./images/${beat.image}`)} />
+            <S.Background src={beat.image} />
             <S.Content>
               <S.Title>Download: {beat.title}</S.Title>
             </S.Content>

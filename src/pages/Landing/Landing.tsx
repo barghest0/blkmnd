@@ -112,16 +112,32 @@ const Landing = () => {
           </S.LicensesList>
         </S.Container>
       </S.Licenses>
+
       <S.SoundKits>
         <S.Container>
+          <S.SoundKitsTitle>Sound Kits</S.SoundKitsTitle>
           {isSoundKitsFetching ? (
             <Preloader />
           ) : (
             <SoundKitsList kits={soundKits} />
           )}
+          <S.AllSoundKits>
+            <ButtonLink to={`${RouterPaths.soundKits}`}>
+              Browse all sound kits
+            </ButtonLink>
+          </S.AllSoundKits>
         </S.Container>
       </S.SoundKits>
 
+      <S.Services>
+        <S.Container>
+          <S.AllServices>
+            <ButtonLink to={`${RouterPaths.collabs}`}>
+              Browse all services
+            </ButtonLink>
+          </S.AllServices>
+        </S.Container>
+      </S.Services>
       <DownloadModal
         isOpen={isDownloadOpen}
         setIsOpen={setIsDownloadOpen}

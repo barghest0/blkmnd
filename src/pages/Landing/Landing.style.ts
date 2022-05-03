@@ -63,7 +63,29 @@ const LicensesTitle = styled.h2`
 
 const LicensesList = styled.div``;
 
-const SoundKits = styled.div``;
+const SoundKits = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const SoundKitsTitle = styled.h2`
+  text-align: center;
+  margin-bottom: 50px;
+`;
+
+const AllSoundKits = styled.div`
+  height: 50px;
+  width: 200px;
+  margin: 0 auto;
+  margin-top: 50px;
+`;
+
+const Services = styled.div``;
+
+const AllServices = styled.div`
+  height: 50px;
+  width: 200px;
+`;
 
 export {
   Landing,
@@ -79,4 +101,8 @@ export {
   LicensesTitle,
   LicensesList,
   SoundKits,
+  SoundKitsTitle,
+  AllSoundKits,
+  Services,
+  AllServices,
 };
