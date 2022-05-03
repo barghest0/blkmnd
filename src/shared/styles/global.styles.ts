@@ -7,9 +7,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     box-sizing: border-box;
     ::placeholder{
-
-    font-family: Poppins;
-  }
+      font-family: Poppins;
+    }
   }
 
   body{

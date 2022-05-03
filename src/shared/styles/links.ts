@@ -7,18 +7,29 @@ const StyledNavLink = styled(NavLink)`
   color: ${ThemeColors.white};
   text-decoration: none;
   position: relative;
-
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  ::after {
+    content: '';
+    background-color: ${ThemeColors.white};
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    opacity: 0;
+    bottom: 0px;
+    left: 0;
+    transition: all 0.2s linear;
+  }
+  :hover {
+    ::after {
+      opacity: 1;
+    }
+  }
   &.active {
     ::after {
-      content: '';
-      background-color: ${ThemeColors.white};
-      position: absolute;
-      height: 2px;
-      width: 100%;
       opacity: 1;
-      bottom: -20px;
-      left: 0;
-      transition: all 0.2s linear;
     }
   }
 `;

@@ -49,6 +49,8 @@ const CloseButton = styled.div<SearchInputProps>`
     return css`
       position: absolute;
       right: 0;
+      top: 50%;
+      transform: translateY(-50%);
       cursor: pointer;
       pointer-events: ${pointerEvents};
       display: flex;

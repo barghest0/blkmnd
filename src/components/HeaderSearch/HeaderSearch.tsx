@@ -1,15 +1,17 @@
-import { SyntheticEvent, useState } from 'react';
+import { FC, SyntheticEvent } from 'react';
 import * as S from './HeaderSearch.style';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 
+type Props = {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+};
 type SearchInputProps = {
   isOpen: boolean;
 };
 
-const HeaderSearch = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
   const onSearchIconClick = () => {
     setIsOpen(!isOpen);
   };
