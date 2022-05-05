@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import ThemeColors from '../../shared/styles/theme';
-import PauseSharpIcon from '@mui/icons-material/PauseSharp';
 
 const FeaturedBeat = styled.div`
   display: grid;
@@ -13,41 +10,16 @@ const FeaturedBeat = styled.div`
 const ThumbnailContainer = styled.div`
   position: relative;
   cursor: pointer;
-`;
-
-const ActionCircle = styled.div`
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: ${ThemeColors.secondColor};
-  border-radius: 50%;
   display: flex;
   justify-content: center;
-  align-items: center;
-`;
-
-const PlayButton = styled(PlayArrowIcon)`
-  &.override {
-    fill: ${ThemeColors.black};
-    width: 30px;
-    height: 30px;
-  }
-`;
-
-const PauseButton = styled(PauseSharpIcon)`
-  &.override {
-    fill: ${ThemeColors.black};
-    width: 30px;
-    height: 30px;
-  }
+  align-self: center;
 `;
 
 const Thumbnail = styled.img``;
 
 const Info = styled.div``;
+
+const PlayButton = styled.div``;
 
 const Description = styled.div`
   display: flex;
@@ -82,9 +54,6 @@ export {
   Title,
   Thumbnail,
   ThumbnailContainer,
-  PlayButton,
-  ActionCircle,
-  PauseButton,
   Info,
   Description,
   Featured,
@@ -92,4 +61,5 @@ export {
   Actions,
   Action,
   Visualizer,
+  PlayButton,
 };

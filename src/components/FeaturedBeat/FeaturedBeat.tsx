@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useEffect } from 'react';
 
 import * as S from './FeaturedBeat.style';
 
@@ -9,6 +9,9 @@ import AddToCardButton from '../AddToCardButton/AddToCardButton';
 import DownloadButton from '../DownloadButton/DownloadButton';
 import ShareButton from '../ShareButton/ShareButton';
 import { Beat } from '../../redux/beat/types';
+import useActions from '../../hooks/useActions';
+import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import PlayButton from '../PlayButton/PlayButton';
 
 type Props = {
   beat: Beat;
@@ -24,20 +27,16 @@ const FeaturedBeat: FC<Props> = ({
   onBuyClick,
 }) => {
   const { id, title, image, bpm, price, tags } = beat;
-  const [audio, setAudio] = useState(new Audio(require('./audio/test.mp3')));
-  const [isPlaying, setIsPlaying] = useState(false);
+  const { isPlaying } = useTypedSelector(state => state.player);
+
+  const { openPlayer, togglePlaying, setBeat } = useActions();
 
   const onThumbnailClick = () => {
-    if (isPlaying) {
-      audio.pause();
-    } else {
-      audio.play();
+    setBeat(require('./audio/test.mp3'));
+    if (!isPlaying) {
+      openPlayer();
     }
-    setIsPlaying(!isPlaying);
-  };
-
-  const jopa = () => {
-    audio.pause();
+    togglePlaying();
   };
 
   const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
@@ -46,15 +45,11 @@ const FeaturedBeat: FC<Props> = ({
     <S.FeaturedBeat>
       <S.ThumbnailContainer onClick={onThumbnailClick}>
         <S.Thumbnail src={image} width={130} height={130} />
-        <S.ActionCircle>
-          {isPlaying ? (
-            <S.PauseButton className={'override'} />
-          ) : (
-            <S.PlayButton className={'override'} />
-          )}
-        </S.ActionCircle>
+        <S.PlayButton>
+          <PlayButton />
+        </S.PlayButton>
       </S.ThumbnailContainer>
-      <S.Info onClick={jopa}>
+      <S.Info>
         <S.Description>
           <S.Featured>Featured track</S.Featured>
           <S.Bpm> • {bpm}BPM</S.Bpm>
