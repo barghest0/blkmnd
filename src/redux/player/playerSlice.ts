@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { Beat } from '../beat/types';
 import { PLAYER_SLICE_NAME, PLAYER_INITIAL_STATE } from './constants';
 
 const playerSlice = createSlice({
@@ -11,8 +12,14 @@ const playerSlice = createSlice({
     openPlayer: state => {
       state.isOpen = true;
     },
-    setBeat: (state, action: PayloadAction<string>) => {
+    setBeat: (state, action: PayloadAction<Beat>) => {
       state.beat = action.payload;
+    },
+    setDuration: (state, action: PayloadAction<number>) => {
+      state.duration = action.payload;
+    },
+    setCurrentTime: (state, action: PayloadAction<number>) => {
+      state.currentTime = Math.round(action.payload);
     },
   },
 });

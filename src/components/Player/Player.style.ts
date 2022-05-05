@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
+import { styled as MUIstyled } from '@mui/material';
 import ThemeColors from '../../shared/styles/theme';
 import { PlayerProps } from './Player';
+import { Slider } from '@mui/material';
 
 const Player = styled.div<PlayerProps>`
   ${({ isOpen }) => {
@@ -9,7 +11,7 @@ const Player = styled.div<PlayerProps>`
       height: 70px;
       width: 100%;
       background-color: ${ThemeColors.headerColor};
-      display: ${display};
+      display: block;
       position: fixed;
       bottom: 0;
     `;
@@ -18,4 +20,23 @@ const Player = styled.div<PlayerProps>`
 
 const PlayButton = styled.div``;
 
-export { Player, PlayButton };
+const Duration = MUIstyled(Slider)({
+  position: 'absolute',
+  top: 0,
+  width: '100%',
+  height: 3,
+  padding: 0,
+  color: ThemeColors.secondColor,
+  '& .MuiSlider-rail': {
+    backgroundColor: 'transparent',
+  },
+  '& .MuiSlider-thumb': {
+    height: 15,
+    width: 15,
+    '&:hover, &.Mui-focusVisible': {
+      boxShadow: 'none',
+    },
+  },
+});
+
+export { Player, PlayButton, Duration };

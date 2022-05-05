@@ -8,7 +8,9 @@ type PlayerProps = {
 };
 
 const Player = () => {
-  const { isOpen } = useTypedSelector(state => state.player);
+  const { isOpen, duration, currentTime } = useTypedSelector(
+    state => state.player,
+  );
   const { togglePlaying } = useActions();
 
   const onPlayButtonClick = () => {
@@ -20,6 +22,7 @@ const Player = () => {
       <S.PlayButton onClick={onPlayButtonClick}>
         <PlayButton />
       </S.PlayButton>
+      <S.Duration defaultValue={0} value={currentTime} max={duration || 100} />
     </S.Player>
   );
 };

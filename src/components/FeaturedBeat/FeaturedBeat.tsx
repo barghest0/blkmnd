@@ -32,7 +32,7 @@ const FeaturedBeat: FC<Props> = ({
   const { openPlayer, togglePlaying, setBeat } = useActions();
 
   const onThumbnailClick = () => {
-    setBeat(require('./audio/test.mp3'));
+    setBeat(beat);
     if (!isPlaying) {
       openPlayer();
     }
