@@ -11,7 +11,10 @@
       "bpm": 155,
       "date": "01.02.2021",
       "time": "02:12",
-      "author": "someone",
+      "musician": {
+        "id": 1,
+        "name": "mucician"
+      },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
       "track": "test.mp3",
       "featured": true,
@@ -35,7 +38,10 @@
       "bpm": 155,
       "date": "01.02.2021",
       "time": "02:12",
-      "author": "someone",
+      "musician": {
+        "id": 1,
+        "name": "mucician"
+      },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
       "track": "test.mp3",
       "licenses": [
@@ -58,7 +64,10 @@
       "date": "01.02.2021",
       "time": "02:12",
       "featured": true,
-      "author": "someone",
+      "musician": {
+        "id": 1,
+        "name": "mucician"
+      },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
       "track": "test.mp3",
       "licenses": [

@@ -6,10 +6,19 @@ import { ButtonThemes } from './types';
 type Props = {
   children: React.ReactNode;
   theme?: ButtonThemes;
+  hasBackground?: boolean;
 };
 
-const Button: FC<Props> = ({ children, rounded = false, theme = 'light' }) => {
-  return <S.Button theme={theme}>{children}</S.Button>;
+const Button: FC<Props> = ({
+  children,
+  hasBackground = true,
+  theme = 'light',
+}) => {
+  return (
+    <S.Button theme={theme} hasBackground={hasBackground}>
+      {children}
+    </S.Button>
+  );
 };
 
 export default Button;

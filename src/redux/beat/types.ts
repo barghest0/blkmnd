@@ -9,6 +9,11 @@ type License = {
   price: number;
 };
 
+type Musician = {
+  id: number;
+  name: string;
+};
+
 type Beat = {
   id: number;
   title: string;
@@ -20,7 +25,7 @@ type Beat = {
   featured: boolean;
   time: string;
   image: string;
-  author: string;
+  musician: Musician;
   track: string;
   licenses: License[];
 };

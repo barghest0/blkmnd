@@ -19,7 +19,10 @@ const playerSlice = createSlice({
       state.duration = action.payload;
     },
     setCurrentTime: (state, action: PayloadAction<number>) => {
-      state.currentTime = Math.round(action.payload);
+      state.currentTime = Math.floor(action.payload);
+    },
+    setVolume: (state, action: PayloadAction<number>) => {
+      state.volume = action.payload;
     },
   },
 });
