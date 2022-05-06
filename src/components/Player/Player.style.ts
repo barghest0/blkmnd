@@ -12,7 +12,7 @@ const Player = styled.div<PlayerProps>`
       width: 100%;
       background-color: ${ThemeColors.headerColor};
       display: ${display};
-      grid-template-columns: 3fr 2fr 3fr;
+      grid-template-columns: 2.7fr 2fr 3fr;
       grid-template-rows: 100%;
       position: fixed;
       bottom: 0;
@@ -23,7 +23,28 @@ const Player = styled.div<PlayerProps>`
 
 const PlayerAudio = styled.audio``;
 
-const PlayButton = styled.div``;
+const Controls = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 10px;
+`;
+
+const PreviousBeat = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+`;
+
+const NextBeat = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+`;
+
+const PlayButton = styled.div`
+  position: relative;
+`;
 
 const Duration = MUIstyled(Slider)({
   position: 'absolute',
@@ -44,29 +65,6 @@ const Duration = MUIstyled(Slider)({
   },
 });
 
-const Volume = MUIstyled(Slider)({
-  height: 3,
-  width: 100,
-  padding: 0,
-  color: ThemeColors.secondColor,
-  '& .MuiSlider-rail': {
-    backgroundColor: 'transparent',
-  },
-  '& .MuiSlider-thumb': {
-    height: 0,
-    width: 0,
-    transition: 'all 0.2s linear',
-    '&:hover': {
-      boxShadow: 'none',
-      height: 12,
-      width: 12,
-    },
-    '&.Mui-focusVisible': {
-      boxShadow: 'none',
-    },
-  },
-});
-
 const Beat = styled.div`
   font-size: 12px;
   column-gap: 20px;
@@ -79,6 +77,7 @@ const BeatInfo = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  min-width: 120px;
 `;
 
 const Thumbnail = styled.img`
@@ -104,6 +103,51 @@ const AddToCart = styled.div`
   font-size: 14px;
   height: 30px;
   width: 100%;
+  min-width: 85px;
+`;
+
+const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  justify-self: flex-end;
+  padding-right: 20px;
+  column-gap: 10px;
+`;
+
+const Volume = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+`;
+
+const VolumeSlider = MUIstyled(Slider)({
+  height: 3,
+  width: 100,
+  padding: 0,
+  color: ThemeColors.secondColor,
+  '& .MuiSlider-track': {
+    border: 'none',
+  },
+  '& .MuiSlider-rail': {
+    backgroundColor: 'transparent',
+  },
+  '& .MuiSlider-thumb': {
+    height: 0,
+    width: 0,
+    transition: 'all 0.2s linear',
+    '&:hover': {
+      boxShadow: 'none',
+      height: 12,
+      width: 12,
+    },
+    '&.Mui-focusVisible': {
+      boxShadow: 'none',
+    },
+  },
+});
+
+const Queue = styled.div`
+  cursor: pointer;
 `;
 
 export {
@@ -111,7 +155,7 @@ export {
   PlayerAudio,
   PlayButton,
   Duration,
-  Volume,
+  VolumeSlider,
   Beat,
   Thumbnail,
   Title,
@@ -119,4 +163,10 @@ export {
   Share,
   AddToCart,
   BeatInfo,
+  Volume,
+  Queue,
+  Actions,
+  Controls,
+  PreviousBeat,
+  NextBeat,
 };

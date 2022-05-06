@@ -19,7 +19,12 @@ const Thumbnail = styled.img``;
 
 const Info = styled.div``;
 
-const PlayButton = styled.div``;
+const PlayButton = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
 
 const Description = styled.div`
   display: flex;

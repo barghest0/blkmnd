@@ -5,12 +5,8 @@ import ThemeColors from '../../shared/styles/theme';
 
 const PlayButton = styled.div`
   cursor: pointer;
-  position: absolute;
   width: 50px;
   height: 50px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   background-color: ${ThemeColors.secondColor};
   border-radius: 50%;
   display: flex;

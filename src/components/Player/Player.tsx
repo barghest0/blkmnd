@@ -1,4 +1,9 @@
 import { memo, SyntheticEvent, useEffect, useRef } from 'react';
+import VolumeUpIcon from '@mui/icons-material/VolumeUp';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
+import SkipNextIcon from '@mui/icons-material/SkipNext';
+
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { RouterPaths } from '../../shared/router/types';
@@ -23,13 +28,24 @@ const Player = memo(() => {
     togglePlaying();
   };
 
-  const onVolumeSliderChange = (_: Event, value: number | number[]) => {
+  const beatRef = useRef(new Audio());
+  const { current: playerBeat } = beatRef;
+
+  const onCurrentTimeCommited = () => {
+    playerBeat.currentTime = currentTime;
+  };
+
+  const onVolumeChangeCommited = () => {
+    playerBeat.volume = volume;
+  };
+
+  const onVolumeChange = (_: Event, value: number | number[]) => {
     if (!Array.isArray(value)) {
       setVolume(value);
     }
   };
 
-  const onDurationSliderChange = (_: Event, value: number | number[]) => {
+  const onCurrentTimeChange = (_: Event, value: number | number[]) => {
     if (!Array.isArray(value)) {
       {
         setCurrentTime(value);
@@ -37,13 +53,21 @@ const Player = memo(() => {
     }
   };
 
-  const beatRef = useRef(new Audio());
-  const { current: playerBeat } = beatRef;
+  const onNextButtonClick = () => {
+    console.log('next beat');
+  };
+
+  const onPreviousButtonClick = () => {
+    console.log('previous beat');
+  };
 
   useEffect(() => {
     if (beat) {
       playerBeat.src = require(`../../audio/${beat.track}`);
     }
+  }, [beat]);
+
+  useEffect(() => {
     if (!isPlaying) {
       playerBeat.pause();
     } else {
@@ -51,21 +75,7 @@ const Player = memo(() => {
     }
   }, [isPlaying]);
 
-  useEffect(() => {
-    playerBeat.volume = volume;
-  }, [volume]);
-
-  {
-    /* useEffect(() => { */
-  }
-  {
-    /* playerBeat.currentTime = currentTime; */
-  }
-  {
-    /* }, [currentTime]); */
-  }
-
-  const onBeatTimeChange = (event: SyntheticEvent<HTMLAudioElement>) => {
+  const onBeatTimeUpdate = (event: SyntheticEvent<HTMLAudioElement>) => {
     setCurrentTime(event.currentTarget.currentTime);
   };
 
@@ -98,26 +108,45 @@ const Player = memo(() => {
           </S.AddToCart>
         </S.Beat>
       )}
-      <S.PlayButton onClick={onPlayButtonClick}>
-        <PlayButton />
-      </S.PlayButton>
+      <S.Controls>
+        <S.PreviousBeat onClick={onPreviousButtonClick}>
+          <SkipPreviousIcon />
+        </S.PreviousBeat>
+        <S.PlayButton onClick={onPlayButtonClick}>
+          <PlayButton />
+        </S.PlayButton>
+        <S.NextBeat onClick={onNextButtonClick}>
+          <SkipNextIcon />
+        </S.NextBeat>
+      </S.Controls>
 
       <S.Duration
         value={currentTime}
-        onChange={onDurationSliderChange}
+        onChange={onCurrentTimeChange}
+        onChangeCommitted={onCurrentTimeCommited}
         max={duration}
       />
-      <S.Volume
-        value={volume}
-        min={0}
-        max={1}
-        step={0.01}
-        onChange={onVolumeSliderChange}
-      />
+      <S.Actions>
+        <S.Volume>
+          <VolumeUpIcon fontSize="small" />
+          <S.VolumeSlider
+            value={volume}
+            min={0}
+            max={1}
+            step={0.01}
+            onChange={onVolumeChange}
+            onChangeCommitted={onVolumeChangeCommited}
+          />
+        </S.Volume>
+        <S.Queue>
+          <FormatListBulletedIcon />
+        </S.Queue>
+      </S.Actions>
+
       <S.PlayerAudio
         ref={beatRef}
         onLoadedData={onLoadedBeatData}
-        onTimeUpdate={onBeatTimeChange}
+        onTimeUpdate={onBeatTimeUpdate}
       />
     </S.Player>
   );
