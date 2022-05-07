@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { memo, useCallback, useEffect, useState } from 'react';
 import * as S from './Landing.style';
 import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
 import SearchField from '../../components/SearchField/SearchField';
@@ -14,8 +14,9 @@ import LicensesList from '../../components/LicensesList/LicensesList';
 import SoundKitsList from '../../components/SoundKitsList/SoundKitsList';
 import useActions from '../../hooks/useActions';
 import CollabsList from '../../components/CollabsList/CollabsList';
+import Visualizer from '../../components/Visualizer/Visualizer';
 
-const Landing = () => {
+const Landing = memo(() => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
   const { featuredBeat, beat } = useTypedSelector(state => state.beat);
   const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
@@ -90,6 +91,8 @@ const Landing = () => {
                 />
               )}
             </S.FeaturedBeat>
+
+            <Visualizer />
           </S.IntroInner>
         </S.Container>
       </S.Intro>
@@ -171,6 +174,6 @@ const Landing = () => {
       />
     </S.Landing>
   );
-};
+});
 
 export default Landing;

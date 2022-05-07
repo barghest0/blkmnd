@@ -4,6 +4,7 @@ import Header from '../../components/Header/Header';
 import Player from '../../components/Player/Player';
 import * as S from './Layout.styles';
 
+
 const Layout = () => {
   return (
     <S.Layout>

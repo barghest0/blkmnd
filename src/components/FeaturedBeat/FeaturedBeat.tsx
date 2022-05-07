@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import * as S from './FeaturedBeat.style';
 
@@ -19,56 +19,52 @@ type Props = {
   onBuyClick: (id: number) => void;
 };
 
-const FeaturedBeat: FC<Props> = ({
-  beat,
-  onDownloadClick,
-  onShareClick,
-  onBuyClick,
-}) => {
-  const { id, title, image, bpm, price, tags } = beat;
+const FeaturedBeat: FC<Props> = memo(
+  ({ beat, onDownloadClick, onShareClick, onBuyClick }) => {
+    const { id, title, image, bpm, price, tags } = beat;
 
-  const { openPlayer, togglePlaying, setBeat } = useActions();
+    const { openPlayer, togglePlaying, setBeat } = useActions();
 
-  const onThumbnailClick = () => {
-    setBeat(beat);
-    openPlayer();
-    togglePlaying();
-  };
+    const onThumbnailClick = () => {
+      setBeat(beat);
+      openPlayer();
+      togglePlaying();
+    };
 
-  const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
+    const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
 
-  return (
-    <S.FeaturedBeat>
-      <S.ThumbnailContainer onClick={onThumbnailClick}>
-        <S.Thumbnail src={image} width={130} height={130} />
-        <S.PlayButton>
-          <PlayButton />
-        </S.PlayButton>
-      </S.ThumbnailContainer>
-      <S.Info>
-        <S.Description>
-          <S.Featured>Featured track</S.Featured>
-          <S.Bpm> • {bpm}BPM</S.Bpm>
-        </S.Description>
-        <S.Title>
-          <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>
-        </S.Title>
-        <S.Actions>
-          <S.Action onClick={() => onBuyClick(id)}>
-            <AddToCardButton price={price} />
-          </S.Action>
-          <S.Action onClick={() => onDownloadClick(id)}>
-            <DownloadButton />
-          </S.Action>
-          <S.Action onClick={() => onShareClick(id)}>
-            <ShareButton />
-          </S.Action>
-          {tagsLinks}
-        </S.Actions>
-      </S.Info>
-      <S.Visualizer>Visualizer</S.Visualizer>
-    </S.FeaturedBeat>
-  );
-};
+    return (
+      <S.FeaturedBeat>
+        <S.ThumbnailContainer onClick={onThumbnailClick}>
+          <S.Thumbnail src={image} width={130} height={130} />
+          <S.PlayButton>
+            <PlayButton />
+          </S.PlayButton>
+        </S.ThumbnailContainer>
+        <S.Info>
+          <S.Description>
+            <S.Featured>Featured track</S.Featured>
+            <S.Bpm> • {bpm}BPM</S.Bpm>
+          </S.Description>
+          <S.Title>
+            <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>
+          </S.Title>
+          <S.Actions>
+            <S.Action onClick={() => onBuyClick(id)}>
+              <AddToCardButton price={price} />
+            </S.Action>
+            <S.Action onClick={() => onDownloadClick(id)}>
+              <DownloadButton />
+            </S.Action>
+            <S.Action onClick={() => onShareClick(id)}>
+              <ShareButton />
+            </S.Action>
+            {tagsLinks}
+          </S.Actions>
+        </S.Info>
+      </S.FeaturedBeat>
+    );
+  },
+);
 
 export default FeaturedBeat;

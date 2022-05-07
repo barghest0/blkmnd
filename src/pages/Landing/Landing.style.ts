@@ -18,7 +18,7 @@ const Intro = styled.section`
 const IntroInner = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 650px;
+  max-width: 800px;
   margin: 0 auto;
 `;
 

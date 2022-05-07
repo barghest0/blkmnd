@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const FeaturedBeat = styled.div`
   display: grid;
   grid-template-columns: 130px 1fr;
-  grid-template-rows: 130px 100px;
+  grid-template-rows: 150px;
   gap: 20px;
 `;
 
@@ -52,8 +52,6 @@ const Actions = styled.div`
 
 const Action = styled.div``;
 
-const Visualizer = styled.div``;
-
 export {
   FeaturedBeat,
   Title,
@@ -65,6 +63,5 @@ export {
   Bpm,
   Actions,
   Action,
-  Visualizer,
   PlayButton,
 };
