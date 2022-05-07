@@ -16,6 +16,11 @@ const Row = styled.div`
   align-items: center;
   column-gap: 10px;
   padding: 10px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #343434;
+  &:nth-child(1) {
+    border-bottom: none;
+  }
 `;
 
 const HeadColumn = styled.div`

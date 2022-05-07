@@ -28,21 +28,21 @@
     },
     {
       "id": 2,
-      "title": "Future Mask off type beat",
+      "title": "Travis Scott Don Toliver type beat \"KYLIE\"",
       "price": 33,
       "tags": [
-        { "id": 1, "name": "future" },
-        { "id": 2, "name": "mask off" }
+        { "id": 3, "name": "travis scott" },
+        { "id": 4, "name": "don toliver" }
       ],
       "featured": false,
-      "bpm": 155,
+      "bpm": 153,
       "date": "01.02.2021",
-      "time": "02:12",
+      "time": "02:54",
       "musician": {
         "id": 1,
         "name": "mucician"
       },
-      "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
+      "image": "https://main.v2.beatstars.com/fit-in/tracks/100x100/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgdf2t.jpg",
       "track": "test.mp3",
       "licenses": [
         { "id": 1, "name": "Basic", "price": 33 },
@@ -54,13 +54,13 @@
     },
     {
       "id": 3,
-      "title": "Future Mask off type beat",
+      "title": "Roddy Ricch X Tory Lanez type beat \"LING\" | BLKMND ",
       "price": 33,
       "tags": [
-        { "id": 1, "name": "future" },
-        { "id": 2, "name": "mask off" }
+        { "id": 5, "name": "ehnic" },
+        { "id": 6, "name": "trap" }
       ],
-      "bpm": 155,
+      "bpm": 133,
       "date": "01.02.2021",
       "time": "02:12",
       "featured": true,
@@ -68,7 +68,7 @@
         "id": 1,
         "name": "mucician"
       },
-      "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
+      "image": "https://main.v2.beatstars.com/fit-in/tracks/100x100/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgbptq.png",
       "track": "test.mp3",
       "licenses": [
         { "id": 1, "name": "Basic", "price": 33 },

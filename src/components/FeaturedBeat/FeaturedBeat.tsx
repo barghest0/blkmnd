@@ -10,7 +10,6 @@ import DownloadButton from '../DownloadButton/DownloadButton';
 import ShareButton from '../ShareButton/ShareButton';
 import { Beat } from '../../redux/beat/types';
 import useActions from '../../hooks/useActions';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import PlayButton from '../PlayButton/PlayButton';
 
 type Props = {
@@ -27,15 +26,12 @@ const FeaturedBeat: FC<Props> = ({
   onBuyClick,
 }) => {
   const { id, title, image, bpm, price, tags } = beat;
-  const { isPlaying } = useTypedSelector(state => state.player);
 
   const { openPlayer, togglePlaying, setBeat } = useActions();
 
   const onThumbnailClick = () => {
     setBeat(beat);
-    if (!isPlaying) {
-      openPlayer();
-    }
+    openPlayer();
     togglePlaying();
   };
 

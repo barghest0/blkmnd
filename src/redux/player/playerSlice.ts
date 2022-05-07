@@ -9,18 +9,25 @@ const playerSlice = createSlice({
     togglePlaying: state => {
       state.isPlaying = !state.isPlaying;
     },
+
     openPlayer: state => {
-      state.isOpen = true;
+      if (!state.isPlaying) {
+        state.isOpen = true;
+      }
     },
+
     setBeat: (state, action: PayloadAction<Beat>) => {
       state.beat = action.payload;
     },
+
     setDuration: (state, action: PayloadAction<number>) => {
       state.duration = action.payload;
     },
+
     setCurrentTime: (state, action: PayloadAction<number>) => {
       state.currentTime = Math.floor(action.payload);
     },
+
     setVolume: (state, action: PayloadAction<number>) => {
       state.volume = action.payload;
     },

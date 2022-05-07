@@ -25,7 +25,9 @@ const Player = memo(() => {
     useActions();
 
   const onPlayButtonClick = () => {
-    togglePlaying();
+    if (beat) {
+      togglePlaying();
+    }
   };
 
   const beatRef = useRef(new Audio());

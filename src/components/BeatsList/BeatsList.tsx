@@ -7,6 +7,7 @@ import DownloadButton from '../DownloadButton/DownloadButton';
 import ShareButton from '../ShareButton/ShareButton';
 import AddToCardButton from '../AddToCardButton/AddToCardButton';
 import { Beat } from '../../redux/beat/types';
+import useActions from '../../hooks/useActions';
 
 type Props = {
   beats: Beat[];
@@ -21,40 +22,48 @@ const BeatsList: FC<Props> = ({
   onShareClick,
   onBuyClick,
 }) => {
-  const beatsRows = beats.map(
-    ({ image, id, title, time, bpm, tags, price }) => {
-      const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
+  const { setBeat, openPlayer, togglePlaying } = useActions();
 
-      return (
-        <S.Row key={id}>
-          <S.Column>
-            <S.Thumbnail src={image} width={50} height={50} />
-          </S.Column>
-          <S.Column>
-            <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>
-          </S.Column>
-          <S.Column>{time}</S.Column>
-          <S.Column>{bpm}</S.Column>
-          <S.Column>
-            <S.Tags>{tagsLinks}</S.Tags>
-          </S.Column>
-          <S.Column>
-            <S.Actions>
-              <S.Action onClick={() => onDownloadClick(id)}>
-                <DownloadButton />
-              </S.Action>
-              <S.Action onClick={() => onShareClick(id)}>
-                <ShareButton />
-              </S.Action>
-              <S.Action onClick={() => onBuyClick(id)}>
-                <AddToCardButton price={price} />
-              </S.Action>
-            </S.Actions>
-          </S.Column>
-        </S.Row>
-      );
-    },
-  );
+  const onBeatRowClick = (beat: Beat) => {
+    setBeat(beat);
+    openPlayer();
+    togglePlaying(beat);
+  };
+
+  const beatsRows = beats.map(beat => {
+    const { image, id, title, time, bpm, tags, price } = beat;
+
+    const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
+
+    return (
+      <S.Row key={id} onClick={() => onBeatRowClick(beat)}>
+        <S.Column>
+          <S.Thumbnail src={image} width={50} height={50} />
+        </S.Column>
+        <S.Column>
+          <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>
+        </S.Column>
+        <S.Column>{time}</S.Column>
+        <S.Column>{bpm}</S.Column>
+        <S.Column>
+          <S.Tags>{tagsLinks}</S.Tags>
+        </S.Column>
+        <S.Column>
+          <S.Actions>
+            <S.Action onClick={() => onDownloadClick(id)}>
+              <DownloadButton />
+            </S.Action>
+            <S.Action onClick={() => onShareClick(id)}>
+              <ShareButton />
+            </S.Action>
+            <S.Action onClick={() => onBuyClick(id)}>
+              <AddToCardButton price={price} />
+            </S.Action>
+          </S.Actions>
+        </S.Column>
+      </S.Row>
+    );
+  });
 
   return (
     <S.BeatsList>
