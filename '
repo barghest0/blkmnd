@@ -1,0 +1,28 @@
+import { styled as MUIstyled } from '@mui/material';
+import { TextField as MUITextField } from '@mui/material';
+import ThemeColors from '../../shared/styles/theme';
+
+const TextField = MUIstyled(MUITextField)({
+  '& .MuiInputLabel-root': {
+    color: ThemeColors.white,
+  },
+
+  '& .MuiInput-root': {
+    color: ThemeColors.white,
+    '&::before': {
+      color: ThemeColors.white,
+      borderColor: ThemeColors.white,
+    },
+    '&:hover &::before':{
+
+      borderColor: ThemeColors.white,
+    },
+    }
+
+    '&::after': {
+      color: ThemeColors.white,
+    },
+  },
+});
+
+export { TextField };

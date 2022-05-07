@@ -79,6 +79,7 @@ const AllSoundKits = styled.div`
 const Services = styled.section`
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 `;
 
 const AllServices = styled.div`
@@ -87,6 +88,10 @@ const AllServices = styled.div`
   margin: 0 auto;
   margin-top: 50px;
 `;
+
+const Contact = styled.div``;
+
+const ContactForm = styled.div``;
 
 export {
   Landing,
@@ -105,4 +110,6 @@ export {
   Services,
   AllServices,
   SectionTitle,
+  Contact,
+  ContactForm,
 };

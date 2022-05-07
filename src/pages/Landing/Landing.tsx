@@ -15,6 +15,7 @@ import SoundKitsList from '../../components/SoundKitsList/SoundKitsList';
 import useActions from '../../hooks/useActions';
 import CollabsList from '../../components/CollabsList/CollabsList';
 import Visualizer from '../../components/Visualizer/Visualizer';
+import ContactForm from '../../components/ContactForm/ContactForm';
 
 const Landing = memo(() => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
@@ -157,6 +158,15 @@ const Landing = memo(() => {
           </S.AllServices>
         </S.Container>
       </S.Services>
+      <S.Contact>
+        <S.SectionTitle>Contact</S.SectionTitle>
+        <S.Container>
+          <S.ContactForm>
+            <ContactForm />
+          </S.ContactForm>
+        </S.Container>
+      </S.Contact>
+
       <DownloadModal
         isOpen={isDownloadOpen}
         setIsOpen={setIsDownloadOpen}

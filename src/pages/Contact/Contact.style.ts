@@ -13,4 +13,6 @@ const Title = styled.h1`
   ${pageTitle}
 `;
 
-export { Contact, Container, Title };
+const Form = styled.div``;
+
+export { Contact, Container, Title, Form };
