@@ -17,7 +17,9 @@ const ThumbnailContainer = styled.div`
 
 const Thumbnail = styled.img``;
 
-const Info = styled.div``;
+const Info = styled.div`
+  overflow: hidden;
+`;
 
 const PlayButton = styled.div`
   position: absolute;
@@ -40,12 +42,15 @@ const Bpm = styled.div``;
 const Title = styled.div`
   font-size: 30px;
   font-weight: 700;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const Actions = styled.div`
   display: grid;
-  grid-template-columns: 105px repeat(2, 40px) repeat(2, auto);
+  grid-template-columns: 105px repeat(2, 40px) repeat(2, minmax(100px, 150px));
   grid-template-rows: 40px;
   column-gap: 10px;
 `;

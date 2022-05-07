@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import ThemeColors from '../../shared/styles/theme';
 
-const SearchField = styled.div`
+const SearchField = styled.form`
   background-color: ${ThemeColors.white};
   width: 100%;
   height: 100%;
@@ -17,6 +17,7 @@ const SearchInput = styled.input`
   outline: none;
   width: 100%;
   height: 100%;
+  font-size: 16px;
   ::placeholder {
     font-size: 18px;
   }
