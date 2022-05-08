@@ -1,5 +1,6 @@
 import PersonIcon from '@mui/icons-material/Person';
 import { useState } from 'react';
+import { RouterPaths } from '../../shared/router/types';
 import { AddToCartIcon } from '../AddToCardButton/AddToCardButton.style';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import Logo from '../Logo/Logo';
@@ -21,7 +22,7 @@ const Header = () => {
           </S.CartIcon>
           <S.CartCost>${cost.toFixed(2)}</S.CartCost>
         </S.Cart>
-        <S.Auth>
+        <S.Auth to={RouterPaths.profile}>
           <S.AuthIcon>
             <PersonIcon />
           </S.AuthIcon>

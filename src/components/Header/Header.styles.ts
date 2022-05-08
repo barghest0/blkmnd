@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import ThemeColors from '../../shared/styles/theme';
 
@@ -48,7 +49,9 @@ const CartCost = styled.div`
   align-self: center;
 `;
 
-const Auth = styled.div`
+const Auth = styled(NavLink)`
+  color: ${ThemeColors.white};
+  text-decoration: none;
   display: flex;
   justify-content: center;
   align-items: center;

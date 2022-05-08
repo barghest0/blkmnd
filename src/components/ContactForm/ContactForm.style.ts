@@ -18,12 +18,16 @@ const MainFields = styled.div`
 
 const TextField = MUIstyled(MUITextField)({
   width: '100%',
+
   '& .MuiInputLabel-root': {
     fontWeight: 500,
     fontFamily: 'Poppins',
     textTransform: 'uppercase',
     fontSize: 14,
     color: ThemeColors.white,
+    '& .Mui-focused': {
+      color: ThemeColors.white,
+    },
   },
 
   '& .MuiInput-root': {
@@ -36,6 +40,9 @@ const TextField = MUIstyled(MUITextField)({
     '&::after': {
       color: ThemeColors.white,
     },
+  },
+  '& .MuiInput-input': {
+    '&:focus': {},
   },
 });
 
