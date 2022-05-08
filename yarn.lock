@@ -1802,7 +1802,7 @@
 
 "@types/swiper@^6.0.0":
   version "6.0.0"
-  resolved "https://registry.npmjs.org/@types/swiper/-/swiper-6.0.0.tgz"
+  resolved "https://registry.yarnpkg.com/@types/swiper/-/swiper-6.0.0.tgz#9934ecd569611b660a2a9bf200f25ce5ba4b4d63"
   integrity sha512-QPZRgxZ+ivXXtzV43B3LxpXUIC7FE/EoKM+rtxngmgt2M7eeUYypZhyqZD8UxJtlBcUDw/ATGoVeSNpvBBrz2w==
   dependencies:
     swiper "*"
@@ -6778,9 +6778,9 @@ svgo@^2.5.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-swiper@*, swiper@^8.0.7:
+swiper@*, swiper@^8.1.4:
   version "8.1.4"
-  resolved "https://registry.npmjs.org/swiper/-/swiper-8.1.4.tgz"
+  resolved "https://registry.yarnpkg.com/swiper/-/swiper-8.1.4.tgz#c105050c06d2a105fcc9e707894ddf20afd238ba"
   integrity sha512-ho6ceKxqbDxV51qymVxwn1oB4CqTrsG3Y5pGW2aKlZxsT6NMdlow8ICUa+wD/m5l2T5ZD2B0yyqTihSSmLBV4A==
   dependencies:
     dom7 "^4.0.4"

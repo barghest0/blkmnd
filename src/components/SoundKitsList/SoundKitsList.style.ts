@@ -5,6 +5,7 @@ const SoundKitsList = styled.div`
   margin: 0 auto;
   grid-auto-flow: column;
   column-gap: 40px;
+  justify-items: center;
 `;
 
 const SoundKit = styled.div`

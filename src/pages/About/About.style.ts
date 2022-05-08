@@ -18,12 +18,13 @@ const Biography = styled.section`
   display: grid;
   grid-template-rows: 70px 500px;
   grid-template-columns: repeat(2, 1fr);
+  column-gap: 50px;
   overflow: hidden;
   margin-bottom: 50px;
 `;
 
 const SectionTitle = styled.h2`
-  margin-bottom: 20px;
+  margin-bottom: 60px;
   font-size: 28px;
 `;
 
@@ -36,7 +37,16 @@ const BiographyImage = styled.img`
   grid-row: 1/2;
 `;
 
-const Discography = styled.section``;
+const Discography = styled.section`
+  margin-bottom: 50px;
+`;
+
+const Gallary = styled.section``;
+
+const GallaryImage = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 
 export {
   About,
@@ -47,4 +57,6 @@ export {
   Biography,
   SectionTitle,
   Discography,
+  Gallary,
+  GallaryImage,
 };
