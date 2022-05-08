@@ -30,7 +30,12 @@ const Thumbnail = styled.img`
   height: 100px;
 `;
 
-const Info = styled.div``;
+const Info = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 5px 0;
+`;
 
 const Title = styled.div``;
 
@@ -39,6 +44,7 @@ const Musician = styled.div`
 `;
 
 const Player = MUIstyled(Slider)({
+  justifySelf: 'flex-end',
   height: 3,
   width: '100%',
   padding: 0,

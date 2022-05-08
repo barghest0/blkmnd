@@ -21,8 +21,8 @@ const About = () => {
     getDiscographyBeats();
   }, []);
 
-  const gallarySlides = gallary.map(image => (
-    <SwiperSlide>
+  const gallarySlides = gallary.map((image,index) => (
+    <SwiperSlide key={index}>
       <S.GallaryImage src={image} />
     </SwiperSlide>
   ));

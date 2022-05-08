@@ -11,7 +11,7 @@ type Props = {
 
 const DiscographyList: FC<Props> = ({ beats }) => {
   const discographyItems = beats.map(beat => (
-    <S.Beat>
+    <S.Beat key={beat.id}>
       <S.ThumbnailContainer>
         <S.PlayButton>
           <PlayButton />

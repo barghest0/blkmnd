@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useEffect, useRef, useState } from 'react';
+import { FC, memo, useEffect, useRef, useState } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import * as S from './Visualizer.style';
 
@@ -7,7 +7,7 @@ type Props = {
 };
 
 const Visualizer: FC<Props> = memo(({ audioRef }) => {
-  const { beat, isPlaying } = useTypedSelector(state => state.player);
+  const { beat } = useTypedSelector(state => state.player);
   const [analyser, setAnalyser] = useState<AnalyserNode>();
   const [bufferLength, setBufferLength] = useState(0);
   const [audioData, setAudioData] = useState(new Uint8Array(0));

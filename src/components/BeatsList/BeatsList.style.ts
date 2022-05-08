@@ -11,7 +11,7 @@ const BeatsList = styled.div`
 
 const Row = styled.div`
   display: grid;
-  grid-template-columns: 1fr 5fr 1fr 1fr 3fr 3fr;
+  grid-template-columns: 0.5fr 5fr 1fr 1fr 3fr 3fr;
   grid-template-rows: 40px;
   align-items: center;
   column-gap: 10px;
