@@ -10,6 +10,7 @@ import * as S from './Header.styles';
 const Header = () => {
   const cost = 0;
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
   return (
     <S.Header>
       <Logo />
