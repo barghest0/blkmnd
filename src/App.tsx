@@ -4,11 +4,9 @@ import * as S from './App.style';
 import './shared/styles/scss/index.scss';
 
 const App = () => {
-
-
   return (
     <S.App>
-      <Router  />
+      <Router />
       <GlobalStyle />
     </S.App>
   );

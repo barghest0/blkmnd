@@ -6,7 +6,7 @@ type Props = {
 };
 
 const RequireAuth: FC<Props> = ({ children }) => {
-  const isAuth = false;
+  const isAuth = true;
 
   if (!isAuth) {
     return <Navigate to={'/'} />;

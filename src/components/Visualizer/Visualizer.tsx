@@ -1,17 +1,22 @@
-import { memo, useCallback, useEffect, useRef, useState } from 'react';
+import { FC, memo, useCallback, useEffect, useRef, useState } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import * as S from './Visualizer.style';
 
-const Visualizer = memo(() => {
+type Props = {
+  audioRef: React.Ref<HTMLAudioElement>;
+};
+
+const Visualizer: FC<Props> = memo(({ audioRef }) => {
   const { beat, isPlaying } = useTypedSelector(state => state.player);
   const [analyser, setAnalyser] = useState<AnalyserNode>();
   const [bufferLength, setBufferLength] = useState(0);
   const [audioData, setAudioData] = useState(new Uint8Array(0));
-  const [track, setTrack] = useState(new Audio());
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvas = canvasRef.current;
   const canvasContext = canvasRef.current?.getContext('2d');
+
+  const audio = audioRef.current;
 
   const animate = () => {
     let x = 0;
@@ -23,7 +28,7 @@ const Visualizer = memo(() => {
       analyser.getByteFrequencyData(audioData);
 
       for (let i = 0; i < bufferLength; i += 1) {
-        const barHeight = audioData[i];
+        const barHeight = audioData[i] - 60;
         canvasContext.fillStyle = '#fff';
         canvasContext.fillRect(
           x,
@@ -38,32 +43,25 @@ const Visualizer = memo(() => {
 
   useEffect(() => {
     const audioContext = new window.AudioContext();
-    if (beat) {
-      track.src = require(`../../audio/${beat?.track}`);
+
+    if (audio && beat) {
+      const source = audioContext.createMediaElementSource(audio);
+      const analyser = audioContext.createAnalyser();
+      source.connect(analyser);
+      analyser.connect(audioContext.destination);
+      analyser.fftSize = 512;
+
+      const bufferLength = analyser.frequencyBinCount;
+
+      setAudioData(new Uint8Array(bufferLength));
+      setAnalyser(analyser);
+      setBufferLength(bufferLength);
     }
-    const source = audioContext.createMediaElementSource(track);
-    const analyser = audioContext.createAnalyser();
-    source.connect(analyser);
-    analyser.connect(audioContext.destination);
-    analyser.fftSize = 512;
-
-    const bufferLength = analyser.frequencyBinCount;
-
-    setAudioData(new Uint8Array(bufferLength));
-    setAnalyser(analyser);
-    setBufferLength(bufferLength);
-  }, [beat]);
+  }, [beat, audio]);
 
   useEffect(() => {
-    if (isPlaying) {
-      track.play();
-    } else {
-      track.pause();
-    }
-
-    track.volume = 0.02;
     animate();
-  }, [isPlaying]);
+  }, [bufferLength]);
 
   return (
     <S.Visualizer>

@@ -1,4 +1,4 @@
-import { memo, SyntheticEvent, useEffect, useRef } from 'react';
+import { FC, memo, SyntheticEvent, useEffect, useRef } from 'react';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
@@ -18,11 +18,17 @@ type PlayerProps = {
   isOpen: boolean;
 };
 
-const Player = memo(() => {
+type Props = {
+  audioRef: React.Ref<HTMLAudioElement>;
+};
+
+const Player: FC<Props> = memo(({ audioRef }) => {
   const { isOpen, duration, currentTime, volume, beat, isPlaying } =
     useTypedSelector(state => state.player);
   const { togglePlaying, setVolume, setCurrentTime, setDuration } =
     useActions();
+
+  const audio = audioRef.current;
 
   const onPlayButtonClick = () => {
     if (beat) {
@@ -30,15 +36,12 @@ const Player = memo(() => {
     }
   };
 
-  const beatRef = useRef(new Audio());
-  const { current: playerBeat } = beatRef;
-
   const onCurrentTimeCommited = () => {
-    playerBeat.currentTime = currentTime;
+    audio.currentTime = currentTime;
   };
 
   const onVolumeChangeCommited = () => {
-    playerBeat.volume = volume;
+    audio.volume = volume;
   };
 
   const onVolumeChange = (_: Event, value: number | number[]) => {
@@ -61,30 +64,6 @@ const Player = memo(() => {
 
   const onPreviousButtonClick = () => {
     console.log('previous beat');
-  };
-
-  useEffect(() => {
-    if (beat) {
-      playerBeat.src = require(`../../audio/${beat.track}`);
-    }
-  }, [beat]);
-
-  useEffect(() => {
-    if (!isPlaying) {
-      playerBeat.pause();
-    } else {
-      playerBeat.play();
-    }
-  }, [isPlaying]);
-
-  const onBeatTimeUpdate = (event: SyntheticEvent<HTMLAudioElement>) => {
-    setCurrentTime(event.currentTarget.currentTime);
-  };
-
-  const onLoadedBeatData = () => {
-    playerBeat.volume = volume;
-    playerBeat.currentTime = currentTime;
-    setDuration(playerBeat.duration);
   };
 
   return (
@@ -121,7 +100,6 @@ const Player = memo(() => {
           <SkipNextIcon />
         </S.NextBeat>
       </S.Controls>
-
       <S.Duration
         value={currentTime}
         onChange={onCurrentTimeChange}
@@ -144,12 +122,6 @@ const Player = memo(() => {
           <FormatListBulletedIcon />
         </S.Queue>
       </S.Actions>
-
-      <S.PlayerAudio
-        ref={beatRef}
-        onLoadedData={onLoadedBeatData}
-        onTimeUpdate={onBeatTimeUpdate}
-      />
     </S.Player>
   );
 });

@@ -1,4 +1,4 @@
-import { memo, useCallback, useEffect, useState } from 'react';
+import { FC, memo, useCallback, useEffect, useState } from 'react';
 import * as S from './Landing.style';
 import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
 import SearchField from '../../components/SearchField/SearchField';
@@ -16,13 +16,15 @@ import useActions from '../../hooks/useActions';
 import CollabsList from '../../components/CollabsList/CollabsList';
 import Visualizer from '../../components/Visualizer/Visualizer';
 import ContactForm from '../../components/ContactForm/ContactForm';
+import { useOutletContext } from 'react-router-dom';
 
-const Landing = memo(() => {
+const Landing: FC = memo(() => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
   const { featuredBeat, beat } = useTypedSelector(state => state.beat);
   const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
     state => state.licenses,
   );
+  const audioRef = useOutletContext();
 
   const {
     getBeat,
@@ -93,7 +95,7 @@ const Landing = memo(() => {
               )}
             </S.FeaturedBeat>
 
-            <Visualizer />
+            <Visualizer audioRef={audioRef.audioRef} />
           </S.IntroInner>
         </S.Container>
       </S.Intro>
