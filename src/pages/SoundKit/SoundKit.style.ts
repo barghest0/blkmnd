@@ -1,10 +1,16 @@
 import styled from 'styled-components';
-import { container } from '../../shared/styles/mixins';
+import { container, page, pageTitle } from '../../shared/styles/mixins';
 
-const SoundKit = styled.div``;
+const SoundKit = styled.div`
+  ${page}
+`;
 
 const Container = styled.div`
   ${container}
 `;
 
-export { SoundKit, Container };
+const Title = styled.h1`
+  ${pageTitle}
+`;
+
+export { SoundKit, Container, Title };

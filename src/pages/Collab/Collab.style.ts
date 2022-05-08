@@ -1,10 +1,16 @@
 import styled from 'styled-components';
-import { container } from '../../shared/styles/mixins';
+import { container, page, pageTitle } from '../../shared/styles/mixins';
 
-const Collab = styled.div``;
+const Collab = styled.div`
+  ${page}
+`;
 
 const Container = styled.div`
   ${container}
 `;
 
-export { Collab, Container };
+const Title = styled.h1`
+  ${pageTitle}
+`;
+
+export { Collab, Container, Title };

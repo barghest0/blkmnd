@@ -9,6 +9,7 @@ enum RouterNames {
   collab = '/collabs/:id',
   contact = '/contact',
   profile = '/profile',
+  about = '/about',
 }
 
 enum RouterPaths {
@@ -18,6 +19,7 @@ enum RouterPaths {
   collabs = '/collabs',
   contact = '/contact',
   profile = '/profile',
+  about = '/about',
 }
 
 export { RouterNames, RouterPaths };

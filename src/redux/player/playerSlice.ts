@@ -34,4 +34,4 @@ const playerSlice = createSlice({
   },
 });
 
-export { playerSlice };
+export default playerSlice;

@@ -14,6 +14,7 @@ const Nav: FC<Props> = ({ isSearchOpen }) => {
       <StyledNavLink to={RouterPaths.soundKits}>Sound Kits</StyledNavLink>
       <StyledNavLink to={RouterPaths.collabs}>Collabs</StyledNavLink>
       <StyledNavLink to={RouterPaths.contact}>Contact</StyledNavLink>
+      <StyledNavLink to={RouterPaths.about}>About</StyledNavLink>
     </S.Nav>
   );
 };

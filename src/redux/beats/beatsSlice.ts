@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Beat } from '../beat/types';
-import { getAllBeats, getPreviewBeats } from './actions';
+import { getAllBeats, getDiscograpyBeats, getPreviewBeats } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
 const beatsSlice = createSlice({
@@ -25,6 +25,7 @@ const beatsSlice = createSlice({
       state.isFetching = false;
       state.error = action.payload;
     },
+
     [getAllBeats.fulfilled.type]: (state, action: PayloadAction<Beat[]>) => {
       state.isFetching = false;
       state.error = '';

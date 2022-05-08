@@ -48,4 +48,4 @@ const collabsSlice = createSlice({
   },
 });
 
-export { collabsSlice };
+export default collabsSlice;

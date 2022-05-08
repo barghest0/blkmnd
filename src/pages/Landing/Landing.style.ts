@@ -89,6 +89,10 @@ const AllServices = styled.div`
   margin-top: 50px;
 `;
 
+const Discography = styled.section`
+  margin-bottom: 50px;
+`;
+
 const Contact = styled.div``;
 
 const ContactForm = styled.div``;
@@ -112,4 +116,5 @@ export {
   SectionTitle,
   Contact,
   ContactForm,
+  Discography,
 };

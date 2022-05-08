@@ -18,6 +18,7 @@
       "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
       "track": "test.mp3",
       "featured": true,
+      "excerpt": "test.mp3",
       "licenses": [
         { "id": 1, "name": "Basic", "price": 33 },
         { "id": 2, "name": "Premium", "price": 55 },
@@ -44,6 +45,7 @@
       },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/100x100/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgdf2t.jpg",
       "track": "test.mp3",
+      "excerpt": "test.mp3",
       "licenses": [
         { "id": 1, "name": "Basic", "price": 33 },
         { "id": 2, "name": "Premium", "price": 55 },
@@ -70,6 +72,7 @@
       },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/100x100/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgbptq.png",
       "track": "test.mp3",
+      "excerpt": "test.mp3",
       "licenses": [
         { "id": 1, "name": "Basic", "price": 33 },
         { "id": 2, "name": "Premium", "price": 55 },

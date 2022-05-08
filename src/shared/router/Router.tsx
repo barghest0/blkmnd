@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import RequireAuth from '../../hoc/RequireAuth';
+import About from '../../pages/About/About';
 import Beat from '../../pages/Beat/Beat';
 import Beats from '../../pages/Beats/Beats';
 import Collab from '../../pages/Collab/Collab';
@@ -24,6 +25,7 @@ const Router = () => {
         <Route path={RouterNames.collabs} element={<Collabs />} />
         <Route path={RouterNames.collab} element={<Collab />} />
         <Route path={RouterNames.contact} element={<Contact />} />
+        <Route path={RouterNames.about} element={<About />} />
         <Route
           path={RouterNames.profile}
           element={

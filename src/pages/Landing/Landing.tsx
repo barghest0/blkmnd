@@ -17,9 +17,13 @@ import CollabsList from '../../components/CollabsList/CollabsList';
 import Visualizer from '../../components/Visualizer/Visualizer';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import { useOutletContext } from 'react-router-dom';
+import DiscographyList from '../../components/DiscographyList/DiscographyList';
 
 const Landing: FC = memo(() => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
+  const { beats: discographyBeats, isFetching: isDiscographyFetching } =
+    useTypedSelector(state => state.discography);
+  const { getDiscographyBeats } = useActions();
   const { featuredBeat, beat } = useTypedSelector(state => state.beat);
   const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
     state => state.licenses,
@@ -71,6 +75,7 @@ const Landing: FC = memo(() => {
     getLicenses();
     getPreviewSoundKits();
     getPreviewCollabs();
+    getDiscographyBeats();
   }, []);
 
   return (
@@ -94,7 +99,6 @@ const Landing: FC = memo(() => {
                 />
               )}
             </S.FeaturedBeat>
-
             <Visualizer audioRef={audioRef.audioRef} />
           </S.IntroInner>
         </S.Container>
@@ -160,6 +164,16 @@ const Landing: FC = memo(() => {
           </S.AllServices>
         </S.Container>
       </S.Services>
+      <S.Discography>
+        <S.Container>
+          <S.SectionTitle>Discography</S.SectionTitle>
+          {isDiscographyFetching ? (
+            <Preloader />
+          ) : (
+            <DiscographyList beats={beats} />
+          )}
+        </S.Container>
+      </S.Discography>
       <S.Contact>
         <S.SectionTitle>Contact</S.SectionTitle>
         <S.Container>
