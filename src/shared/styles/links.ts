@@ -11,6 +11,7 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
+
   ::after {
     content: '';
     background-color: ${ThemeColors.white};
@@ -37,7 +38,7 @@ const StyledNavLink = styled(NavLink)`
 const StyledLink = styled(Link)`
   color: inherit;
   text-decoration: none;
-  text-overflow:inherit;
+  text-overflow: inherit;
 
   &:hover {
     text-decoration: underline;

@@ -8,7 +8,10 @@ import Collabs from '../../pages/Collabs/Collabs';
 import Contact from '../../pages/Contact/Contact';
 import Landing from '../../pages/Landing/Landing';
 import Layout from '../../pages/Layout/Layout';
+import Membership from '../../pages/Membership/Membership';
+import Offers from '../../pages/Offers/Offers';
 import Profile from '../../pages/Profile/Profile';
+import Purchases from '../../pages/Purchases/Purchases';
 import SoundKit from '../../pages/SoundKit/SoundKit';
 import SoundKits from '../../pages/SoundKits/SoundKits';
 import { RouterNames } from './types';
@@ -26,6 +29,30 @@ const Router = () => {
         <Route path={RouterNames.collab} element={<Collab />} />
         <Route path={RouterNames.contact} element={<Contact />} />
         <Route path={RouterNames.about} element={<About />} />
+        <Route
+          path={RouterNames.purchases}
+          element={
+            <RequireAuth>
+              <Purchases />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path={RouterNames.offers}
+          element={
+            <RequireAuth>
+              <Offers />
+            </RequireAuth>
+          }
+        />
+        <Route
+          path={RouterNames.membership}
+          element={
+            <RequireAuth>
+              <Membership />
+            </RequireAuth>
+          }
+        />
         <Route
           path={RouterNames.profile}
           element={

@@ -1,6 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { StyledLink } from '../../shared/styles/links';
 import ThemeColors from '../../shared/styles/theme';
+import { ProfileDropdownProps } from './Header';
 
 const Header = styled.header`
   background-color: ${ThemeColors.headerColor};
@@ -49,7 +51,7 @@ const CartCost = styled.div`
   align-self: center;
 `;
 
-const Auth = styled(NavLink)`
+const Auth = styled.div`
   color: ${ThemeColors.white};
   text-decoration: none;
   display: flex;
@@ -70,6 +72,36 @@ const AuthAction = styled.div`
   font-weight: 600;
 `;
 
+const ProfileDropdown = styled.div<ProfileDropdownProps>`
+  ${({ isOpen }) => {
+    const display = isOpen ? 'flex' : 'none';
+    return css`
+      width: 150px;
+      padding: 7px;
+      display: ${display};
+      position: absolute;
+      flex-direction: column;
+      top: 70px;
+      right: 5px;
+      background-color: ${ThemeColors.headerColor};
+      row-gap: 10px;
+      border-radius: 3px;
+    `;
+  }}
+`;
+
+const ProfileAction = styled.div`
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+  font-size: 13px;
+  font-weight: 500;
+`;
+
+const ProfileLink = styled(StyledLink)`
+  text-decoration: none;
+`;
+
 export {
   Header,
   HeaderLogo,
@@ -81,4 +113,7 @@ export {
   Auth,
   AuthIcon,
   AuthAction,
+  ProfileDropdown,
+  ProfileAction,
+  ProfileLink,
 };

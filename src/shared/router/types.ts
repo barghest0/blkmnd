@@ -10,6 +10,9 @@ enum RouterNames {
   contact = '/contact',
   profile = '/profile',
   about = '/about',
+  membership = '/membership',
+  offers = '/offers',
+  purchases = '/purchases'
 }
 
 enum RouterPaths {
@@ -20,6 +23,9 @@ enum RouterPaths {
   contact = '/contact',
   profile = '/profile',
   about = '/about',
+  membership = '/membership',
+  offers = '/offers',
+  purchases = '/purchases'
 }
 
 export { RouterNames, RouterPaths };
