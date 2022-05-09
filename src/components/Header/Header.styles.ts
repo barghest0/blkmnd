@@ -100,6 +100,7 @@ const ProfileAction = styled.div`
 
 const ProfileLink = styled(StyledLink)`
   text-decoration: none;
+  width: 100%;
 `;
 
 export {

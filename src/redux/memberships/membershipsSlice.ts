@@ -1,0 +1,28 @@
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { getMemberships } from './actions';
+import { MEMBERSHIPS_INITIAL_STATE, MEMBERSHIPS_SLICE_NAME } from './constants';
+import {Membership} from './types';
+
+const membershipsSlice = createSlice({
+  name: MEMBERSHIPS_SLICE_NAME,
+  initialState: MEMBERSHIPS_INITIAL_STATE,
+  reducers: {},
+  extraReducers: {
+    [getMemberships.fulfilled.type]: (state, action: PayloadAction<Membership[]>) => {
+      state.isFetching = false;
+      state.error = '';
+      state.memberships= action.payload;
+    },
+
+    [getMemberships.pending.type]: state => {
+      state.isFetching = true;
+    },
+
+    [getMemberships.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.isFetching = false;
+      state.error = action.payload;
+    },
+  },
+});
+
+export default membershipsSlice;

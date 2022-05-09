@@ -3,13 +3,14 @@ import AddModeratorIcon from '@mui/icons-material/AddModerator';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import { RouterPaths } from '../../shared/router/types';
 import { AddToCartIcon } from '../AddToCardButton/AddToCardButton.style';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
 import * as S from './Header.styles';
+import { useNavigate } from 'react-router-dom';
 
 type ProfileDropdownProps = {
   isOpen: boolean;
@@ -17,11 +18,16 @@ type ProfileDropdownProps = {
 
 const Header = () => {
   const cost = 0;
+  const navigate = useNavigate();
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const onProfileClick = () => {
     setIsProfileOpen(!isProfileOpen);
+  };
+
+  const onLogoutClick = () => {
+    navigate(RouterPaths.landing);
   };
 
   return (
@@ -62,7 +68,7 @@ const Header = () => {
                 Membership
               </S.ProfileLink>
             </S.ProfileAction>
-            <S.ProfileAction>
+            <S.ProfileAction onClick={onLogoutClick}>
               <LogoutIcon fontSize="small" />
               Log out
             </S.ProfileAction>

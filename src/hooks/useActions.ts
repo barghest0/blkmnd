@@ -8,6 +8,7 @@ import * as licensesActions from '../redux/licenses/actions';
 import * as soundKitsActions from '../redux/soundKits/actions';
 import * as collabsActions from '../redux/collabs/actions';
 import * as discographyActions from '../redux/discography/actions';
+import * as membershipsActions from '../redux/memberships/actions';
 
 const rootActionCreator = {
   ...beatsActions,
@@ -16,6 +17,7 @@ const rootActionCreator = {
   ...soundKitsActions,
   ...collabsActions,
   ...discographyActions,
+  ...membershipsActions,
   ...playerSlice.actions,
 };
 

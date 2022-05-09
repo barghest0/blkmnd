@@ -3,7 +3,9 @@ import * as S from './Offers.style';
 const Offers = () => {
   return (
     <S.Offers>
-      <S.Container>Offers</S.Container>
+      <S.Container>
+        <S.Title>Offers</S.Title>
+      </S.Container>
     </S.Offers>
   );
 };

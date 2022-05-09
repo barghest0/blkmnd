@@ -1,10 +1,16 @@
 import styled from 'styled-components';
-import { container } from '../../shared/styles/mixins';
+import { container, page, pageTitle } from '../../shared/styles/mixins';
 
-const Profile = styled.div``;
+const Profile = styled.div`
+  ${page}
+`;
 
 const Container = styled.div`
   ${container}
 `;
 
-export { Profile, Container };
+const Title = styled.h1`
+  ${pageTitle}
+`;
+
+export { Profile, Container, Title };

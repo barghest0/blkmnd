@@ -130,5 +130,10 @@
     { "id": 3, "name": "Premium plus", "price": 111 },
     { "id": 4, "name": "Unlimited", "price": 333 },
     { "id": 5, "name": "Exclusive", "price": 1111 }
+  ],
+
+  "memberships": [
+    { "id": 1, "title": "beat downloads", "price": 25, "details": "details" },
+    { "id": 2, "title": "Vip plan", "price": 30, "details": "details" }
   ]
 }
