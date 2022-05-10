@@ -6,23 +6,15 @@ import { RouterPaths } from '../../shared/router/types';
 import TagLink from '../TagLink/TagLink';
 import DownloadButton from '../DownloadButton/DownloadButton';
 import ShareButton from '../ShareButton/ShareButton';
-import AddToCardButton from '../AddToCardButton/AddToCardButton';
+import BuyButton from '../BuyButton/BuyButton';
 import { Beat } from '../../redux/beat/types';
 import useActions from '../../hooks/useActions';
 
 type Props = {
   beats: Beat[];
-  onDownloadClick: (id: number) => void;
-  onShareClick: (id: number) => void;
-  onBuyClick: (id: number) => void;
 };
 
-const BeatsList: FC<Props> = ({
-  beats,
-  onDownloadClick,
-  onShareClick,
-  onBuyClick,
-}) => {
+const BeatsList: FC<Props> = ({ beats }) => {
   const { setBeat, openPlayer, togglePlaying } = useActions();
 
   const onBeatRowClick = (beat: Beat) => {
@@ -51,14 +43,14 @@ const BeatsList: FC<Props> = ({
         </S.Column>
         <S.Column>
           <S.Actions>
-            <S.Action onClick={() => onDownloadClick(id)}>
-              <DownloadButton />
+            <S.Action>
+              <DownloadButton beatId={id} />
             </S.Action>
-            <S.Action onClick={() => onShareClick(id)}>
-              <ShareButton />
+            <S.Action>
+              <ShareButton beatId={id} />
             </S.Action>
-            <S.Action onClick={() => onBuyClick(id)}>
-              <AddToCardButton price={price} />
+            <S.Action>
+              <BuyButton price={price} beatId={id} />
             </S.Action>
           </S.Actions>
         </S.Column>

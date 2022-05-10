@@ -64,26 +64,6 @@ const Landing: FC = memo(() => {
     <DiscographyCard beat={beat} key={beat.id} />
   ));
 
-  const [isDownloadOpen, setIsDownloadOpen] = useState(false);
-  const [isShareOpen, setIsShareOpen] = useState(false);
-  const [isLicensesOpen, setIsLicensesOpen] = useState(false);
-
-  const getContent = (id: number) => {
-    getBeat(id);
-  };
-
-  const getModalContent = useCallback(getContent, [
-    isShareOpen,
-    isDownloadOpen,
-  ]);
-
-  const makeOnActionClick =
-    (setAction: (state: boolean) => void) => (id: number) => {
-      setAction(true);
-      getModalContent(id);
-      document.body.style.overflow = 'hidden';
-    };
-
   useEffect(() => {
     getFeaturedBeat();
     getPreviewBeats();
@@ -106,12 +86,7 @@ const Landing: FC = memo(() => {
               {isFeaturedBeatFetching ? (
                 <Preloader />
               ) : (
-                <FeaturedBeat
-                  beat={featuredBeat}
-                  onDownloadClick={makeOnActionClick(setIsDownloadOpen)}
-                  onShareClick={makeOnActionClick(setIsShareOpen)}
-                  onBuyClick={makeOnActionClick(setIsLicensesOpen)}
-                />
+                <FeaturedBeat beat={featuredBeat} />
               )}
             </S.FeaturedBeat>
             <Visualizer audioRef={audioRef?.audioRef} />
@@ -120,16 +95,7 @@ const Landing: FC = memo(() => {
       </S.Intro>
       <S.Container>
         <S.BeatsList>
-          {isFetching ? (
-            <Preloader />
-          ) : (
-            <BeatsList
-              onDownloadClick={makeOnActionClick(setIsDownloadOpen)}
-              onShareClick={makeOnActionClick(setIsShareOpen)}
-              onBuyClick={makeOnActionClick(setIsLicensesOpen)}
-              beats={beats}
-            />
-          )}
+          {isFetching ? <Preloader /> : <BeatsList beats={beats} />}
         </S.BeatsList>
         <S.AllTracksLink>
           <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>
@@ -187,22 +153,6 @@ const Landing: FC = memo(() => {
           </S.ContactForm>
         </S.Container>
       </S.Contact>
-
-      <DownloadModal
-        isOpen={isDownloadOpen}
-        setIsOpen={setIsDownloadOpen}
-        beat={beat}
-      />
-      <ShareModal
-        isOpen={isShareOpen}
-        setIsOpen={setIsShareOpen}
-        link={'something link'}
-      />
-      <LicensesModal
-        isOpen={isLicensesOpen}
-        setIsOpen={setIsLicensesOpen}
-        beat={beat}
-      />
     </S.Landing>
   );
 });

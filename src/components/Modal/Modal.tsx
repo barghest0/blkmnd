@@ -1,19 +1,23 @@
 import { FC, SyntheticEvent } from 'react';
+import useActions from '../../hooks/useActions';
+import { ModalsTypes } from '../../redux/modals/types';
 import * as S from './Modal.style';
 
 type Props = {
   children: React.ReactNode;
   isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
+  modalType: ModalsTypes;
 };
 
 type ModalProps = {
   isOpen: boolean;
 };
 
-const Modal: FC<Props> = ({ children, isOpen, setIsOpen }) => {
+const Modal: FC<Props> = ({ children, isOpen, modalType }) => {
+  const { setModalVisability } = useActions();
+
   const onBackgrounClick = () => {
-    setIsOpen(false);
+    setModalVisability({ visability: false, modalType });
     document.body.style.overflow = 'auto';
   };
 

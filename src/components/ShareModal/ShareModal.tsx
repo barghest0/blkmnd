@@ -1,18 +1,22 @@
 import { FC } from 'react';
 
+import * as S from './ShareModal.style';
+
+import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import { ModalsTypes } from '../../redux/modals/types';
+
 import Modal from '../Modal/Modal';
+import Preloader from '../Preloader/Preloader';
 
-type Props = {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  link: string;
-};
+const ShareModal: FC = () => {
+  const { isShareOpen, beat } = useTypedSelector(state => state.modals);
 
-const ShareModal: FC<Props> = ({ isOpen, setIsOpen, link }) => {
   return (
-    <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-      {link}
-    </Modal>
+    <S.ShareModal>
+      <Modal isOpen={isShareOpen} modalType={ModalsTypes.share}>
+        {!beat ? <Preloader /> : beat.title}
+      </Modal>
+    </S.ShareModal>
   );
 };
 

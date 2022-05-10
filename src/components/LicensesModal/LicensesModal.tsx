@@ -1,19 +1,17 @@
 import { FC } from 'react';
-import { Beat } from '../../redux/beat/types';
+import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import { ModalsTypes } from '../../redux/modals/types';
 import Modal from '../Modal/Modal';
+import Preloader from '../Preloader/Preloader';
 import * as S from './LicensesModal.style';
 
-type Props = {
-  isOpen: boolean;
-  setIsOpen: (isOpen: boolean) => void;
-  beat: Beat | null;
-};
+const LicensesModal: FC = () => {
+  const { isLicenseOpen, license } = useTypedSelector(state => state.modals);
 
-const LicensesModal: FC<Props> = ({ isOpen, setIsOpen, beat }) => {
   return (
     <S.LicensesModal>
-      <Modal isOpen={isOpen} setIsOpen={setIsOpen}>
-        {beat?.title}
+      <Modal isOpen={isLicenseOpen} modalType={ModalsTypes.license}>
+        {!license ? <Preloader /> : license?.name}
       </Modal>
     </S.LicensesModal>
   );

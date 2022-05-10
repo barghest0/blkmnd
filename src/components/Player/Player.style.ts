@@ -99,7 +99,7 @@ const Musician = styled.h4`
 
 const Share = styled.div``;
 
-const AddToCart = styled.div`
+const Buy = styled.div`
   font-size: 14px;
   height: 30px;
   width: 100%;
@@ -161,7 +161,7 @@ export {
   Title,
   Musician,
   Share,
-  AddToCart,
+  Buy,
   BeatInfo,
   Volume,
   Queue,

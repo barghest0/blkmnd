@@ -1,4 +1,4 @@
-import { FC, memo, SyntheticEvent, useEffect, useRef } from 'react';
+import { FC, memo } from 'react';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
@@ -8,7 +8,7 @@ import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { RouterPaths } from '../../shared/router/types';
 import { StyledLink } from '../../shared/styles/links';
-import AddToCardButton from '../AddToCardButton/AddToCardButton';
+import BuyButton from '../BuyButton/BuyButton';
 import PlayButton from '../PlayButton/PlayButton';
 import Preloader from '../Preloader/Preloader';
 import ShareButton from '../ShareButton/ShareButton';
@@ -23,10 +23,10 @@ type Props = {
 };
 
 const Player: FC<Props> = memo(({ audioRef }) => {
-  const { isOpen, duration, currentTime, volume, beat, isPlaying } =
-    useTypedSelector(state => state.player);
-  const { togglePlaying, setVolume, setCurrentTime, setDuration } =
-    useActions();
+  const { isOpen, duration, currentTime, volume, beat } = useTypedSelector(
+    state => state.player,
+  );
+  const { togglePlaying, setVolume, setCurrentTime } = useActions();
 
   const audio = audioRef.current;
 
@@ -82,11 +82,15 @@ const Player: FC<Props> = memo(({ audioRef }) => {
             <S.Musician>{beat.musician.name}</S.Musician>
           </S.BeatInfo>
           <S.Share>
-            <ShareButton color={'#e8e8e8'} hasBackground={false} />
+            <ShareButton
+              color={'#e8e8e8'}
+              hasBackground={false}
+              beatId={beat.id}
+            />
           </S.Share>
-          <S.AddToCart>
-            <AddToCardButton price={beat.price} />
-          </S.AddToCart>
+          <S.Buy>
+            <BuyButton price={beat.price} beatId={beat.id} />
+          </S.Buy>
         </S.Beat>
       )}
       <S.Controls>

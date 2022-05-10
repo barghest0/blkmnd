@@ -5,6 +5,7 @@ import collabsSlice from './collabs/collabsSlice';
 import discographySlice from './discography/discographySlice';
 import licensesSlice from './licenses/licensesSlice';
 import membershipsSlice from './memberships/membershipsSlice';
+import modalsSlice from './modals/modalsSlice';
 import playerSlice from './player/playerSlice';
 import soundKitsSlice from './soundKits/soundKitsSlice';
 
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   player: playerSlice.reducer,
   discography: discographySlice.reducer,
   memberships: membershipsSlice.reducer,
+  modals: modalsSlice.reducer,
 });
 
 const store = () => configureStore({ reducer: rootReducer });

@@ -3,9 +3,11 @@ import AddModeratorIcon from '@mui/icons-material/AddModerator';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import LogoutIcon from '@mui/icons-material/Logout';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+
 import { useState } from 'react';
+
 import { RouterPaths } from '../../shared/router/types';
-import { AddToCartIcon } from '../AddToCardButton/AddToCardButton.style';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
@@ -38,7 +40,7 @@ const Header = () => {
         <HeaderSearch isOpen={isSearchOpen} setIsOpen={setIsSearchOpen} />
         <S.Cart>
           <S.CartIcon>
-            <AddToCartIcon />
+            <ShoppingBagOutlinedIcon />
           </S.CartIcon>
           <S.CartCost>${cost.toFixed(2)}</S.CartCost>
         </S.Cart>

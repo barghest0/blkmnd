@@ -1,8 +1,13 @@
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import styled from 'styled-components';
 
-const AddToCartIcon = styled(ShoppingBagOutlinedIcon)`
+const BuyButton = styled.div`
+  height: 100%;
+  width: 100%;
+`;
+
+const BuyIcon = styled(ShoppingBagOutlinedIcon)`
   margin-right: 5px;
 `;
 
-export { AddToCartIcon };
+export { BuyButton, BuyIcon };

@@ -6,6 +6,10 @@ import * as S from './Layout.styles';
 import { useRef } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import Audio from '../../components/Audio/Audio';
+import DownloadModal from '../../components/DownloadModal/DownloadModal';
+import ShareModal from '../../components/ShareModal/ShareModal';
+import LicensesModal from '../../components/LicensesModal/LicensesModal';
+import BuyModal from '../../components/BuyModal/BuyModal';
 
 const Layout = () => {
   const audioRef = useRef(null);
@@ -21,6 +25,10 @@ const Layout = () => {
         {beat && (
           <Audio ref={audioRef} src={require(`../../audio/${beat.track}`)} />
         )}
+        <DownloadModal />
+        <ShareModal />
+        <LicensesModal />
+        <BuyModal />
       </S.Page>
       <Footer />
     </S.Layout>

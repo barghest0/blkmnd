@@ -2,6 +2,8 @@ import { bindActionCreators } from '@reduxjs/toolkit';
 import useTypedDispatch from './redux/useTypedSelector';
 
 import playerSlice from '../redux/player/playerSlice';
+import modalsSlice from '../redux/modals/modalsSlice';
+
 import * as beatsActions from '../redux/beats/actions';
 import * as beatActions from '../redux/beat/actions';
 import * as licensesActions from '../redux/licenses/actions';
@@ -19,6 +21,7 @@ const rootActionCreator = {
   ...discographyActions,
   ...membershipsActions,
   ...playerSlice.actions,
+  ...modalsSlice.actions,
 };
 
 const useActions = () => {

@@ -1,12 +1,26 @@
+import { FC } from 'react';
+import useActions from '../../hooks/useActions';
+import { ModalsTypes } from '../../redux/modals/types';
 import Button from '../Button/Button';
 import { ButtonThemes } from '../Button/types';
 import * as S from './DownloadButton.style';
 
-const DownloadButton = () => {
+type Props = {
+  beatId: number;
+};
+
+const DownloadButton: FC<Props> = () => {
+  const { setModalVisability } = useActions();
+  const onDownloadButtonClick = () => {
+    setModalVisability({ visability: true, modalType: ModalsTypes.download });
+  };
+
   return (
-    <Button theme={ButtonThemes.dark}>
-      <S.DownloadIcon />
-    </Button>
+    <S.DownloadButton onClick={onDownloadButtonClick}>
+      <Button theme={ButtonThemes.dark}>
+        <S.DownloadIcon />
+      </Button>
+    </S.DownloadButton>
   );
 };
 
