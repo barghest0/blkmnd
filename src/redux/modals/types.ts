@@ -26,6 +26,7 @@ type ModalsState = {
   license: License | null;
   privacyPolicy: string;
   terms: string;
+  error:string
 };
 
 export { ModalsState, ModalsTypes, SetVisabilityPayload };

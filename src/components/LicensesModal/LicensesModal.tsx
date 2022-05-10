@@ -11,7 +11,7 @@ const LicensesModal: FC = () => {
   return (
     <S.LicensesModal>
       <Modal isOpen={isLicenseOpen} modalType={ModalsTypes.license}>
-        {!license ? <Preloader /> : license?.name}
+        {!license ? <Preloader /> : license.name}
       </Modal>
     </S.LicensesModal>
   );

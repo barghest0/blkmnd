@@ -10,11 +10,14 @@ import { ModalsTypes } from '../../redux/modals/types';
 type Props = {
   license: License;
 };
+
 const LicenseCard: FC<Props> = ({ license }) => {
-  const { name, price } = license;
-  const { setModalVisability } = useActions();
+  const { id, name, price } = license;
+  const { setModalVisability, getModalLicense } = useActions();
+
   const onDetailsButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.license });
+    getModalLicense(id);
   };
 
   return (
