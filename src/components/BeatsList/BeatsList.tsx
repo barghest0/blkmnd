@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, SyntheticEvent } from 'react';
 
 import * as S from './BeatsList.style';
 import { StyledLink } from '../../shared/styles/links';
@@ -23,6 +23,14 @@ const BeatsList: FC<Props> = ({ beats }) => {
     togglePlaying();
   };
 
+  const onActionButtonClick = (event: SyntheticEvent) => {
+    event.stopPropagation();
+  };
+
+  const onLinkClick = (event: SyntheticEvent) => {
+    event.stopPropagation();
+  };
+
   const beatsRows = beats.map(beat => {
     const { image, id, title, time, bpm, tags, price } = beat;
 
@@ -33,23 +41,23 @@ const BeatsList: FC<Props> = ({ beats }) => {
         <S.Column>
           <S.Thumbnail src={image} width={50} height={50} />
         </S.Column>
-        <S.Column>
+        <S.Column onClick={onLinkClick}>
           <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>
         </S.Column>
         <S.Column>{time}</S.Column>
         <S.Column>{bpm}</S.Column>
-        <S.Column>
+        <S.Column onClick={onLinkClick}>
           <S.Tags>{tagsLinks}</S.Tags>
         </S.Column>
         <S.Column>
           <S.Actions>
-            <S.Action>
+            <S.Action onClick={onActionButtonClick}>
               <DownloadButton beatId={id} />
             </S.Action>
-            <S.Action>
+            <S.Action onClick={onActionButtonClick}>
               <ShareButton beatId={id} />
             </S.Action>
-            <S.Action>
+            <S.Action onClick={onActionButtonClick}>
               <BuyButton price={price} beatId={id} />
             </S.Action>
           </S.Actions>
