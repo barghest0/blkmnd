@@ -1,14 +1,8 @@
 import styled from 'styled-components';
 
-const CollabsList = styled.div`
-  display: grid;
-  margin: 0 auto;
-  grid-auto-flow: column;
-  column-gap: 40px;
-  justify-items: center;
-`;
 
-const Collab = styled.div`
+
+const CollabCard = styled.div`
   width: 175px;
 `;
 
@@ -29,4 +23,4 @@ const Price = styled.p`
   font-size: 14px;
 `;
 
-export { CollabsList, Collab, Thumbnail, Title, Price };
+export { CollabCard, Thumbnail, Title, Price };

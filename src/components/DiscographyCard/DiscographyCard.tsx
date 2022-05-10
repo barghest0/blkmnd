@@ -3,15 +3,17 @@ import { Beat } from '../../redux/beat/types';
 import { RouterPaths } from '../../shared/router/types';
 import { StyledLink } from '../../shared/styles/links';
 import PlayButton from '../PlayButton/PlayButton';
-import * as S from './DiscographyList.style';
+import * as S from './DiscographyCard.style';
 
 type Props = {
-  beats: Beat[];
+  beat: Beat;
 };
 
-const DiscographyList: FC<Props> = ({ beats }) => {
-  const discographyItems = beats.map(beat => (
-    <S.Beat key={beat.id}>
+const DiscographyCard: FC<Props> = ({ beat }) => {
+  const { id, image, title, musician } = beat;
+
+  return (
+    <S.DiscographyCard>
       <S.ThumbnailContainer>
         <S.PlayButton>
           <PlayButton />
@@ -25,10 +27,8 @@ const DiscographyList: FC<Props> = ({ beats }) => {
         <S.Musician>{beat.musician.name}</S.Musician>
         <S.Player />
       </S.Info>
-    </S.Beat>
-  ));
-
-  return <S.DiscographyList>{discographyItems}</S.DiscographyList>;
+    </S.DiscographyCard>
+  );
 };
 
-export default DiscographyList;
+export default DiscographyCard;

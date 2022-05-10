@@ -37,13 +37,19 @@ const BiographyImage = styled.img`
   grid-row: 1/2;
 `;
 
+const DiscographyList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 50px;
+`;
+
 const Discography = styled.section`
   margin-bottom: 50px;
 `;
 
-const Gallary = styled.section``;
+const Gallery = styled.section``;
 
-const GallaryImage = styled.img`
+const GalleryImage = styled.img`
   width: 100%;
   height: 100%;
 `;
@@ -57,6 +63,7 @@ export {
   Biography,
   SectionTitle,
   Discography,
-  Gallary,
-  GallaryImage,
+  Gallery,
+  GalleryImage,
+  DiscographyList
 };

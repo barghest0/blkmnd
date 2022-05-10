@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import MembershipList from '../../components/MembershipList/MembershipList';
+import MembershipCard from '../../components/MembershipCard/MembershipCard';
+import MembershipList from '../../components/MembershipCard/MembershipCard';
 import Preloader from '../../components/Preloader/Preloader';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
@@ -11,6 +12,10 @@ const Membership = () => {
     state => state.memberships,
   );
 
+  const membershipsCard = memberships.map(membership => (
+    <MembershipCard membership={membership} key={membership.id} />
+  ));
+
   useEffect(() => {
     getMemberships();
   }, []);
@@ -20,11 +25,7 @@ const Membership = () => {
       <S.Container>
         <S.Title>Membership</S.Title>
         <S.MembershipList>
-          {isFetching ? (
-            <Preloader />
-          ) : (
-            <MembershipList memberships={memberships} />
-          )}
+          {isFetching ? <Preloader /> : membershipsCard}
         </S.MembershipList>
       </S.Container>
     </S.Membership>

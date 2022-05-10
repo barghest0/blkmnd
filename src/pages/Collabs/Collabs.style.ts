@@ -13,4 +13,12 @@ const Title = styled.h1`
   ${pageTitle}
 `;
 
-export { Collabs, Title, Container };
+const CollabsList = styled.div`
+  display: grid;
+  margin: 0 auto;
+  grid-auto-flow: column;
+  column-gap: 40px;
+  justify-items: center;
+`;
+
+export { Collabs, Title, Container, CollabsList };

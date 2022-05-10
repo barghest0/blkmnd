@@ -1,13 +1,8 @@
 import styled from 'styled-components';
 
-const LicensesList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  justify-items: center;
-  column-gap: 50px;
-`;
 
-const Column = styled.div`
+
+const LicenseCard = styled.div`
   width: 100%;
 `;
 
@@ -29,4 +24,4 @@ const Details = styled.div`
   font-size: 14px;
 `;
 
-export { LicensesList, Column, Title, Price, Details };
+export { LicenseCard, Title, Price, Details };

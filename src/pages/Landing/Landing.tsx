@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useEffect, useState } from 'react';
+import { FC, memo, RefObject, useCallback, useEffect, useState } from 'react';
 import * as S from './Landing.style';
 import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
 import SearchField from '../../components/SearchField/SearchField';
@@ -10,14 +10,14 @@ import { RouterPaths } from '../../shared/router/types';
 import DownloadModal from '../../components/DownloadModal/DownloadModal';
 import ShareModal from '../../components/ShareModal/ShareModal';
 import LicensesModal from '../../components/LicensesModal/LicensesModal';
-import LicensesList from '../../components/LicensesList/LicensesList';
-import SoundKitsList from '../../components/SoundKitsList/SoundKitsList';
 import useActions from '../../hooks/useActions';
-import CollabsList from '../../components/CollabsList/CollabsList';
 import Visualizer from '../../components/Visualizer/Visualizer';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import { useOutletContext } from 'react-router-dom';
-import DiscographyList from '../../components/DiscographyList/DiscographyList';
+import CollabCard from '../../components/CollabCard/CollabCard';
+import LicenseCard from '../../components/LicenseCard/LicenseCard';
+import SoundKitCard from '../../components/SoundKitCard/SoundKitCard';
+import DiscographyCard from '../../components/DiscographyCard/DiscographyCard';
 
 const Landing: FC = memo(() => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
@@ -28,7 +28,16 @@ const Landing: FC = memo(() => {
   const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
     state => state.licenses,
   );
-  const audioRef = useOutletContext();
+  const { soundKits, isFetching: isSoundKitsFetching } = useTypedSelector(
+    state => state.soundKits,
+  );
+  const { collabs, isFetching: isCollabsFetching } = useTypedSelector(
+    state => state.collabs,
+  );
+
+  const isFeaturedBeatFetching = !featuredBeat;
+
+  const audioRef = useOutletContext<RefObject<HTMLAudioElement | null>>();
 
   const {
     getBeat,
@@ -39,19 +48,25 @@ const Landing: FC = memo(() => {
     getPreviewCollabs,
   } = useActions();
 
-  const { soundKits, isFetching: isSoundKitsFetching } = useTypedSelector(
-    state => state.soundKits,
-  );
+  const collabsCards = collabs.map(collab => (
+    <CollabCard collab={collab} key={collab.id} />
+  ));
 
-  const { collabs, isFetching: isCollabsFetching } = useTypedSelector(
-    state => state.collabs,
-  );
+  const licensesCards = licenses.map(license => (
+    <LicenseCard license={license} key={license.id} />
+  ));
 
-  const isFeaturedBeatFetching = !featuredBeat;
+  const soundKitsCards = soundKits.map(soundKit => (
+    <SoundKitCard soundKit={soundKit} key={soundKit.id} />
+  ));
+
+  const discographyCards = discographyBeats.map(beat => (
+    <DiscographyCard beat={beat} key={beat.id} />
+  ));
 
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [isShareOpen, setIsShareOpen] = useState(false);
-  const [isLicensesOpen, setIsLecensesOpen] = useState(false);
+  const [isLicensesOpen, setIsLicensesOpen] = useState(false);
 
   const getContent = (id: number) => {
     getBeat(id);
@@ -95,11 +110,11 @@ const Landing: FC = memo(() => {
                   beat={featuredBeat}
                   onDownloadClick={makeOnActionClick(setIsDownloadOpen)}
                   onShareClick={makeOnActionClick(setIsShareOpen)}
-                  onBuyClick={makeOnActionClick(setIsLecensesOpen)}
+                  onBuyClick={makeOnActionClick(setIsLicensesOpen)}
                 />
               )}
             </S.FeaturedBeat>
-            <Visualizer audioRef={audioRef.audioRef} />
+            <Visualizer audioRef={audioRef?.audioRef} />
           </S.IntroInner>
         </S.Container>
       </S.Intro>
@@ -111,7 +126,7 @@ const Landing: FC = memo(() => {
             <BeatsList
               onDownloadClick={makeOnActionClick(setIsDownloadOpen)}
               onShareClick={makeOnActionClick(setIsShareOpen)}
-              onBuyClick={makeOnActionClick(setIsLecensesOpen)}
+              onBuyClick={makeOnActionClick(setIsLicensesOpen)}
               beats={beats}
             />
           )}
@@ -124,11 +139,7 @@ const Landing: FC = memo(() => {
         <S.Container>
           <S.SectionTitle>Licensing Info</S.SectionTitle>
           <S.LicensesList>
-            {isLicensesFetching ? (
-              <Preloader />
-            ) : (
-              <LicensesList licenses={licenses} />
-            )}
+            {isLicensesFetching ? <Preloader /> : licensesCards}
           </S.LicensesList>
         </S.Container>
       </S.Licenses>
@@ -136,11 +147,9 @@ const Landing: FC = memo(() => {
       <S.SoundKits>
         <S.Container>
           <S.SectionTitle>Sound Kits</S.SectionTitle>
-          {isSoundKitsFetching ? (
-            <Preloader />
-          ) : (
-            <SoundKitsList kits={soundKits} />
-          )}
+          <S.SoundKitsList>
+            {isSoundKitsFetching ? <Preloader /> : soundKitsCards}
+          </S.SoundKitsList>
           <S.AllSoundKits>
             <ButtonLink to={`${RouterPaths.soundKits}`}>
               Browse all sound kits
@@ -152,11 +161,9 @@ const Landing: FC = memo(() => {
       <S.Services>
         <S.Container>
           <S.SectionTitle>Services</S.SectionTitle>
-          {isCollabsFetching ? (
-            <Preloader />
-          ) : (
-            <CollabsList collabs={collabs} />
-          )}
+          <S.CollabsList>
+            {isCollabsFetching ? <Preloader /> : collabsCards}
+          </S.CollabsList>
           <S.AllServices>
             <ButtonLink to={`${RouterPaths.collabs}`}>
               Browse all services
@@ -167,11 +174,9 @@ const Landing: FC = memo(() => {
       <S.Discography>
         <S.Container>
           <S.SectionTitle>Discography</S.SectionTitle>
-          {isDiscographyFetching ? (
-            <Preloader />
-          ) : (
-            <DiscographyList beats={beats} />
-          )}
+          <S.DiscographyList>
+            {isDiscographyFetching ? <Preloader /> : discographyCards}
+          </S.DiscographyList>
         </S.Container>
       </S.Discography>
       <S.Contact>
@@ -195,7 +200,7 @@ const Landing: FC = memo(() => {
       />
       <LicensesModal
         isOpen={isLicensesOpen}
-        setIsOpen={setIsLecensesOpen}
+        setIsOpen={setIsLicensesOpen}
         beat={beat}
       />
     </S.Landing>

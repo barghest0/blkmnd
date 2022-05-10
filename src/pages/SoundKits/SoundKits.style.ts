@@ -13,4 +13,13 @@ const Title = styled.h1`
   ${pageTitle}
 `;
 
-export { SoundKits, Container, Title };
+const SoundKitsList = styled.div`
+  display: grid;
+  margin: 0 auto;
+  grid-auto-flow: column;
+  column-gap: 40px;
+  justify-items: center;
+`;
+
+
+export { SoundKits, Container, Title, SoundKitsList };

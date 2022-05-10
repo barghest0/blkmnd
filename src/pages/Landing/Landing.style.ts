@@ -61,12 +61,25 @@ const Licenses = styled.section`
   margin-bottom: 50px;
 `;
 
-const LicensesList = styled.div``;
+const LicensesList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  column-gap: 50px;
+`;
 
 const SoundKits = styled.section`
   display: flex;
   justify-content: center;
   margin-bottom: 50px;
+`;
+
+const SoundKitsList = styled.div`
+  display: grid;
+  margin: 0 auto;
+  grid-auto-flow: column;
+  column-gap: 40px;
+  justify-items: center;
 `;
 
 const AllSoundKits = styled.div`
@@ -82,6 +95,14 @@ const Services = styled.section`
   margin-bottom: 50px;
 `;
 
+const CollabsList = styled.div`
+  display: grid;
+  margin: 0 auto;
+  grid-auto-flow: column;
+  column-gap: 40px;
+  justify-items: center;
+`;
+
 const AllServices = styled.div`
   height: 50px;
   width: 200px;
@@ -91,6 +112,12 @@ const AllServices = styled.div`
 
 const Discography = styled.section`
   margin-bottom: 50px;
+`;
+
+const DiscographyList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 50px;
 `;
 
 const Contact = styled.div``;
@@ -110,6 +137,7 @@ export {
   Licenses,
   LicensesList,
   SoundKits,
+  SoundKitsList,
   AllSoundKits,
   Services,
   AllServices,
@@ -117,4 +145,6 @@ export {
   Contact,
   ContactForm,
   Discography,
+  DiscographyList,
+  CollabsList,
 };

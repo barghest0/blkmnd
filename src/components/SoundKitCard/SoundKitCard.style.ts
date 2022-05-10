@@ -1,14 +1,8 @@
 import styled from 'styled-components';
 
-const SoundKitsList = styled.div`
-  display: grid;
-  margin: 0 auto;
-  grid-auto-flow: column;
-  column-gap: 40px;
-  justify-items: center;
-`;
 
-const SoundKit = styled.div`
+
+const SoundKitCard = styled.div`
   width: 175px;
 `;
 
@@ -30,4 +24,4 @@ const Price = styled.div`
   font-size: 14px;
 `;
 
-export { SoundKitsList, SoundKit, Thumbnail, Title, Price };
+export { SoundKitCard, Thumbnail, Title, Price };

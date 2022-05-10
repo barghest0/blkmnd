@@ -4,7 +4,7 @@ import useActions from '../../hooks/useActions';
 import * as S from './Audio.style';
 
 type Props = {
-  src?: string;
+  src: string;
 };
 
 const Audio: FC<Props> = memo(
@@ -18,10 +18,11 @@ const Audio: FC<Props> = memo(
     };
 
     useEffect(() => {
+      const audio = ref?.current;
       if (isPlaying) {
-        ref.current.play();
+        audio.play();
       } else {
-        ref.current.pause();
+        audio.pause();
       }
     }, [isPlaying]);
 

@@ -1,5 +1,6 @@
-import * as S from './BeatsList.style';
 import { FC } from 'react';
+
+import * as S from './BeatsList.style';
 import { StyledLink } from '../../shared/styles/links';
 import { RouterPaths } from '../../shared/router/types';
 import TagLink from '../TagLink/TagLink';
@@ -27,7 +28,7 @@ const BeatsList: FC<Props> = ({
   const onBeatRowClick = (beat: Beat) => {
     setBeat(beat);
     openPlayer();
-    togglePlaying(beat);
+    togglePlaying();
   };
 
   const beatsRows = beats.map(beat => {

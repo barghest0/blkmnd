@@ -1,29 +1,33 @@
 import { useEffect } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import DiscographyList from '../../components/DiscographyList/DiscographyList';
-import Preloader from '../../components/Preloader/Preloader';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
-import * as S from './About.style';
-import GallaryImage from './images/gallery-image.jpg';
 import 'swiper/css';
 import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 
+import Preloader from '../../components/Preloader/Preloader';
+import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import useActions from '../../hooks/useActions';
+import * as S from './About.style';
+import GalleryImage from './images/gallery-image.jpg';
+
+import DiscographyCard from '../../components/DiscographyCard/DiscographyCard';
+
 const About = () => {
   const { getDiscographyBeats } = useActions();
   const { beats, isFetching } = useTypedSelector(state => state.discography);
 
-  const gallary = [GallaryImage, GallaryImage, GallaryImage];
+  const gallery = [GalleryImage, GalleryImage, GalleryImage];
 
   useEffect(() => {
     getDiscographyBeats();
   }, []);
 
-  const gallarySlides = gallary.map((image,index) => (
+  const discographyCards = beats.map(beat => <DiscographyCard beat={beat} />);
+
+  const gallerySlides = gallery.map((image, index) => (
     <SwiperSlide key={index}>
-      <S.GallaryImage src={image} />
+      <S.GalleryImage src={image} />
     </SwiperSlide>
   ));
 
@@ -48,14 +52,16 @@ const About = () => {
         </S.Biography>
         <S.Discography>
           <S.SectionTitle>Discography</S.SectionTitle>
-          {isFetching ? <Preloader /> : <DiscographyList beats={beats} />}
+          <S.DiscographyList>
+            {isFetching ? <Preloader /> : discographyCards}
+          </S.DiscographyList>
         </S.Discography>
-        <S.Gallary>
+        <S.Gallery>
           <S.SectionTitle>Gallery</S.SectionTitle>
           <Swiper spaceBetween={50} slidesPerView={2} loop>
-            {gallarySlides}
+            {gallerySlides}
           </Swiper>
-        </S.Gallary>
+        </S.Gallery>
       </S.Container>
     </S.About>
   );

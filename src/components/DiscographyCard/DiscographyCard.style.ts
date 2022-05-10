@@ -2,13 +2,9 @@ import { Slider, styled as MUIstyled } from '@mui/material';
 import styled from 'styled-components';
 import ThemeColors from '../../shared/styles/theme';
 
-const DiscographyList = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  column-gap: 50px;
-`;
 
-const Beat = styled.div`
+
+const DiscographyCard = styled.div`
   display: flex;
   column-gap: 20px;
 `;
@@ -69,8 +65,7 @@ const Player = MUIstyled(Slider)({
 });
 
 export {
-  DiscographyList,
-  Beat,
+  DiscographyCard,
   Thumbnail,
   Info,
   Title,
