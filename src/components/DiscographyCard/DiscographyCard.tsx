@@ -1,9 +1,10 @@
 import { FC } from 'react';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import { useOutletContext } from 'react-router-dom';
 import useActions from '../../hooks/useActions';
 import { Beat } from '../../redux/beat/types';
 import { RouterPaths } from '../../shared/router/types';
 import { StyledLink } from '../../shared/styles/links';
+import DurationSlider from '../DurationSlider/DurationSlider';
 import PlayButton from '../PlayButton/PlayButton';
 import * as S from './DiscographyCard.style';
 
@@ -14,26 +15,16 @@ type Props = {
 const DiscographyCard: FC<Props> = ({ beat }) => {
   const { id, image, title, musician } = beat;
 
-  const { setBeat, openPlayer, togglePlaying, setCurrentTime } = useActions();
+  const { setBeat, openPlayer, togglePlaying } = useActions();
 
-  const { duration, currentTime } = useTypedSelector(state => state.player);
+  const audioRef = useOutletContext();
+
+  const audio = audioRef.audio.current;
 
   const onThumbnailClick = () => {
     setBeat(beat);
     openPlayer();
     togglePlaying();
-  };
-
-  const onCurrentTimeCommited = () => {
-    audio.currentTime = currentTime;
-  };
-
-  const onCurrentTimeChange = (_: Event, value: number | number[]) => {
-    if (!Array.isArray(value)) {
-      {
-        setCurrentTime(value);
-      }
-    }
   };
 
   return (
@@ -49,12 +40,9 @@ const DiscographyCard: FC<Props> = ({ beat }) => {
           <S.Title>{title}</S.Title>
         </StyledLink>
         <S.Musician>{musician.name}</S.Musician>
-        <S.Player
-          value={currentTime}
-          onChange={onCurrentTimeChange}
-          onChangeCommitted={onCurrentTimeCommited}
-          max={duration}
-        />
+        <S.Duration>
+          <DurationSlider audio={audio} currentBeat={beat} />
+        </S.Duration>
       </S.Info>
     </S.DiscographyCard>
   );

@@ -84,7 +84,7 @@ const Player: FC<Props> = memo(({ audioRef }) => {
         </S.NextBeat>
       </S.Controls>
       <S.Duration>
-        <DurationSlider audio={audio} />
+        <DurationSlider audio={audio} currentBeat={beat} />
       </S.Duration>
       <S.Actions>
         <S.Volume>

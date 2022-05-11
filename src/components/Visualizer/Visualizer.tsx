@@ -4,7 +4,7 @@ import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import * as S from './Visualizer.style';
 
 const Visualizer: FC = memo(() => {
-  const { beat, isPlaying } = useTypedSelector(state => state.player);
+  const { isPlaying } = useTypedSelector(state => state.player);
   const [analyser, setAnalyser] = useState<AnalyserNode>();
   const [bufferLength, setBufferLength] = useState(0);
   const [audioData, setAudioData] = useState(new Uint8Array(0));
@@ -43,7 +43,7 @@ const Visualizer: FC = memo(() => {
   useEffect(() => {
     const audioContext = new window.AudioContext();
 
-    if (audio && beat) {
+    if (audio) {
       const source = audioContext.createMediaElementSource(audio);
       const analyser = audioContext.createAnalyser();
       source.connect(analyser);
@@ -56,7 +56,7 @@ const Visualizer: FC = memo(() => {
       setAnalyser(analyser);
       setBufferLength(bufferLength);
     }
-  }, [beat, audio]);
+  }, [audio]);
 
   useEffect(() => {
     if (isPlaying) {

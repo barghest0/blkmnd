@@ -1,8 +1,4 @@
-import { Slider, styled as MUIstyled } from '@mui/material';
 import styled from 'styled-components';
-import ThemeColors from '../../shared/styles/theme';
-
-
 
 const DiscographyCard = styled.div`
   display: flex;
@@ -39,30 +35,12 @@ const Musician = styled.div`
   font-size: 14px;
 `;
 
-const Player = MUIstyled(Slider)({
-  justifySelf: 'flex-end',
-  height: 3,
-  width: '100%',
-  padding: 0,
-  color: ThemeColors.secondColor,
-  '& .MuiSlider-track': {
-    border: 'none',
-  },
-  '& .MuiSlider-rail': {
-    backgroundColor: '#343434',
-  },
-  '& .MuiSlider-thumb': {
-    height: 12,
-    width: 12,
-    transition: 'all 0.2s linear',
-    '&:hover': {
-      boxShadow: 'none',
-    },
-    '&.Mui-focusVisible': {
-      boxShadow: 'none',
-    },
-  },
-});
+const Duration = styled.div`
+  width: 100%;
+  justify-self: flex-end;
+  height: 3px;
+  background-color: #363636;
+`;
 
 export {
   DiscographyCard,
@@ -70,7 +48,7 @@ export {
   Info,
   Title,
   Musician,
-  Player,
+  Duration,
   ThumbnailContainer,
   PlayButton,
 };
