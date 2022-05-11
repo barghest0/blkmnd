@@ -7,6 +7,9 @@ type PlayerState = {
   volume: number;
   duration: number;
   currentTime: number;
+  queue: Beat[];
+  isFetching:boolean;
+  error:string
 };
 
 export { PlayerState };

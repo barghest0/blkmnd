@@ -12,6 +12,7 @@ import * as collabsActions from '../redux/collabs/actions';
 import * as discographyActions from '../redux/discography/actions';
 import * as membershipsActions from '../redux/memberships/actions';
 import * as asyncModalsActions from '../redux/modals/actions';
+import * as asyncPlayerActions from '../redux/player/actions';
 
 const rootActionCreator = {
   ...beatsActions,
@@ -24,6 +25,7 @@ const rootActionCreator = {
   ...asyncModalsActions,
   ...playerSlice.actions,
   ...modalsSlice.actions,
+  ...asyncPlayerActions,
 };
 
 const useActions = () => {

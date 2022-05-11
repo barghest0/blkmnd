@@ -2,6 +2,8 @@ import { PlayerState } from './types';
 
 const PLAYER_SLICE_NAME = 'player';
 
+const GET_PLAYER_QUEUE_BEATS = 'player/queue';
+
 const PLAYER_INITIAL_STATE: PlayerState = {
   isPlaying: false,
   isOpen: false,
@@ -9,6 +11,9 @@ const PLAYER_INITIAL_STATE: PlayerState = {
   volume: 0.1,
   duration: 0,
   currentTime: 0,
+  queue: [],
+  isFetching: false,
+  error: '',
 };
 
-export { PLAYER_INITIAL_STATE, PLAYER_SLICE_NAME };
+export { PLAYER_INITIAL_STATE, PLAYER_SLICE_NAME, GET_PLAYER_QUEUE_BEATS };

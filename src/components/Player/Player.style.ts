@@ -1,28 +1,30 @@
 import styled, { css } from 'styled-components';
-import { styled as MUIstyled } from '@mui/material';
 import ThemeColors from '../../shared/styles/theme';
 import { PlayerProps } from './Player';
-import { Slider } from '@mui/material';
 
 const Player = styled.div<PlayerProps>`
-  ${({ isOpen }) => {
-    const display = isOpen ? 'grid' : 'none';
+  ${({ isOpen, isQueueListOpen }) => {
+    const display = isOpen ? 'block' : 'none';
+    const bottom = isQueueListOpen ? '150px' : 0;
     return css`
       z-index: 100;
+      display: ${display};
       height: 70px;
       width: 100%;
       background-color: ${ThemeColors.headerColor};
-      display: ${display};
-      grid-template-columns: 2.7fr 2fr 3fr;
-      grid-template-rows: 100%;
       position: fixed;
-      bottom: 0;
-      align-items: center;
+      bottom: ${bottom};
+      transition: all 0.2s linear;
     `;
   }}
 `;
 
-const PlayerAudio = styled.audio``;
+const PlayerTools = styled.div`
+  display: grid;
+  grid-template-columns: 2.7fr 2fr 3fr;
+  grid-template-rows: 100%;
+  align-items: center;
+`;
 
 const Controls = styled.div`
   display: flex;
@@ -113,9 +115,22 @@ const Queue = styled.div`
   cursor: pointer;
 `;
 
+const QueueList = styled.div`
+  background-color: inherit;
+  height: 150px;
+  width: 100%;
+  padding: 10px;
+  display: grid;
+  overflow: auto;
+`;
+
+const QueueBeat = styled.div`
+  height: 50px;
+  width: 100%;
+`;
+
 export {
   Player,
-  PlayerAudio,
   PlayButton,
   Duration,
   Beat,
@@ -131,4 +146,7 @@ export {
   Controls,
   PreviousBeat,
   NextBeat,
+  QueueList,
+  QueueBeat,
+  PlayerTools,
 };
