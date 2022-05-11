@@ -34,7 +34,7 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
       <S.ThumbnailContainer onClick={onThumbnailClick}>
         <S.Thumbnail src={image} width={130} height={130} />
         <S.PlayButton>
-          <PlayButton />
+          <PlayButton currentBeat={beat} />
         </S.PlayButton>
       </S.ThumbnailContainer>
       <S.Info>

@@ -98,7 +98,7 @@ const Player: FC<Props> = memo(({ audioRef }) => {
           <SkipPreviousIcon />
         </S.PreviousBeat>
         <S.PlayButton onClick={onPlayButtonClick}>
-          <PlayButton />
+          {!beat ? <Preloader /> : <PlayButton currentBeat={beat} />}
         </S.PlayButton>
         <S.NextBeat onClick={onNextButtonClick}>
           <SkipNextIcon />

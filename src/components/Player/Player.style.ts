@@ -8,6 +8,7 @@ const Player = styled.div<PlayerProps>`
   ${({ isOpen }) => {
     const display = isOpen ? 'grid' : 'none';
     return css`
+      z-index: 100;
       height: 70px;
       width: 100%;
       background-color: ${ThemeColors.headerColor};

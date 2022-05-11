@@ -16,15 +16,15 @@ const DiscographyCard: FC<Props> = ({ beat }) => {
     <S.DiscographyCard>
       <S.ThumbnailContainer>
         <S.PlayButton>
-          <PlayButton />
+          <PlayButton currentBeat={beat} />
         </S.PlayButton>
-        <S.Thumbnail src={beat.image} />
+        <S.Thumbnail src={image} />
       </S.ThumbnailContainer>
       <S.Info>
-        <StyledLink to={`${RouterPaths.beats}/${beat.id}`}>
-          <S.Title>{beat.title}</S.Title>
+        <StyledLink to={`${RouterPaths.beats}/${id}`}>
+          <S.Title>{title}</S.Title>
         </StyledLink>
-        <S.Musician>{beat.musician.name}</S.Musician>
+        <S.Musician>{musician.name}</S.Musician>
         <S.Player />
       </S.Info>
     </S.DiscographyCard>
