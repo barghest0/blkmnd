@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, memo, RefObject } from 'react';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
@@ -13,48 +13,27 @@ import PlayButton from '../PlayButton/PlayButton';
 import Preloader from '../Preloader/Preloader';
 import ShareButton from '../ShareButton/ShareButton';
 import * as S from './Player.style';
+import DurationSlider from '../DurationSlider/DurationSlider';
+import VolumeSlider from '../VolumeSlider/VolumeSlider';
 
 type PlayerProps = {
   isOpen: boolean;
 };
 
 type Props = {
-  audioRef: React.Ref<HTMLAudioElement>;
+  audioRef: RefObject<HTMLAudioElement>;
 };
 
 const Player: FC<Props> = memo(({ audioRef }) => {
-  const { isOpen, duration, currentTime, volume, beat } = useTypedSelector(
-    state => state.player,
-  );
-  const { togglePlaying, setVolume, setCurrentTime } = useActions();
+  const { isOpen, beat } = useTypedSelector(state => state.player);
+
+  const { togglePlaying } = useActions();
 
   const audio = audioRef.current;
 
   const onPlayButtonClick = () => {
     if (beat) {
       togglePlaying();
-    }
-  };
-
-  const onCurrentTimeCommited = () => {
-    audio.currentTime = currentTime;
-  };
-
-  const onVolumeChangeCommited = () => {
-    audio.volume = volume;
-  };
-
-  const onVolumeChange = (_: Event, value: number | number[]) => {
-    if (!Array.isArray(value)) {
-      setVolume(value);
-    }
-  };
-
-  const onCurrentTimeChange = (_: Event, value: number | number[]) => {
-    if (!Array.isArray(value)) {
-      {
-        setCurrentTime(value);
-      }
     }
   };
 
@@ -104,23 +83,13 @@ const Player: FC<Props> = memo(({ audioRef }) => {
           <SkipNextIcon />
         </S.NextBeat>
       </S.Controls>
-      <S.Duration
-        value={currentTime}
-        onChange={onCurrentTimeChange}
-        onChangeCommitted={onCurrentTimeCommited}
-        max={duration}
-      />
+      <S.Duration>
+        <DurationSlider audio={audio} />
+      </S.Duration>
       <S.Actions>
         <S.Volume>
           <VolumeUpIcon fontSize="small" />
-          <S.VolumeSlider
-            value={volume}
-            min={0}
-            max={1}
-            step={0.01}
-            onChange={onVolumeChange}
-            onChangeCommitted={onVolumeChangeCommited}
-          />
+          <VolumeSlider audio={audio} />
         </S.Volume>
         <S.Queue>
           <FormatListBulletedIcon />

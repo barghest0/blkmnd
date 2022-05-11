@@ -23,7 +23,9 @@ const About = () => {
     getDiscographyBeats();
   }, []);
 
-  const discographyCards = beats.map(beat => <DiscographyCard beat={beat} />);
+  const discographyCards = beats.map(beat => (
+    <DiscographyCard beat={beat} key={beat.id} />
+  ));
 
   const gallerySlides = gallery.map((image, index) => (
     <SwiperSlide key={index}>

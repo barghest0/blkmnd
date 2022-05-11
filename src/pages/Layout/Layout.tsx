@@ -20,7 +20,7 @@ const Layout = () => {
     <S.Layout>
       <Header />
       <S.Page>
-        <Outlet context={{ audioRef }} />
+        <Outlet context={{ audio: audioRef }} />
         <Player audioRef={audioRef} />
         {beat && (
           <Audio ref={audioRef} src={require(`../../audio/${beat.track}`)} />

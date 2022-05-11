@@ -47,24 +47,12 @@ const PlayButton = styled.div`
   position: relative;
 `;
 
-const Duration = MUIstyled(Slider)({
-  position: 'absolute',
-  top: 0,
-  width: '100%',
-  height: 3,
-  padding: 0,
-  color: ThemeColors.secondColor,
-  '& .MuiSlider-rail': {
-    backgroundColor: 'transparent',
-  },
-  '& .MuiSlider-thumb': {
-    height: 15,
-    width: 15,
-    '&:hover, &.Mui-focusVisible': {
-      boxShadow: 'none',
-    },
-  },
-});
+const Duration = styled.div`
+  position: absolute;
+  width: 100%;
+  top: 0;
+  color: ${ThemeColors.secondColor};
+`;
 
 const Beat = styled.div`
   font-size: 12px;
@@ -121,32 +109,6 @@ const Volume = styled.div`
   column-gap: 10px;
 `;
 
-const VolumeSlider = MUIstyled(Slider)({
-  height: 3,
-  width: 100,
-  padding: 0,
-  color: ThemeColors.secondColor,
-  '& .MuiSlider-track': {
-    border: 'none',
-  },
-  '& .MuiSlider-rail': {
-    backgroundColor: 'transparent',
-  },
-  '& .MuiSlider-thumb': {
-    height: 0,
-    width: 0,
-    transition: 'all 0.2s linear',
-    '&:hover': {
-      boxShadow: 'none',
-      height: 12,
-      width: 12,
-    },
-    '&.Mui-focusVisible': {
-      boxShadow: 'none',
-    },
-  },
-});
-
 const Queue = styled.div`
   cursor: pointer;
 `;
@@ -156,7 +118,6 @@ export {
   PlayerAudio,
   PlayButton,
   Duration,
-  VolumeSlider,
   Beat,
   Thumbnail,
   Title,

@@ -1,9 +1,17 @@
-import { FC, forwardRef, memo, SyntheticEvent, useEffect, useRef } from 'react';
+import {
+  FC,
+  forwardRef,
+  memo,
+  RefObject,
+  SyntheticEvent,
+  useEffect,
+} from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import * as S from './Audio.style';
 
 type Props = {
+  ref: RefObject<HTMLAudioElement>;
   src: string;
 };
 

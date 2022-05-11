@@ -22,6 +22,10 @@ const IntroInner = styled.div`
   margin: 0 auto;
 `;
 
+const Visualizer = styled.div`
+  margin: 0 auto;
+`;
+
 const IntroTitle = styled.h1`
   color: ${ThemeColors.secondColor};
   font-size: 48px;
@@ -147,4 +151,5 @@ export {
   Discography,
   DiscographyList,
   CollabsList,
+  Visualizer,
 };

@@ -1,4 +1,4 @@
-import { FC, memo, RefObject, useCallback, useEffect, useState } from 'react';
+import { FC, memo, RefObject, useEffect } from 'react';
 import * as S from './Landing.style';
 import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
 import SearchField from '../../components/SearchField/SearchField';
@@ -7,9 +7,6 @@ import Preloader from '../../components/Preloader/Preloader';
 import BeatsList from '../../components/BeatsList/BeatsList';
 import { ButtonLink } from '../../shared/styles/links';
 import { RouterPaths } from '../../shared/router/types';
-import DownloadModal from '../../components/DownloadModal/DownloadModal';
-import ShareModal from '../../components/ShareModal/ShareModal';
-import LicensesModal from '../../components/LicensesModal/LicensesModal';
 import useActions from '../../hooks/useActions';
 import Visualizer from '../../components/Visualizer/Visualizer';
 import ContactForm from '../../components/ContactForm/ContactForm';
@@ -24,7 +21,7 @@ const Landing: FC = memo(() => {
   const { beats: discographyBeats, isFetching: isDiscographyFetching } =
     useTypedSelector(state => state.discography);
   const { getDiscographyBeats } = useActions();
-  const { featuredBeat, beat } = useTypedSelector(state => state.beat);
+  const { featuredBeat } = useTypedSelector(state => state.beat);
   const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
     state => state.licenses,
   );
@@ -35,12 +32,11 @@ const Landing: FC = memo(() => {
     state => state.collabs,
   );
 
+  const { isPlaying, isOpen } = useTypedSelector(state => state.player);
+
   const isFeaturedBeatFetching = !featuredBeat;
 
-  const audioRef = useOutletContext<RefObject<HTMLAudioElement | null>>();
-
   const {
-    getBeat,
     getFeaturedBeat,
     getLicenses,
     getPreviewSoundKits,
@@ -65,7 +61,9 @@ const Landing: FC = memo(() => {
   ));
 
   useEffect(() => {
-    getFeaturedBeat();
+    if (!isPlaying && !isOpen) {
+      getFeaturedBeat();
+    }
     getPreviewBeats();
     getLicenses();
     getPreviewSoundKits();
@@ -89,9 +87,11 @@ const Landing: FC = memo(() => {
                 <FeaturedBeat beat={featuredBeat} />
               )}
             </S.FeaturedBeat>
-            <Visualizer audioRef={audioRef?.audioRef} />
           </S.IntroInner>
         </S.Container>
+        <S.Visualizer>
+          <Visualizer />
+        </S.Visualizer>
       </S.Intro>
       <S.Container>
         <S.BeatsList>
