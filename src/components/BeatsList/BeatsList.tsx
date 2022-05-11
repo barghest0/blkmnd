@@ -9,18 +9,32 @@ import ShareButton from '../ShareButton/ShareButton';
 import BuyButton from '../BuyButton/BuyButton';
 import { Beat } from '../../redux/beat/types';
 import useActions from '../../hooks/useActions';
+import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 
 type Props = {
   beats: Beat[];
 };
 
+type BeatRowProps = {
+  isActive?: boolean;
+};
+
 const BeatsList: FC<Props> = ({ beats }) => {
   const { setBeat, openPlayer, togglePlaying } = useActions();
+  const { beat: playerBeat, isOpen } = useTypedSelector(state => state.player);
 
   const onBeatRowClick = (beat: Beat) => {
     setBeat(beat);
-    openPlayer();
-    togglePlaying();
+    if (!isOpen) {
+      openPlayer();
+    }
+    if (playerBeat) {
+      if (beat.id === playerBeat.id) {
+        togglePlaying();
+      }
+    } else {
+      togglePlaying();
+    }
   };
 
   const onActionButtonClick = (event: SyntheticEvent) => {
@@ -35,9 +49,14 @@ const BeatsList: FC<Props> = ({ beats }) => {
     const { image, id, title, time, bpm, tags, price } = beat;
 
     const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
+    const isBeatActive = beat.id === playerBeat?.id;
 
     return (
-      <S.Row key={id} onClick={() => onBeatRowClick(beat)}>
+      <S.Row
+        key={id}
+        onClick={() => onBeatRowClick(beat)}
+        isActive={isBeatActive}
+      >
         <S.Column>
           <S.Thumbnail src={image} width={50} height={50} />
         </S.Column>
@@ -80,4 +99,5 @@ const BeatsList: FC<Props> = ({ beats }) => {
   );
 };
 
+export { BeatRowProps };
 export default BeatsList;

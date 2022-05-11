@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ThemeColors from '../../shared/styles/theme';
+import { BeatRowProps } from './BeatsList';
 
 const BeatsList = styled.div`
   width: 100%;
@@ -9,18 +10,24 @@ const BeatsList = styled.div`
   row-gap: 10px;
 `;
 
-const Row = styled.div`
-  display: grid;
-  grid-template-columns: 0.5fr 5fr 1fr 1fr 3fr 3fr;
-  grid-template-rows: 40px;
-  align-items: center;
-  column-gap: 10px;
-  padding: 10px 0;
-  cursor: pointer;
-  border-bottom: 1px solid #343434;
-  &:nth-child(1) {
-    border-bottom: none;
-  }
+const Row = styled.div<BeatRowProps>`
+  ${({ isActive }) => {
+    const color = isActive ? ThemeColors.secondColor : ThemeColors.white;
+    return css`
+      display: grid;
+      grid-template-columns: 0.5fr 5fr 1fr 1fr 3fr 3fr;
+      grid-template-rows: 40px;
+      align-items: center;
+      color: ${color};
+      column-gap: 10px;
+      padding: 10px 0;
+      cursor: pointer;
+      border-bottom: 1px solid #343434;
+      &:nth-child(1) {
+        border-bottom: none;
+      }
+    `;
+  }}
 `;
 
 const HeadColumn = styled.div`
@@ -31,7 +38,7 @@ const HeadColumn = styled.div`
 `;
 
 const Column = styled.div`
-  color: ${ThemeColors.white};
+  color: inherit;
   font-size: 15px;
   font-weight: 600;
   width: 100%;

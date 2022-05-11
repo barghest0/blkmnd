@@ -44,8 +44,8 @@
         "name": "mucician"
       },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/500x500/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgdf2t.jpg",
-      "track": "track1.mp3",
-      "excerpt": "track1.mp3",
+      "track": "track2.mp3",
+      "excerpt": "track2.mp3",
       "licenses": [
         { "id": 1, "name": "Basic", "price": 33 },
         { "id": 2, "name": "Premium", "price": 55 },
@@ -71,8 +71,8 @@
         "name": "mucician"
       },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/500x500/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgbptq.png",
-      "track": "track2.mp3",
-      "excerpt": "track2.mp3",
+      "track": "track3.mp3",
+      "excerpt": "track3.mp3",
       "licenses": [
         { "id": 1, "name": "Basic", "price": 33 },
         { "id": 2, "name": "Premium", "price": 55 },

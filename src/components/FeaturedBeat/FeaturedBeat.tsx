@@ -11,6 +11,7 @@ import ShareButton from '../ShareButton/ShareButton';
 import { Beat } from '../../redux/beat/types';
 import useActions from '../../hooks/useActions';
 import PlayButton from '../PlayButton/PlayButton';
+import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 
 type Props = {
   beat: Beat;
@@ -21,10 +22,20 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
 
   const { openPlayer, togglePlaying, setBeat } = useActions();
 
+  const { beat: playerBeat, isOpen } = useTypedSelector(state => state.player);
+
   const onThumbnailClick = () => {
     setBeat(beat);
-    openPlayer();
-    togglePlaying();
+    if (!isOpen) {
+      openPlayer();
+    }
+    if (playerBeat) {
+      if (beat.id === playerBeat.id) {
+        togglePlaying();
+      }
+    } else {
+      togglePlaying();
+    }
   };
 
   const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);

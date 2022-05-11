@@ -33,6 +33,7 @@ const playerSlice = createSlice({
       state.volume = action.payload;
     },
   },
+
   extraReducers: {
     [getQueueBeats.fulfilled.type]: (state, action: PayloadAction<Beat[]>) => {
       state.isFetching = false;

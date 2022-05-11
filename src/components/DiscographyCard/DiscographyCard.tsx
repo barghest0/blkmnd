@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { useOutletContext } from 'react-router-dom';
+import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { Beat } from '../../redux/beat/types';
 import { RouterPaths } from '../../shared/router/types';
@@ -17,14 +18,24 @@ const DiscographyCard: FC<Props> = ({ beat }) => {
 
   const { setBeat, openPlayer, togglePlaying } = useActions();
 
+  const { beat: playerBeat, isOpen } = useTypedSelector(state => state.player);
+
   const audioRef = useOutletContext();
 
   const audio = audioRef.audio.current;
 
   const onThumbnailClick = () => {
     setBeat(beat);
-    openPlayer();
-    togglePlaying();
+    if (!isOpen) {
+      openPlayer();
+    }
+    if (playerBeat) {
+      if (beat.id === playerBeat.id) {
+        togglePlaying();
+      }
+    } else {
+      togglePlaying();
+    }
   };
 
   return (

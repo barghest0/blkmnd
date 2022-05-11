@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import ThemeColors from '../../shared/styles/theme';
-import { PlayerProps } from './Player';
+import { PlayerProps, QueueBeatProps } from './Player';
 
 const Player = styled.div<PlayerProps>`
   ${({ isOpen, isQueueListOpen }) => {
@@ -124,9 +124,16 @@ const QueueList = styled.div`
   overflow: auto;
 `;
 
-const QueueBeat = styled.div`
-  height: 50px;
-  width: 100%;
+const QueueBeat = styled.div<QueueBeatProps>`
+  ${({ isActive }) => {
+    const color = isActive ? ThemeColors.secondColor : ThemeColors.white;
+    return css`
+      color: ${color};
+      height: 50px;
+      width: 100%;
+      cursor: pointer;
+    `;
+  }}
 `;
 
 export {
