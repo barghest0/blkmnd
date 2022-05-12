@@ -47,6 +47,13 @@ const Column = styled.div`
   align-items: center;
 `;
 
+const Title = styled.h4``
+
+const Tag = styled.div`
+  width:100%;
+  height:100%
+`
+
 const Thumbnail = styled.img`
   border-radius: 4px;
   display: block;
@@ -69,4 +76,4 @@ const Actions = styled.div`
 
 const Action = styled.div``;
 
-export { BeatsList, Row, HeadColumn, Column, Thumbnail, Actions, Tags, Action };
+export { BeatsList, Row, HeadColumn, Column, Thumbnail, Actions, Tags, Action, Title, Tag };

@@ -6,6 +6,11 @@ import Modal from '../Modal/Modal';
 import Preloader from '../Preloader/Preloader';
 import { ModalsTypes } from '../../redux/modals/types';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import ModalContainer from '../ModalContainer/ModalContainer';
+
+type DownloadModalProps = {
+  background?: string;
+};
 
 const DownloadModal: FC = () => {
   const { isDownloadOpen, beat } = useTypedSelector(state => state.modals);
@@ -14,20 +19,23 @@ const DownloadModal: FC = () => {
 
   return (
     <S.DownloadModal>
-      <Modal isOpen={isDownloadOpen} modalType={ModalsTypes.download}>
-        {isBeatFetching ? (
-          <Preloader />
-        ) : (
-          <>
-            <S.Background src={beat.image} />
-            <S.Content>
-              <S.Title>Download: {beat.title}</S.Title>
-            </S.Content>
-          </>
-        )}
-      </Modal>
+      <ModalContainer isOpen={isDownloadOpen} modalType={ModalsTypes.download}>
+        <S.Modal background={beat?.image}>
+          <Modal isOpen={isDownloadOpen}>
+            {isBeatFetching ? (
+              <Preloader />
+            ) : (
+              <S.Content>
+                <S.Inner>
+                  <S.Title>Download: {beat.title}</S.Title>
+                </S.Inner>
+              </S.Content>
+            )}
+          </Modal>
+        </S.Modal>
+      </ModalContainer>
     </S.DownloadModal>
   );
 };
-
+export { DownloadModalProps };
 export default DownloadModal;

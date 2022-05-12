@@ -48,7 +48,11 @@ const BeatsList: FC<Props> = ({ beats }) => {
   const beatsRows = beats.map(beat => {
     const { image, id, title, time, bpm, tags, price } = beat;
 
-    const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
+    const tagsLinks = tags.map(tag => (
+      <S.Tag key={tag.id}>
+        <TagLink tag={tag} />
+      </S.Tag>
+    ));
     const isBeatActive = beat.id === playerBeat?.id;
 
     return (
@@ -60,13 +64,15 @@ const BeatsList: FC<Props> = ({ beats }) => {
         <S.Column>
           <S.Thumbnail src={image} width={50} height={50} />
         </S.Column>
-        <S.Column onClick={onLinkClick}>
-          <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>
+        <S.Column>
+          <S.Title onClick={onLinkClick}>
+            <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>
+          </S.Title>
         </S.Column>
         <S.Column>{time}</S.Column>
         <S.Column>{bpm}</S.Column>
-        <S.Column onClick={onLinkClick}>
-          <S.Tags>{tagsLinks}</S.Tags>
+        <S.Column>
+          <S.Tags onClick={onLinkClick}>{tagsLinks}</S.Tags>
         </S.Column>
         <S.Column>
           <S.Actions>

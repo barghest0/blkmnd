@@ -1,29 +1,36 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { textOverflow } from '../../shared/styles/mixins';
+import { DownloadModalProps } from './DownloadModal';
 
 const DownloadModal = styled.div``;
+
+const Modal = styled.div<DownloadModalProps>`
+  ${({ background }) => {
+    return css`
+      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('${background}') center no-repeat;
+      background-size: cover;
+      width: 400px;
+      height: 450px;
+    `;
+  }}
+`;
 
 const Title = styled.h2`
   text-align: start;
   font-size: 24px;
   font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
+  ${textOverflow};
 `;
 
-const Background = styled.img`
-  position: absolute;
+const Inner = styled.div`
+  overflow: hidden;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.5;
-  z-index: 0;
 `;
 
 const Content = styled.div`
-  position: relative;
   width: 100%;
-  height: 100%;
-  padding: 20px;
 `;
 
-export { Title, Background, Content, DownloadModal };
+export { Title, Content, DownloadModal, Modal, Inner };

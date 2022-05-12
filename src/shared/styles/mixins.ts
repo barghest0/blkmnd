@@ -35,4 +35,10 @@ const pageTitle = css`
   font-size: 40px;
   text-align: center;
 `;
-export { container, button, pageTitle, page };
+
+const textOverflow = css`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`;
+export { container, button, pageTitle, page, textOverflow };

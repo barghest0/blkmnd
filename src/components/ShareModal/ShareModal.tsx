@@ -7,15 +7,26 @@ import { ModalsTypes } from '../../redux/modals/types';
 
 import Modal from '../Modal/Modal';
 import Preloader from '../Preloader/Preloader';
+import ModalContainer from '../ModalContainer/ModalContainer';
 
 const ShareModal: FC = () => {
   const { isShareOpen, beat } = useTypedSelector(state => state.modals);
 
   return (
     <S.ShareModal>
-      <Modal isOpen={isShareOpen} modalType={ModalsTypes.share}>
-        {!beat ? <Preloader /> : beat.title}
-      </Modal>
+      <ModalContainer isOpen={isShareOpen} modalType={ModalsTypes.share}>
+        <S.Modal>
+          <Modal isOpen={isShareOpen}>
+            {!beat ? (
+              <Preloader />
+            ) : (
+              <S.Content>
+                <S.Title>{beat.title}</S.Title>
+              </S.Content>
+            )}
+          </Modal>
+        </S.Modal>
+      </ModalContainer>
     </S.ShareModal>
   );
 };

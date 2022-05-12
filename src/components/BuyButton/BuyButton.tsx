@@ -9,11 +9,12 @@ type Props = {
   beatId: number;
 };
 
-const BuyButton: FC<Props> = ({ price }) => {
-  const { setModalVisability } = useActions();
+const BuyButton: FC<Props> = ({ price, beatId }) => {
+  const { setModalVisability, getModalBeat } = useActions();
 
   const onBuyButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.buy });
+    getModalBeat(beatId);
   };
 
   return (

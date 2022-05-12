@@ -14,11 +14,16 @@ type Props = {
   beatId: number;
 };
 
-const ShareButton: FC<Props> = ({ hasBackground = true, color = '' }) => {
-  const { setModalVisability } = useActions();
+const ShareButton: FC<Props> = ({
+  hasBackground = true,
+  color = '',
+  beatId,
+}) => {
+  const { setModalVisability, getModalBeat } = useActions();
 
   const onShareButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.share });
+    getModalBeat(beatId);
   };
   return (
     <S.ShareButton onClick={onShareButtonClick}>
