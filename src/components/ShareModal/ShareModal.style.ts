@@ -1,14 +1,11 @@
 import styled from 'styled-components';
 import { textOverflow } from '../../shared/styles/mixins';
+import ThemeColors from '../../shared/styles/theme';
 
 const ShareModal = styled.div``;
 
 const Modal = styled.div`
-  background: linear-gradient(
-    180deg,
-    rgba(34, 126, 129, 1) 0%,
-    rgba(18, 18, 18, 1) 100%
-  );
+  background-color: ${ThemeColors.mainColor};
   width: 400px;
   height: 300px;
 `;

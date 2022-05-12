@@ -1,4 +1,3 @@
-import { NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { StyledLink } from '../../shared/styles/links';
 import ThemeColors from '../../shared/styles/theme';
@@ -11,7 +10,7 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 10px;
+  padding: 0px 15px;
   position: fixed;
   width: 100%;
 `;
@@ -58,6 +57,7 @@ const Auth = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  pa
 `;
 
 const AuthIcon = styled.div`

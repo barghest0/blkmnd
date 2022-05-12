@@ -48,6 +48,9 @@ const Player: FC<Props> = memo(({ audioRef }) => {
       if (beat.id === playerBeat.id) {
         togglePlaying();
       }
+      if (!isPlaying && beat.id !== playerBeat.id) {
+        togglePlaying();
+      }
     } else {
       togglePlaying();
     }

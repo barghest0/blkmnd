@@ -10,15 +10,13 @@ const Container = styled.div`
 `;
 
 const Title = styled.h1`
-  ${pageTitle}
-  margin-bottom:20px
+  ${pageTitle};
 `;
 
 const Biography = styled.section`
   display: grid;
   grid-template-rows: 70px 500px;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 50px;
+  grid-template-columns: 1fr minmax(10px, 150px) 1fr;
   overflow: hidden;
   margin-bottom: 50px;
 `;
@@ -33,7 +31,7 @@ const BiographyText = styled.p`
 `;
 
 const BiographyImage = styled.img`
-  grid-column-start: 2;
+  grid-column-start: 3;
   grid-row: 1/2;
 `;
 
@@ -65,5 +63,5 @@ export {
   Discography,
   Gallery,
   GalleryImage,
-  DiscographyList
+  DiscographyList,
 };
