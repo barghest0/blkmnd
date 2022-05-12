@@ -27,7 +27,7 @@ const Visualizer: FC = memo(() => {
       analyser.getByteFrequencyData(audioData);
 
       for (let i = 0; i < bufferLength; i += 1) {
-        const barHeight = audioData[i] - 80;
+        const barHeight = audioData[i] / 1.5;
         canvasContext.fillStyle = '#fff';
         canvasContext.fillRect(
           x,
@@ -35,6 +35,7 @@ const Visualizer: FC = memo(() => {
           barWidth,
           barHeight,
         );
+
         x += barWidth + 3;
       }
     }
@@ -48,7 +49,7 @@ const Visualizer: FC = memo(() => {
       const analyser = audioContext.createAnalyser();
       source.connect(analyser);
       analyser.connect(audioContext.destination);
-      analyser.fftSize = 512;
+      analyser.fftSize = 256;
 
       const bufferLength = analyser.frequencyBinCount;
 
