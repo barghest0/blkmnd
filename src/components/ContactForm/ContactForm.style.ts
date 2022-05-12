@@ -19,30 +19,33 @@ const MainFields = styled.div`
 const TextField = MUIstyled(MUITextField)({
   width: '100%',
 
+  '& .Mui-focused': {
+    color: `${ThemeColors.secondColor} !important`,
+  },
+
   '& .MuiInputLabel-root': {
     fontWeight: 500,
     fontFamily: 'Poppins',
     textTransform: 'uppercase',
     fontSize: 14,
     color: ThemeColors.white,
-    '& .Mui-focused': {
-      color: ThemeColors.white,
-    },
   },
 
   '& .MuiInput-root': {
     color: ThemeColors.white,
+    '&:hover': {
+      '&::before': {
+        borderBottom: `1px solid ${ThemeColors.white} !important`,
+      },
+    },
     '&::before': {
       color: ThemeColors.white,
       borderColor: ThemeColors.white,
     },
 
     '&::after': {
-      color: ThemeColors.white,
+      borderBottom: `2px solid ${ThemeColors.secondColor} !important`,
     },
-  },
-  '& .MuiInput-input': {
-    '&:focus': {},
   },
 });
 

@@ -16,13 +16,16 @@ const ContactForm = () => {
     subject: '',
     message: '',
   };
+
   const onFormSubmit = (values: FormValues) => {
     console.log(values);
   };
+
   const formik = useFormik({
     initialValues: initialFormValues,
     onSubmit: onFormSubmit,
   });
+
   return (
     <S.ContactForm onSubmit={formik.handleSubmit}>
       <S.MainFields>
@@ -30,12 +33,14 @@ const ContactForm = () => {
           label="Name"
           type="text"
           variant="standard"
+          name="name"
           onChange={formik.handleChange}
         />
         <S.TextField
           label="Email"
           type="email"
           variant="standard"
+          name="email"
           onChange={formik.handleChange}
         />
       </S.MainFields>
@@ -43,12 +48,14 @@ const ContactForm = () => {
         label="Subject"
         type="text"
         variant="standard"
+        name="subject"
         onChange={formik.handleChange}
       />
       <S.TextField
         label="Message"
         type="text"
         variant="standard"
+        name="message"
         onChange={formik.handleChange}
       />
       <S.SubmitForm>
