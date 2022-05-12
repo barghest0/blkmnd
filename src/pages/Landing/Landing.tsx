@@ -1,4 +1,4 @@
-import { FC, memo, RefObject, useEffect } from 'react';
+import { FC, memo, useEffect } from 'react';
 import * as S from './Landing.style';
 import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
 import SearchField from '../../components/SearchField/SearchField';
@@ -10,11 +10,11 @@ import { RouterPaths } from '../../shared/router/types';
 import useActions from '../../hooks/useActions';
 import Visualizer from '../../components/Visualizer/Visualizer';
 import ContactForm from '../../components/ContactForm/ContactForm';
-import { useOutletContext } from 'react-router-dom';
 import CollabCard from '../../components/CollabCard/CollabCard';
 import LicenseCard from '../../components/LicenseCard/LicenseCard';
 import SoundKitCard from '../../components/SoundKitCard/SoundKitCard';
 import DiscographyCard from '../../components/DiscographyCard/DiscographyCard';
+import Button from '../../components/Button/Button';
 
 const Landing: FC = memo(() => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
@@ -78,7 +78,17 @@ const Landing: FC = memo(() => {
           <S.IntroInner>
             <S.IntroTitle>Someone beatstore</S.IntroTitle>
             <S.Search>
-              <SearchField hasButton buttonText={'search'} />
+              <SearchField initialValues={{ query: '' }}>
+                <S.SearchFieldContainer>
+                  <S.SearchField
+                    name="query"
+                    placeholder={'What type of track are you looking for?'}
+                  />
+                  <S.SearchSubmit>
+                    <Button type={'submit'}>Search</Button>
+                  </S.SearchSubmit>
+                </S.SearchFieldContainer>
+              </SearchField>
             </S.Search>
             <S.FeaturedBeat>
               {isFeaturedBeatFetching ? (

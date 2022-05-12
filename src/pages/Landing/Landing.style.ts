@@ -39,6 +39,33 @@ const Search = styled.div`
   height: 70px;
 `;
 
+const SearchFieldContainer = styled.div`
+  background-color: ${ThemeColors.white};
+  width: 100%;
+  height: 70px;
+  padding: 10px;
+  padding-left: 15px;
+  border-radius: 4px;
+  display: flex;
+`;
+
+const SearchField = styled.input`
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 100%;
+  font-size: 16px;
+  ::placeholder {
+    font-size: 18px;
+  }
+`;
+
+const SearchSubmit = styled.div`
+  width: 15%;
+  height: 100%;
+`;
+
 const FeaturedBeat = styled.div``;
 
 const BeatsList = styled.section`
@@ -133,6 +160,7 @@ export {
   Intro,
   IntroTitle,
   Search,
+  SearchField,
   IntroInner,
   FeaturedBeat,
   Container,
@@ -152,4 +180,6 @@ export {
   DiscographyList,
   CollabsList,
   Visualizer,
+  SearchFieldContainer,
+  SearchSubmit,
 };

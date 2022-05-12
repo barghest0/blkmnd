@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { SearchInputProps } from './HeaderSearch';
 import ThemeColors from '../../shared/styles/theme';
 
-const HeaderSearch = styled.form`
+const HeaderSearch = styled.div`
   display: flex;
 `;
 
@@ -14,8 +14,11 @@ const SearchIcon = styled.div`
   margin-right: 5px;
 `;
 
-const SearchField = styled.div`
+const SearchFieldContainer = styled.div`
+  height: 100%;
   display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
 `;
 
@@ -62,4 +65,10 @@ const CloseButton = styled.div<SearchInputProps>`
   }}
 `;
 
-export { HeaderSearch, SearchIcon, SearchField, SearchInput, CloseButton };
+export {
+  HeaderSearch,
+  SearchIcon,
+  SearchFieldContainer,
+  SearchInput,
+  CloseButton,
+};

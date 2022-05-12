@@ -1,10 +1,9 @@
-import { FC, SyntheticEvent } from 'react';
+import { FC } from 'react';
 import * as S from './HeaderSearch.style';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
-import { useNavigate } from 'react-router-dom';
-import { RouterPaths } from '../../shared/router/types';
-import { useFormik } from 'formik';
+import SearchField from '../SearchField/SearchField';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   isOpen: boolean;
@@ -15,51 +14,34 @@ type SearchInputProps = {
   isOpen: boolean;
 };
 
-type Values = {
-  query: string;
-};
-
 const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
   const onSearchIconClick = () => {
     setIsOpen(!isOpen);
   };
 
+  const [query] = useSearchParams();
+
   const onCloseButtonClick = () => {
     setIsOpen(false);
   };
 
-  const navigate = useNavigate();
-  const initialSearchValues: Values = {
-    query: '',
-  };
-
-  const onSearchSubmit = ({ query }: Values) => {
-    if (query) {
-      navigate(`${RouterPaths.beats}/?query=${query}`);
-    }
-  };
-
-  const formik = useFormik({
-    initialValues: initialSearchValues,
-    onSubmit: onSearchSubmit,
-  });
-
   return (
-    <S.HeaderSearch onSubmit={formik.handleSubmit}>
+    <S.HeaderSearch>
       <S.SearchIcon onClick={onSearchIconClick}>
         <SearchIcon />
       </S.SearchIcon>
-      <S.SearchField>
-        <S.SearchInput
-          onChange={formik.handleChange}
-          isOpen={isOpen}
-          name="query"
-          placeholder={'Search beats'}
-        />
-        <S.CloseButton isOpen={isOpen} onClick={onCloseButtonClick}>
-          <CloseIcon />
-        </S.CloseButton>
-      </S.SearchField>
+      <SearchField initialValues={{ query: query.get('q') }}>
+        <S.SearchFieldContainer>
+          <S.SearchInput
+            isOpen={isOpen}
+            name="query"
+            placeholder={'Search beats'}
+          />
+          <S.CloseButton isOpen={isOpen} onClick={onCloseButtonClick}>
+            <CloseIcon />
+          </S.CloseButton>
+        </S.SearchFieldContainer>
+      </SearchField>
     </S.HeaderSearch>
   );
 };

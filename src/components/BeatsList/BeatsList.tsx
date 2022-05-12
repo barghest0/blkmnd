@@ -21,7 +21,11 @@ type BeatRowProps = {
 
 const BeatsList: FC<Props> = ({ beats }) => {
   const { setBeat, openPlayer, togglePlaying } = useActions();
-  const { beat: playerBeat, isOpen } = useTypedSelector(state => state.player);
+  const {
+    beat: playerBeat,
+    isOpen,
+    isPlaying,
+  } = useTypedSelector(state => state.player);
 
   const onBeatRowClick = (beat: Beat) => {
     setBeat(beat);
@@ -30,6 +34,9 @@ const BeatsList: FC<Props> = ({ beats }) => {
     }
     if (playerBeat) {
       if (beat.id === playerBeat.id) {
+        togglePlaying();
+      }
+      if (!isPlaying && beat.id !== playerBeat.id) {
         togglePlaying();
       }
     } else {

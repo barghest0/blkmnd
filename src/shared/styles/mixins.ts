@@ -34,6 +34,7 @@ const button = css`
 const pageTitle = css`
   font-size: 40px;
   text-align: center;
+  margin-bottom: 20px;
 `;
 
 const textOverflow = css`
