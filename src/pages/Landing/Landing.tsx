@@ -32,8 +32,6 @@ const Landing: FC = memo(() => {
     state => state.collabs,
   );
 
-  const { isPlaying, isOpen } = useTypedSelector(state => state.player);
-
   const isFeaturedBeatFetching = !featuredBeat;
 
   const {
@@ -61,7 +59,7 @@ const Landing: FC = memo(() => {
   ));
 
   useEffect(() => {
-    if (!isPlaying && !isOpen) {
+    if (!featuredBeat) {
       getFeaturedBeat();
     }
     getPreviewBeats();

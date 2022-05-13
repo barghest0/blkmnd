@@ -16,6 +16,7 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${ThemeColors.mainColor};
     color:${ThemeColors.white};
     overflow-x:hidden;
+    font-size:14px;
   }
 `;
 
