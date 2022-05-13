@@ -10,12 +10,13 @@ import * as S from './Beat.style';
 const Beat = () => {
   const params = useParams();
 
-  const { beat } = useTypedSelector(state => state.beat);
+  const { beat } = useTypedSelector(state => state.beats);
   const {
     isOpen,
     beat: playerBeat,
     isPlaying,
   } = useTypedSelector(state => state.player);
+
   const { getBeat, setBeat, openPlayer, togglePlaying } = useActions();
 
   const onBeatClick = () => {

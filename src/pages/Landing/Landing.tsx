@@ -21,7 +21,7 @@ const Landing: FC = memo(() => {
   const { beats: discographyBeats, isFetching: isDiscographyFetching } =
     useTypedSelector(state => state.discography);
   const { getDiscographyBeats } = useActions();
-  const { featuredBeat } = useTypedSelector(state => state.beat);
+  const { beat: featuredBeat } = useTypedSelector(state => state.beats);
   const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
     state => state.licenses,
   );
