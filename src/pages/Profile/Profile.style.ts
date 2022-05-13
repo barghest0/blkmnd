@@ -55,45 +55,7 @@ const Submit = styled.div`
   grid-column: 1/3;
 `;
 
-const TextInput = MUIstyled(TextField)({
-  height: '100%',
-  '& .Mui-focused': {
-    color: `${ThemeColors.secondColor} !important`,
-  },
-
-  '& .MuiInputLabel-root': {
-    color: ThemeColors.white,
-  },
-
-  '& .MuiOutlinedInput-root': {
-    backgroundColor: '#1C1C1C',
-    height: '100%',
-
-    '&:hover': {
-      '& .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#363636',
-      },
-    },
-
-    '&.Mui-focused': {
-      color: `${ThemeColors.secondColor} !important`,
-
-      '& .MuiOutlinedInput-notchedOutline': {
-        borderColor: ThemeColors.secondColor,
-        borderWidth: 1,
-      },
-    },
-  },
-
-  '& .MuiOutlinedInput-input': {
-    color: ThemeColors.white,
-  },
-
-  '& .MuiOutlinedInput-notchedOutline': {
-    transition: 'all 0.2s linear',
-    borderColor: '#363636',
-  },
-});
+const TextInput = MUIstyled(TextField)({});
 
 export {
   Profile,

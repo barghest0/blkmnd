@@ -1,0 +1,138 @@
+import { createTheme } from '@mui/material/styles';
+import ThemeColors from '../styles/theme';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: ThemeColors.secondColor,
+    },
+    secondary: {
+      main: ThemeColors.secondColor,
+    },
+  },
+
+  components: {
+    MuiFormControl: {
+      styleOverrides: {
+        root: {
+          height: '100%',
+        },
+      },
+    },
+
+    MuiTextField: {
+      styleOverrides: {
+        root: {
+          height: '100%',
+          width: '100%',
+        },
+      },
+
+      variants: [
+        {
+          props: { variant: 'outlined' },
+          style: {
+            backgroundColor: '#1C1C1C',
+            borderRadius: 5,
+          },
+        },
+        {
+          props: { variant: 'standard' },
+          style: {
+            backgroundColor: 'transparent',
+          },
+        },
+      ],
+    },
+
+    MuiInput: {
+      styleOverrides: {
+        root: {
+          color: ThemeColors.white,
+          transition: 'all 0.2s linear',
+
+          '&:hover': {
+            '&::before': {
+              borderBottom: `1px solid ${ThemeColors.white} !important`,
+            },
+          },
+          '&::before': {
+            color: ThemeColors.white,
+            borderColor: ThemeColors.white,
+          },
+          '&::after': {
+            borderBottom: `1px solid ${ThemeColors.secondColor}`,
+          },
+        },
+      },
+    },
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        root: {
+          color: ThemeColors.white,
+          height: '100%',
+          backgroundColor: '#1C1C1C',
+          '&:hover .MuiOutlinedInput-notchedOutline': {
+            borderColor: ThemeColors.secondColor,
+          },
+        },
+        notchedOutline: {
+          transition: 'all 0.2s linear',
+          borderColor: '#363636',
+        },
+      },
+    },
+
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: ThemeColors.white,
+        },
+      },
+    },
+
+    MuiSvgIcon: {
+      styleOverrides: {
+        root: {
+          '&.MuiSelect-icon': {
+            fill: ThemeColors.white,
+          },
+        },
+      },
+    },
+
+    MuiList: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#1C1C1C',
+        },
+      },
+    },
+
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#1C1C1C',
+        },
+      },
+    },
+
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: ThemeColors.white,
+          '&.Mui-selected': {
+            color: ThemeColors.secondColor,
+            backgroundColor: 'transparent',
+            '&:hover': {
+              backgroundColor: 'transparent',
+            },
+          },
+        },
+      },
+    },
+  },
+});
+
+export default theme;

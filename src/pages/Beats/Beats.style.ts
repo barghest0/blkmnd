@@ -18,6 +18,7 @@ const Title = styled.h1`
 const Filters = styled.div`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 50px;
   align-items: center;
   column-gap: 10px;
 `;

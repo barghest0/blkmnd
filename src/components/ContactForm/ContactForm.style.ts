@@ -16,38 +16,7 @@ const MainFields = styled.div`
   column-gap: 20px;
 `;
 
-const TextField = MUIstyled(MUITextField)({
-  width: '100%',
-
-  '& .Mui-focused': {
-    color: `${ThemeColors.secondColor} !important`,
-  },
-
-  '& .MuiInputLabel-root': {
-    fontWeight: 500,
-    fontFamily: 'Poppins',
-    textTransform: 'uppercase',
-    fontSize: 14,
-    color: ThemeColors.white,
-  },
-
-  '& .MuiInput-root': {
-    color: ThemeColors.white,
-    '&:hover': {
-      '&::before': {
-        borderBottom: `1px solid ${ThemeColors.white} !important`,
-      },
-    },
-    '&::before': {
-      color: ThemeColors.white,
-      borderColor: ThemeColors.white,
-    },
-
-    '&::after': {
-      borderBottom: `2px solid ${ThemeColors.secondColor} !important`,
-    },
-  },
-});
+const TextField = MUIstyled(MUITextField)({});
 
 const SubmitForm = styled.div`
   width: 160px;
