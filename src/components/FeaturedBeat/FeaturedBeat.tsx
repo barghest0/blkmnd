@@ -22,15 +22,23 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
 
   const { openPlayer, togglePlaying, setBeat } = useActions();
 
-  const { beat: playerBeat, isOpen } = useTypedSelector(state => state.player);
+  const {
+    beat: playerBeat,
+    isOpen,
+    isPlaying,
+  } = useTypedSelector(state => state.player);
 
   const onThumbnailClick = () => {
+    setBeat(beat);
     setBeat(beat);
     if (!isOpen) {
       openPlayer();
     }
     if (playerBeat) {
       if (beat.id === playerBeat.id) {
+        togglePlaying();
+      }
+      if (!isPlaying && beat.id !== playerBeat.id) {
         togglePlaying();
       }
     } else {

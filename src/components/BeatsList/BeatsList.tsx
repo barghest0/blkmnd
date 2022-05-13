@@ -7,7 +7,7 @@ import TagLink from '../TagLink/TagLink';
 import DownloadButton from '../DownloadButton/DownloadButton';
 import ShareButton from '../ShareButton/ShareButton';
 import BuyButton from '../BuyButton/BuyButton';
-import { Beat } from '../../redux/beat/types';
+import { Beat } from '../../redux/beats/types';
 import useActions from '../../hooks/useActions';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 

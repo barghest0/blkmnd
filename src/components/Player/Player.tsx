@@ -6,7 +6,7 @@ import SkipNextIcon from '@mui/icons-material/SkipNext';
 
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
-import { Beat } from '../../redux/beat/types';
+import { Beat } from '../../redux/beats/types';
 import { RouterPaths } from '../../shared/router/types';
 import { StyledLink } from '../../shared/styles/links';
 import BuyButton from '../BuyButton/BuyButton';
@@ -16,6 +16,7 @@ import ShareButton from '../ShareButton/ShareButton';
 import * as S from './Player.style';
 import DurationSlider from '../DurationSlider/DurationSlider';
 import VolumeSlider from '../VolumeSlider/VolumeSlider';
+import { FIRST_BEAT } from './constants';
 
 type PlayerProps = {
   isOpen: boolean;
@@ -33,17 +34,24 @@ type Props = {
 const Player: FC<Props> = memo(({ audioRef }) => {
   const { isOpen, beat: playerBeat } = useTypedSelector(state => state.player);
 
-  const { togglePlaying, getQueueBeats, setBeat } = useActions();
+  const { togglePlaying, getQueueBeats, setBeat, openPlayer } = useActions();
 
-  const { queue, isFetching } = useTypedSelector(state => state.player);
+  const { queue, isFetching, isPlaying } = useTypedSelector(
+    state => state.player,
+  );
 
   const [isQueueListOpen, setIsQueueListOpen] = useState(false);
   const [queueBeats, setQueueBeats] = useState<Beat[]>([]);
 
   const audio = audioRef.current;
 
+  const currentBeatIndex = queue.findIndex(beat => beat.id === playerBeat?.id);
+
   const onQueueBeatClick = (beat: Beat) => {
     setBeat(beat);
+    if (!isOpen) {
+      openPlayer();
+    }
     if (playerBeat) {
       if (beat.id === playerBeat.id) {
         togglePlaying();
@@ -77,11 +85,23 @@ const Player: FC<Props> = memo(({ audioRef }) => {
   }, []);
 
   const onNextButtonClick = () => {
-    console.log('next beat');
+    const nextBeatIndex = currentBeatIndex + 1;
+    const lastQueueBeatIndex = queue.length - 1;
+    const isQueueEnd = currentBeatIndex === lastQueueBeatIndex;
+    if (isQueueEnd) {
+      setBeat(queue[FIRST_BEAT]);
+    } else {
+      setBeat(queue[nextBeatIndex]);
+    }
   };
 
   const onPreviousButtonClick = () => {
-    console.log('previous beat');
+    const previousBeatIndex = currentBeatIndex - 1;
+    const isQueueStart = currentBeatIndex === FIRST_BEAT;
+
+    if (!isQueueStart) {
+      setBeat(queue[previousBeatIndex]);
+    }
   };
 
   const onQueueButtonClick = () => {
