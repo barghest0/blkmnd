@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { getAllSoundKits, getPreviewSoundKits } from './actions';
+import { getAllSoundKits, getPreviewSoundKits, getSoundKit } from './actions';
 import { SOUND_KITS_INITIAL_STATE, SOUND_KITS_SLICE_NAME } from './constants';
 import { SoundKit } from './types';
 
@@ -44,6 +44,15 @@ const soundKitsSlice = createSlice({
 
     [getAllSoundKits.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
+      state.error = action.payload;
+    },
+
+    [getSoundKit.fulfilled.type]: (state, action: PayloadAction<SoundKit>) => {
+      state.soundKit = action.payload;
+      state.error = '';
+    },
+
+    [getSoundKit.rejected.type]: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
     },
   },

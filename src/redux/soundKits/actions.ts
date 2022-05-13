@@ -2,10 +2,12 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
   fetchAllSoundKits,
   fetchPreviewSoundKits,
+  fetchSoundKit,
 } from '../../shared/api/soundKits';
 import {
   GET_ALL_SOUND_KITS_NAME,
   GET_PREVIEW_SOUND_KITS_NAME,
+  GET_SOUND_KIT_NAME,
 } from './constants';
 
 const getPreviewSoundKits = createAsyncThunk(
@@ -32,4 +34,15 @@ const getAllSoundKits = createAsyncThunk(
   },
 );
 
-export { getPreviewSoundKits, getAllSoundKits };
+const getSoundKit = createAsyncThunk(
+  GET_SOUND_KIT_NAME,
+  async (id: number, thunkAPI) => {
+    try {
+      const response = await fetchSoundKit(id);
+      return response.data;
+    } catch (e) {
+      thunkAPI.rejectWithValue(e);
+    }
+  },
+);
+export { getPreviewSoundKits, getAllSoundKits, getSoundKit };

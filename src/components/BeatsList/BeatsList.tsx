@@ -15,6 +15,10 @@ type Props = {
   beats: Beat[];
 };
 
+type BeatColumnProps = {
+  centered: boolean;
+};
+
 type BeatRowProps = {
   isActive?: boolean;
 };
@@ -68,7 +72,7 @@ const BeatsList: FC<Props> = ({ beats }) => {
         onClick={() => onBeatRowClick(beat)}
         isActive={isBeatActive}
       >
-        <S.Column>
+        <S.Column centered>
           <S.Thumbnail src={image} width={50} height={50} />
         </S.Column>
         <S.Column>
@@ -112,5 +116,5 @@ const BeatsList: FC<Props> = ({ beats }) => {
   );
 };
 
-export { BeatRowProps };
+export { BeatRowProps, BeatColumnProps };
 export default BeatsList;

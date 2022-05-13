@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import ThemeColors from '../../shared/styles/theme';
-import { BeatRowProps } from './BeatsList';
+import { BeatColumnProps, BeatRowProps } from './BeatsList';
 
 const BeatsList = styled.div`
   width: 100%;
@@ -15,7 +15,7 @@ const Row = styled.div<BeatRowProps>`
     const color = isActive ? ThemeColors.secondColor : ThemeColors.white;
     return css`
       display: grid;
-      grid-template-columns: 0.5fr 5fr 1fr 1fr 3fr 3fr;
+      grid-template-columns: 1fr 5fr 1fr 1fr 3fr 3fr;
       grid-template-rows: 40px;
       align-items: center;
       color: ${color};
@@ -37,22 +37,29 @@ const HeadColumn = styled.div`
   font-size: 11px;
 `;
 
-const Column = styled.div`
-  color: inherit;
-  font-size: 15px;
-  font-weight: 600;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
+const Column = styled.div<BeatColumnProps>`
+  ${({ centered }) => {
+    const justifyContent = centered ? 'center' : 'flex-start';
+
+    return css`
+      color: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: ${justifyContent};
+    `;
+  }}
 `;
 
-const Title = styled.h4``
+const Title = styled.h4``;
 
 const Tag = styled.div`
-  width:100%;
-  height:100%
-`
+  width: 100%;
+  height: 100%;
+`;
 
 const Thumbnail = styled.img`
   border-radius: 4px;
@@ -76,4 +83,15 @@ const Actions = styled.div`
 
 const Action = styled.div``;
 
-export { BeatsList, Row, HeadColumn, Column, Thumbnail, Actions, Tags, Action, Title, Tag };
+export {
+  BeatsList,
+  Row,
+  HeadColumn,
+  Column,
+  Thumbnail,
+  Actions,
+  Tags,
+  Action,
+  Title,
+  Tag,
+};

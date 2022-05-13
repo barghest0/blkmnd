@@ -15,6 +15,8 @@ const ThumbnailContainer = styled.div`
 
 const PlayButton = styled.div`
   position: absolute;
+  width: 50px;
+  height: 50px;
 `;
 
 const Thumbnail = styled.img`
