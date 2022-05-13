@@ -17,9 +17,11 @@ const config = {
     filename: 'index.js',
     path: PATHS.dist,
     clean: true,
+    publicPath: '/',
   },
 
   devtool: 'source-map',
+
   externals: {
     path: PATHS,
   },

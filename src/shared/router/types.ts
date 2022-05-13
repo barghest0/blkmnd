@@ -12,7 +12,7 @@ enum RouterNames {
   about = '/about',
   membership = '/membership',
   offers = '/offers',
-  purchases = '/purchases'
+  purchases = '/purchases',
 }
 
 enum RouterPaths {
@@ -25,7 +25,7 @@ enum RouterPaths {
   about = '/about',
   membership = '/membership',
   offers = '/offers',
-  purchases = '/purchases'
+  purchases = '/purchases',
 }
 
 export { RouterNames, RouterPaths };

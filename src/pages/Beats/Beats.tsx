@@ -30,7 +30,9 @@ const Beats = () => {
   }, []);
 
   useEffect(() => {
-    getFilteredBeats({ query: filterQuery });
+    if (filterQuery) {
+      getFilteredBeats({ query: filterQuery });
+    }
   }, [filters]);
 
   const initialFilterValues: FilterValues = {
@@ -122,7 +124,7 @@ const Beats = () => {
               </S.FilterMenu>
             </FormControl>
           </S.Filters>
-          <SearchField initialValues={{ query: filterQuery! }}>
+          <SearchField initialValues={{ query: filterQuery ?? '' }}>
             <S.SearchField
               name="query"
               placeholder="What type of track are you looking for?"

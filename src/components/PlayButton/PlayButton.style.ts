@@ -5,27 +5,28 @@ import ThemeColors from '../../shared/styles/theme';
 
 const PlayButton = styled.div`
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 100%;
+  height: 100%;
   background-color: ${ThemeColors.secondColor};
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
+
 const PlayIcon = styled(PlayArrowIcon)`
   &.override {
     fill: ${ThemeColors.black};
-    width: 30px;
-    height: 30px;
+    width: 60%;
+    height: 60%;
   }
 `;
 
 const PauseIcon = styled(PauseSharpIcon)`
   &.override {
     fill: ${ThemeColors.black};
-    width: 30px;
-    height: 30px;
+    width: 60%;
+    height: 60%;
   }
 `;
 
