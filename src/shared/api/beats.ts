@@ -1,6 +1,7 @@
 import instance from './instanse';
 
 import { Beat } from '../../redux/beat/types';
+import { FiltersState } from '../../redux/beats/types';
 
 const fetchFeaturedBeat = () => instance.get<Beat[]>(`beats?featured=true`);
 
@@ -12,10 +13,16 @@ const fetchBeat = (id: number) => instance.get<Beat>(`beats/${id}`);
 
 const fetchAllBeats = () => instance.get<Beat[]>('beats/');
 
+const fetchFilteredBeats = (filters: Partial<FiltersState>) => {
+  const { query } = filters;
+  return instance.get<Beat[]>(`beats?title_like=${query}`);
+};
+
 export {
   fetchFeaturedBeat,
   fetchPreviewBeats,
   fetchBeat,
   fetchAllBeats,
   fetchDiscographyBeats,
+  fetchFilteredBeats,
 };

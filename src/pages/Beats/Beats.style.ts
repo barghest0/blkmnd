@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { MenuItem, Select, styled as MUIstyled } from '@mui/material';
 import { container, page, pageTitle } from '../../shared/styles/mixins';
-import ThemeColors from '../../shared/styles/theme';
 
 const Beats = styled.div`
   ${page}
@@ -9,6 +8,11 @@ const Beats = styled.div`
 
 const Container = styled.div`
   ${container}
+`;
+
+const SearchContainer = styled.div`
+  ${container};
+  max-width: 1000px;
 `;
 
 const Title = styled.h1`
@@ -21,37 +25,37 @@ const Filters = styled.div`
   grid-template-rows: 50px;
   align-items: center;
   column-gap: 10px;
+  margin-bottom: 20px;
 `;
 
-const FilterMenu = MUIstyled(Select)({
-  height: '100%',
-
-  '& .MuiSelect-root': {
-    height: '100%',
-    backgroundColor: '#1C1C1C',
-    color: ThemeColors.white,
-
-    '&:hover': {
-      '& .MuiOutlinedInput-notchedOutline': {
-        borderColor: '#363636 !important',
-      },
-    },
-
-    '&.Mui-focused': {
-      color: `${ThemeColors.secondColor} !important`,
-
-      '& .MuiOutlinedInput-notchedOutline': {
-        borderColor: ThemeColors.secondColor,
-        borderWidth: 1,
-      },
-    },
-  },
-
-  '& .MuiOutlinedInput-notchedOutline': {
-    borderColor: '#363636',
-  },
-});
+const FilterMenu = MUIstyled(Select)({});
 
 const Option = MUIstyled(MenuItem)({});
 
-export { Beats, Container, Title, Filters, FilterMenu, Option };
+const SearchField = styled.input`
+  width: 100%;
+  height: 50px;
+  outline: none;
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: inherit;
+`;
+
+const BeatsList = styled.div`
+  margin-top: 10px;
+`;
+
+export {
+  Beats,
+  Container,
+  Title,
+  Filters,
+  FilterMenu,
+  Option,
+  SearchField,
+  BeatsList,
+  SearchContainer,
+};

@@ -6,4 +6,13 @@ type BeatsState = {
   error: string;
 };
 
-export { BeatsState };
+type FiltersState = {
+  query: string;
+  genre: string;
+  type: string;
+  bpm: string;
+  mood: string;
+  sort: string;
+};
+
+export { BeatsState, FiltersState };

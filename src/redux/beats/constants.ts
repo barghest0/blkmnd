@@ -8,6 +8,8 @@ const GET_PREVIEW_BEATS_NAME = 'beats/preview';
 
 const GET_ALL_BEATS_NAME = 'beats/all';
 
+const GET_FILTERED_BEATS_NAME = 'beats/filtered';
+
 const BEATS_INITIAL_STATE: BeatsState = {
   beats: [],
   isFetching: false,
@@ -20,4 +22,5 @@ export {
   GET_FEATURED_BEAT_NAME,
   GET_PREVIEW_BEATS_NAME,
   GET_ALL_BEATS_NAME,
+  GET_FILTERED_BEATS_NAME,
 };

@@ -1,6 +1,15 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchAllBeats, fetchPreviewBeats } from '../../shared/api/beats';
-import { GET_ALL_BEATS_NAME, GET_PREVIEW_BEATS_NAME } from './constants';
+import {
+  fetchAllBeats,
+  fetchFilteredBeats,
+  fetchPreviewBeats,
+} from '../../shared/api/beats';
+import {
+  GET_ALL_BEATS_NAME,
+  GET_FILTERED_BEATS_NAME,
+  GET_PREVIEW_BEATS_NAME,
+} from './constants';
+import { FiltersState } from './types';
 
 const getPreviewBeats = createAsyncThunk(
   GET_PREVIEW_BEATS_NAME,
@@ -26,4 +35,16 @@ const getAllBeats = createAsyncThunk(
   },
 );
 
-export { getPreviewBeats, getAllBeats };
+const getFilteredBeats = createAsyncThunk(
+  GET_FILTERED_BEATS_NAME,
+  async (filters: Partial<FiltersState>, thunkAPI) => {
+    try {
+      const response = await fetchFilteredBeats(filters);
+      return response.data;
+    } catch (e) {
+      thunkAPI.rejectWithValue(e);
+    }
+  },
+);
+
+export { getPreviewBeats, getAllBeats, getFilteredBeats };
