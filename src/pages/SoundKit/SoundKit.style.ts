@@ -21,7 +21,7 @@ const Title = styled.h1`
 `;
 
 const Subtitle = styled.h2`
-  font-size: 16px;
+  font-size: 1rem;
 `;
 
 const Thumbnail = styled.img`

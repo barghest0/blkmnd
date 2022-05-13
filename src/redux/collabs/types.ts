@@ -8,6 +8,7 @@ type Collab = {
 
 type CollabsState = {
   collabs: Collab[];
+  collab: Collab;
   isFetching: boolean;
   error: string;
 };
