@@ -17,8 +17,8 @@
       },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
       "track": "https://main.v2.beatstars.com/stream?id=5957562&return=audio&timestamp=1652543961&cf=true",
-      "featured": true,
       "excerpt": "https://main.v2.beatstars.com/stream?id=5957562&return=audio&timestamp=1652543961&cf=true",
+      "featured": true,
       "licenses": [
         {
           "id": 1,
@@ -420,5 +420,123 @@
   "memberships": [
     { "id": 1, "title": "beat downloads", "price": 25, "details": "details" },
     { "id": 2, "title": "Vip plan", "price": 30, "details": "details" }
+  ],
+
+  "cart": [
+    {
+      "product": {
+        "id": 1,
+        "title": "Future Mask off type beat",
+        "price": 33,
+        "tags": [
+          { "id": 1, "name": "future" },
+          { "id": 2, "name": "mask off" }
+        ],
+        "bpm": 155,
+        "date": "01.02.2021",
+        "time": "02:12",
+        "musician": {
+          "id": 1,
+          "name": "musician"
+        },
+        "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
+        "track": "https://main.v2.beatstars.com/stream?id=5957562&return=audio&timestamp=1652543961&cf=true",
+        "excerpt": "https://main.v2.beatstars.com/stream?id=5957562&return=audio&timestamp=1652543961&cf=true",
+        "featured": true,
+        "licenses": [
+          {
+            "id": 1,
+            "name": "Basic",
+            "price": 33,
+            "fileTypes": [{ "id": 1, "name": "MP3" }],
+            "contractValues": {
+              "copies": 2000,
+              "radioStations": 2,
+              "musicVideo": 1,
+              "streams": 500000
+            }
+          },
+          {
+            "id": 2,
+            "name": "Premium",
+            "price": 55,
+            "fileTypes": [
+              { "id": 1, "name": "MP3" },
+              { "id": 2, "name": "WAV" }
+            ],
+            "contractValues": {
+              "copies": 3000,
+              "radioStations": 2,
+              "musicVideo": 1,
+              "streams": 500000
+            }
+          },
+          {
+            "id": 3,
+            "name": "Premium plus",
+            "price": 111,
+            "fileTypes": [
+              { "id": 1, "name": "MP3" },
+              { "id": 2, "name": "WAV" },
+              { "id": 3, "name": "TRACK STEMS" }
+            ],
+            "contractValues": {
+              "copies": 10000,
+              "radioStations": 2,
+              "musicVideo": 1,
+              "streams": 500000
+            }
+          },
+          {
+            "id": 4,
+            "name": "Unlimited",
+            "price": 333,
+            "fileTypes": [
+              { "id": 1, "name": "MP3" },
+              { "id": 2, "name": "WAV" },
+              { "id": 3, "name": "TRACK STEMS" }
+            ],
+            "contractValues": {
+              "copies": "Unlimited",
+              "radioStations": 2,
+              "musicVideo": 1,
+              "streams": 500000
+            }
+          },
+          {
+            "id": 5,
+            "name": "Exclusive",
+            "price": 1111,
+            "fileTypes": [
+              { "id": 1, "name": "MP3" },
+              { "id": 2, "name": "WAV" },
+              { "id": 3, "name": "TRACK STEMS" }
+            ],
+            "contractValues": {
+              "copies": "Unlimited",
+              "radioStations": "Unlimited",
+              "musicVideo": "Unlimited",
+              "streams": "Unlimited"
+            }
+          }
+        ],
+        "license": {
+          "id": 4,
+          "name": "Unlimited",
+          "price": 333,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": "Unlimited",
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        }
+      }
+    }
   ]
 }
