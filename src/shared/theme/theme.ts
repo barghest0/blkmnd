@@ -132,6 +132,37 @@ const theme = createTheme({
         },
       },
     },
+
+    MuiSlider: {
+      styleOverrides: {
+        colorPrimary: {
+          width: '100%',
+          height: 3,
+          padding: 0,
+          display: 'block',
+          color: ThemeColors.secondColor,
+          '&:hover .MuiSlider-thumb': {
+            width: 15,
+            height: 15,
+          },
+        },
+
+        rail: {
+          backgroundColor: 'transparent',
+          height: 3,
+        },
+
+        thumb: {
+          borderRadius: '50%',
+          height: 0,
+          width: 0,
+          transition: 'all 0.2s linear',
+          '&:hover, &.Mui-focusVisible': {
+            boxShadow: 'none',
+          },
+        },
+      },
+    },
   },
 });
 
