@@ -1,4 +1,7 @@
 import styled, { css } from 'styled-components';
+import CloseIcon from '@mui/icons-material/Close';
+
+import { textOverflow } from '../../shared/styles/mixins';
 import { ModalProps } from './Modal';
 
 const Modal = styled.div<ModalProps>`
@@ -21,4 +24,31 @@ const Modal = styled.div<ModalProps>`
   }}
 `;
 
-export { Modal };
+const Title = styled.h2`
+  text-align: start;
+  font-size: 24px;
+  font-weight: 600;
+  width: 90%;
+  ${textOverflow};
+`;
+
+const Header = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const Inner = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Content = styled.div``;
+
+const CloseButton = styled(CloseIcon)`
+  cursor: pointer;
+`;
+
+export { Modal, Title, Content, Header, CloseButton, Inner };

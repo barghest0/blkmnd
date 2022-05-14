@@ -163,6 +163,14 @@ const theme = createTheme({
         },
       },
     },
+
+    MuiCheckbox: {
+      styleOverrides: {
+        root: {
+          color: ThemeColors.white,
+        },
+      },
+    },
   },
 });
 

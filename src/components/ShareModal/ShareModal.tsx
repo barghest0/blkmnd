@@ -16,15 +16,17 @@ const ShareModal: FC = () => {
     <S.ShareModal>
       <ModalContainer isOpen={isShareOpen} modalType={ModalsTypes.share}>
         <S.Modal>
-          <Modal isOpen={isShareOpen}>
-            {!beat ? (
-              <Preloader />
-            ) : (
-              <S.Content>
-                <S.Title>{beat.title}</S.Title>
-              </S.Content>
-            )}
-          </Modal>
+          {!beat ? (
+            <Preloader />
+          ) : (
+            <Modal
+              isOpen={isShareOpen}
+              title={beat.title}
+              modalType={ModalsTypes.share}
+            >
+              <S.Content></S.Content>
+            </Modal>
+          )}
         </S.Modal>
       </ModalContainer>
     </S.ShareModal>

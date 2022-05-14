@@ -13,15 +13,19 @@ const LicensesModal: FC = () => {
     <S.LicensesModal>
       <ModalContainer isOpen={isLicenseOpen} modalType={ModalsTypes.license}>
         <S.Modal>
-          <Modal isOpen={isLicenseOpen}>
-            {!license ? (
-              <Preloader />
-            ) : (
+          {!license ? (
+            <Preloader />
+          ) : (
+            <Modal
+              isOpen={isLicenseOpen}
+              title={`${license.name} license preview`}
+              modalType={ModalsTypes.license}
+            >
               <S.Content>
-                <S.Title>{license.name} license preview</S.Title>
+                <S.Title></S.Title>
               </S.Content>
-            )}
-          </Modal>
+            </Modal>
+          )}
         </S.Modal>
       </ModalContainer>
     </S.LicensesModal>

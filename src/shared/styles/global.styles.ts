@@ -18,6 +18,8 @@ const GlobalStyle = createGlobalStyle`
     overflow-x:hidden;
     font-size:14px;
   }
+    
+
 `;
 
 export default GlobalStyle;

@@ -13,15 +13,17 @@ const BuyModal = () => {
     <S.BuyModal>
       <ModalContainer isOpen={isBuyOpen} modalType={ModalsTypes.buy}>
         <S.Modal>
-          <Modal isOpen={isBuyOpen}>
-            {!beat ? (
-              <Preloader />
-            ) : (
-              <S.Content>
-                <S.Title>{beat.title}</S.Title>
-              </S.Content>
-            )}
-          </Modal>
+          {!beat ? (
+            <Preloader />
+          ) : (
+            <Modal
+              isOpen={isBuyOpen}
+              title={beat.title}
+              modalType={ModalsTypes.buy}
+            >
+              <S.Content></S.Content>
+            </Modal>
+          )}
         </S.Modal>
       </ModalContainer>
     </S.BuyModal>
