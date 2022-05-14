@@ -1,6 +1,7 @@
 import { FC, memo, useEffect, useRef, useState } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import ThemeColors from '../../shared/styles/theme';
 import * as S from './Visualizer.style';
 
 const Visualizer: FC = memo(() => {
@@ -10,7 +11,6 @@ const Visualizer: FC = memo(() => {
   const [audioData, setAudioData] = useState(new Uint8Array(0));
 
   const audioRef = useOutletContext();
-
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvas = canvasRef.current;
   const canvasContext = canvasRef.current?.getContext('2d');
@@ -28,7 +28,7 @@ const Visualizer: FC = memo(() => {
 
       for (let i = 0; i < bufferLength; i += 1) {
         const barHeight = audioData[i] / 1.5;
-        canvasContext.fillStyle = '#fff';
+        canvasContext.fillStyle = ThemeColors.secondColor;
         canvasContext.fillRect(
           x,
           canvas.height - barHeight,
@@ -36,7 +36,7 @@ const Visualizer: FC = memo(() => {
           barHeight,
         );
 
-        x += barWidth + 3;
+        x += barWidth + 1;
       }
     }
   };
@@ -67,7 +67,7 @@ const Visualizer: FC = memo(() => {
 
   return (
     <S.Visualizer>
-      <canvas ref={canvasRef} width={1000} height={100}></canvas>
+      <S.VisualizerCanvas ref={canvasRef} width={1000}></S.VisualizerCanvas>
     </S.Visualizer>
   );
 });

@@ -5,4 +5,9 @@ const Visualizer = styled.div`
   justify-content: center;
 `;
 
-export { Visualizer };
+const VisualizerCanvas = styled.canvas`
+  height: 100px;
+  width: 90%;
+`;
+
+export { Visualizer, VisualizerCanvas };
