@@ -1,5 +1,4 @@
-import { Beat } from '../beat/types';
-import { License } from '../beat/types';
+import {Beat, License} from "../beats/types";
 
 enum ModalsTypes {
   share = 'isShareOpen',

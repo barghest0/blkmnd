@@ -1,4 +1,5 @@
 import { createTheme } from '@mui/material/styles';
+
 import ThemeColors from '../styles/theme';
 
 const theme = createTheme({
@@ -118,6 +119,18 @@ const theme = createTheme({
       },
     },
 
+    MuiAccordion: {
+      styleOverrides: {
+        root: {
+          color: '#8e8e8e',
+          boxShadow: 'none',
+          '::before': {
+            backgroundColor: 'transparent',
+          },
+        },
+      },
+    },
+
     MuiMenuItem: {
       styleOverrides: {
         root: {
@@ -168,6 +181,33 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: ThemeColors.white,
+        },
+      },
+    },
+
+    MuiAccordionSummary: {
+      styleOverrides: {
+        content: {
+          flexDirection: 'row-reverse',
+          margin: '0 5px',
+
+          '&.Mui-expanded': {
+            margin: '0 5px',
+          },
+        },
+
+        expandIconWrapper: {
+          color: ThemeColors.white,
+          transform: 'rotate(90deg)',
+
+          '&.Mui-expanded': {
+            transform: 'rotate(270deg)',
+          },
+
+          '& .MuiSvgIcon-root': {
+            fontSize: '1rem',
+            fill: '#8e8e8e',
+          },
         },
       },
     },

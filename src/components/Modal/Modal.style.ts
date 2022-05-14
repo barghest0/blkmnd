@@ -45,7 +45,9 @@ const Inner = styled.div`
   flex-direction: column;
 `;
 
-const Content = styled.div``;
+const Content = styled.div`
+  overflow:hidden
+`;
 
 const CloseButton = styled(CloseIcon)`
   cursor: pointer;

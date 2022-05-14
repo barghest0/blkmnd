@@ -15,6 +15,7 @@ const Modal = styled.div<DownloadModalProps>`
       background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url('${background}') center no-repeat;
       background-size: cover;
+      background-color: #1c1c1c;
       width: 450px;
       height: 500px;
     `;

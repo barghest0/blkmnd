@@ -13,18 +13,88 @@
       "time": "02:12",
       "musician": {
         "id": 1,
-        "name": "mucician"
+        "name": "musician"
       },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
       "track": "track1.mp3",
       "featured": true,
       "excerpt": "track1.mp3",
       "licenses": [
-        { "id": 1, "name": "Basic", "price": 33 },
-        { "id": 2, "name": "Premium", "price": 55 },
-        { "id": 3, "name": "Premium plus", "price": 111 },
-        { "id": 4, "name": "Unlimited", "price": 333 },
-        { "id": 5, "name": "Exclusive", "price": 1111 }
+        {
+          "id": 1,
+          "name": "Basic",
+          "price": 33,
+          "fileTypes": [{ "id": 1, "name": "MP3" }],
+          "contractValues": {
+            "copies": 2000,
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 2,
+          "name": "Premium",
+          "price": 55,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" }
+          ],
+          "contractValues": {
+            "copies": 3000,
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 3,
+          "name": "Premium plus",
+          "price": 111,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": 10000,
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 4,
+          "name": "Unlimited",
+          "price": 333,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": "Unlimited",
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 5,
+          "name": "Exclusive",
+          "price": 1111,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": "Unlimited",
+            "radioStations": "Unlimited",
+            "musicVideo": "Unlimited",
+            "streams": "Unlimited"
+          }
+        }
       ]
     },
     {
@@ -41,17 +111,87 @@
       "time": "02:54",
       "musician": {
         "id": 1,
-        "name": "mucician"
+        "name": "musician"
       },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/500x500/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgdf2t.jpg",
       "track": "track2.mp3",
       "excerpt": "track2.mp3",
       "licenses": [
-        { "id": 1, "name": "Basic", "price": 33 },
-        { "id": 2, "name": "Premium", "price": 55 },
-        { "id": 3, "name": "Premium plus", "price": 111 },
-        { "id": 4, "name": "Unlimited", "price": 333 },
-        { "id": 5, "name": "Exclusive", "price": 1111 }
+        {
+          "id": 1,
+          "name": "Basic",
+          "price": 33,
+          "fileTypes": [{ "id": 1, "name": "MP3" }],
+          "contractValues": {
+            "copies": 2000,
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 2,
+          "name": "Premium",
+          "price": 55,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" }
+          ],
+          "contractValues": {
+            "copies": 3000,
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 3,
+          "name": "Premium plus",
+          "price": 111,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": 10000,
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 4,
+          "name": "Unlimited",
+          "price": 333,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": "Unlimited",
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 5,
+          "name": "Exclusive",
+          "price": 1111,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": "Unlimited",
+            "radioStations": "Unlimited",
+            "musicVideo": "Unlimited",
+            "streams": "Unlimited"
+          }
+        }
       ]
     },
     {
@@ -68,17 +208,87 @@
       "featured": true,
       "musician": {
         "id": 1,
-        "name": "mucician"
+        "name": "musician"
       },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/500x500/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgbptq.png",
       "track": "track3.mp3",
       "excerpt": "track3.mp3",
       "licenses": [
-        { "id": 1, "name": "Basic", "price": 33 },
-        { "id": 2, "name": "Premium", "price": 55 },
-        { "id": 3, "name": "Premium plus", "price": 111 },
-        { "id": 4, "name": "Unlimited", "price": 333 },
-        { "id": 5, "name": "Exclusive", "price": 1111 }
+        {
+          "id": 1,
+          "name": "Basic",
+          "price": 33,
+          "fileTypes": [{ "id": 1, "name": "MP3" }],
+          "contractValues": {
+            "copies": 2000,
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 2,
+          "name": "Premium",
+          "price": 55,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" }
+          ],
+          "contractValues": {
+            "copies": 3000,
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 3,
+          "name": "Premium plus",
+          "price": 111,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": 10000,
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 4,
+          "name": "Unlimited",
+          "price": 333,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": "Unlimited",
+            "radioStations": 2,
+            "musicVideo": 1,
+            "streams": 500000
+          }
+        },
+        {
+          "id": 5,
+          "name": "Exclusive",
+          "price": 1111,
+          "fileTypes": [
+            { "id": 1, "name": "MP3" },
+            { "id": 2, "name": "WAV" },
+            { "id": 3, "name": "TRACK STEMS" }
+          ],
+          "contractValues": {
+            "copies": "Unlimited",
+            "radioStations": "Unlimited",
+            "musicVideo": "Unlimited",
+            "streams": "Unlimited"
+          }
+        }
       ]
     }
   ],
@@ -125,11 +335,86 @@
   ],
 
   "licenses": [
-    { "id": 1, "name": "Basic", "price": 33 },
-    { "id": 2, "name": "Premium", "price": 55 },
-    { "id": 3, "name": "Premium plus", "price": 111 },
-    { "id": 4, "name": "Unlimited", "price": 333 },
-    { "id": 5, "name": "Exclusive", "price": 1111 }
+    {
+      "id": 1,
+      "name": "Basic",
+      "price": 33,
+      "fileTypes": [
+        { "id": 1, "name": "MP3" },
+        { "id": 2, "name": "WAV" },
+        { "id": 3, "name": "TRACK STEMS" }
+      ],
+      "contractValues": {
+        "copies": 2000,
+        "radioStations": 2,
+        "musicVideo": 1,
+        "streams": 500000
+      }
+    },
+    {
+      "id": 2,
+      "name": "Premium",
+      "price": 55,
+      "fileTypes": [
+        { "id": 1, "name": "MP3" },
+        { "id": 2, "name": "WAV" },
+        { "id": 3, "name": "TRACK STEMS" }
+      ],
+      "contractValues": {
+        "copies": 3000,
+        "radioStations": 2,
+        "musicVideo": 1,
+        "streams": 500000
+      }
+    },
+    {
+      "id": 3,
+      "name": "Premium plus",
+      "price": 111,
+      "fileTypes": [
+        { "id": 1, "name": "MP3" },
+        { "id": 2, "name": "WAV" },
+        { "id": 3, "name": "TRACK STEMS" }
+      ],
+      "contractValues": {
+        "copies": 10000,
+        "radioStations": 2,
+        "musicVideo": 1,
+        "streams": 500000
+      }
+    },
+    {
+      "id": 4,
+      "name": "Unlimited",
+      "price": 333,
+      "fileTypes": [
+        { "id": 1, "name": "MP3" },
+        { "id": 2, "name": "WAV" },
+        { "id": 3, "name": "TRACK STEMS" }
+      ],
+      "contractValues": {
+        "copies": "Unlimited",
+        "radioStations": 2,
+        "musicVideo": 1,
+        "streams": 500000
+      }
+    },
+    {
+      "id": 5,
+      "name": "Exclusive",
+      "price": 1111,
+      "fileTypes": [
+        { "id": 1, "name": "MP3" },
+        { "id": 2, "name": "WAV" },
+        { "id": 3, "name": "TRACK STEMS" }
+      ],
+      "contractValues": {
+        "copies": "Unlimited",
+        "radioStations": "Unlimited",
+        "musicVideo": "Unlimited",
+        "streams": "Unlimited"
+      }
+    }
   ],
 
   "memberships": [
