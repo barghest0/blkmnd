@@ -33,6 +33,22 @@ const Controls = styled.div`
   column-gap: 10px;
 `;
 
+const Shuffle = styled.div`
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+`;
+
+const Loop = styled.div`
+  display: flex;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px;
+`;
+
 const PreviousBeat = styled.div`
   cursor: pointer;
   display: flex;
@@ -158,4 +174,6 @@ export {
   QueueList,
   QueueBeat,
   PlayerTools,
+  Shuffle,
+  Loop,
 };

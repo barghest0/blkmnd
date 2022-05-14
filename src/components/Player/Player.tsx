@@ -1,4 +1,6 @@
 import { FC, memo, RefObject, useEffect, useState } from 'react';
+import RepeatIcon from '@mui/icons-material/Repeat';
+import ShuffleIcon from '@mui/icons-material/Shuffle';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
@@ -34,18 +36,30 @@ type Props = {
 const Player: FC<Props> = memo(({ audioRef }) => {
   const { isOpen, beat: playerBeat } = useTypedSelector(state => state.player);
 
-  const { togglePlaying, getQueueBeats, setBeat, openPlayer } = useActions();
+  const {
+    togglePlaying,
+    getQueueBeats,
+    setBeat,
+    openPlayer,
+    toggleIsLoop,
+    toggleIsShuffle,
+  } = useActions();
 
-  const { queue, isFetching, isPlaying } = useTypedSelector(
-    state => state.player,
-  );
+  const {
+    queue,
+    isFetching,
+    isPlaying,
+    isLoop,
+    isShuffle,
+    nextBeat,
+    previousBeat,
+  } = useTypedSelector(state => state.player);
 
   const [isQueueListOpen, setIsQueueListOpen] = useState(false);
   const [queueBeats, setQueueBeats] = useState<Beat[]>([]);
 
   const audio = audioRef.current;
 
-  const currentBeatIndex = queue.findIndex(beat => beat.id === playerBeat?.id);
 
   const onQueueBeatClick = (beat: Beat) => {
     setBeat(beat);
@@ -64,6 +78,7 @@ const Player: FC<Props> = memo(({ audioRef }) => {
     }
   };
 
+
   const queueBeatsList = queueBeats.map(beat => (
     <S.QueueBeat
       key={beat.id}
@@ -80,27 +95,27 @@ const Player: FC<Props> = memo(({ audioRef }) => {
     }
   };
 
+  const onShuffleButtonClick = () => {
+    toggleIsShuffle();
+  };
+
+  const onLoopButtonClick = () => {
+    toggleIsLoop();
+  };
+
   useEffect(() => {
     getQueueBeats();
   }, []);
 
   const onNextButtonClick = () => {
-    const nextBeatIndex = currentBeatIndex + 1;
-    const lastQueueBeatIndex = queue.length - 1;
-    const isQueueEnd = currentBeatIndex === lastQueueBeatIndex;
-    if (isQueueEnd) {
-      setBeat(queue[FIRST_BEAT]);
-    } else {
-      setBeat(queue[nextBeatIndex]);
+    if (nextBeat) {
+      setBeat(nextBeat);
     }
   };
 
   const onPreviousButtonClick = () => {
-    const previousBeatIndex = currentBeatIndex - 1;
-    const isQueueStart = currentBeatIndex === FIRST_BEAT;
-
-    if (!isQueueStart) {
-      setBeat(queue[previousBeatIndex]);
+    if (previousBeat) {
+      setBeat(previousBeat);
     }
   };
 
@@ -138,6 +153,12 @@ const Player: FC<Props> = memo(({ audioRef }) => {
           </S.Beat>
         )}
         <S.Controls>
+          <S.Loop onClick={onLoopButtonClick}>
+            <RepeatIcon
+              fontSize="small"
+              color={isLoop ? 'primary' : 'inherit'}
+            />
+          </S.Loop>
           <S.PreviousBeat onClick={onPreviousButtonClick}>
             <SkipPreviousIcon />
           </S.PreviousBeat>
@@ -151,6 +172,12 @@ const Player: FC<Props> = memo(({ audioRef }) => {
           <S.NextBeat onClick={onNextButtonClick}>
             <SkipNextIcon />
           </S.NextBeat>
+          <S.Shuffle onClick={onShuffleButtonClick}>
+            <ShuffleIcon
+              color={isShuffle ? 'primary' : 'inherit'}
+              fontSize="small"
+            />
+          </S.Shuffle>
         </S.Controls>
         <S.Duration>
           <DurationSlider audio={audio} currentBeat={playerBeat} />
