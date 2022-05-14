@@ -42,7 +42,7 @@ const Visualizer: FC = memo(() => {
   };
 
   useEffect(() => {
-    const audioContext = new window.AudioContext();
+    const audioContext = new AudioContext();
 
     if (audio) {
       const source = audioContext.createMediaElementSource(audio);

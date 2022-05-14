@@ -8,7 +8,7 @@ const PLAYER_INITIAL_STATE: PlayerState = {
   isPlaying: false,
   isOpen: false,
   beat: null,
-  volume: 0.1,
+  volume: 0.3,
   duration: 0,
   currentTime: 0,
   queue: [],

@@ -44,6 +44,7 @@ const Audio: FC<Props> = memo(
       <S.Audio
         src={src}
         ref={ref}
+        crossOrigin="anonymous"
         onLoadedData={onLoadedBeatData}
         onTimeUpdate={onBeatTimeUpdate}
       />

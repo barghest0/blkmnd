@@ -1,5 +1,6 @@
 import { FC } from 'react';
 
+
 import * as S from './DownloadModal.style';
 
 import Modal from '../Modal/Modal';

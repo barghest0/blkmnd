@@ -22,9 +22,7 @@ const Layout = memo(() => {
       <S.Page>
         <Outlet context={{ audio: audioRef }} />
         <Player audioRef={audioRef} />
-        {beat && (
-          <Audio ref={audioRef} src={require(`../../audio/${beat.track}`)} />
-        )}
+        {beat && <Audio ref={audioRef} src={beat.track} />}
         <DownloadModal />
         <ShareModal />
         <LicensesModal />

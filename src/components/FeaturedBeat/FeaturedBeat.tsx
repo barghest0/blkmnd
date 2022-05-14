@@ -8,7 +8,7 @@ import { RouterPaths } from '../../shared/router/types';
 import BuyButton from '../BuyButton/BuyButton';
 import DownloadButton from '../DownloadButton/DownloadButton';
 import ShareButton from '../ShareButton/ShareButton';
-import { Beat } from '../../redux/beat/types';
+import { Beat } from '../../redux/beats/types';
 import useActions from '../../hooks/useActions';
 import PlayButton from '../PlayButton/PlayButton';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
