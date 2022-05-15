@@ -10,6 +10,7 @@ import BuyButton from '../BuyButton/BuyButton';
 import { Beat } from '../../redux/beats/types';
 import useActions from '../../hooks/useActions';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import Image from '../Image/Image';
 
 type Props = {
   beats: Beat[];
@@ -73,7 +74,9 @@ const BeatsList: FC<Props> = ({ beats }) => {
         isActive={isBeatActive}
       >
         <S.Column centered>
-          <S.Thumbnail src={image} width={50} height={50} />
+          <S.Thumbnail>
+            <Image image={image} />
+          </S.Thumbnail>
         </S.Column>
         <S.Column>
           <S.Title onClick={onLinkClick}>

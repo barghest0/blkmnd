@@ -4,7 +4,7 @@ const DiscographyCard = styled.div`
   display: flex;
   column-gap: 20px;
   align-items: center;
-  min-width:350px;
+  min-width: 350px;
 `;
 
 const ThumbnailContainer = styled.div`
@@ -21,7 +21,7 @@ const PlayButton = styled.div`
   height: 50px;
 `;
 
-const Thumbnail = styled.img`
+const Thumbnail = styled.div`
   width: 100px;
   height: 100px;
 `;

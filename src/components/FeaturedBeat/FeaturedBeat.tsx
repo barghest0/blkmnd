@@ -12,6 +12,7 @@ import { Beat } from '../../redux/beats/types';
 import useActions from '../../hooks/useActions';
 import PlayButton from '../PlayButton/PlayButton';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import Image from '../Image/Image';
 
 type Props = {
   beat: Beat;
@@ -51,7 +52,9 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
   return (
     <S.FeaturedBeat>
       <S.ThumbnailContainer onClick={onThumbnailClick}>
-        <S.Thumbnail src={image} width={130} height={130} />
+        <S.Thumbnail>
+          <Image image={image}/>
+        </S.Thumbnail>
         <S.PlayButton>
           <PlayButton currentBeat={beat} />
         </S.PlayButton>

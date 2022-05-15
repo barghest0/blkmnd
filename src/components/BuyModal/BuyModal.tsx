@@ -7,6 +7,7 @@ import { ModalsTypes } from '../../redux/modals/types';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import PlayButton from '../PlayButton/PlayButton';
 import ChooseLicenseCard from '../ChooseLicenseCard/ChooseLicenseCard';
+import Image from '../Image/Image';
 
 const BuyModal = () => {
   const { beat, isBuyOpen } = useTypedSelector(state => state.modals);
@@ -30,7 +31,9 @@ const BuyModal = () => {
               <S.Content>
                 <S.Beat>
                   <S.ThumbnailContainer>
-                    <S.Thumbnail src={beat.image} />
+                    <S.Thumbnail>
+                      <Image image={beat.image} />
+                    </S.Thumbnail>
                     <S.PlayButton>
                       <PlayButton currentBeat={beat} />
                     </S.PlayButton>

@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 const SoundKitCard = styled.div`
   width: 100%;
+  flex-direction: column;
   display: flex;
   justify-content: center;
 `;
 
-const Thumbnail = styled.img`
+const Thumbnail = styled.div`
   width: 100%;
-  height: auto;
+  min-height: 180px;
   margin-bottom: 5px;
 `;
 

@@ -117,7 +117,7 @@ const SoundKits = styled.section`
 
 const SoundKitsList = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, minmax(175px, 1fr));
+  grid-template-columns: repeat(4, 175px);
   margin: 0 auto;
   justify-items: center;
   column-gap: 50px;

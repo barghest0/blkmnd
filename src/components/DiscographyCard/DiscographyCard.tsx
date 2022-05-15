@@ -2,10 +2,11 @@ import { FC } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
-import { Beat } from '../../redux/beat/types';
+import { Beat } from '../../redux/beats/types';
 import { RouterPaths } from '../../shared/router/types';
 import { StyledLink } from '../../shared/styles/links';
 import DurationSlider from '../DurationSlider/DurationSlider';
+import Image from '../Image/Image';
 import PlayButton from '../PlayButton/PlayButton';
 import * as S from './DiscographyCard.style';
 
@@ -51,7 +52,9 @@ const DiscographyCard: FC<Props> = ({ beat }) => {
         <S.PlayButton>
           <PlayButton currentBeat={beat} />
         </S.PlayButton>
-        <S.Thumbnail src={image} />
+        <S.Thumbnail>
+          <Image image={image} />
+        </S.Thumbnail>
       </S.ThumbnailContainer>
       <S.Info>
         <StyledLink to={`${RouterPaths.beats}/${id}`}>

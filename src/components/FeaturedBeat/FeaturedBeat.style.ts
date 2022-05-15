@@ -21,7 +21,10 @@ const ThumbnailContainer = styled.div`
   align-self: center;
 `;
 
-const Thumbnail = styled.img``;
+const Thumbnail = styled.div`
+  width: 130px;
+  height: 130px;
+`;
 
 const Info = styled.div`
   overflow: hidden;

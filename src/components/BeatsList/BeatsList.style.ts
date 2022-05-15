@@ -91,7 +91,9 @@ const Tag = styled.div`
   height: 100%;
 `;
 
-const Thumbnail = styled.img`
+const Thumbnail = styled.div`
+  width:50px;
+  height:50px;
   border-radius: 4px;
   display: block;
 `;

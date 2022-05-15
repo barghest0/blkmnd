@@ -38,7 +38,7 @@ const PlayButton = styled.div`
   height: 40px;
 `;
 
-const Thumbnail = styled.img`
+const Thumbnail = styled.div`
   width: 180px;
   height: 180px;
   margin-bottom: 10px;
