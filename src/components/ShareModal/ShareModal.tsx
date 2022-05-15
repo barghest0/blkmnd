@@ -1,4 +1,7 @@
-import { FC } from 'react';
+import { FC, SyntheticEvent, useState } from 'react';
+import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
+import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import * as S from './ShareModal.style';
 
@@ -8,9 +11,31 @@ import { ModalsTypes } from '../../redux/modals/types';
 import Modal from '../Modal/Modal';
 import Preloader from '../Preloader/Preloader';
 import ModalContainer from '../ModalContainer/ModalContainer';
+import { Tab, Tabs } from '@mui/material';
 
 const ShareModal: FC = () => {
   const { isShareOpen, beat } = useTypedSelector(state => state.modals);
+  const [value, setValue] = useState('share');
+  const [copiedState, setCopiedState] = useState({
+    value: '',
+    isCopied: false,
+  });
+
+  const url = `http://localhost:8080/beats/${beat?.id}`;
+
+  const onCopyToClipboard = () => {
+    setCopiedState({ value: url, isCopied: true });
+  };
+
+  const handleChange = (_: SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
+
+  const onCopyClick = () => {
+    if (copiedState.isCopied) {
+      setCopiedState({ value: '', isCopied: false });
+    }
+  };
 
   return (
     <S.ShareModal>
@@ -21,10 +46,47 @@ const ShareModal: FC = () => {
           ) : (
             <Modal
               isOpen={isShareOpen}
-              title={beat.title}
+              title={`Share: ${beat.title}`}
               modalType={ModalsTypes.share}
             >
-              <S.Content></S.Content>
+              <S.Content>
+                <S.Tabs>
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    indicatorColor="secondary"
+                  >
+                    <Tab value="share" label="SHARE URL" />
+                    <Tab value="embed" label="EMBED" />
+                  </Tabs>
+                </S.Tabs>
+                <S.TabsContent>
+                  <S.TabPanel hidden={value !== 'share'}>
+                    <S.UrlField>
+                      <S.Field
+                        name="url"
+                        type="string"
+                        variant="outlined"
+                        label="URL"
+                        value={url}
+                      />
+                      <CopyToClipboard
+                        text={copiedState.value}
+                        onCopy={onCopyToClipboard}
+                      >
+                        <S.CopyUrl onClick={onCopyClick}>
+                          {copiedState.isCopied ? (
+                            <DoneOutlinedIcon fontSize="small" />
+                          ) : (
+                            <FileCopyOutlinedIcon fontSize="small" />
+                          )}
+                        </S.CopyUrl>
+                      </CopyToClipboard>
+                    </S.UrlField>
+                  </S.TabPanel>
+                  <S.TabPanel hidden={value !== 'embed'}>iframe</S.TabPanel>
+                </S.TabsContent>
+              </S.Content>
             </Modal>
           )}
         </S.Modal>

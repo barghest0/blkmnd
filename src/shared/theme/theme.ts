@@ -211,6 +211,17 @@ const theme = createTheme({
         },
       },
     },
+
+    MuiTabs: {
+      styleOverrides: {
+        flexContainer: {
+          '& .MuiButtonBase-root': {
+            fontWeight: 600,
+            color: '#9c9c9c',
+          },
+        },
+      },
+    },
   },
 });
 
