@@ -3,6 +3,7 @@ import styled from 'styled-components';
 const DiscographyCard = styled.div`
   display: flex;
   column-gap: 20px;
+  align-items: center;
 `;
 
 const ThumbnailContainer = styled.div`
@@ -25,10 +26,10 @@ const Thumbnail = styled.img`
 `;
 
 const Info = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
   padding: 5px 0;
+  height: 100%;
+  row-gap: 5px;
 `;
 
 const Title = styled.div``;
@@ -42,6 +43,9 @@ const Duration = styled.div`
   justify-self: flex-end;
   height: 3px;
   background-color: #363636;
+  position: relative;
+  bottom: 0;
+  align-self: center;
 `;
 
 export {

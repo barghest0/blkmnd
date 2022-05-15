@@ -1,4 +1,6 @@
 import { FC, memo, useEffect } from 'react';
+import ScrollContainer from 'react-indiana-drag-scroll';
+
 import * as S from './Landing.style';
 import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
 import SearchField from '../../components/SearchField/SearchField';
@@ -101,6 +103,7 @@ const Landing: FC = memo(() => {
           <Visualizer />
         </S.Visualizer>
       </S.Intro>
+
       <S.Container>
         <S.BeatsList>
           {isFetching ? <Preloader /> : <BeatsList beats={beats} />}
@@ -109,21 +112,28 @@ const Landing: FC = memo(() => {
           <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>
         </S.AllTracksLink>
       </S.Container>
+
       <S.Licenses>
         <S.Container>
           <S.SectionTitle>Licensing Info</S.SectionTitle>
-          <S.LicensesList>
-            {isLicensesFetching ? <Preloader /> : licensesCards}
-          </S.LicensesList>
+          <ScrollContainer>
+            <S.LicensesList>
+              {isLicensesFetching ? <Preloader /> : licensesCards}
+            </S.LicensesList>
+          </ScrollContainer>
         </S.Container>
       </S.Licenses>
 
       <S.SoundKits>
         <S.Container>
           <S.SectionTitle>Sound Kits</S.SectionTitle>
-          <S.SoundKitsList>
-            {isSoundKitsFetching ? <Preloader /> : soundKitsCards}
-          </S.SoundKitsList>
+
+          <ScrollContainer>
+            <S.SoundKitsList>
+              {isSoundKitsFetching ? <Preloader /> : soundKitsCards}
+            </S.SoundKitsList>
+          </ScrollContainer>
+
           <S.AllSoundKits>
             <ButtonLink to={`${RouterPaths.soundKits}`}>
               Browse all sound kits
@@ -135,9 +145,11 @@ const Landing: FC = memo(() => {
       <S.Services>
         <S.Container>
           <S.SectionTitle>Services</S.SectionTitle>
-          <S.CollabsList>
-            {isCollabsFetching ? <Preloader /> : collabsCards}
-          </S.CollabsList>
+          <ScrollContainer>
+            <S.CollabsList>
+              {isCollabsFetching ? <Preloader /> : collabsCards}
+            </S.CollabsList>
+          </ScrollContainer>
           <S.AllServices>
             <ButtonLink to={`${RouterPaths.collabs}`}>
               Browse all services
@@ -145,14 +157,18 @@ const Landing: FC = memo(() => {
           </S.AllServices>
         </S.Container>
       </S.Services>
+
       <S.Discography>
         <S.Container>
           <S.SectionTitle>Discography</S.SectionTitle>
-          <S.DiscographyList>
-            {isDiscographyFetching ? <Preloader /> : discographyCards}
-          </S.DiscographyList>
+          <ScrollContainer vertical={false}>
+            <S.DiscographyList>
+              {isDiscographyFetching ? <Preloader /> : discographyCards}
+            </S.DiscographyList>
+          </ScrollContainer>
         </S.Container>
       </S.Discography>
+
       <S.Contact>
         <S.SectionTitle>Contact</S.SectionTitle>
         <S.Container>

@@ -106,23 +106,22 @@ const Licenses = styled.section`
 
 const LicensesList = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(165px, 1fr));
   justify-items: center;
   column-gap: 50px;
 `;
 
 const SoundKits = styled.section`
-  display: flex;
-  justify-content: center;
   margin-bottom: 50px;
 `;
 
 const SoundKitsList = styled.div`
   display: grid;
+  grid-template-columns: repeat(4, minmax(175px, 1fr));
   margin: 0 auto;
-  grid-auto-flow: column;
-  column-gap: 40px;
   justify-items: center;
+  column-gap: 50px;
+  max-width: 900px;
 `;
 
 const AllSoundKits = styled.div`
@@ -133,17 +132,15 @@ const AllSoundKits = styled.div`
 `;
 
 const Services = styled.section`
-  display: flex;
-  justify-content: center;
   margin-bottom: 50px;
 `;
 
 const CollabsList = styled.div`
   display: grid;
-  margin: 0 auto;
-  grid-auto-flow: column;
   column-gap: 40px;
+  margin: 0 auto;
   justify-items: center;
+  max-width: 900px;
 `;
 
 const AllServices = styled.div`
@@ -159,13 +156,21 @@ const Discography = styled.section`
 
 const DiscographyList = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, minmax(350px, 1fr));
+  grid-template-rows: 100px;
   column-gap: 50px;
 `;
 
 const Contact = styled.div``;
 
-const ContactForm = styled.div``;
+const ContactForm = styled.div`
+  margin: 0 auto;
+  width: 50%;
+
+  @media ${breakpoint('md')} {
+    width: 80%;
+  }
+`;
 
 export {
   Landing,

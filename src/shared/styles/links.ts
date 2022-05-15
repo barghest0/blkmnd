@@ -39,6 +39,7 @@ const StyledLink = styled(Link)`
   color: inherit;
   text-decoration: none;
   text-overflow: inherit;
+  width: 100%;
 
   &:hover {
     text-decoration: underline;
