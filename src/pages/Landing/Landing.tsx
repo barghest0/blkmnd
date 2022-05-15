@@ -17,6 +17,7 @@ import LicenseCard from '../../components/LicenseCard/LicenseCard';
 import SoundKitCard from '../../components/SoundKitCard/SoundKitCard';
 import DiscographyCard from '../../components/DiscographyCard/DiscographyCard';
 import Button from '../../components/Button/Button';
+import useChannelContent from '../../hooks/useChannelContent';
 
 const Landing: FC = memo(() => {
   const { beats, isFetching } = useTypedSelector(state => state.beats);
@@ -33,6 +34,10 @@ const Landing: FC = memo(() => {
   const { collabs, isFetching: isCollabsFetching } = useTypedSelector(
     state => state.collabs,
   );
+
+  const channelContent = useChannelContent();
+
+  console.log(channelContent);
 
   const isFeaturedBeatFetching = !featuredBeat;
 
