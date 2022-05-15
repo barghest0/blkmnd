@@ -165,6 +165,10 @@ const theme = createTheme({
           height: 3,
         },
 
+        track: {
+          border: 'none',
+        },
+
         thumb: {
           borderRadius: '50%',
           height: 0,

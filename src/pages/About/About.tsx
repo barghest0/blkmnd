@@ -12,6 +12,7 @@ import * as S from './About.style';
 import GalleryImage from './images/gallery-image.jpg';
 
 import DiscographyCard from '../../components/DiscographyCard/DiscographyCard';
+import ScrollContainer from 'react-indiana-drag-scroll';
 
 const About = () => {
   const { getDiscographyBeats } = useActions();
@@ -37,6 +38,7 @@ const About = () => {
     <S.About>
       <S.Container>
         <S.Title>About</S.Title>
+
         <S.Biography>
           <S.SectionTitle>Biography</S.SectionTitle>
           <S.BiographyText>
@@ -52,12 +54,16 @@ const About = () => {
             src={require('./images/biography-image.png')}
           ></S.BiographyImage>
         </S.Biography>
+
         <S.Discography>
           <S.SectionTitle>Discography</S.SectionTitle>
-          <S.DiscographyList>
-            {isFetching ? <Preloader /> : discographyCards}
-          </S.DiscographyList>
+          <ScrollContainer vertical={false}>
+            <S.DiscographyList>
+              {isFetching ? <Preloader /> : discographyCards}
+            </S.DiscographyList>
+          </ScrollContainer>
         </S.Discography>
+
         <S.Gallery>
           <S.SectionTitle>Gallery</S.SectionTitle>
           <Swiper spaceBetween={50} slidesPerView={2} loop>

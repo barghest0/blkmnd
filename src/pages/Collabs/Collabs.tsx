@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import CollabCard from '../../components/CollabCard/CollabCard';
-import CollabsList from '../../components/CollabCard/CollabCard';
 import Preloader from '../../components/Preloader/Preloader';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
@@ -22,8 +21,9 @@ const Collabs = () => {
     <S.Collabs>
       <S.Container>
         <S.Title>Collabs</S.Title>
-        <S.CollabsList></S.CollabsList>
+        <S.CollabsList>
         {isFetching ? <Preloader /> : collabsCards}
+        </S.CollabsList>
       </S.Container>
     </S.Collabs>
   );

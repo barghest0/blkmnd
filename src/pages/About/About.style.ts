@@ -15,8 +15,8 @@ const Title = styled.h1`
 
 const Biography = styled.section`
   display: grid;
-  grid-template-rows: 70px 500px;
-  grid-template-columns: 1fr minmax(10px, 150px) 1fr;
+  grid-template-rows: 70px 450px;
+  grid-template-columns: minmax(300px, 1fr) minmax(10px, 120px) 1fr;
   overflow: hidden;
   margin-bottom: 50px;
 `;
@@ -33,6 +33,7 @@ const BiographyText = styled.p`
 const BiographyImage = styled.img`
   grid-column-start: 3;
   grid-row: 1/2;
+  width: 100%;
 `;
 
 const DiscographyList = styled.div`

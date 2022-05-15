@@ -139,6 +139,8 @@ const CollabsList = styled.div`
   display: grid;
   column-gap: 40px;
   margin: 0 auto;
+  grid-template-columns: 175px;
+  justify-content: center;
   justify-items: center;
   max-width: 900px;
 `;
@@ -156,7 +158,7 @@ const Discography = styled.section`
 
 const DiscographyList = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, minmax(350px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 100px;
   column-gap: 50px;
 `;

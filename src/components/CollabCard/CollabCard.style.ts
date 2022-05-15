@@ -3,10 +3,12 @@ import styled from 'styled-components';
 
 
 const CollabCard = styled.div`
-  width: 175px;
+  width: 100%;
 `;
 
 const Thumbnail = styled.img`
+  width: 100%;
+  height:auto;
   margin-bottom: 5px;
 `;
 

@@ -4,6 +4,7 @@ const DiscographyCard = styled.div`
   display: flex;
   column-gap: 20px;
   align-items: center;
+  min-width:350px;
 `;
 
 const ThumbnailContainer = styled.div`
