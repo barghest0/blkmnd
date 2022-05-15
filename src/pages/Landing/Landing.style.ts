@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakpoint } from '../../shared/styles/breakpoints';
 import { container } from '../../shared/styles/mixins';
 import ThemeColors from '../../shared/styles/theme';
 
@@ -9,10 +10,15 @@ const Container = styled.div`
 `;
 
 const Intro = styled.section`
-  background: url(${require('./images/main-background.jpg')}) top center;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(16, 16, 16, 1)),
+    url(${require('./images/main-background.jpg')}) top center;
   background-size: scale;
   padding-top: 10rem;
   margin-bottom: 20px;
+
+  @media ${breakpoint('md')} {
+    padding-top: 5rem;
+  }
 `;
 
 const IntroInner = styled.div`
@@ -38,6 +44,11 @@ const IntroTitle = styled.h1`
 const Search = styled.div`
   margin-bottom: 40px;
   height: 70px;
+  display: block;
+
+  @media ${breakpoint('md')} {
+    display: none;
+  }
 `;
 
 const SearchFieldContainer = styled.div`

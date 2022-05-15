@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+import { breakpoint } from '../../shared/styles/breakpoints';
 import { StyledLink } from '../../shared/styles/links';
 import ThemeColors from '../../shared/styles/theme';
-import { ProfileDropdownProps } from './Header';
+import { DrawerProps, ProfileDropdownProps } from './Header';
 
 const Header = styled.header`
   background-color: ${ThemeColors.headerColor};
@@ -10,19 +11,46 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 15px;
+  padding: 0px 10px;
   position: fixed;
   width: 100%;
 `;
 
 const HeaderLogo = styled.div``;
 
-const HeaderNav = styled.div``;
+const HeaderBurger = styled.div`
+  cursor: pointer;
+  height: 100%;
+  display: none;
+  width: 60px;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #363636;
+
+  @media ${breakpoint('lg')} {
+    display: flex;
+  }
+`;
+
+const LeftNav = styled.div`
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+`;
 
 const RightNav = styled.div`
   display: flex;
   column-gap: 20px;
   height: 4rem;
+`;
+
+const HeaderNav = styled.div`
+  display: flex;
+
+  @media ${breakpoint('lg')} {
+    display: none;
+  }
 `;
 
 const Cart = styled.div`
@@ -57,7 +85,6 @@ const Auth = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
-  pa
 `;
 
 const AuthIcon = styled.div`
@@ -103,6 +130,19 @@ const ProfileLink = styled(StyledLink)`
   width: 100%;
 `;
 
+const HeaderDrawer = styled.div<DrawerProps>`
+  ${({ isOpen }) => {
+    const display = isOpen ? 'flex' : 'none';
+    return css`
+      display: ${display};
+      position: absolute;
+      left: 0;
+      top: 4rem;
+      background-color: ${ThemeColors.headerColor};
+    `;
+  }}
+`;
+
 export {
   Header,
   HeaderLogo,
@@ -117,4 +157,7 @@ export {
   ProfileDropdown,
   ProfileAction,
   ProfileLink,
+  HeaderBurger,
+  LeftNav,
+  HeaderDrawer,
 };

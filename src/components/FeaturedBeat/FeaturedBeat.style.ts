@@ -1,10 +1,16 @@
 import styled from 'styled-components';
+import { breakpoint } from '../../shared/styles/breakpoints';
 
 const FeaturedBeat = styled.div`
   display: grid;
   grid-template-columns: 130px 1fr;
   grid-template-rows: 150px;
   gap: 20px;
+
+  @media ${breakpoint('md')} {
+    grid-template-columns: 1fr;
+    align-content: center;
+  }
 `;
 
 const ThumbnailContainer = styled.div`
@@ -19,6 +25,11 @@ const Thumbnail = styled.img``;
 
 const Info = styled.div`
   overflow: hidden;
+
+  @media ${breakpoint('md')} {
+    display: grid;
+    justify-items: center;
+  }
 `;
 
 const PlayButton = styled.div`
@@ -35,6 +46,10 @@ const Description = styled.div`
   font-size: 13px;
   column-gap: 5px;
   font-weight: 600;
+
+  @media ${breakpoint('md')} {
+    justify-content: center;
+  }
 `;
 
 const Featured = styled.div``;
@@ -42,12 +57,17 @@ const Featured = styled.div``;
 const Bpm = styled.div``;
 
 const Title = styled.div`
-  font-size: 30px;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media ${breakpoint('md')} {
+    white-space: normal;
+    text-align: center;
+  }
 `;
 
 const Actions = styled.div`

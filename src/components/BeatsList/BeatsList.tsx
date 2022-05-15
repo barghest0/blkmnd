@@ -16,7 +16,7 @@ type Props = {
 };
 
 type BeatColumnProps = {
-  centered: boolean;
+  centered?: boolean;
 };
 
 type BeatRowProps = {
@@ -104,13 +104,13 @@ const BeatsList: FC<Props> = ({ beats }) => {
 
   return (
     <S.BeatsList>
-      <S.Row>
+      <S.ListHead>
         <S.HeadColumn></S.HeadColumn>
         <S.HeadColumn>Title</S.HeadColumn>
         <S.HeadColumn>Time</S.HeadColumn>
         <S.HeadColumn>Bpm</S.HeadColumn>
         <S.HeadColumn>Tags</S.HeadColumn>
-      </S.Row>
+      </S.ListHead>
       {beatsRows}
     </S.BeatsList>
   );

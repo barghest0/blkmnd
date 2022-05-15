@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { breakpoint } from '../../shared/styles/breakpoints';
 import ThemeColors from '../../shared/styles/theme';
 import { BeatColumnProps, BeatRowProps } from './BeatsList';
 
@@ -26,8 +27,26 @@ const Row = styled.div<BeatRowProps>`
       &:nth-child(1) {
         border-bottom: none;
       }
+      @media ${breakpoint('lg')} {
+        grid-template-columns: 0.1fr 3fr 1fr;
+      }
     `;
   }}
+`;
+
+const ListHead = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr 1fr 3fr 3fr;
+  grid-template-rows: 40px;
+  align-items: center;
+  column-gap: 10px;
+  padding: 10px 0;
+  cursor: pointer;
+  border-bottom: 1px solid #343434;
+
+  @media ${breakpoint('lg')} {
+    display: none;
+  }
 `;
 
 const HeadColumn = styled.div`
@@ -50,6 +69,17 @@ const Column = styled.div<BeatColumnProps>`
       display: flex;
       align-items: center;
       justify-content: ${justifyContent};
+      @media ${breakpoint('lg')} {
+        &:nth-child(3) {
+          display: none;
+        }
+        &:nth-child(4) {
+          display: none;
+        }
+        &:nth-child(5) {
+          display: none;
+        }
+      }
     `;
   }}
 `;
@@ -94,4 +124,5 @@ export {
   Action,
   Title,
   Tag,
+  ListHead,
 };

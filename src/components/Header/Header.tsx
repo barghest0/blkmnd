@@ -4,6 +4,8 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import GetAppIcon from '@mui/icons-material/GetApp';
 import LogoutIcon from '@mui/icons-material/Logout';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
 
 import { useState } from 'react';
 
@@ -18,9 +20,14 @@ type ProfileDropdownProps = {
   isOpen: boolean;
 };
 
+type DrawerProps = {
+  isOpen: boolean;
+};
+
 const Header = () => {
   const cost = 0;
   const navigate = useNavigate();
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
@@ -32,11 +39,22 @@ const Header = () => {
     navigate(RouterPaths.landing);
   };
 
+  const onBurgerButtonClick = () => {
+    setIsDrawerOpen(!isDrawerOpen);
+  };
+
   return (
     <S.Header>
-      <Logo />
+      <S.LeftNav>
+        <S.HeaderBurger onClick={onBurgerButtonClick}>
+          {isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
+        </S.HeaderBurger>
+        <Logo />
+      </S.LeftNav>
       <S.RightNav>
-        <Nav isSearchOpen={isSearchOpen} />
+        <S.HeaderNav>
+          <Nav isSearchOpen={isSearchOpen} />
+        </S.HeaderNav>
         <HeaderSearch isOpen={isSearchOpen} setIsOpen={setIsSearchOpen} />
         <S.Cart>
           <S.CartIcon>
@@ -77,8 +95,9 @@ const Header = () => {
           </S.ProfileDropdown>
         </S.Auth>
       </S.RightNav>
+      <S.HeaderDrawer isOpen={isDrawerOpen}>drawer</S.HeaderDrawer>
     </S.Header>
   );
 };
-export { ProfileDropdownProps };
+export { ProfileDropdownProps, DrawerProps };
 export default Header;
