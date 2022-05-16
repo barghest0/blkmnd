@@ -14,7 +14,10 @@
     "type": "git",
     "url": "git+https://github.com/barghest0/blkmnd.git"
   },
-  "keywords": ["black", "mind"],
+  "keywords": [
+    "black",
+    "mind"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -63,6 +66,7 @@
     "axios": "^0.27.2",
     "formik": "^2.2.9",
     "framer-motion": "^6.3.1",
+    "html-react-parser": "^1.4.12",
     "json-server": "^0.17.0",
     "npm": "^8.8.0",
     "prettier": "^2.6.2",

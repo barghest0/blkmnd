@@ -156,6 +156,93 @@ const Discography = styled.section`
   margin-bottom: 50px;
 `;
 
+const YoutubeContaier = styled.div`
+  ${container};
+  max-width: 900px;
+`;
+
+const Youtube = styled.section`
+  margin-bottom: 50px;
+  background: linear-gradient(rgba(16, 16, 16, 1) 0%, rgba(0, 0, 0, 0) 20%),
+    linear-gradient(rgba(0, 0, 0, 0) 80%, rgba(16, 16, 16, 1) 100%),
+    url(${require('./images/main-background.jpg')}) top center;
+`;
+
+const YoutubeInner = styled.div`
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  height: 100%;
+  align-items: center;
+  padding: 50px 0;
+  justify-items: center;
+  @media ${breakpoint('md')} {
+    grid-template-columns: 1fr;
+    row-gap: 40px;
+    & iframe {
+      width: 100%;
+    }
+  }
+`;
+
+const ChannelInfo = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 60px) 30px;
+  row-gap: 30px;
+`;
+
+const Info = styled.div`
+  display: grid;
+  grid-template-columns: 60px 1fr;
+  grid-template-rows: (2, 30px);
+  column-gap: 20px;
+`;
+
+const InfoTitle = styled.p`
+  font-size: 16px;
+`;
+
+const InfoText = styled.p`
+  grid-column-start: 2;
+  font-weight: 600;
+  font-size: 22px;
+`;
+
+const Subscribe = styled.div``;
+
+const SubscribeButton = styled.a`
+  font-weight: 600;
+  text-transform: uppercase;
+  background: ${ThemeColors.secondColor};
+  color: ${ThemeColors.black};
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  text-decoration: none;
+`;
+
+const Video = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const InfoIcon = styled.div`
+  padding: 15px;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 1px solid ${ThemeColors.white};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-row: 1/3;
+`;
+
 const DiscographyList = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -201,4 +288,15 @@ export {
   Visualizer,
   SearchFieldContainer,
   SearchSubmit,
+  Youtube,
+  ChannelInfo,
+  Info,
+  InfoText,
+  Video,
+  YoutubeInner,
+  InfoIcon,
+  InfoTitle,
+  YoutubeContaier,
+  Subscribe,
+  SubscribeButton,
 };

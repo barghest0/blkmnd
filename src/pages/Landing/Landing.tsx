@@ -1,5 +1,12 @@
 import { FC, memo, useEffect } from 'react';
+
 import ScrollContainer from 'react-indiana-drag-scroll';
+import GroupIcon from '@mui/icons-material/Group';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import VideocamIcon from '@mui/icons-material/Videocam';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+
+import Parser from 'html-react-parser';
 
 import * as S from './Landing.style';
 import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
@@ -35,9 +42,14 @@ const Landing: FC = memo(() => {
     state => state.collabs,
   );
 
-  const channelContent = useChannelContent();
+  const channel = {
+    user: 'UCpi4NSNZrV3oBtgpdaEGeyw',
+    video: 'aGwTM0icKg8',
+  };
 
-  console.log(channelContent);
+  const { channelContent, channelVideo } = useChannelContent(channel);
+
+  const video = Parser(channelVideo);
 
   const isFeaturedBeatFetching = !featuredBeat;
 
@@ -162,6 +174,47 @@ const Landing: FC = memo(() => {
           </S.AllServices>
         </S.Container>
       </S.Services>
+
+      <S.Youtube>
+        <S.YoutubeContaier>
+          <S.YoutubeInner>
+            <S.ChannelInfo>
+              <S.Info>
+                <S.InfoIcon>
+                  <GroupIcon />
+                </S.InfoIcon>
+                <S.InfoTitle>Subscribers</S.InfoTitle>
+                <S.InfoText>{channelContent.subscriberCount}</S.InfoText>
+              </S.Info>
+              <S.Info>
+                <S.InfoIcon>
+                  <VisibilityIcon />
+                </S.InfoIcon>
+                <S.InfoTitle>Total views</S.InfoTitle>
+                <S.InfoText>{channelContent.viewCount}</S.InfoText>
+              </S.Info>
+              <S.Info>
+                <S.InfoIcon>
+                  <VideocamIcon />
+                </S.InfoIcon>
+                <S.InfoTitle>Videos</S.InfoTitle>
+                <S.InfoText>{channelContent.videoCount} </S.InfoText>
+              </S.Info>
+              <S.Subscribe>
+                <S.SubscribeButton
+                  href="https://www.youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <YouTubeIcon sx={{ marginRight: 1 }} />
+                  Subscribe
+                </S.SubscribeButton>
+              </S.Subscribe>
+            </S.ChannelInfo>
+            <S.Video>{video}</S.Video>
+          </S.YoutubeInner>
+        </S.YoutubeContaier>
+      </S.Youtube>
 
       <S.Discography>
         <S.Container>

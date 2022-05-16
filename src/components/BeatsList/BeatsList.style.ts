@@ -42,7 +42,6 @@ const ListHead = styled.div`
   column-gap: 10px;
   padding: 10px 0;
   cursor: pointer;
-  border-bottom: 1px solid #343434;
 
   @media ${breakpoint('lg')} {
     display: none;
@@ -92,8 +91,8 @@ const Tag = styled.div`
 `;
 
 const Thumbnail = styled.div`
-  width:50px;
-  height:50px;
+  width: 50px;
+  height: 50px;
   border-radius: 4px;
   display: block;
 `;

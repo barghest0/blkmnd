@@ -1,19 +1,44 @@
 import { useEffect, useState } from 'react';
-import { fetchChannelContent } from '../shared/api/youtube';
+import { fetchChannelContent, fetchChannelVideo } from '../shared/api/youtube';
 
-const useChannelContent = () => {
-  const [channel, setChannel] = useState({});
+type ChannelInfo = {
+  subscriberCount: number;
+  viewsCount: number;
+  videoCount: number;
+};
+
+type Props = {
+  user: string;
+  video: string;
+};
+
+const useChannelContent = ({ user, video }: Props) => {
+  const userId = '';
+  const videoId = '';
+
+  const defaultChannelInfo = {
+    subscriberCount: 0,
+    viewCount: 0,
+    videoCount: 0,
+  };
+
+  const [channelContent, setChannelContent] = useState(defaultChannelInfo);
+  const [channelVideo, setChannelVideo] = useState('');
 
   const getChannelContent = async () => {
-    const channelContent = await fetchChannelContent();
-    setChannel(channelContent.data.items[0].statistics);
+    const content = await fetchChannelContent(user);
+    const videoContent = await fetchChannelVideo(video);
+
+    setChannelContent(content.data.items[0].statistics);
+    setChannelVideo(videoContent.data.items[0].player.embedHtml);
   };
 
   useEffect(() => {
     getChannelContent();
   }, []);
 
-  return channel;
+  return { channelContent, channelVideo };
 };
 
+export { ChannelInfo };
 export default useChannelContent;

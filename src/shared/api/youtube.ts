@@ -2,11 +2,14 @@ import axios from 'axios';
 
 const youtubeKey = 'AIzaSyDWxi5JwVAyDQx00GZR8XpYR3FFGCLYG8g';
 
-const youtubeUser = 'UCpi4NSNZrV3oBtgpdaEGeyw';
+const instance = axios.create({
+  baseURL: 'https://www.googleapis.com/youtube/v3/',
+});
 
-const fetchChannelContent = () =>
-  axios.get(
-    `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${youtubeUser}&key=${youtubeKey}`,
-  );
+const fetchChannelContent = (userId: string) =>
+  instance.get(`channels?part=statistics&id=${userId}&key=${youtubeKey}`);
 
-export { fetchChannelContent };
+const fetchChannelVideo = (videoId: string) =>
+  instance.get(`videos?part=player&id=${videoId}&key=${youtubeKey}`);
+
+export { fetchChannelContent, fetchChannelVideo };
