@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { breakpoint } from '../../shared/styles/breakpoints';
+import { breakpoint, breakpointUp } from '../../shared/styles/breakpoints';
 import { StyledLink } from '../../shared/styles/links';
 import ThemeColors from '../../shared/styles/theme';
 import { DrawerProps, ProfileDropdownProps } from './Header';
@@ -132,13 +132,20 @@ const ProfileLink = styled(StyledLink)`
 
 const HeaderDrawer = styled.div<DrawerProps>`
   ${({ isOpen }) => {
-    const display = isOpen ? 'flex' : 'none';
+    const transform = isOpen ? 'translateX(0)' : 'translateX(-100%)';
     return css`
-      display: ${display};
-      position: absolute;
+      transform: ${transform};
+      display: flex;
+      position: fixed;
       left: 0;
       top: 4rem;
       background-color: ${ThemeColors.headerColor};
+      width: 25%;
+      height: 100%;
+      transition: all 0.3s linear;
+      @media ${breakpointUp('lg')} {
+        transform: translateX(-100%);
+      }
     `;
   }}
 `;

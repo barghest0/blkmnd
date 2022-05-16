@@ -10,4 +10,8 @@ const breakpoints = {
 const breakpoint = (breakpoint: keyof typeof breakpoints) => {
   return `(max-width: ${breakpoints[breakpoint]}px)`;
 };
-export { breakpoint };
+
+const breakpointUp = (breakpoint: keyof typeof breakpoints) => {
+  return `(min-width: ${breakpoints[breakpoint]}px)`;
+};
+export { breakpoint, breakpointUp };

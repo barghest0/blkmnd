@@ -15,6 +15,7 @@ import Logo from '../Logo/Logo';
 import Nav from '../Nav/Nav';
 import * as S from './Header.styles';
 import { useNavigate } from 'react-router-dom';
+import DrawerNav from '../DrawerNav/DrawerNav';
 
 type ProfileDropdownProps = {
   isOpen: boolean;
@@ -95,7 +96,9 @@ const Header = () => {
           </S.ProfileDropdown>
         </S.Auth>
       </S.RightNav>
-      <S.HeaderDrawer isOpen={isDrawerOpen}>drawer</S.HeaderDrawer>
+      <S.HeaderDrawer isOpen={isDrawerOpen}>
+        <DrawerNav />
+      </S.HeaderDrawer>
     </S.Header>
   );
 };
