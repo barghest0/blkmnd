@@ -226,6 +226,15 @@ const theme = createTheme({
         },
       },
     },
+
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          height: '100%',
+          width: '100%',
+        },
+      },
+    },
   },
 });
 

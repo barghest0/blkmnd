@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { breakpoint, breakpointUp } from '../../shared/styles/breakpoints';
 import { StyledLink } from '../../shared/styles/links';
 import ThemeColors from '../../shared/styles/theme';
-import { DrawerProps, ProfileDropdownProps } from './Header';
+import { DrawerProps, NavProps, ProfileDropdownProps } from './Header';
 
 const Header = styled.header`
   background-color: ${ThemeColors.headerColor};
@@ -45,12 +45,22 @@ const RightNav = styled.div`
   height: 4rem;
 `;
 
-const HeaderNav = styled.div`
-  display: flex;
-
-  @media ${breakpoint('lg')} {
-    display: none;
-  }
+const HeaderNav = styled.nav<NavProps>`
+  ${({ isSearchOpen }) => {
+    const opacity = isSearchOpen ? 0 : 1;
+    const pointerEvents = isSearchOpen ? 'none' : 'all';
+    return css`
+      opacity: ${opacity};
+      pointer-events: ${pointerEvents};
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
+      transition: all 0.2s linear;
+      @media ${breakpoint('lg')} {
+        display: none;
+      }
+    `;
+  }}
 `;
 
 const Cart = styled.div`
@@ -150,6 +160,14 @@ const HeaderDrawer = styled.div<DrawerProps>`
   }}
 `;
 
+const DrawerNav = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(5, 60px);
+`;
+
 export {
   Header,
   HeaderLogo,
@@ -167,4 +185,5 @@ export {
   HeaderBurger,
   LeftNav,
   HeaderDrawer,
+  DrawerNav,
 };

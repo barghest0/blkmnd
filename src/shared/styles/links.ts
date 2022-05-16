@@ -11,28 +11,6 @@ const StyledNavLink = styled(NavLink)`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  ::after {
-    content: '';
-    background-color: ${ThemeColors.white};
-    position: absolute;
-    height: 2px;
-    width: 100%;
-    opacity: 0;
-    bottom: 0px;
-    left: 0;
-    transition: all 0.2s linear;
-  }
-  :hover {
-    ::after {
-      opacity: 1;
-    }
-  }
-  &.active {
-    ::after {
-      opacity: 1;
-    }
-  }
 `;
 
 const StyledLink = styled(Link)`
