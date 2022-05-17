@@ -18,6 +18,7 @@ import ShareButton from '../../components/ShareButton/ShareButton';
 import TagLink from '../../components/TagLink/TagLink';
 import { Tab, Tabs } from '@mui/material';
 import BeatsList from '../../components/BeatsList/BeatsList';
+import CommentField from '../../components/CommentField/CommentField';
 
 const Beat = () => {
   const params = useParams();
@@ -98,7 +99,11 @@ const Beat = () => {
         <S.Visualizer>
           <Visualizer />
         </S.Visualizer>
+        <S.Comment>
+          <CommentField />
+        </S.Comment>
       </S.Container>
+
       <S.Tabs>
         <Tabs
           value={value}

@@ -49,7 +49,9 @@ const Player = styled.div`
 
 const Action = styled.div``;
 
-const Comment = styled.div``;
+const Comment = styled.div`
+  margin-bottom: 30px;
+`;
 
 const Reviews = styled.div``;
 

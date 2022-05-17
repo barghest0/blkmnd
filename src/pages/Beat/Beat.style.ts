@@ -55,6 +55,10 @@ const BeatInfo = styled.div`
   margin-bottom: 20px;
 `;
 
+const Comment = styled.div`
+  margin-bottom: 30px;
+`;
+
 const Info = styled.div`
   display: flex;
   justify-content: center;
@@ -118,4 +122,5 @@ export {
   Visualizer,
   Info,
   Tabs,
+  Comment,
 };

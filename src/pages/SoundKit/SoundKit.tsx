@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BuyButton from '../../components/BuyButton/BuyButton';
+import CommentField from '../../components/CommentField/CommentField';
 import DownloadButton from '../../components/DownloadButton/DownloadButton';
 import Preloader from '../../components/Preloader/Preloader';
 import ShareButton from '../../components/ShareButton/ShareButton';
@@ -45,7 +46,9 @@ const SoundKit = () => {
             </S.Actions>
           </S.Content>
         )}
-        <S.Comment>write comment</S.Comment>
+        <S.Comment>
+          <CommentField />
+        </S.Comment>
         {!soundKit ? (
           <Preloader />
         ) : (
