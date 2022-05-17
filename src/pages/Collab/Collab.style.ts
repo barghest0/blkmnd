@@ -16,7 +16,7 @@ const Title = styled.h1`
 const Content = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 40px 20px 1fr;
+  grid-template-rows: 0.5fr 0.3fr 3fr 100px;
   column-gap: 30px;
 `;
 
@@ -31,4 +31,27 @@ const Thumbnail = styled.img`
   grid-row: 1/4;
 `;
 
-export { Collab, Container, Title, Content, Thumbnail, Subtitle };
+const Description = styled.div``;
+
+const Actions = styled.div`
+  display: grid;
+  grid-column-start: 2;
+  row-gap: 10px;
+  grid-template-columns: 100px 40px;
+  grid-template-rows: repeat(2, 40px);
+  column-gap: 10px;
+`;
+
+const Action = styled.div``;
+
+export {
+  Collab,
+  Container,
+  Title,
+  Content,
+  Thumbnail,
+  Subtitle,
+  Description,
+  Actions,
+  Action,
+};
