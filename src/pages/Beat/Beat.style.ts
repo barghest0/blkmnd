@@ -45,16 +45,77 @@ const Musician = styled.p`
   font-weight: 500;
 `;
 
-const Visualizer = styled.div``;
+const Visualizer = styled.div`
+  padding: 0 10px;
+`;
+
+const BeatInfo = styled.div`
+  display: flex;
+  column-gap: 10px;
+  margin-bottom: 20px;
+`;
+
+const Info = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 5px;
+`;
+
+const Actions = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr 2fr 3fr;
+  grid-template-rows: 40px;
+  column-gap: 10px;
+`;
+
+const Action = styled.div``;
+
+const Tags = styled.div`
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 10px;
+  grid-column-start: 5;
+`;
+
+const Tag = styled.div``;
+
+const Tabs = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-weight: 400;
+  position: relative;
+  ::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: #1c1c1c;
+    bottom: 0px;
+    opacity: 0.6;
+  }
+  margin-bottom: 20px;
+`;
+
+const TabPanel = styled.div``;
 
 export {
   Beat,
+  BeatInfo,
+  TabPanel,
   Container,
   Title,
   Content,
   Thumbnail,
+  Actions,
+  Tags,
+  Action,
+  Tag,
   TitleContainer,
   PlayButton,
   Musician,
   Visualizer,
+  Info,
+  Tabs,
 };

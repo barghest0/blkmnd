@@ -31,6 +31,7 @@ const IntroInner = styled.div`
 const Visualizer = styled.div`
   margin: 0 auto;
   max-width: 1000px;
+  padding: 0 10px;
 `;
 
 const IntroTitle = styled.h1`

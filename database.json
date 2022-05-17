@@ -11,6 +11,7 @@
       "bpm": 155,
       "date": "01.02.2021",
       "time": "02:12",
+      "chord": "Em",
       "musician": {
         "id": 1,
         "name": "musician"
@@ -107,6 +108,7 @@
       ],
       "featured": false,
       "bpm": 153,
+      "chord": "Em",
       "date": "01.02.2021",
       "time": "02:54",
       "musician": {
@@ -204,6 +206,7 @@
       ],
       "bpm": 133,
       "date": "01.02.2021",
+      "chord": "Em",
       "time": "02:12",
       "featured": true,
       "musician": {

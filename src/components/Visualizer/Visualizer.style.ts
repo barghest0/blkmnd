@@ -7,7 +7,7 @@ const Visualizer = styled.div`
 
 const VisualizerCanvas = styled.canvas`
   height: 100px;
-  width: 90%;
+  width: 100%;
 `;
 
 export { Visualizer, VisualizerCanvas };

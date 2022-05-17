@@ -27,7 +27,7 @@ const ShareModal: FC = () => {
     setCopiedState({ value: url, isCopied: true });
   };
 
-  const handleChange = (_: SyntheticEvent, newValue: string) => {
+  const handleTabChange = (_: SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
 
@@ -53,7 +53,7 @@ const ShareModal: FC = () => {
                 <S.Tabs>
                   <Tabs
                     value={value}
-                    onChange={handleChange}
+                    onChange={handleTabChange}
                     indicatorColor="secondary"
                   >
                     <Tab value="share" label="SHARE URL" />
