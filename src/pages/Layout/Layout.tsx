@@ -10,6 +10,7 @@ import DownloadModal from '../../components/DownloadModal/DownloadModal';
 import ShareModal from '../../components/ShareModal/ShareModal';
 import LicensesModal from '../../components/LicensesModal/LicensesModal';
 import BuyModal from '../../components/BuyModal/BuyModal';
+import PageTransition from '../../hoc/PageTransition';
 
 const Layout = memo(() => {
   const audioRef = useRef(null);
@@ -28,7 +29,9 @@ const Layout = memo(() => {
         <LicensesModal />
         <BuyModal />
       </S.Page>
-      <Footer />
+      <PageTransition>
+        <Footer />
+      </PageTransition>
     </S.Layout>
   );
 });

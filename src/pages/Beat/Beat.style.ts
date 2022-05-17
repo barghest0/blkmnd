@@ -35,7 +35,7 @@ const Content = styled.div`
 
 const ContentInner = styled.div`
   display: grid;
-  grid-template-columns: 180px 1fr;
+  grid-template-columns: 200px 1fr;
   grid-template-rows: 1fr 1fr 1fr 40px 160px;
   column-gap: 20px;
   z-index: 20;
@@ -66,14 +66,16 @@ const BackgroundGradient = styled.div`
 
 const Thumbnail = styled.img`
   display: block;
-  width: 180px;
-  height: 180px;
+  width: 200px;
+  height: 200px;
   cursor: pointer;
   grid-row: 1/5;
 `;
 
 const Musician = styled.p`
   font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
 `;
 
 const Visualizer = styled.div`

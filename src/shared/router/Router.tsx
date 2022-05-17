@@ -1,4 +1,6 @@
-import { Route, Routes } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import { Route, Routes, useLocation } from 'react-router-dom';
+import PageTransition from '../../hoc/PageTransition';
 import RequireAuth from '../../hoc/RequireAuth';
 import About from '../../pages/About/About';
 import Beat from '../../pages/Beat/Beat';
@@ -17,52 +19,127 @@ import SoundKits from '../../pages/SoundKits/SoundKits';
 import { RouterNames } from './types';
 
 const Router = () => {
+  const location = useLocation();
+
   return (
-    <Routes>
-      <Route path={RouterNames.layout} element={<Layout />}>
-        <Route path={RouterNames.landing} element={<Landing />} />
-        <Route path={RouterNames.beats} element={<Beats />} />
-        <Route path={RouterNames.beat} element={<Beat />} />
-        <Route path={RouterNames.soundKits} element={<SoundKits />} />
-        <Route path={RouterNames.soundKit} element={<SoundKit />} />
-        <Route path={RouterNames.collabs} element={<Collabs />} />
-        <Route path={RouterNames.collab} element={<Collab />} />
-        <Route path={RouterNames.contact} element={<Contact />} />
-        <Route path={RouterNames.about} element={<About />} />
-        <Route
-          path={RouterNames.purchases}
-          element={
-            <RequireAuth>
-              <Purchases />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path={RouterNames.offers}
-          element={
-            <RequireAuth>
-              <Offers />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path={RouterNames.membership}
-          element={
-            <RequireAuth>
-              <Membership />
-            </RequireAuth>
-          }
-        />
-        <Route
-          path={RouterNames.profile}
-          element={
-            <RequireAuth>
-              <Profile />
-            </RequireAuth>
-          }
-        />
-      </Route>
-    </Routes>
+    <AnimatePresence exitBeforeEnter>
+      <Routes location={location} key={location.pathname}>
+        <Route path={RouterNames.layout} element={<Layout />}>
+          <Route
+            path={RouterNames.landing}
+            element={
+              <PageTransition>
+                <Landing />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.beats}
+            element={
+              <PageTransition>
+                <Beats />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.beat}
+            element={
+              <PageTransition>
+                <Beat />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.soundKits}
+            element={
+              <PageTransition>
+                <SoundKits />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.soundKit}
+            element={
+              <PageTransition>
+                <SoundKit />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.collabs}
+            element={
+              <PageTransition>
+                <Collabs />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.collab}
+            element={
+              <PageTransition>
+                <Collab />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.contact}
+            element={
+              <PageTransition>
+                <Contact />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.about}
+            element={
+              <PageTransition>
+                <About />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.purchases}
+            element={
+              <PageTransition>
+                <RequireAuth>
+                  <Purchases />
+                </RequireAuth>
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.offers}
+            element={
+              <PageTransition>
+                <RequireAuth>
+                  <Offers />
+                </RequireAuth>
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.membership}
+            element={
+              <PageTransition>
+                <RequireAuth>
+                  <Membership />
+                </RequireAuth>
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.profile}
+            element={
+              <PageTransition>
+                <RequireAuth>
+                  <Profile />
+                </RequireAuth>
+              </PageTransition>
+            }
+          />
+        </Route>
+      </Routes>
+    </AnimatePresence>
   );
 };
 
