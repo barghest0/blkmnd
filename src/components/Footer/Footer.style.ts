@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-import { StyledLink } from '../../shared/styles/links';
 import { container } from '../../shared/styles/mixins';
 import ThemeColors from '../../shared/styles/theme';
 
 const Footer = styled.footer`
-  background-color: ${ThemeColors.headerColor};
+  background-color: ${ThemeColors.layoutColor};
   padding: 80px 0;
 `;
 

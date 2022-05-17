@@ -5,7 +5,7 @@ import ThemeColors from '../../shared/styles/theme';
 import { DrawerProps, NavProps, ProfileDropdownProps } from './Header';
 
 const Header = styled.header`
-  background-color: ${ThemeColors.headerColor};
+  background-color: ${ThemeColors.layoutColor};
   z-index: 100;
   min-height: 4rem;
   display: flex;
@@ -120,7 +120,7 @@ const ProfileDropdown = styled.div<ProfileDropdownProps>`
       flex-direction: column;
       top: 70px;
       right: 5px;
-      background-color: ${ThemeColors.headerColor};
+      background-color: ${ThemeColors.layoutColor};
       row-gap: 10px;
       border-radius: 3px;
     `;
@@ -149,7 +149,7 @@ const HeaderDrawer = styled.div<DrawerProps>`
       position: fixed;
       left: 0;
       top: 4rem;
-      background-color: ${ThemeColors.headerColor};
+      background-color: ${ThemeColors.layoutColor};
       width: 25%;
       height: 100%;
       transition: all 0.3s linear;

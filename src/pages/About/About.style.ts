@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+
 import { container, page, pageTitle } from '../../shared/styles/mixins';
 
 const About = styled.div`

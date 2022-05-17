@@ -6,6 +6,7 @@ import {
   TextField,
 } from '@mui/material';
 import { DownloadModalProps } from './DownloadModal';
+import ThemeColors from '../../shared/styles/theme';
 
 const DownloadModal = styled.div``;
 
@@ -18,7 +19,7 @@ const Modal = styled.div<DownloadModalProps>`
       background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
         url('${background}') center no-repeat;
       background-size: cover;
-      background-color: #1c1c1c;
+      background-color: ${ThemeColors.dark};
       width: 450px;
       height: 500px;
     `;

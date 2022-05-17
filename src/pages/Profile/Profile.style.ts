@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { styled as MUIstyled, TextField } from '@mui/material';
 import { container, page, pageTitle } from '../../shared/styles/mixins';
-import ThemeColors from '../../shared/styles/theme';
 
 const Profile = styled.div`
   ${page}

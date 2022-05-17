@@ -14,6 +14,7 @@ const Content = styled.div`
   grid-template-columns: 300px 1fr;
   grid-template-rows: 0.5fr 0.3fr 3fr 100px;
   column-gap: 30px;
+  align-content: center;
 `;
 
 const Title = styled.h1`
@@ -28,7 +29,7 @@ const Thumbnail = styled.img`
   border-radius: 5px;
   width: 300px;
   height: 300px;
-  grid-row: 1/4;
+  grid-row: 1/5;
 `;
 
 const Description = styled.div``;
@@ -36,10 +37,10 @@ const Description = styled.div``;
 const Actions = styled.div`
   display: grid;
   grid-column-start: 2;
-  row-gap: 10px;
   grid-template-columns: 100px 40px;
-  grid-template-rows: repeat(2, 40px);
+  grid-auto-rows: 40px;
   column-gap: 10px;
+  align-content: center;
 `;
 
 const Player = styled.div`

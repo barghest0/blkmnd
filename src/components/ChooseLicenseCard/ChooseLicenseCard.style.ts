@@ -2,9 +2,11 @@ import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 
 import styled from 'styled-components';
 
+import ThemeColors from '../../shared/styles/theme';
+
 const ChooseLicenseCard = styled.div`
-  background-color: #1c1c1c;
-  border: 1px solid #363636;
+  background-color: ${ThemeColors.dark};
+  border: 1px solid ${ThemeColors.borderColor};
   border-radius: 5px;
   padding: 20px;
 `;

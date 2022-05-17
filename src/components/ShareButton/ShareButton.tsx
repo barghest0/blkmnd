@@ -1,5 +1,5 @@
 import { ShareOutlined } from '@mui/icons-material';
-import { FC } from 'react';
+import { FC, ReactNode } from 'react';
 
 import * as S from './ShareButton.style';
 
@@ -12,12 +12,14 @@ type Props = {
   hasBackground?: boolean;
   color?: string;
   beatId: number;
+  children?: ReactNode;
 };
 
 const ShareButton: FC<Props> = ({
   hasBackground = true,
   color = '',
   beatId,
+  children,
 }) => {
   const { setModalVisability, getModalBeat } = useActions();
 
@@ -28,7 +30,8 @@ const ShareButton: FC<Props> = ({
   return (
     <S.ShareButton onClick={onShareButtonClick}>
       <Button theme={ButtonThemes.dark} hasBackground={hasBackground}>
-        <ShareOutlined sx={{ color }} />
+        <ShareOutlined sx={{ color, marginRight: children ? 1 : 0 }} />
+        {children}
       </Button>
     </S.ShareButton>
   );

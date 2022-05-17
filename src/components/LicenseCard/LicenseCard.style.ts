@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-
-
 const LicenseCard = styled.div`
   width: 100%;
 `;

@@ -88,10 +88,10 @@ const Beat = () => {
                   <BuyButton beatId={beat.id} price={beat.price} />
                 </S.Action>
                 <S.Action>
-                  <DownloadButton beatId={beat.id} />
+                  <DownloadButton beatId={beat.id}>Download</DownloadButton>
                 </S.Action>
                 <S.Action>
-                  <ShareButton beatId={beat.id} />
+                  <ShareButton beatId={beat.id}>Share</ShareButton>
                 </S.Action>
                 <S.Tags>{tags}</S.Tags>
               </S.Actions>

@@ -8,6 +8,7 @@ const DrawerNavLink = MUIstyled(StyledNavLink)({
       color: ThemeColors.secondColor,
     },
   },
+
   '& .MuiButton-root': {
     justifyContent: 'flex-start',
     padding: '0 25px',

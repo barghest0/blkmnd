@@ -60,7 +60,7 @@ const CopyUrl = styled.div`
   width: 15%;
   height: 90%;
   transform: translateY(-50%);
-  background-color: #101010;
+  background-color: ${ThemeColors.mainColor};
   opacity: 0.8;
 `;
 

@@ -6,9 +6,11 @@ const theme = createTheme({
   palette: {
     primary: {
       main: ThemeColors.secondColor,
+      dark: ThemeColors.black,
     },
     secondary: {
       main: ThemeColors.secondColor,
+      dark: ThemeColors.black,
     },
   },
 
@@ -33,7 +35,7 @@ const theme = createTheme({
         {
           props: { variant: 'outlined' },
           style: {
-            backgroundColor: '#1C1C1C',
+            backgroundColor: ThemeColors.dark,
             borderRadius: 5,
           },
         },
@@ -73,14 +75,14 @@ const theme = createTheme({
         root: {
           color: ThemeColors.white,
           height: '100%',
-          backgroundColor: '#1C1C1C',
+          backgroundColor: ThemeColors.dark,
           '&:hover .MuiOutlinedInput-notchedOutline': {
             borderColor: ThemeColors.secondColor,
           },
         },
         notchedOutline: {
           transition: 'all 0.2s linear',
-          borderColor: '#363636',
+          borderColor: ThemeColors.borderColor,
         },
       },
     },
@@ -106,7 +108,7 @@ const theme = createTheme({
     MuiList: {
       styleOverrides: {
         root: {
-          backgroundColor: '#1C1C1C',
+          backgroundColor: ThemeColors.dark,
         },
       },
     },
@@ -114,7 +116,7 @@ const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundColor: '#1C1C1C',
+          backgroundColor: ThemeColors.dark,
         },
       },
     },

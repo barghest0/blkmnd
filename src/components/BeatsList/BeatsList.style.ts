@@ -23,7 +23,7 @@ const Row = styled.div<BeatRowProps>`
       column-gap: 10px;
       padding: 10px 0;
       cursor: pointer;
-      border-bottom: 1px solid #343434;
+      border-bottom: 1px solid ${ThemeColors.borderColor};
       &:nth-child(1) {
         border-bottom: none;
       }

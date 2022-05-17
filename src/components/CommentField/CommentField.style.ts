@@ -18,7 +18,7 @@ const CommentInput = styled.input`
   outline: none;
   width: 100%;
   height: 100%;
-  border-bottom: 1px solid #1c1c1c;
+  border-bottom: 1px solid ${ThemeColors.borderColor};
   color: ${ThemeColors.white};
   font-size: 16px;
 

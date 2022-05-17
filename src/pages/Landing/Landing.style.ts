@@ -176,6 +176,7 @@ const YoutubeInner = styled.div`
   align-items: center;
   padding: 50px 0;
   justify-items: center;
+
   @media ${breakpoint('md')} {
     grid-template-columns: 1fr;
     row-gap: 40px;

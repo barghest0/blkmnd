@@ -28,7 +28,7 @@ const Thumbnail = styled.img`
   border-radius: 5px;
   width: 300px;
   height: 300px;
-  grid-row: 1/4;
+  grid-row: 1/5;
 `;
 
 const Description = styled.div``;
@@ -38,11 +38,15 @@ const Actions = styled.div`
   grid-column-start: 2;
   row-gap: 10px;
   grid-template-columns: 100px 40px;
-  grid-template-rows: repeat(2, 40px);
+  grid-template-rows: 40px;
   column-gap: 10px;
+  align-content: center;
 `;
 
-const Action = styled.div``;
+const Action = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 
 export {
   Collab,

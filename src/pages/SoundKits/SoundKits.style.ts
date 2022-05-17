@@ -19,7 +19,7 @@ const SoundKitsList = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   grid-template-rows: repeat(auto-fill, minmax(250px, 1fr));
   column-gap: 40px;
-  row-gap:20px;
+  row-gap: 20px;
   justify-items: center;
 `;
 

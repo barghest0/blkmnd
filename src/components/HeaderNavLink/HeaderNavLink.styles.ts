@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { StyledNavLink } from '../../shared/styles/links';
 import ThemeColors from '../../shared/styles/theme';
 
@@ -25,6 +25,5 @@ const HeaderNavLink = styled(StyledNavLink)`
     }
   }
 `;
-
 
 export { HeaderNavLink };

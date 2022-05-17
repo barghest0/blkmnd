@@ -46,7 +46,7 @@ const Inner = styled.div`
 `;
 
 const Content = styled.div`
-  overflow:hidden
+  overflow: hidden;
 `;
 
 const CloseButton = styled(CloseIcon)`

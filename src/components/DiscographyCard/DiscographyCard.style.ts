@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import ThemeColors from '../../shared/styles/theme';
 
 const DiscographyCard = styled.div`
   display: flex;
@@ -43,7 +44,7 @@ const Duration = styled.div`
   width: 100%;
   justify-self: flex-end;
   height: 3px;
-  background-color: #363636;
+  background-color: ${ThemeColors.dark};
   position: relative;
   bottom: 0;
   align-self: center;
