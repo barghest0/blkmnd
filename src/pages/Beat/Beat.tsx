@@ -11,30 +11,14 @@ const Beat = () => {
   const params = useParams();
 
   const { beat } = useTypedSelector(state => state.beats);
-  const {
-    isOpen,
-    beat: playerBeat,
-    isPlaying,
-  } = useTypedSelector(state => state.player);
 
   const { getBeat, setBeat, openPlayer, togglePlaying } = useActions();
 
-  const onBeatClick = () => {
+  const onPlayButtonClick = () => {
     if (beat) {
+      openPlayer();
+      togglePlaying(beat);
       setBeat(beat);
-      if (!isOpen) {
-        openPlayer();
-      }
-      if (playerBeat) {
-        if (beat.id === playerBeat.id) {
-          togglePlaying();
-        }
-        if (!isPlaying && beat.id !== playerBeat.id) {
-          togglePlaying();
-        }
-      } else {
-        togglePlaying();
-      }
     }
   };
 
@@ -49,8 +33,8 @@ const Beat = () => {
           <Preloader />
         ) : (
           <S.Content>
-            <S.Thumbnail src={beat.image} onClick={onBeatClick} />
-            <S.TitleContainer onClick={onBeatClick}>
+            <S.Thumbnail src={beat.image} onClick={onPlayButtonClick} />
+            <S.TitleContainer onClick={onPlayButtonClick}>
               <S.PlayButton>
                 <PlayButton currentBeat={beat} />
               </S.PlayButton>

@@ -19,31 +19,14 @@ const DiscographyCard: FC<Props> = ({ beat }) => {
 
   const { setBeat, openPlayer, togglePlaying } = useActions();
 
-  const {
-    beat: playerBeat,
-    isOpen,
-    isPlaying,
-  } = useTypedSelector(state => state.player);
-
   const audioRef = useOutletContext();
 
   const audio = audioRef.audio.current;
 
   const onThumbnailClick = () => {
+    openPlayer();
+    togglePlaying(beat);
     setBeat(beat);
-    if (!isOpen) {
-      openPlayer();
-    }
-    if (playerBeat) {
-      if (beat.id === playerBeat.id) {
-        togglePlaying();
-      }
-      if (!isPlaying && beat.id !== playerBeat.id) {
-        togglePlaying();
-      }
-    } else {
-      togglePlaying();
-    }
   };
 
   return (

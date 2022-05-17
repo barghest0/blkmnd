@@ -18,7 +18,6 @@ import ShareButton from '../ShareButton/ShareButton';
 import * as S from './Player.style';
 import DurationSlider from '../DurationSlider/DurationSlider';
 import VolumeSlider from '../VolumeSlider/VolumeSlider';
-import { FIRST_BEAT } from './constants';
 
 type PlayerProps = {
   isOpen: boolean;
@@ -60,24 +59,10 @@ const Player: FC<Props> = memo(({ audioRef }) => {
 
   const audio = audioRef.current;
 
-
   const onQueueBeatClick = (beat: Beat) => {
     setBeat(beat);
-    if (!isOpen) {
-      openPlayer();
-    }
-    if (playerBeat) {
-      if (beat.id === playerBeat.id) {
-        togglePlaying();
-      }
-      if (!isPlaying && beat.id !== playerBeat.id) {
-        togglePlaying();
-      }
-    } else {
-      togglePlaying();
-    }
+    togglePlaying(beat);
   };
-
 
   const queueBeatsList = queueBeats.map(beat => (
     <S.QueueBeat
@@ -91,7 +76,7 @@ const Player: FC<Props> = memo(({ audioRef }) => {
 
   const onPlayButtonClick = () => {
     if (playerBeat) {
-      togglePlaying();
+      togglePlaying(playerBeat);
     }
   };
 

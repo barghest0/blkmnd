@@ -7,12 +7,23 @@ const playerSlice = createSlice({
   name: PLAYER_SLICE_NAME,
   initialState: PLAYER_INITIAL_STATE,
   reducers: {
-    togglePlaying: state => {
-      state.isPlaying = !state.isPlaying;
+    togglePlaying: (state, action: PayloadAction<Beat>) => {
+      const playerBeat = state.beat;
+      const beat = action.payload;
+      if (playerBeat) {
+        if (beat.id === playerBeat.id) {
+          state.isPlaying = !state.isPlaying;
+        }
+        if (!state.isPlaying && beat.id !== playerBeat.id) {
+          state.isPlaying = !state.isPlaying;
+        }
+      } else {
+        state.isPlaying = !state.isPlaying;
+      }
     },
 
     openPlayer: state => {
-      if (!state.isPlaying) {
+      if (!state.isPlaying && !state.isOpen) {
         state.isOpen = true;
       }
     },

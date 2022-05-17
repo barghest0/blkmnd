@@ -8,6 +8,7 @@ import ModalContainer from '../ModalContainer/ModalContainer';
 import PlayButton from '../PlayButton/PlayButton';
 import ChooseLicenseCard from '../ChooseLicenseCard/ChooseLicenseCard';
 import Image from '../Image/Image';
+import useActions from '../../hooks/useActions';
 
 const BuyModal = () => {
   const { beat, isBuyOpen } = useTypedSelector(state => state.modals);
@@ -15,6 +16,16 @@ const BuyModal = () => {
   const licensesCards = beat?.licenses.map(license => (
     <ChooseLicenseCard license={license} key={license.id} />
   ));
+
+  const { setBeat, openPlayer, togglePlaying } = useActions();
+
+  const onPlayButtonClick = () => {
+    if (beat) {
+      openPlayer();
+      togglePlaying(beat);
+      setBeat(beat);
+    }
+  };
 
   return (
     <S.BuyModal>
@@ -29,7 +40,7 @@ const BuyModal = () => {
               modalType={ModalsTypes.buy}
             >
               <S.Content>
-                <S.Beat>
+                <S.Beat onClick={onPlayButtonClick}>
                   <S.ThumbnailContainer>
                     <S.Thumbnail>
                       <Image image={beat.image} />
