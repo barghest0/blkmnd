@@ -12,7 +12,7 @@ const Container = styled.div`
 const Content = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 40px 20px 1fr;
+  grid-template-rows: 0.5fr 0.3fr 3fr 100px;
   column-gap: 30px;
 `;
 
@@ -31,4 +31,47 @@ const Thumbnail = styled.img`
   grid-row: 1/4;
 `;
 
-export { SoundKit, Container, Title, Subtitle, Thumbnail, Content };
+const Description = styled.div``;
+
+const Actions = styled.div`
+  display: grid;
+  grid-column-start: 2;
+  row-gap: 10px;
+  grid-template-columns: 100px 40px;
+  grid-template-rows: repeat(2, 40px);
+  column-gap: 10px;
+`;
+
+const Player = styled.div`
+  grid-row-start: 1;
+  grid-column: 1/3;
+`;
+
+const Action = styled.div``;
+
+const Comment = styled.div``;
+
+const Reviews = styled.div``;
+
+const ReviewsTitle = styled.h2`
+  font-size: 24px;
+`;
+
+const ReviewsComments = styled.div``;
+
+export {
+  SoundKit,
+  Container,
+  Comment,
+  Reviews,
+  ReviewsTitle,
+  ReviewsComments,
+  Title,
+  Subtitle,
+  Thumbnail,
+  Content,
+  Action,
+  Actions,
+  Player,
+  Description,
+};
