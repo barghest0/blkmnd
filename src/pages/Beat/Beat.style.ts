@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import { container, page } from '../../shared/styles/mixins';
 
 const Beat = styled.div`
-  ${page}
+  ${page};
+  padding-top: 0;
 `;
 
 const Container = styled.div`
@@ -26,11 +27,41 @@ const Title = styled.h1`
 `;
 
 const Content = styled.div`
+  padding-top: 50px;
+  margin-bottom: 50px;
+  position: relative;
+  overflow: hidden;
+`;
+
+const ContentInner = styled.div`
   display: grid;
-  height: 200px;
   grid-template-columns: 180px 1fr;
-  grid-template-rows: 1fr 1fr 1fr 3fr;
+  grid-template-rows: 1fr 1fr 1fr 40px 160px;
   column-gap: 20px;
+  z-index: 20;
+  position: relative;
+`;
+
+const Background = styled.img`
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.3;
+  filter: blur(3px);
+  z-index: 10;
+  pointer-events: none;
+`;
+
+const BackgroundGradient = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 11;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(16, 16, 16, 1));
 `;
 
 const Thumbnail = styled.img`
@@ -47,6 +78,7 @@ const Musician = styled.p`
 
 const Visualizer = styled.div`
   padding: 0 10px;
+  grid-column: 1/3;
 `;
 
 const BeatInfo = styled.div`
@@ -123,4 +155,7 @@ export {
   Info,
   Tabs,
   Comment,
+  Background,
+  ContentInner,
+  BackgroundGradient,
 };

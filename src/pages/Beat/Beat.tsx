@@ -55,50 +55,56 @@ const Beat = () => {
 
   return (
     <S.Beat>
+      {!beat ? (
+        <Preloader />
+      ) : (
+        <S.Content>
+          <S.Container>
+            <S.ContentInner>
+              <S.Thumbnail src={beat.image} onClick={onPlayButtonClick} />
+              <S.TitleContainer onClick={onPlayButtonClick}>
+                <S.PlayButton>
+                  <PlayButton currentBeat={beat} />
+                </S.PlayButton>
+                <S.Title>{beat.title}</S.Title>
+              </S.TitleContainer>
+              <S.Musician>{beat.musician.name}</S.Musician>
+              <S.BeatInfo>
+                <S.Info>
+                  <SpeedIcon />
+                  {beat.bpm}
+                </S.Info>
+                <S.Info>
+                  <MusicNoteSharpIcon />
+                  {beat.chord}
+                </S.Info>
+                <S.Info>
+                  <AccessTimeFilledIcon fontSize="small" />
+                  {beat.date}
+                </S.Info>
+              </S.BeatInfo>
+              <S.Actions>
+                <S.Action>
+                  <BuyButton beatId={beat.id} price={beat.price} />
+                </S.Action>
+                <S.Action>
+                  <DownloadButton beatId={beat.id} />
+                </S.Action>
+                <S.Action>
+                  <ShareButton beatId={beat.id} />
+                </S.Action>
+                <S.Tags>{tags}</S.Tags>
+              </S.Actions>
+              <S.Visualizer>
+                <Visualizer />
+              </S.Visualizer>
+            </S.ContentInner>
+          </S.Container>
+          <S.Background src={beat.image} alt="background" />
+          <S.BackgroundGradient></S.BackgroundGradient>
+        </S.Content>
+      )}
       <S.Container>
-        {!beat ? (
-          <Preloader />
-        ) : (
-          <S.Content>
-            <S.Thumbnail src={beat.image} onClick={onPlayButtonClick} />
-            <S.TitleContainer onClick={onPlayButtonClick}>
-              <S.PlayButton>
-                <PlayButton currentBeat={beat} />
-              </S.PlayButton>
-              <S.Title>{beat.title}</S.Title>
-            </S.TitleContainer>
-            <S.Musician>{beat.musician.name}</S.Musician>
-            <S.BeatInfo>
-              <S.Info>
-                <SpeedIcon />
-                {beat.bpm}
-              </S.Info>
-              <S.Info>
-                <MusicNoteSharpIcon />
-                {beat.chord}
-              </S.Info>
-              <S.Info>
-                <AccessTimeFilledIcon fontSize="small" />
-                {beat.date}
-              </S.Info>
-            </S.BeatInfo>
-            <S.Actions>
-              <S.Action>
-                <BuyButton beatId={beat.id} price={beat.price} />
-              </S.Action>
-              <S.Action>
-                <DownloadButton beatId={beat.id} />
-              </S.Action>
-              <S.Action>
-                <ShareButton beatId={beat.id} />
-              </S.Action>
-              <S.Tags>{tags}</S.Tags>
-            </S.Actions>
-          </S.Content>
-        )}
-        <S.Visualizer>
-          <Visualizer />
-        </S.Visualizer>
         <S.Comment>
           <CommentField />
         </S.Comment>
