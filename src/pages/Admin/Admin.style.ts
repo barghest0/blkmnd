@@ -17,10 +17,6 @@ const Title = styled.h1`
   ${pageTitle}
 `;
 
-const BeatsData = styled.div`
-  width: 100%;
-`;
-
 const GridData = MUIstyled(DataGrid)({
   '&.MuiDataGrid-root': {
     '& .MuiSvgIcon-root': {
@@ -40,9 +36,15 @@ const GridData = MUIstyled(DataGrid)({
   },
 });
 
-const ProductTitle = styled.h2`
+const GridContainer = styled.div`
+  width: 100%;
+  height: auto;
+`;
+
+const ProductHeader = styled.div`
   margin-bottom: 20px;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
 `;
@@ -52,12 +54,15 @@ const AddProduct = styled(StyledLink)`
   color: ${ThemeColors.secondColor};
 `;
 
+const Tabs = styled.div``;
+
 export {
   Admin,
   Container,
   Title,
-  BeatsData,
   GridData,
-  ProductTitle,
+  ProductHeader,
+  Tabs,
   AddProduct,
+  GridContainer,
 };

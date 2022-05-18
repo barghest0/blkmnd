@@ -1,5 +1,6 @@
 import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
+
 import PageTransition from '../../hoc/PageTransition';
 import RequireAdmin from '../../hoc/RequireAdmin';
 import RequireAuth from '../../hoc/RequireAuth';
@@ -19,6 +20,9 @@ import Profile from '../../pages/Profile/Profile';
 import Purchases from '../../pages/Purchases/Purchases';
 import SoundKit from '../../pages/SoundKit/SoundKit';
 import SoundKits from '../../pages/SoundKits/SoundKits';
+import CRUDSoundKit from '../../pages/CRUDSoundKit/CRUDSoundKit';
+import CRUDCollab from '../../pages/CRUDCollab/CRUDCollab';
+
 import { RouterNames } from './types';
 
 const Router = () => {
@@ -55,11 +59,31 @@ const Router = () => {
             }
           />
           <Route
-            path={RouterNames.crudBeat}
+            path={RouterNames.crudBeats}
             element={
               <PageTransition>
                 <RequireAdmin>
                   <CRUDBeat />
+                </RequireAdmin>
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.crudSoundKits}
+            element={
+              <PageTransition>
+                <RequireAdmin>
+                  <CRUDSoundKit />
+                </RequireAdmin>
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.crudCollabs}
+            element={
+              <PageTransition>
+                <RequireAdmin>
+                  <CRUDCollab />
                 </RequireAdmin>
               </PageTransition>
             }

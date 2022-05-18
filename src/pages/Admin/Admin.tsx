@@ -1,14 +1,18 @@
 import { GridColDef } from '@mui/x-data-grid';
-
-import { useEffect } from 'react';
+import { Tab, Tabs } from '@mui/material';
 import { GridRowParams } from '@mui/x-data-grid';
+
+import { SyntheticEvent, useEffect, useState } from 'react';
+
+import { useNavigate } from 'react-router-dom';
+
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { Tag } from '../../redux/beats/types';
 import { Beat } from '../../redux/beats/types';
-import * as S from './Admin.style';
 import Image from '../../components/Image/Image';
-import { useNavigate } from 'react-router-dom';
+
+import * as S from './Admin.style';
 import { RouterPaths } from '../../shared/router/types';
 
 const beatsDataColumns: GridColDef[] = [
@@ -68,40 +72,139 @@ const beatsDataColumns: GridColDef[] = [
   },
 ];
 
+const soundKitsDataColumns: GridColDef[] = [
+  {
+    field: 'id',
+    headerName: 'Id',
+    width: 30,
+  },
+  {
+    field: 'title',
+    headerName: 'Title',
+    width: 300,
+  },
+  {
+    field: 'price',
+    headerName: 'Price',
+    width: 100,
+  },
+  {
+    field: 'description',
+    headerName: 'Description',
+    width: 500,
+  },
+  {
+    field: 'image',
+    headerName: 'Image',
+    width: 80,
+    renderCell: params => <Image image={params.value} />,
+  },
+];
+
+const collabsDataColumns: GridColDef[] = [
+  {
+    field: 'id',
+    headerName: 'Id',
+    width: 30,
+  },
+  {
+    field: 'title',
+    headerName: 'Title',
+    width: 300,
+  },
+  {
+    field: 'price',
+    headerName: 'Price',
+    width: 100,
+  },
+  {
+    field: 'description',
+    headerName: 'Description',
+    width: 500,
+  },
+  {
+    field: 'image',
+    headerName: 'Image',
+    width: 80,
+    renderCell: params => <Image image={params.value} />,
+  },
+];
+
 const Admin = () => {
   const { beats } = useTypedSelector(state => state.beats);
-  const { getAllBeats } = useActions();
+  const { getAllBeats, getAllCollabs, getAllSoundKits } = useActions();
+
+  const { collabs } = useTypedSelector(state => state.collabs);
+  const { soundKits } = useTypedSelector(state => state.soundKits);
+
+  const [tab, setTab] = useState(RouterPaths.beats);
+
   const navigate = useNavigate();
 
   useEffect(() => {
     getAllBeats();
+    getAllCollabs();
+    getAllSoundKits();
   }, []);
 
-  const onBeatRowDoubleClick = (params: GridRowParams<Beat>) => {
-    const beat = params.row;
-    navigate(`${RouterPaths.crudBeat}/${beat.id}`);
+  const onRowDoubleClick = (params: GridRowParams<Beat>) => {
+    const product = params.row;
+    navigate(`${tab}/crud/${product.id}`);
+  };
+
+  const onTabChange = (_: SyntheticEvent, tab: RouterPaths) => {
+    setTab(tab);
   };
 
   return (
     <S.Admin>
       <S.Container>
         <S.Title>Admin panel</S.Title>
-        <S.BeatsData>
-          <S.ProductTitle>
-            Beats
-            <S.AddProduct to={RouterPaths.crudBeat}>
-              + Add new beat
-            </S.AddProduct>
-          </S.ProductTitle>
+        <S.ProductHeader>
+          <S.Tabs>
+            <Tabs value={tab} onChange={onTabChange} indicatorColor="secondary">
+              <Tab value={RouterPaths.beats} label="BEATS" />
+              <Tab value={RouterPaths.soundKits} label="SOUND KITS" />
+              <Tab value={RouterPaths.collabs} label="COLLABS" />
+            </Tabs>
+          </S.Tabs>
+          <S.AddProduct to={RouterPaths.crudBeats}>
+            + Add new product
+          </S.AddProduct>
+        </S.ProductHeader>
+        <S.GridContainer hidden={tab !== RouterPaths.beats}>
           <S.GridData
             autoHeight
             rows={beats}
             columns={beatsDataColumns}
             pageSize={10}
-            onRowDoubleClick={onBeatRowDoubleClick}
+            onRowDoubleClick={onRowDoubleClick}
             rowHeight={60}
+            rowsPerPageOptions={[10]}
           />
-        </S.BeatsData>
+        </S.GridContainer>
+        <S.GridContainer hidden={tab !== RouterPaths.soundKits}>
+          <S.GridData
+            autoHeight
+            rows={soundKits}
+            columns={soundKitsDataColumns}
+            pageSize={10}
+            onRowDoubleClick={onRowDoubleClick}
+            rowHeight={60}
+            rowsPerPageOptions={[10]}
+          />
+        </S.GridContainer>
+        <S.GridContainer hidden={tab !== RouterPaths.collabs}>
+          <S.GridData
+            autoHeight
+            rows={collabs}
+            columns={collabsDataColumns}
+            pageSize={10}
+            onRowDoubleClick={onRowDoubleClick}
+            rowHeight={60}
+            rowsPerPageOptions={[10]}
+          />
+        </S.GridContainer>
       </S.Container>
     </S.Admin>
   );
