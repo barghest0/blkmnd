@@ -56,6 +56,10 @@ const Submit = styled.div`
 
 const TextInput = MUIstyled(TextField)({});
 
+const AdminPanel = styled.div`
+  height: 40px;
+`;
+
 export {
   Profile,
   Container,
@@ -67,4 +71,5 @@ export {
   Submit,
   TextInput,
   NewPassword,
+  AdminPanel,
 };

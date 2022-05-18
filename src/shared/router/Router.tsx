@@ -1,8 +1,10 @@
 import { AnimatePresence } from 'framer-motion';
 import { Route, Routes, useLocation } from 'react-router-dom';
 import PageTransition from '../../hoc/PageTransition';
+import RequireAdmin from '../../hoc/RequireAdmin';
 import RequireAuth from '../../hoc/RequireAuth';
 import About from '../../pages/About/About';
+import Admin from '../../pages/Admin/Admin';
 import Beat from '../../pages/Beat/Beat';
 import Beats from '../../pages/Beats/Beats';
 import Collab from '../../pages/Collab/Collab';
@@ -25,6 +27,16 @@ const Router = () => {
     <AnimatePresence exitBeforeEnter>
       <Routes location={location} key={location.pathname}>
         <Route path={RouterNames.layout} element={<Layout />}>
+          <Route
+            path={RouterNames.admin}
+            element={
+              <PageTransition>
+                <RequireAdmin>
+                  <Admin />
+                </RequireAdmin>
+              </PageTransition>
+            }
+          />
           <Route
             path={RouterNames.landing}
             element={

@@ -1,5 +1,7 @@
 import { useFormik } from 'formik';
 import Button from '../../components/Button/Button';
+import { RouterPaths } from '../../shared/router/types';
+import { ButtonLink } from '../../shared/styles/links';
 import * as S from './Profile.style';
 
 type InfoValues = {
@@ -14,6 +16,8 @@ type PasswordValues = {
 };
 
 const Profile = () => {
+  const isAdmin = true;
+
   const initialInfoValues: InfoValues = {
     email: '',
     username: '',
@@ -99,6 +103,11 @@ const Profile = () => {
             </S.Submit>
           </S.ChangePasswordForm>
         </S.Section>
+        {isAdmin && (
+          <S.AdminPanel>
+            <ButtonLink to={RouterPaths.admin}>Admin panel</ButtonLink>
+          </S.AdminPanel>
+        )}
       </S.Container>
     </S.Profile>
   );
