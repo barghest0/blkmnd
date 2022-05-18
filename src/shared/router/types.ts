@@ -3,9 +3,6 @@ enum RouterNames {
   landing = '/',
   beats = '/beats',
   beat = '/beats/:id',
-  crudBeats = '/beats/crud/:id',
-  crudSoundKits = '/sound-kits/crud/:id',
-  crudCollabs = '/collabs/crud/:id',
   soundKits = '/sound-kits',
   soundKit = '/sound-kits/:id',
   collabs = '/collabs',
@@ -23,9 +20,6 @@ enum RouterPaths {
   landing = '/',
   beats = '/beats',
   soundKits = '/sound-kits',
-  crudBeats = '/beats/crud',
-  crudSoundKits = '/sound-kits/crud',
-  crudCollabs = '/collabs/crud',
   collabs = '/collabs',
   contact = '/contact',
   profile = '/profile',
@@ -36,4 +30,20 @@ enum RouterPaths {
   admin = '/admin',
 }
 
-export { RouterNames, RouterPaths };
+enum CrudNames {
+  beat = '/admin/beats',
+  soundKits = '/admin/sound-kits',
+  collabs = '/admin/collabs',
+}
+
+enum CrudPaths {
+  update = 'update',
+  create = 'create',
+}
+
+enum CrudActions {
+  create = 'create',
+  update = 'update/:id',
+}
+
+export { RouterNames, RouterPaths, CrudNames, CrudActions, CrudPaths };

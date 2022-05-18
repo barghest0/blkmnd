@@ -1,5 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 import PageTransition from '../../hoc/PageTransition';
 import RequireAdmin from '../../hoc/RequireAdmin';
@@ -23,7 +23,9 @@ import SoundKits from '../../pages/SoundKits/SoundKits';
 import CRUDSoundKit from '../../pages/CRUDSoundKit/CRUDSoundKit';
 import CRUDCollab from '../../pages/CRUDCollab/CRUDCollab';
 
-import { RouterNames } from './types';
+import { CrudActions, CrudNames, RouterNames } from './types';
+import CreateForm from '../../components/CreateForm/CreateForm';
+import UpdateForm from '../../components/UpdateForm/UpdateForm';
 
 const Router = () => {
   const location = useLocation();
@@ -55,36 +57,6 @@ const Router = () => {
             element={
               <PageTransition>
                 <Beats />
-              </PageTransition>
-            }
-          />
-          <Route
-            path={RouterNames.crudBeats}
-            element={
-              <PageTransition>
-                <RequireAdmin>
-                  <CRUDBeat />
-                </RequireAdmin>
-              </PageTransition>
-            }
-          />
-          <Route
-            path={RouterNames.crudSoundKits}
-            element={
-              <PageTransition>
-                <RequireAdmin>
-                  <CRUDSoundKit />
-                </RequireAdmin>
-              </PageTransition>
-            }
-          />
-          <Route
-            path={RouterNames.crudCollabs}
-            element={
-              <PageTransition>
-                <RequireAdmin>
-                  <CRUDCollab />
-                </RequireAdmin>
               </PageTransition>
             }
           />
@@ -184,7 +156,51 @@ const Router = () => {
               </PageTransition>
             }
           />
+          <Route
+            path={CrudNames.beat}
+            element={
+              <PageTransition>
+                <RequireAdmin>
+                  <CRUDBeat />
+                </RequireAdmin>
+              </PageTransition>
+            }
+          >
+            <Route path={CrudActions.create} element={<CreateForm />} />
+            <Route path={CrudActions.update} element={<UpdateForm />} />
+          </Route>
+          <Route
+            path={CrudNames.soundKits}
+            element={
+              <PageTransition>
+                <RequireAdmin>
+                  <CRUDSoundKit />
+                </RequireAdmin>
+              </PageTransition>
+            }
+          >
+            <Route path={CrudActions.create} element={<CreateForm />} />
+            <Route path={CrudActions.update} element={<UpdateForm />} />
+          </Route>
+
+          <Route
+            path={CrudNames.collabs}
+            element={
+              <PageTransition>
+                <RequireAdmin>
+                  <CRUDCollab />
+                </RequireAdmin>
+              </PageTransition>
+            }
+          >
+            <Route path={CrudActions.create} element={<CreateForm />} />
+            <Route path={CrudActions.update} element={<UpdateForm />} />
+          </Route>
         </Route>
+        <Route
+          path="*"
+          element={<Navigate to={RouterNames.landing} replace />}
+        />
       </Routes>
     </AnimatePresence>
   );

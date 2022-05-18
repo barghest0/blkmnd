@@ -11,7 +11,7 @@ const Player = styled.div<PlayerProps>`
       display: ${display};
       height: 70px;
       width: 100%;
-      background-color: ${ThemeColors.headerColor};
+      background-color: ${ThemeColors.layoutColor};
       position: fixed;
       bottom: ${bottom};
       transition: all 0.2s linear;

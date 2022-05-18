@@ -1,3 +1,5 @@
+import {Outlet} from 'react-router-dom';
+
 import * as S from './CRUDCollab.style';
 
 const CRUDCollab = () => {
@@ -5,6 +7,7 @@ const CRUDCollab = () => {
     <S.CRUDCollab>
       <S.Container>
         <S.Title>Crud collab</S.Title>
+        <Outlet/>
       </S.Container>
     </S.CRUDCollab>
   );

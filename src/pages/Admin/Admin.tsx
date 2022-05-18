@@ -5,7 +5,6 @@ import { GridRowParams } from '@mui/x-data-grid';
 import { SyntheticEvent, useEffect, useState } from 'react';
 
 import { useNavigate } from 'react-router-dom';
-
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { Tag } from '../../redux/beats/types';
@@ -13,7 +12,12 @@ import { Beat } from '../../redux/beats/types';
 import Image from '../../components/Image/Image';
 
 import * as S from './Admin.style';
-import { RouterPaths } from '../../shared/router/types';
+import {
+  CrudActions,
+  CrudNames,
+  CrudPaths,
+  RouterPaths,
+} from '../../shared/router/types';
 
 const beatsDataColumns: GridColDef[] = [
   {
@@ -137,7 +141,7 @@ const Admin = () => {
   const { collabs } = useTypedSelector(state => state.collabs);
   const { soundKits } = useTypedSelector(state => state.soundKits);
 
-  const [tab, setTab] = useState(RouterPaths.beats);
+  const [tab, setTab] = useState('beats');
 
   const navigate = useNavigate();
 
@@ -149,7 +153,7 @@ const Admin = () => {
 
   const onRowDoubleClick = (params: GridRowParams<Beat>) => {
     const product = params.row;
-    navigate(`${tab}/crud/${product.id}`);
+    navigate(`${RouterPaths.admin}/${tab}/${CrudPaths.update}/${product.id}`);
   };
 
   const onTabChange = (_: SyntheticEvent, tab: RouterPaths) => {
@@ -163,16 +167,18 @@ const Admin = () => {
         <S.ProductHeader>
           <S.Tabs>
             <Tabs value={tab} onChange={onTabChange} indicatorColor="secondary">
-              <Tab value={RouterPaths.beats} label="BEATS" />
-              <Tab value={RouterPaths.soundKits} label="SOUND KITS" />
-              <Tab value={RouterPaths.collabs} label="COLLABS" />
+              <Tab value={'beats'} label="BEATS" />
+              <Tab value={'sound-kits'} label="SOUND KITS" />
+              <Tab value={'collabs'} label="COLLABS" />
             </Tabs>
           </S.Tabs>
-          <S.AddProduct to={RouterPaths.crudBeats}>
+          <S.AddProduct
+            to={`${RouterPaths.admin}/${tab}/${CrudActions.create}`}
+          >
             + Add new product
           </S.AddProduct>
         </S.ProductHeader>
-        <S.GridContainer hidden={tab !== RouterPaths.beats}>
+        <S.GridContainer hidden={tab !== 'beats'}>
           <S.GridData
             autoHeight
             rows={beats}
@@ -183,7 +189,7 @@ const Admin = () => {
             rowsPerPageOptions={[10]}
           />
         </S.GridContainer>
-        <S.GridContainer hidden={tab !== RouterPaths.soundKits}>
+        <S.GridContainer hidden={tab !== 'sound-kits'}>
           <S.GridData
             autoHeight
             rows={soundKits}
@@ -194,7 +200,7 @@ const Admin = () => {
             rowsPerPageOptions={[10]}
           />
         </S.GridContainer>
-        <S.GridContainer hidden={tab !== RouterPaths.collabs}>
+        <S.GridContainer hidden={tab !== 'collabs'}>
           <S.GridData
             autoHeight
             rows={collabs}
