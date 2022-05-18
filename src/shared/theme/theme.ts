@@ -8,9 +8,13 @@ const theme = createTheme({
       main: ThemeColors.secondColor,
       dark: ThemeColors.black,
     },
+
     secondary: {
       main: ThemeColors.secondColor,
-      dark: ThemeColors.black,
+    },
+
+    text: {
+      primary: ThemeColors.white,
     },
   },
 
@@ -116,7 +120,7 @@ const theme = createTheme({
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundColor: ThemeColors.dark,
+          backgroundColor: `${ThemeColors.dark} !important`,
         },
       },
     },
@@ -187,6 +191,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: ThemeColors.white,
+          backgroundColor: ThemeColors.dark,
         },
       },
     },

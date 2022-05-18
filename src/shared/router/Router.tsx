@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import PageTransition from '../../hoc/PageTransition';
 import RequireAdmin from '../../hoc/RequireAdmin';
 import RequireAuth from '../../hoc/RequireAuth';
+import CRUDBeat from '../../pages/CRUDBeat/CRUDBeat';
 import About from '../../pages/About/About';
 import Admin from '../../pages/Admin/Admin';
 import Beat from '../../pages/Beat/Beat';
@@ -50,6 +51,16 @@ const Router = () => {
             element={
               <PageTransition>
                 <Beats />
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.crudBeat}
+            element={
+              <PageTransition>
+                <RequireAdmin>
+                  <CRUDBeat />
+                </RequireAdmin>
               </PageTransition>
             }
           />

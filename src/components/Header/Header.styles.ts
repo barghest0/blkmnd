@@ -22,7 +22,7 @@ const HeaderBurger = styled.div`
   cursor: pointer;
   height: 100%;
   display: none;
-  width: 100px;
+  width: 70px;
   justify-content: center;
   align-items: center;
   border-right: 1px solid #363636;
