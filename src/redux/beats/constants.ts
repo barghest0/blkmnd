@@ -15,7 +15,8 @@ const GET_BEAT_NAME = 'beats/single';
 const BEATS_INITIAL_STATE: BeatsState = {
   beats: [],
   isFetching: false,
-  beat: null,
+  featuredBeat: null,
+  beat:null,
   error: '',
 };
 

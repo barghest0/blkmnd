@@ -168,6 +168,7 @@ const theme = createTheme({
         root: {
           color: '#8e8e8e',
           boxShadow: 'none',
+          border: 'none',
           '::before': {
             backgroundColor: 'transparent',
           },
@@ -229,7 +230,7 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           color: ThemeColors.white,
-          backgroundColor: ThemeColors.dark,
+          backgroundColor: 'transparent',
         },
       },
     },

@@ -10,7 +10,6 @@ import * as soundKitsActions from '../redux/soundKits/actions';
 import * as collabsActions from '../redux/collabs/actions';
 import * as discographyActions from '../redux/discography/actions';
 import * as membershipsActions from '../redux/memberships/actions';
-import * as asyncModalsActions from '../redux/modals/actions';
 import * as asyncPlayerActions from '../redux/player/actions';
 
 const rootActionCreator = {
@@ -20,7 +19,6 @@ const rootActionCreator = {
   ...collabsActions,
   ...discographyActions,
   ...membershipsActions,
-  ...asyncModalsActions,
   ...playerSlice.actions,
   ...modalsSlice.actions,
   ...asyncPlayerActions,

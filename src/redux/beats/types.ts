@@ -1,6 +1,7 @@
 type BeatsState = {
   beats: Beat[];
   beat: Beat | null;
+  featuredBeat: Beat | null;
   isFetching: boolean;
   error: string;
 };

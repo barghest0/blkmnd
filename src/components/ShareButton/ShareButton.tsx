@@ -21,11 +21,11 @@ const ShareButton: FC<Props> = ({
   beatId,
   children,
 }) => {
-  const { setModalVisability, getModalBeat } = useActions();
+  const { setModalVisability, getBeat } = useActions();
 
   const onShareButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.share });
-    getModalBeat(beatId);
+    getBeat(beatId);
   };
   return (
     <S.ShareButton onClick={onShareButtonClick}>

@@ -14,8 +14,9 @@ import ModalContainer from '../ModalContainer/ModalContainer';
 import { Tab, Tabs } from '@mui/material';
 
 const ShareModal: FC = () => {
-  const { isShareOpen, beat } = useTypedSelector(state => state.modals);
-  const [tab,setTab] = useState('share');
+  const { isShareOpen } = useTypedSelector(state => state.modals);
+  const { beat } = useTypedSelector(state => state.beats);
+  const [tab, setTab] = useState('share');
   const [copiedState, setCopiedState] = useState({
     value: '',
     isCopied: false,
@@ -27,7 +28,7 @@ const ShareModal: FC = () => {
     setCopiedState({ value: url, isCopied: true });
   };
 
-  const onTabChange = (_: SyntheticEvent,tab : string) => {
+  const onTabChange = (_: SyntheticEvent, tab: string) => {
     setTab(tab);
   };
 
@@ -61,7 +62,7 @@ const ShareModal: FC = () => {
                   </Tabs>
                 </S.Tabs>
                 <S.TabsContent>
-                  <S.TabPanel hidden={tab!== 'share'}>
+                  <S.TabPanel hidden={tab !== 'share'}>
                     <S.UrlField>
                       <S.Field
                         name="url"
@@ -84,7 +85,7 @@ const ShareModal: FC = () => {
                       </CopyToClipboard>
                     </S.UrlField>
                   </S.TabPanel>
-                  <S.TabPanel hidden={tab!== 'embed'}>iframe</S.TabPanel>
+                  <S.TabPanel hidden={tab !== 'embed'}>iframe</S.TabPanel>
                 </S.TabsContent>
               </S.Content>
             </Modal>

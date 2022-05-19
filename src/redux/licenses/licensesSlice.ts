@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { License } from '../beat/types';
-import { getLicenses } from './actions';
+import { License } from '../beats/types';
+import { getLicense, getLicenses } from './actions';
 import { LICENSE_INITIAL_STATE, LICENSE_SLICE_NAME } from './constants';
 
 const licensesSlice = createSlice({
@@ -20,6 +20,15 @@ const licensesSlice = createSlice({
 
     [getLicenses.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
+      state.error = action.payload;
+    },
+
+    [getLicense.fulfilled.type]: (state, action: PayloadAction<License>) => {
+      state.error = '';
+      state.license = action.payload;
+    },
+
+    [getLicense.rejected.type]: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
     },
   },

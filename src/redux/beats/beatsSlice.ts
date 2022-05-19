@@ -75,7 +75,7 @@ const beatsSlice = createSlice({
       state.error = '';
       const featuredBeat =
         action.payload[Math.floor(Math.random() * action.payload.length)];
-      state.beat = featuredBeat;
+      state.featuredBeat = featuredBeat;
     },
 
     [getFeaturedBeat.rejected.type]: (state, action: PayloadAction<string>) => {

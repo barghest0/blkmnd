@@ -10,11 +10,11 @@ type Props = {
 };
 
 const BuyButton: FC<Props> = ({ price, beatId }) => {
-  const { setModalVisability, getModalBeat } = useActions();
+  const { setModalVisability, getBeat } = useActions();
 
   const onBuyButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.buy });
-    getModalBeat(beatId);
+    getBeat(beatId);
   };
 
   return (

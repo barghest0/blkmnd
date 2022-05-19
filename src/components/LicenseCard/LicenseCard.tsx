@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import * as S from './LicenseCard.style';
 
-import { License } from '../../redux/beat/types';
+import { License } from '../../redux/beats/types';
 import Button from '../Button/Button';
 import useActions from '../../hooks/useActions';
 import { ModalsTypes } from '../../redux/modals/types';
@@ -13,11 +13,11 @@ type Props = {
 
 const LicenseCard: FC<Props> = ({ license }) => {
   const { id, name, price } = license;
-  const { setModalVisability, getModalLicense } = useActions();
+  const { setModalVisability, getLicense } = useActions();
 
   const onDetailsButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.license });
-    getModalLicense(id);
+    getLicense(id);
   };
 
   return (

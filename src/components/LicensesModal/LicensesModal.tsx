@@ -7,7 +7,8 @@ import Preloader from '../Preloader/Preloader';
 import * as S from './LicensesModal.style';
 
 const LicensesModal: FC = () => {
-  const { isLicenseOpen, license } = useTypedSelector(state => state.modals);
+  const { isLicenseOpen } = useTypedSelector(state => state.modals);
+  const { license } = useTypedSelector(state => state.licenses);
 
   return (
     <S.LicensesModal>

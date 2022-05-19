@@ -11,7 +11,8 @@ import Image from '../Image/Image';
 import useActions from '../../hooks/useActions';
 
 const BuyModal = () => {
-  const { beat, isBuyOpen } = useTypedSelector(state => state.modals);
+  const { isBuyOpen } = useTypedSelector(state => state.modals);
+  const { beat } = useTypedSelector(state => state.beats);
 
   const licensesCards = beat?.licenses.map(license => (
     <ChooseLicenseCard license={license} key={license.id} />

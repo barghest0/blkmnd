@@ -1,6 +1,5 @@
 import { FC } from 'react';
 
-
 import * as S from './DownloadModal.style';
 
 import Modal from '../Modal/Modal';
@@ -25,7 +24,8 @@ type DownloadValues = {
 };
 
 const DownloadModal: FC = () => {
-  const { isDownloadOpen, beat } = useTypedSelector(state => state.modals);
+  const { isDownloadOpen } = useTypedSelector(state => state.modals);
+  const { beat } = useTypedSelector(state => state.beats);
 
   const initialDownloadValues: DownloadValues = {
     email: '',
