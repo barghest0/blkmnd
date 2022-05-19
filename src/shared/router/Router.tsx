@@ -26,6 +26,7 @@ import CRUDCollab from '../../pages/CRUDCollab/CRUDCollab';
 import { CrudActions, CrudNames, RouterNames } from './types';
 import CreateForm from '../../components/CreateForm/CreateForm';
 import UpdateForm from '../../components/UpdateForm/UpdateForm';
+import BeatForm from '../../components/BeatForm/BeatForm';
 
 const Router = () => {
   const location = useLocation();
@@ -166,8 +167,8 @@ const Router = () => {
               </PageTransition>
             }
           >
-            <Route path={CrudActions.create} element={<CreateForm />} />
-            <Route path={CrudActions.update} element={<UpdateForm />} />
+            <Route path={CrudActions.create} element={<BeatForm />} />
+            <Route path={CrudActions.update} element={<BeatForm />} />
           </Route>
           <Route
             path={CrudNames.soundKits}
@@ -179,8 +180,8 @@ const Router = () => {
               </PageTransition>
             }
           >
-            <Route path={CrudActions.create} element={<CreateForm />} />
-            <Route path={CrudActions.update} element={<UpdateForm />} />
+            {/* <Route path={CrudActions.create} element={<CreateForm />} /> */}
+            {/* <Route path={CrudActions.update} element={<UpdateForm />} /> */}
           </Route>
 
           <Route
@@ -193,8 +194,8 @@ const Router = () => {
               </PageTransition>
             }
           >
-            <Route path={CrudActions.create} element={<CreateForm />} />
-            <Route path={CrudActions.update} element={<UpdateForm />} />
+            {/* <Route path={CrudActions.create} element={<CreateForm />} /> */}
+            {/* <Route path={CrudActions.update} element={<UpdateForm />} /> */}
           </Route>
         </Route>
         <Route

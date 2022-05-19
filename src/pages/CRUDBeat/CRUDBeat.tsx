@@ -1,11 +1,8 @@
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import * as S from './CRUDBeat.style';
 
 const CRUDBeat = () => {
-  const params = useParams();
-  console.log(params);
-
   return (
     <S.CRUDBeat>
       <S.Container>
