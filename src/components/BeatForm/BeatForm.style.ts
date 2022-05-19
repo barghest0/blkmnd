@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import { styled as MUIstyled } from '@mui/material';
+
+
 const BeatForm = styled.form`
   display: grid;
   grid-template-columns: 1fr;

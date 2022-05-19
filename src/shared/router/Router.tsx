@@ -4,7 +4,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import PageTransition from '../../hoc/PageTransition';
 import RequireAdmin from '../../hoc/RequireAdmin';
 import RequireAuth from '../../hoc/RequireAuth';
-import CRUDBeat from '../../pages/CRUDBeat/CRUDBeat';
+import CRUD from '../../pages/CRUD/CRUD';
 import About from '../../pages/About/About';
 import Admin from '../../pages/Admin/Admin';
 import Beat from '../../pages/Beat/Beat';
@@ -20,13 +20,9 @@ import Profile from '../../pages/Profile/Profile';
 import Purchases from '../../pages/Purchases/Purchases';
 import SoundKit from '../../pages/SoundKit/SoundKit';
 import SoundKits from '../../pages/SoundKits/SoundKits';
-import CRUDSoundKit from '../../pages/CRUDSoundKit/CRUDSoundKit';
-import CRUDCollab from '../../pages/CRUDCollab/CRUDCollab';
-
-import { CrudActions, CrudNames, RouterNames } from './types';
-import CreateForm from '../../components/CreateForm/CreateForm';
-import UpdateForm from '../../components/UpdateForm/UpdateForm';
 import BeatForm from '../../components/BeatForm/BeatForm';
+
+import { CrudNames, RouterNames } from './types';
 
 const Router = () => {
   const location = useLocation();
@@ -158,48 +154,25 @@ const Router = () => {
             }
           />
           <Route
-            path={CrudNames.beat}
+            path={RouterNames.crud}
             element={
               <PageTransition>
                 <RequireAdmin>
-                  <CRUDBeat />
+                  <CRUD />
                 </RequireAdmin>
               </PageTransition>
             }
           >
-            <Route path={CrudActions.create} element={<BeatForm />} />
-            <Route path={CrudActions.update} element={<BeatForm />} />
-          </Route>
-          <Route
-            path={CrudNames.soundKits}
-            element={
-              <PageTransition>
-                <RequireAdmin>
-                  <CRUDSoundKit />
-                </RequireAdmin>
-              </PageTransition>
-            }
-          >
-            {/* <Route path={CrudActions.create} element={<CreateForm />} /> */}
-            {/* <Route path={CrudActions.update} element={<UpdateForm />} /> */}
-          </Route>
-
-          <Route
-            path={CrudNames.collabs}
-            element={
-              <PageTransition>
-                <RequireAdmin>
-                  <CRUDCollab />
-                </RequireAdmin>
-              </PageTransition>
-            }
-          >
-            {/* <Route path={CrudActions.create} element={<CreateForm />} /> */}
-            {/* <Route path={CrudActions.update} element={<UpdateForm />} /> */}
+            <Route path={CrudNames.createBeat} element={<BeatForm />} />
+            <Route path={CrudNames.updateBeat} element={<BeatForm />} />
+            <Route path={CrudNames.createSoundKit} element={<BeatForm />} />
+            <Route path={CrudNames.updateSoundKit} element={<BeatForm />} />
+            <Route path={CrudNames.createCollab} element={<BeatForm />} />
+            <Route path={CrudNames.updateCollab} element={<BeatForm />} />
           </Route>
         </Route>
         <Route
-          path="*"
+          path={RouterNames.notFound}
           element={<Navigate to={RouterNames.landing} replace />}
         />
       </Routes>

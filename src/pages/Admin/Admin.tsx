@@ -12,12 +12,7 @@ import { Beat } from '../../redux/beats/types';
 import Image from '../../components/Image/Image';
 
 import * as S from './Admin.style';
-import {
-  CrudActions,
-  CrudNames,
-  CrudPaths,
-  RouterPaths,
-} from '../../shared/router/types';
+import { CrudActions, RouterPaths } from '../../shared/router/types';
 
 const beatsDataColumns: GridColDef[] = [
   {
@@ -153,7 +148,7 @@ const Admin = () => {
 
   const onRowDoubleClick = (params: GridRowParams<Beat>) => {
     const product = params.row;
-    navigate(`${RouterPaths.admin}/${tab}/${CrudPaths.update}/${product.id}`);
+    navigate(`${RouterPaths.crud}/${tab}/${CrudActions.update}/${product.id}`);
   };
 
   const onTabChange = (_: SyntheticEvent, tab: RouterPaths) => {
@@ -172,9 +167,7 @@ const Admin = () => {
               <Tab value={'collabs'} label="COLLABS" />
             </Tabs>
           </S.Tabs>
-          <S.AddProduct
-            to={`${RouterPaths.admin}/${tab}/${CrudActions.create}`}
-          >
+          <S.AddProduct to={`${RouterPaths.crud}/${tab}/${CrudActions.create}`}>
             + Add new product
           </S.AddProduct>
         </S.ProductHeader>

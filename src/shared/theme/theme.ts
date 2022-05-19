@@ -121,6 +121,44 @@ const theme = createTheme({
       styleOverrides: {
         root: {
           backgroundColor: `${ThemeColors.dark} !important`,
+          border: `1px solid ${ThemeColors.secondColor} `,
+          '& .MuiCalendarPicker-root': {
+            marginTop: 10,
+          },
+
+          '& .MuiTypography-root': {
+            color: ThemeColors.white,
+          },
+
+          '& .PrivatePickersYear-yearButton.Mui-selected': {
+            backgroundColor: `${ThemeColors.secondColor} !important`,
+          },
+
+          '&.Mui-selected:hover, &.Mui-selected:hover': {
+            backgroundColor: `${ThemeColors.secondColor} !important`,
+          },
+
+          '& .MuiSvgIcon-root': {
+            fill: ThemeColors.white,
+          },
+
+          '& .MuiPickersDay-today': {
+            border: `1px solid ${ThemeColors.secondColor} !important`,
+          },
+
+          '& .MuiPickersDay-root': {
+            backgroundColor: 'transparent',
+
+            '&:focus.Mui-selected': {
+              backgroundColor: ThemeColors.secondColor,
+            },
+
+            '&.Mui-selected': {
+              '&:hover': {
+                backgroundColor: ThemeColors.secondColor,
+              },
+            },
+          },
         },
       },
     },
@@ -239,6 +277,17 @@ const theme = createTheme({
         root: {
           height: '100%',
           width: '100%',
+        },
+      },
+    },
+
+    MuiInputAdornment: {
+      styleOverrides: {
+        root: {
+          color: ThemeColors.white,
+          '& .MuiButtonBase-root': {
+            color: ThemeColors.white,
+          },
         },
       },
     },
