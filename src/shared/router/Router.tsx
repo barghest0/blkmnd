@@ -23,6 +23,8 @@ import SoundKits from '../../pages/SoundKits/SoundKits';
 import BeatForm from '../../components/BeatForm/BeatForm';
 
 import { CrudNames, RouterNames } from './types';
+import SoundKitForm from '../../components/SoundKitForm/SoundKitForm';
+import CollabForm from '../../components/CollabForm/CollabForm';
 
 const Router = () => {
   const location = useLocation();
@@ -165,10 +167,10 @@ const Router = () => {
           >
             <Route path={CrudNames.createBeat} element={<BeatForm />} />
             <Route path={CrudNames.updateBeat} element={<BeatForm />} />
-            <Route path={CrudNames.createSoundKit} element={<BeatForm />} />
-            <Route path={CrudNames.updateSoundKit} element={<BeatForm />} />
-            <Route path={CrudNames.createCollab} element={<BeatForm />} />
-            <Route path={CrudNames.updateCollab} element={<BeatForm />} />
+            <Route path={CrudNames.createSoundKit} element={<SoundKitForm/>} />
+            <Route path={CrudNames.updateSoundKit} element={<SoundKitForm/>} />
+            <Route path={CrudNames.createCollab} element={<CollabForm/>} />
+            <Route path={CrudNames.updateCollab} element={<CollabForm/>} />
           </Route>
         </Route>
         <Route
