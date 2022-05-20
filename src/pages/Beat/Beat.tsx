@@ -19,6 +19,7 @@ import TagLink from '../../components/TagLink/TagLink';
 import { Tab, Tabs } from '@mui/material';
 import BeatsList from '../../components/BeatsList/BeatsList';
 import CommentField from '../../components/CommentField/CommentField';
+import ChooseLicenseButton from '../../components/ChooseLicenseButton/ChooseLicenseButton';
 
 const Beat = () => {
   const params = useParams();
@@ -85,7 +86,7 @@ const Beat = () => {
               </S.BeatInfo>
               <S.Actions>
                 <S.Action>
-                  <BuyButton beatId={beat.id} price={beat.price} />
+                  <ChooseLicenseButton beat={beat} price={beat.price} />
                 </S.Action>
                 <S.Action>
                   <DownloadButton beatId={beat.id}>Download</DownloadButton>

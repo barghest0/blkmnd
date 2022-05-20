@@ -14,7 +14,7 @@ enum RouterNames {
   offers = '/offers',
   purchases = '/purchases',
   admin = '/admin',
-  crud = '/admin/crud',
+  cart = '/cart',
   notFound = '*',
 }
 
@@ -29,6 +29,7 @@ enum RouterPaths {
   membership = '/membership',
   offers = '/offers',
   purchases = '/purchases',
+  cart = '/cart',
   admin = '/admin',
 }
 

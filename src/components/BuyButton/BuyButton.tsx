@@ -1,20 +1,18 @@
 import { FC } from 'react';
 import useActions from '../../hooks/useActions';
-import { ModalsTypes } from '../../redux/modals/types';
+import { CartProduct } from '../../redux/cart/types';
 import Button from '../Button/Button';
 import * as S from './BuyButton.style';
 
 type Props = {
   price: number;
-  beatId: number;
+  product: CartProduct;
 };
 
-const BuyButton: FC<Props> = ({ price, beatId }) => {
-  const { setModalVisability, getBeat } = useActions();
-
+const BuyButton: FC<Props> = ({ price, product }) => {
+  const { addProductToCart } = useActions();
   const onBuyButtonClick = () => {
-    setModalVisability({ visability: true, modalType: ModalsTypes.buy });
-    getBeat(beatId);
+    addProductToCart(product);
   };
 
   return (

@@ -25,6 +25,7 @@ import BeatForm from '../../components/BeatForm/BeatForm';
 import { CrudNames, RouterNames } from './types';
 import SoundKitForm from '../../components/SoundKitForm/SoundKitForm';
 import CollabForm from '../../components/CollabForm/CollabForm';
+import Cart from '../../pages/Cart/Cart';
 
 const Router = () => {
   const location = useLocation();
@@ -142,6 +143,14 @@ const Router = () => {
                 <RequireAuth>
                   <Profile />
                 </RequireAuth>
+              </PageTransition>
+            }
+          />
+          <Route
+            path={RouterNames.cart}
+            element={
+              <PageTransition>
+                <Cart />
               </PageTransition>
             }
           />

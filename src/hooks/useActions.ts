@@ -11,12 +11,14 @@ import * as collabsActions from '../redux/collabs/actions';
 import * as discographyActions from '../redux/discography/actions';
 import * as membershipsActions from '../redux/memberships/actions';
 import * as asyncPlayerActions from '../redux/player/actions';
+import * as cartActions from '../redux/cart/actions';
 
 const rootActionCreator = {
   ...beatsActions,
   ...licensesActions,
   ...soundKitsActions,
   ...collabsActions,
+  ...cartActions,
   ...discographyActions,
   ...membershipsActions,
   ...playerSlice.actions,

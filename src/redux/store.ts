@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import beatsSlice from './beats/beatsSlice';
+import cartSlice from './cart/cartSlice';
 import collabsSlice from './collabs/collabsSlice';
 import discographySlice from './discography/discographySlice';
 import licensesSlice from './licenses/licensesSlice';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   discography: discographySlice.reducer,
   memberships: membershipsSlice.reducer,
   modals: modalsSlice.reducer,
+  cart: cartSlice.reducer,
 });
 
 const store = () => configureStore({ reducer: rootReducer });

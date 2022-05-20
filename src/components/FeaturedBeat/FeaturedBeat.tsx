@@ -5,7 +5,7 @@ import * as S from './FeaturedBeat.style';
 import TagLink from '../TagLink/TagLink';
 import { StyledLink } from '../../shared/styles/links';
 import { RouterPaths } from '../../shared/router/types';
-import BuyButton from '../BuyButton/BuyButton';
+import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
 import DownloadButton from '../DownloadButton/DownloadButton';
 import ShareButton from '../ShareButton/ShareButton';
 import { Beat } from '../../redux/beats/types';
@@ -50,7 +50,7 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
         </S.Title>
         <S.Actions>
           <S.Action>
-            <BuyButton price={price} beatId={id} />
+            <ChooseLicenseButton price={price} beat={beat} />
           </S.Action>
           <S.Action>
             <DownloadButton beatId={id} />

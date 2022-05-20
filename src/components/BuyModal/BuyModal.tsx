@@ -15,7 +15,7 @@ const BuyModal = () => {
   const { beat } = useTypedSelector(state => state.beats);
 
   const licensesCards = beat?.licenses.map(license => (
-    <ChooseLicenseCard license={license} key={license.id} />
+    <ChooseLicenseCard license={license} beat={beat} key={license.id} />
   ));
 
   const { setBeat, openPlayer, togglePlaying } = useActions();

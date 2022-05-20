@@ -23,6 +23,7 @@ import navigation from '../../shared/router/navigation';
 import HeaderNavLink from '../HeaderNavLink/HeaderNavLink';
 import DrawerNavLink from '../DrawerNavLink/DrawerNavLink';
 import { Button } from '@mui/material';
+import { StyledLink } from '../../shared/styles/links';
 
 type ProfileDropdownProps = {
   isOpen: boolean;
@@ -72,12 +73,14 @@ const Header = () => {
       <S.RightNav>
         <S.HeaderNav isSearchOpen={isSearchOpen}>{headerNavItems}</S.HeaderNav>
         <HeaderSearch isOpen={isSearchOpen} setIsOpen={setIsSearchOpen} />
-        <S.Cart>
-          <S.CartIcon>
-            <ShoppingBagOutlinedIcon />
-          </S.CartIcon>
-          <S.CartCost>${cost.toFixed(2)}</S.CartCost>
-        </S.Cart>
+        <StyledLink to={RouterPaths.cart}>
+          <S.Cart>
+            <S.CartIcon>
+              <ShoppingBagOutlinedIcon />
+            </S.CartIcon>
+            <S.CartCost>${cost.toFixed(2)}</S.CartCost>
+          </S.Cart>
+        </StyledLink>
         <S.Auth onClick={onProfileClick}>
           <S.AuthIcon>
             <PersonIcon />

@@ -29,7 +29,7 @@ const Collab = () => {
             <S.Description>{collab.description}</S.Description>
             <S.Actions>
               <S.Action>
-                <BuyButton price={collab.price} beatId={collab.id} />
+                <BuyButton price={collab.price} product={collab} />
               </S.Action>
               <S.Action>
                 <ShareButton beatId={collab.id} />

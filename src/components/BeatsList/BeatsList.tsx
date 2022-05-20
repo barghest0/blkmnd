@@ -11,6 +11,7 @@ import { Beat } from '../../redux/beats/types';
 import useActions from '../../hooks/useActions';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import Image from '../Image/Image';
+import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
 
 type Props = {
   beats: Beat[];
@@ -82,7 +83,7 @@ const BeatsList: FC<Props> = ({ beats }) => {
               <ShareButton beatId={id} />
             </S.Action>
             <S.Action onClick={onActionButtonClick}>
-              <BuyButton price={price} beatId={id} />
+              <ChooseLicenseButton price={price} beat={beat} />
             </S.Action>
           </S.Actions>
         </S.Column>
