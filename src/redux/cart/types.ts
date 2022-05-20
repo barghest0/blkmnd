@@ -6,6 +6,7 @@ type CartProduct = Beat | Collab | SoundKit;
 
 type CartState = {
   products: CartProduct[];
+  quantity:number;
   isFetching: boolean;
   error: string;
 };

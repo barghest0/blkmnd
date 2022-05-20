@@ -25,7 +25,7 @@ const addProductToCart = createAsyncThunk(
   async (product: CartProduct, thunkApi) => {
     try {
       const response = await apiAddProductToCart(product);
-      return response.data.product;
+      console.log(response.data);
     } catch (e) {
       thunkApi.rejectWithValue(e);
     }
@@ -36,13 +36,8 @@ const deleteCartProduct = createAsyncThunk(
   DELETE_CART_PRODUCT_NAME,
   async (product: CartProduct, thunkApi) => {
     try {
-      const response = await apiDeleteCartProduct(product);
-      console.log(response);
-
-      return response.data;
+      await apiDeleteCartProduct(product);
     } catch (e) {
-      console.log(e);
-
       thunkApi.rejectWithValue(e);
     }
   },

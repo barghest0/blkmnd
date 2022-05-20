@@ -13,6 +13,7 @@ const cartSlice = createSlice({
       state.isFetching = false;
       state.error = '';
       state.products = action.payload;
+      state.quantity = action.payload.length;
     },
 
     [getCart.pending.type]: state => {
@@ -24,13 +25,10 @@ const cartSlice = createSlice({
       state.error = action.payload;
     },
 
-    [addProductToCart.fulfilled.type]: (
-      state,
-      action: PayloadAction<CartProduct>,
-    ) => {
+    [addProductToCart.fulfilled.type]: state => {
       state.isFetching = false;
       state.error = '';
-      state.products.push(action.payload);
+      state.quantity += 1;
     },
 
     [addProductToCart.pending.type]: state => {
@@ -45,15 +43,10 @@ const cartSlice = createSlice({
       state.error = action.payload;
     },
 
-    [deleteCartProduct.fulfilled.type]: (
-      state,
-      action: PayloadAction<CartProduct>,
-    ) => {
+    [deleteCartProduct.fulfilled.type]: state => {
       state.isFetching = false;
       state.error = '';
-      state.products = state.products.filter(
-        product => product.id !== action.payload.id,
-      );
+      state.quantity -= 1;
     },
 
     [deleteCartProduct.pending.type]: state => {

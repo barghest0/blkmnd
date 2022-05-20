@@ -6,13 +6,13 @@ import * as S from './Cart.style';
 
 const Cart = () => {
   const { getCart } = useActions();
-  const { products } = useTypedSelector(state => state.cart);
+  const { products, quantity } = useTypedSelector(state => state.cart);
 
   useEffect(() => {
     getCart();
-  }, []);
+  }, [quantity]);
 
-  const productsCards = products?.map(product => (
+  const productsCards = products.map(product => (
     <CartProductCard product={product} key={product.id} />
   ));
 

@@ -4,9 +4,9 @@ import instance from './instanse';
 const fetchCart = () => instance.get('cart');
 
 const addProductToCart = (product: CartProduct) =>
-  instance.post<{ product: CartProduct }>('cart', product);
+  instance.post('cart', product);
 
 const deleteCartProduct = (product: CartProduct) =>
-  instance.delete<CartProduct>(`cart/${product.id}`);
+  instance.delete(`cart/${product.id}`);
 
 export { fetchCart, addProductToCart, deleteCartProduct };
