@@ -78,6 +78,23 @@ const CartIcon = styled.div`
   display: flex;
   justify-content: center;
   align-self: center;
+  margin-right: 10px;
+  position: relative;
+`;
+
+const CartProductsQuantity = styled.div`
+  background-color: ${ThemeColors.secondColor};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 12px;
+  height: 12px;
+  font-size: 9px;
+  border-radius: 50%;
+  color: ${ThemeColors.black};
+  position: absolute;
+  top: -3px;
+  right: -3px;
 `;
 
 const CartCost = styled.div`
@@ -186,4 +203,5 @@ export {
   LeftNav,
   HeaderDrawer,
   DrawerNav,
+  CartProductsQuantity,
 };

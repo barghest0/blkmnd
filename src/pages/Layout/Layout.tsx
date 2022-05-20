@@ -6,18 +6,25 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Player from '../../components/Player/Player';
 import * as S from './Layout.styles';
-import { memo, useRef } from 'react';
+import { memo, useEffect, useRef } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import Audio from '../../components/Audio/Audio';
 import DownloadModal from '../../components/DownloadModal/DownloadModal';
 import ShareModal from '../../components/ShareModal/ShareModal';
 import LicensesModal from '../../components/LicensesModal/LicensesModal';
 import BuyModal from '../../components/BuyModal/BuyModal';
+import useActions from '../../hooks/useActions';
 
 const Layout = memo(() => {
   const audioRef = useRef(null);
 
   const { beat } = useTypedSelector(state => state.player);
+
+  const { getCart } = useActions();
+
+  useEffect(() => {
+    getCart();
+  }, []);
 
   return (
     <S.Layout>
