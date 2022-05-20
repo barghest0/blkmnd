@@ -18,14 +18,17 @@ type Props = {
 const Audio: FC<Props> = memo(
   forwardRef(({ src }, ref) => {
     const { setCurrentTime, setDuration, setBeat } = useActions();
+
     const { volume, currentTime, isPlaying, beat, isLoop, nextBeat } =
       useTypedSelector(state => state.player);
+
     const onBeatTimeUpdate = (event: SyntheticEvent<HTMLAudioElement>) => {
       setCurrentTime(event.currentTarget.currentTime);
     };
 
     useEffect(() => {
       const audio = ref?.current;
+
       if (isPlaying) {
         audio.play();
       } else {
@@ -34,8 +37,8 @@ const Audio: FC<Props> = memo(
     }, [isPlaying, beat]);
 
     const onLoadedBeatData = (event: SyntheticEvent<HTMLAudioElement>) => {
-      event.currentTarget.volume = volume;
       event.currentTarget.currentTime = currentTime;
+      event.currentTarget.volume = volume;
       setDuration(event.currentTarget.duration);
     };
 

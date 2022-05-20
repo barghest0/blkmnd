@@ -2,11 +2,8 @@ import { AnimatePresence } from 'framer-motion';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 import PageTransition from '../../hoc/PageTransition';
-import RequireAdmin from '../../hoc/RequireAdmin';
 import RequireAuth from '../../hoc/RequireAuth';
-import CRUD from '../../pages/CRUD/CRUD';
 import About from '../../pages/About/About';
-import Admin from '../../pages/Admin/Admin';
 import Beat from '../../pages/Beat/Beat';
 import Beats from '../../pages/Beats/Beats';
 import Collab from '../../pages/Collab/Collab';
@@ -20,11 +17,8 @@ import Profile from '../../pages/Profile/Profile';
 import Purchases from '../../pages/Purchases/Purchases';
 import SoundKit from '../../pages/SoundKit/SoundKit';
 import SoundKits from '../../pages/SoundKits/SoundKits';
-import BeatForm from '../../components/BeatForm/BeatForm';
 
-import { CrudNames, RouterNames } from './types';
-import SoundKitForm from '../../components/SoundKitForm/SoundKitForm';
-import CollabForm from '../../components/CollabForm/CollabForm';
+import { RouterNames } from './types';
 import Cart from '../../pages/Cart/Cart';
 
 const Router = () => {

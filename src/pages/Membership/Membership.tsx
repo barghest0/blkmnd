@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import MembershipCard from '../../components/MembershipCard/MembershipCard';
-import MembershipList from '../../components/MembershipCard/MembershipCard';
 import Preloader from '../../components/Preloader/Preloader';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
