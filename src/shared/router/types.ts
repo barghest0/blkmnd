@@ -30,21 +30,6 @@ enum RouterPaths {
   offers = '/offers',
   purchases = '/purchases',
   admin = '/admin',
-  crud = '/admin/crud',
 }
 
-enum CrudActions {
-  update = 'update',
-  create = 'create',
-}
-
-enum CrudNames {
-  createBeat = 'beats/create',
-  updateBeat = 'beats/update/:id',
-  createSoundKit = 'sound-kits/create',
-  updateSoundKit = 'sound-kits/update/:id',
-  createCollab = 'collabs/create',
-  updateCollab = 'collabs/update/:id',
-}
-
-export { RouterNames, RouterPaths, CrudNames, CrudActions };
+export { RouterNames, RouterPaths };

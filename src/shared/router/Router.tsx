@@ -34,16 +34,6 @@ const Router = () => {
       <Routes location={location} key={location.pathname}>
         <Route path={RouterNames.layout} element={<Layout />}>
           <Route
-            path={RouterNames.admin}
-            element={
-              <PageTransition>
-                <RequireAdmin>
-                  <Admin />
-                </RequireAdmin>
-              </PageTransition>
-            }
-          />
-          <Route
             path={RouterNames.landing}
             element={
               <PageTransition>
@@ -155,23 +145,6 @@ const Router = () => {
               </PageTransition>
             }
           />
-          <Route
-            path={RouterNames.crud}
-            element={
-              <PageTransition>
-                <RequireAdmin>
-                  <CRUD />
-                </RequireAdmin>
-              </PageTransition>
-            }
-          >
-            <Route path={CrudNames.createBeat} element={<BeatForm />} />
-            <Route path={CrudNames.updateBeat} element={<BeatForm />} />
-            <Route path={CrudNames.createSoundKit} element={<SoundKitForm/>} />
-            <Route path={CrudNames.updateSoundKit} element={<SoundKitForm/>} />
-            <Route path={CrudNames.createCollab} element={<CollabForm/>} />
-            <Route path={CrudNames.updateCollab} element={<CollabForm/>} />
-          </Route>
         </Route>
         <Route
           path={RouterNames.notFound}
