@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import SearchField from '../../components/SearchField/SearchField';
 import Preloader from '../../components/Preloader/Preloader';
 import { useSearchParams } from 'react-router-dom';
+import FilterMenu from '../../components/FilterMenu/FilterMenu';
 
 type FilterValues = {
   genre: string;
@@ -36,7 +37,7 @@ const Beats = () => {
   }, [filters]);
 
   const initialFilterValues: FilterValues = {
-    genre: 'All ganres',
+    genre: 'All genres',
     bpm: 'All BPM',
     mood: 'All moods',
     type: 'All types',
@@ -52,77 +53,77 @@ const Beats = () => {
     onSubmit: onFilterSubmit,
   });
 
+  const typeOptions = [
+    { value: 'All types', text: 'All types' },
+    { value: 'Beats', text: 'Beats' },
+  ];
+
+  const bpmOptions = [
+    { value: 'All BPM', text: 'All BPM' },
+    { value: 100, text: 200 },
+    { value: 150, text: 150 },
+    { value: 200, text: 200 },
+  ];
+
+  const moodOptions = [
+    { value: 'All moods', text: 'All moods' },
+    { value: 'Angry', text: 'Angry' },
+    { value: 'Dart', text: 'Dark' },
+  ];
+
+  const genreOptions = [
+    { value: 'All genres', text: 'All genres' },
+    { value: 'Hip Hop', text: 'Hip Hop' },
+    { value: 'Pop', text: 'Pop' },
+  ];
+
+  const sortOptions = [
+    { value: 'Default sort', text: 'Default sort' },
+    { value: 'Popular', text: 'Popular' },
+    { value: 'Most played', text: 'Most played' },
+  ];
+
   return (
     <S.Beats>
       <S.Container>
         <S.Title>Beats</S.Title>
         <S.SearchContainer>
           <S.Filters>
-            <FormControl>
-              <S.FilterMenu
-                value={filterFormik.values.type}
-                onChange={filterFormik.handleChange}
-                name="type"
-                displayEmpty
-                defaultValue={filterFormik.values.type}
-              >
-                <S.Option value={'All types'}>All types</S.Option>
-                <S.Option value={'Beats'}>Beats</S.Option>
-              </S.FilterMenu>
-            </FormControl>
-            <FormControl>
-              <S.FilterMenu
-                value={filterFormik.values.bpm}
-                onChange={filterFormik.handleChange}
-                name="bpm"
-                displayEmpty
-                defaultValue={filterFormik.values.bpm}
-              >
-                <S.Option value={'All BPM'}>All BPM</S.Option>
-                <S.Option value={100}>100</S.Option>
-                <S.Option value={120}>120</S.Option>
-                <S.Option value={150}>150</S.Option>
-              </S.FilterMenu>
-            </FormControl>
-            <FormControl>
-              <S.FilterMenu
-                value={filterFormik.values.mood}
-                onChange={filterFormik.handleChange}
-                name="mood"
-                displayEmpty
-                defaultValue={filterFormik.values.mood}
-              >
-                <S.Option value={'All moods'}>All moods</S.Option>
-                <S.Option value={'Angry'}>Dark</S.Option>
-                <S.Option value={'Dark'}>Angry</S.Option>
-              </S.FilterMenu>
-            </FormControl>
-            <FormControl>
-              <S.FilterMenu
-                value={filterFormik.values.genre}
-                onChange={filterFormik.handleChange}
-                name="genre"
-                displayEmpty
-                defaultValue={filterFormik.values.genre}
-              >
-                <S.Option value={'All ganres'}>All Genres</S.Option>
-                <S.Option value={'Hip Hop'}>Hip Hop</S.Option>
-                <S.Option value={'Pop'}>Pop</S.Option>
-              </S.FilterMenu>
-            </FormControl>
-            <FormControl>
-              <S.FilterMenu
-                value={filterFormik.values.sort}
-                onChange={filterFormik.handleChange}
-                name="sort"
-                displayEmpty
-                defaultValue={filterFormik.values.sort}
-              >
-                <S.Option value={'Default sort'}>Default sort</S.Option>
-                <S.Option value={'Popular'}>Popular</S.Option>
-                <S.Option value={'Most played'}>Most played</S.Option>
-              </S.FilterMenu>
-            </FormControl>
+            <FilterMenu
+              value={filterFormik.values.type}
+              onChange={filterFormik.handleChange}
+              name="type"
+              defaultValue={filterFormik.values.type}
+              options={typeOptions}
+            />
+            <FilterMenu
+              value={filterFormik.values.bpm}
+              onChange={filterFormik.handleChange}
+              name="bpm"
+              defaultValue={filterFormik.values.bpm}
+              options={bpmOptions}
+            />
+            <FilterMenu
+              value={filterFormik.values.mood}
+              onChange={filterFormik.handleChange}
+              name="mood"
+              defaultValue={filterFormik.values.mood}
+              options={moodOptions}
+            />
+            <FilterMenu
+              value={filterFormik.values.genre}
+              onChange={filterFormik.handleChange}
+              name="genre"
+              defaultValue={filterFormik.values.genre}
+              options={genreOptions}
+            />
+            <FilterMenu
+              value={filterFormik.values.sort}
+              onChange={filterFormik.handleChange}
+              name="sort"
+              defaultValue={filterFormik.values.sort}
+              options={sortOptions}
+            />
           </S.Filters>
           <SearchField initialValues={{ query: filterQuery ?? '' }}>
             <S.SearchField
