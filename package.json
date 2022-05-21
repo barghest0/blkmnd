@@ -15,7 +15,10 @@
     "type": "git",
     "url": "git+https://github.com/barghest0/blkmnd.git"
   },
-  "keywords": ["black", "mind"],
+  "keywords": [
+    "black",
+    "mind"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -73,6 +76,8 @@
     "json-server": "^0.17.0",
     "npm": "^8.8.0",
     "prettier": "^2.6.2",
+    "ra-data-json-server": "^4.1.0",
+    "react-admin": "^4.1.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-indiana-drag-scroll": "^2.1.0",
     "react-music-visualizer": "^1.1.0",

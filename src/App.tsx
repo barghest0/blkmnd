@@ -6,7 +6,6 @@ import { ThemeProvider } from '@mui/material';
 import theme from './shared/theme/theme';
 
 const App = () => {
-
   return (
     <ThemeProvider theme={theme}>
       <S.App>

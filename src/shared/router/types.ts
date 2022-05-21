@@ -13,7 +13,7 @@ enum RouterNames {
   membership = '/membership',
   offers = '/offers',
   purchases = '/purchases',
-  admin = '/admin',
+  admin = '/admin/*',
   cart = '/cart',
   notFound = '*',
 }

@@ -601,6 +601,11 @@
       }
     }
   ],
+
+  "tags": [
+    { "id": 1, "name": "future" },
+    { "id": 2, "name": "mask off" }
+  ],
   "memberships": [
     {
       "id": 1,

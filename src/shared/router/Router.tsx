@@ -20,6 +20,8 @@ import SoundKits from '../../pages/SoundKits/SoundKits';
 
 import { RouterNames } from './types';
 import Cart from '../../pages/Cart/Cart';
+import Admin from '../../admin/Admin';
+import RequireAdmin from '../../hoc/RequireAdmin';
 
 const Router = () => {
   const location = useLocation();
@@ -27,6 +29,14 @@ const Router = () => {
   return (
     <AnimatePresence exitBeforeEnter>
       <Routes location={location} key={location.pathname}>
+        <Route
+          path={RouterNames.admin}
+          element={
+            <RequireAdmin>
+              <Admin />
+            </RequireAdmin>
+          }
+        />
         <Route path={RouterNames.layout} element={<Layout />}>
           <Route
             path={RouterNames.landing}
