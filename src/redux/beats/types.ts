@@ -49,6 +49,7 @@ type Beat = {
   id: number;
   title: string;
   bpm: number;
+  type: string;
   chord: string;
   date: string;
   tags: Tag[];

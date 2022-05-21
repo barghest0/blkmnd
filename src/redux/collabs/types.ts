@@ -2,6 +2,7 @@ type Collab = {
   id: number;
   title: string;
   description: string;
+  type: string;
   price: number;
   image: string;
 };

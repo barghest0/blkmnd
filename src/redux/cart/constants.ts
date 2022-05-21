@@ -4,7 +4,9 @@ const CART_SLICE_NAME = 'cart';
 
 const CART_INITIAL_STATE: CartState = {
   products: [],
-  quantity:0,
+  quantity: 0,
+  totalPrice: 0,
+  discount: 0,
   isFetching: false,
   error: '',
 };

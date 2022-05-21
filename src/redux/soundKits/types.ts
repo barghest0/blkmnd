@@ -1,6 +1,7 @@
 type SoundKit = {
   id: number;
   title: string;
+  type: string;
   image: string;
   description: string;
   price: number;

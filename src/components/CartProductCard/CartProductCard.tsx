@@ -1,4 +1,7 @@
 import { FC } from 'react';
+
+import CloseIcon from '@mui/icons-material/Close';
+
 import useActions from '../../hooks/useActions';
 import { CartProduct } from '../../redux/cart/types';
 import Button from '../Button/Button';
@@ -10,6 +13,7 @@ type Props = {
 
 const CartProductCard: FC<Props> = ({ product }) => {
   const { deleteCartProduct } = useActions();
+  const { price, title, type, image } = product;
 
   const onDeleteButtonClick = () => {
     deleteCartProduct(product);
@@ -17,8 +21,15 @@ const CartProductCard: FC<Props> = ({ product }) => {
 
   return (
     <S.CardProductCard>
+      <S.Thumbnail src={image} />
+      <S.Info>
+        <S.Title>{title}</S.Title>
+        <S.Type>{type}</S.Type>
+      </S.Info>
+      <S.Price>${price}</S.Price>
+      <S.License></S.License>
       <S.Delete onClick={onDeleteButtonClick}>
-        <Button>Delete</Button>
+        <CloseIcon />
       </S.Delete>
     </S.CardProductCard>
   );

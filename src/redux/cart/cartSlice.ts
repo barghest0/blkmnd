@@ -14,6 +14,10 @@ const cartSlice = createSlice({
       state.error = '';
       state.products = action.payload;
       state.quantity = action.payload.length;
+      state.totalPrice = action.payload.reduce(
+        (totalPrice, product) => (totalPrice += product.price),
+        0,
+      );
     },
 
     [getCart.pending.type]: state => {

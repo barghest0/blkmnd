@@ -12,7 +12,7 @@ import GroupsIcon from '@mui/icons-material/Groups';
 import InfoIcon from '@mui/icons-material/Info';
 import EmailIcon from '@mui/icons-material/Email';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { RouterPaths } from '../../shared/router/types';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
@@ -39,13 +39,12 @@ type NavProps = {
 };
 
 const Header = () => {
-  const cost = 0;
   const navigate = useNavigate();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const { quantity } = useTypedSelector(state => state.cart);
+  const { quantity, totalPrice } = useTypedSelector(state => state.cart);
 
   const onProfileClick = () => {
     setIsProfileOpen(!isProfileOpen);
@@ -84,7 +83,7 @@ const Header = () => {
               )}
               <ShoppingBagOutlinedIcon />
             </S.CartIcon>
-            <S.CartCost>${cost.toFixed(2)}</S.CartCost>
+            <S.CartCost>${totalPrice.toFixed(2)}</S.CartCost>
           </S.Cart>
         </StyledLink>
         <S.Auth onClick={onProfileClick}>

@@ -6,7 +6,9 @@ type CartProduct = Beat | Collab | SoundKit;
 
 type CartState = {
   products: CartProduct[];
-  quantity:number;
+  quantity: number;
+  totalPrice: number;
+  discount: number;
   isFetching: boolean;
   error: string;
 };
