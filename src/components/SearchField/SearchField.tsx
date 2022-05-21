@@ -1,7 +1,7 @@
 import { cloneElement, FC, SyntheticEvent } from 'react';
 import { useFormik } from 'formik';
 import * as S from './SearchField.styles';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { RouterPaths } from '../../shared/router/types';
 import useActions from '../../hooks/useActions';
 
@@ -22,10 +22,13 @@ const SearchField: FC<Props> = ({ children, initialValues }) => {
   const navigate = useNavigate();
 
   const { getFilteredBeats } = useActions();
+  const [search, setSearch] = useSearchParams();
 
   const onSearchSubmit = ({ query }: Values) => {
     if (query) {
-      navigate(`${RouterPaths.beats}?query=${query}`);
+      navigate(`${RouterPaths.beats}/`);
+      search.set('query', query);
+      setSearch(search);
     }
   };
 
