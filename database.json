@@ -3,6 +3,7 @@
     {
       "id": 1,
       "title": "Future Mask off type beat",
+      "type": "track",
       "price": 33,
       "tags": [
         {
@@ -145,6 +146,7 @@
     {
       "id": 2,
       "title": "Travis Scott Don Toliver type beat \"KYLIE\"",
+      "type": "track",
       "price": 33,
       "tags": [
         {
@@ -287,6 +289,7 @@
     {
       "id": 3,
       "title": "Roddy Ricch X Tory Lanez type beat \"LING\" | BLKMND ",
+      "type": "track",
       "price": 33,
       "tags": [
         {
@@ -427,9 +430,11 @@
       ]
     }
   ],
+
   "soundKits": [
     {
       "id": 1,
+      "type": "sound-kit",
       "title": "BLACK NOVEMBER MIDI MELODY PACK",
       "description": "something description",
       "image": "https://main.v2.beatstars.com/fit-in/soundkits/600x600/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/image/1638287755/black-november.jpg",
@@ -437,6 +442,7 @@
     },
     {
       "id": 2,
+      "type": "sound-kit",
       "title": "BLACK NOVEMBER MIDI MELODY PACK",
       "description": "something description",
       "image": "https://main.v2.beatstars.com/fit-in/soundkits/600x600/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/image/1638287755/black-november.jpg",
@@ -444,6 +450,7 @@
     },
     {
       "id": 3,
+      "type": "sound-kit",
       "title": "BLACK NOVEMBER MIDI MELODY PACK",
       "description": "something description",
       "image": "https://main.v2.beatstars.com/fit-in/soundkits/600x600/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/image/1638287755/black-november.jpg",
@@ -451,21 +458,25 @@
     },
     {
       "id": 4,
+      "type": "sound-kit",
       "title": "BLACK NOVEMBER MIDI MELODY PACK",
       "description": "something description",
       "image": "https://main.v2.beatstars.com/fit-in/soundkits/600x600/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/image/1638287755/black-november.jpg",
       "price": 0
     }
   ],
+
   "collabs": [
     {
       "id": 1,
+      "type": "service",
       "title": "Beat Collabs",
       "price": 29.99,
       "description": "something description",
       "image": "https://main.v2.beatstars.com/fit-in/services/800x800/filters:format(.jpeg):quality(50):fill(000000)//users/prod/1062484/imrtgzyv4.jpg"
     }
   ],
+
   "licenses": [
     {
       "id": 1,
