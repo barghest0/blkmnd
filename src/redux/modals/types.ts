@@ -1,4 +1,4 @@
-import {Beat, License} from "../beats/types";
+import { Beat, License } from '../beats/types';
 
 enum ModalsTypes {
   share = 'isShareOpen',
@@ -7,6 +7,7 @@ enum ModalsTypes {
   license = 'isLicenseOpen',
   privacyPolicy = 'isPrivacyPolicyOpen',
   terms = 'isTermsOpen',
+  auth = 'isAuthOpen',
 }
 
 type SetVisabilityPayload = {
@@ -21,11 +22,12 @@ type ModalsState = {
   isBuyOpen: boolean;
   isPrivacyPolicyOpen: boolean;
   isTermsOpen: boolean;
+  isAuthOpen: boolean;
   beat: Beat | null;
   license: License | null;
   privacyPolicy: string;
   terms: string;
-  error:string
+  error: string;
 };
 
 export { ModalsState, ModalsTypes, SetVisabilityPayload };

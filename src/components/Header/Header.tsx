@@ -25,6 +25,8 @@ import DrawerNavLink from '../DrawerNavLink/DrawerNavLink';
 import { Button } from '@mui/material';
 import { StyledLink } from '../../shared/styles/links';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import useActions from '../../hooks/useActions';
+import { ModalsTypes } from '../../redux/modals/types';
 
 type ProfileDropdownProps = {
   isOpen: boolean;
@@ -44,10 +46,16 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
+  const { isAuth } = useTypedSelector(state => state.auth);
   const { quantity, totalPrice } = useTypedSelector(state => state.cart);
+  const { setModalVisability } = useActions();
 
   const onProfileClick = () => {
-    setIsProfileOpen(!isProfileOpen);
+    if (isAuth) {
+      setIsProfileOpen(!isProfileOpen);
+    } else {
+      setModalVisability({ visability: true, modalType: ModalsTypes.auth });
+    }
   };
 
   const onLogoutClick = () => {

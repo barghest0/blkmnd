@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Navigate } from 'react-router-dom';
+import useTypedSelector from '../hooks/redux/useTypedDispatch';
 import { RouterPaths } from '../shared/router/types';
 
 type Props = {
@@ -7,7 +8,7 @@ type Props = {
 };
 
 const RequireAuth: FC<Props> = ({ children }) => {
-  const isAuth = true;
+  const { isAuth } = useTypedSelector(state => state.auth);
 
   if (!isAuth) {
     return <Navigate to={RouterPaths.landing} />;

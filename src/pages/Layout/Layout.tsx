@@ -14,6 +14,7 @@ import ShareModal from '../../components/ShareModal/ShareModal';
 import LicensesModal from '../../components/LicensesModal/LicensesModal';
 import BuyModal from '../../components/BuyModal/BuyModal';
 import useActions from '../../hooks/useActions';
+import AuthModal from '../../components/AuthModal/AuthModal';
 
 const Layout = memo(() => {
   const audioRef = useRef(null);
@@ -37,6 +38,7 @@ const Layout = memo(() => {
         <ShareModal />
         <LicensesModal />
         <BuyModal />
+        <AuthModal />
       </S.Page>
       <motion.div
         initial={{ opacity: 0 }}

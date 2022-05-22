@@ -13,6 +13,7 @@ const MODALS_INITIAL_STATE: ModalsState = {
   isTermsOpen: false,
   isLicenseOpen: false,
   isPrivacyPolicyOpen: false,
+  isAuthModal:false,
   beat: null,
   license: null,
   terms: '',
