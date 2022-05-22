@@ -85,18 +85,16 @@ const BeatsList = styled.section`
   margin-bottom: 20px;
 `;
 
-const AllTracksLink = styled.div`
-  margin: 0 auto;
-  width: 200px;
-  height: 50px;
-  margin-bottom: 50px;
-`;
-
 const SectionTitle = styled.h2`
   text-align: center;
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 50px;
+`;
+
+const Section = styled.section`
+  margin-bottom: 20px;
+  padding: 20px 0;
 `;
 
 const Licenses = styled.section`
@@ -112,10 +110,6 @@ const LicensesList = styled.div`
   column-gap: 50px;
 `;
 
-const SoundKits = styled.section`
-  margin-bottom: 50px;
-`;
-
 const SoundKitsList = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 175px);
@@ -125,15 +119,11 @@ const SoundKitsList = styled.div`
   max-width: 900px;
 `;
 
-const AllSoundKits = styled.div`
+const DetailsButton = styled.div`
   height: 50px;
   width: 200px;
   margin: 0 auto;
   margin-top: 50px;
-`;
-
-const Services = styled.section`
-  margin-bottom: 50px;
 `;
 
 const CollabsList = styled.div`
@@ -144,17 +134,6 @@ const CollabsList = styled.div`
   justify-content: center;
   justify-items: center;
   max-width: 900px;
-`;
-
-const AllServices = styled.div`
-  height: 50px;
-  width: 200px;
-  margin: 0 auto;
-  margin-top: 50px;
-`;
-
-const Discography = styled.section`
-  margin-bottom: 50px;
 `;
 
 const YoutubeContaier = styled.div`
@@ -273,19 +252,15 @@ export {
   FeaturedBeat,
   Container,
   BeatsList,
-  AllTracksLink,
   Licenses,
   LicensesList,
-  SoundKits,
   SoundKitsList,
-  AllSoundKits,
-  Services,
-  AllServices,
+  DetailsButton,
   SectionTitle,
   Contact,
   ContactForm,
-  Discography,
   DiscographyList,
+  Section,
   CollabsList,
   Visualizer,
   SearchFieldContainer,

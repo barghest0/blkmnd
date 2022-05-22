@@ -18,6 +18,7 @@ import ShareButton from '../ShareButton/ShareButton';
 import * as S from './Player.style';
 import DurationSlider from '../DurationSlider/DurationSlider';
 import VolumeSlider from '../VolumeSlider/VolumeSlider';
+import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
 
 type PlayerProps = {
   isOpen: boolean;
@@ -133,7 +134,7 @@ const Player: FC<Props> = memo(({ audioRef }) => {
               />
             </S.Share>
             <S.Buy>
-              <BuyButton price={playerBeat.price} beatId={playerBeat.id} />
+              <ChooseLicenseButton price={playerBeat.price} beat={playerBeat} />
             </S.Buy>
           </S.Beat>
         )}

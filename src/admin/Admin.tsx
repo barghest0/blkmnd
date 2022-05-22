@@ -22,6 +22,7 @@ const Admin = () => {
       <Resource name="soundKits" list={ListGuesser} />
       <Resource name="collabs" list={ListGuesser} />
       <Resource name="licenses" list={ListGuesser} />
+      <Resource name="cart" list={ListGuesser} />
       <Resource name="tags" list={ListGuesser} />
     </ReactAdmin>
   );

@@ -6,7 +6,7 @@ const authFormValidation = yup.object({
   email: yup.string().email('Enter a valid email').required('Required Field'),
   passwordConfirm: yup
     .string()
-    .oneOf([yup.ref('newPassword')], 'Passwords must match')
+    .oneOf([yup.ref('password')], 'Passwords must match')
     .required('Required Field'),
 });
 

@@ -121,14 +121,16 @@ const Landing: FC = memo(() => {
         </S.Visualizer>
       </S.Intro>
 
-      <S.Container>
-        <S.BeatsList>
-          {isFetching ? <Preloader /> : <BeatsList beats={beats} />}
-        </S.BeatsList>
-        <S.AllTracksLink>
-          <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>
-        </S.AllTracksLink>
-      </S.Container>
+      <S.Section>
+        <S.Container>
+          <S.BeatsList>
+            {isFetching ? <Preloader /> : <BeatsList beats={beats} />}
+          </S.BeatsList>
+          <S.DetailsButton>
+            <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>
+          </S.DetailsButton>
+        </S.Container>
+      </S.Section>
 
       <S.Licenses>
         <S.Container>
@@ -141,25 +143,24 @@ const Landing: FC = memo(() => {
         </S.Container>
       </S.Licenses>
 
-      <S.SoundKits>
+      <S.Section>
         <S.Container>
           <S.SectionTitle>Sound Kits</S.SectionTitle>
-
           <ScrollContainer>
             <S.SoundKitsList>
               {isSoundKitsFetching ? <Preloader /> : soundKitsCards}
             </S.SoundKitsList>
           </ScrollContainer>
 
-          <S.AllSoundKits>
+          <S.DetailsButton>
             <ButtonLink to={`${RouterPaths.soundKits}`}>
               Browse all sound kits
             </ButtonLink>
-          </S.AllSoundKits>
+          </S.DetailsButton>
         </S.Container>
-      </S.SoundKits>
+      </S.Section>
 
-      <S.Services>
+      <S.Section>
         <S.Container>
           <S.SectionTitle>Services</S.SectionTitle>
           <ScrollContainer>
@@ -167,13 +168,13 @@ const Landing: FC = memo(() => {
               {isCollabsFetching ? <Preloader /> : collabsCards}
             </S.CollabsList>
           </ScrollContainer>
-          <S.AllServices>
+          <S.DetailsButton>
             <ButtonLink to={`${RouterPaths.collabs}`}>
               Browse all services
             </ButtonLink>
-          </S.AllServices>
+          </S.DetailsButton>
         </S.Container>
-      </S.Services>
+      </S.Section>
 
       <S.Youtube>
         <S.YoutubeContaier>
@@ -216,7 +217,7 @@ const Landing: FC = memo(() => {
         </S.YoutubeContaier>
       </S.Youtube>
 
-      <S.Discography>
+      <S.Section>
         <S.Container>
           <S.SectionTitle>Discography</S.SectionTitle>
           <ScrollContainer vertical={false}>
@@ -225,7 +226,7 @@ const Landing: FC = memo(() => {
             </S.DiscographyList>
           </ScrollContainer>
         </S.Container>
-      </S.Discography>
+      </S.Section>
 
       <S.Contact>
         <S.SectionTitle>Contact</S.SectionTitle>

@@ -15,6 +15,7 @@ const Content = styled.div`
   grid-template-rows: 0.5fr 0.3fr 3fr 100px;
   column-gap: 30px;
   align-content: center;
+  margin-bottom: 20px;
 `;
 
 const Title = styled.h1`
