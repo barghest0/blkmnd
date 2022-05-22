@@ -25,7 +25,7 @@ const addProductToCart = createAsyncThunk(
   async (product: CartProduct, thunkApi) => {
     try {
       const response = await apiAddProductToCart(product);
-      console.log(response.data);
+      return response.data
     } catch (e) {
       thunkApi.rejectWithValue(e);
     }

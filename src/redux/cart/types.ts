@@ -1,8 +1,15 @@
-import { Beat } from '../beats/types';
+import { Beat, License } from '../beats/types';
 import { Collab } from '../collabs/types';
 import { SoundKit } from '../soundKits/types';
 
-type CartProduct = Beat | Collab | SoundKit;
+type CartProductDetails = Beat | Collab | SoundKit;
+
+type CartProduct = {
+  id?: number;
+  license?: License;
+  details: CartProductDetails;
+  price: number;
+};
 
 type CartState = {
   products: CartProduct[];
@@ -13,4 +20,4 @@ type CartState = {
   error: string;
 };
 
-export { CartState, CartProduct };
+export { CartState, CartProduct, CartProductDetails };

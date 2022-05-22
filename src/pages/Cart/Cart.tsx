@@ -46,7 +46,6 @@ const Cart = () => {
     <S.Cart>
       <S.Container>
         <S.Title>Cart</S.Title>
-
         <S.Content>
           <S.Products>
             <S.ProductsHeader>

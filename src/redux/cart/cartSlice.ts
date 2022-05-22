@@ -29,10 +29,14 @@ const cartSlice = createSlice({
       state.error = action.payload;
     },
 
-    [addProductToCart.fulfilled.type]: state => {
+    [addProductToCart.fulfilled.type]: (
+      state,
+      action: PayloadAction<CartProduct>,
+    ) => {
       state.isFetching = false;
       state.error = '';
       state.quantity += 1;
+      state.totalPrice += action.payload.price;
     },
 
     [addProductToCart.pending.type]: state => {

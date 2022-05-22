@@ -30,7 +30,7 @@ const ChooseLicenseCard: FC<Props> = ({ license, beat }) => {
           <S.FileTypes>{fileTypes}</S.FileTypes>
         </S.License>
         <S.Buy>
-          <BuyButton price={price} product={beat} />
+          <BuyButton price={price} details={beat} license={license} />
         </S.Buy>
       </S.Info>
       <Accordion expanded={isOpen} onChange={onAccordionLabelClick}>

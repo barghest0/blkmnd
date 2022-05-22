@@ -37,7 +37,7 @@ const SoundKit = () => {
                 {isSoundKitFree ? (
                   <DownloadButton beatId={soundKit.id} />
                 ) : (
-                  <BuyButton price={soundKit.price} product={soundKit} />
+                  <BuyButton price={soundKit.price} details={soundKit} />
                 )}
               </S.Action>
               <S.Action>
