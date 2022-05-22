@@ -1,5 +1,9 @@
 import { useFormik } from 'formik';
 import Button from '../../components/Button/Button';
+import {
+  profileInfoValidation,
+  profilePasswordValidation,
+} from '../../shared/formValidations/profile';
 import { RouterPaths } from '../../shared/router/types';
 import { ButtonLink } from '../../shared/styles/links';
 import * as S from './Profile.style';
@@ -39,11 +43,13 @@ const Profile = () => {
 
   const infoFormik = useFormik({
     initialValues: initialInfoValues,
+    validationSchema: profileInfoValidation,
     onSubmit: onInfoFormSubmit,
   });
 
   const passwordFormik = useFormik({
     initialValues: initialPasswordValues,
+    validationSchema: profilePasswordValidation,
     onSubmit: onPasswordFormSubmit,
   });
 
@@ -57,14 +63,29 @@ const Profile = () => {
             <S.TextInput
               label="Email"
               name="email"
-              type="email"
+              type="text"
               variant="outlined"
+              onBlur={infoFormik.handleBlur}
+              value={infoFormik.values.email}
+              error={
+                infoFormik.touched.email && Boolean(infoFormik.errors.email)
+              }
+              helperText={infoFormik.touched.email && infoFormik.errors.email}
               onChange={infoFormik.handleChange}
             />
             <S.TextInput
               label="Username"
               name="username"
               variant="outlined"
+              onBlur={infoFormik.handleBlur}
+              value={infoFormik.values.username}
+              error={
+                infoFormik.touched.username &&
+                Boolean(infoFormik.errors.username)
+              }
+              helperText={
+                infoFormik.touched.username && infoFormik.errors.username
+              }
               onChange={infoFormik.handleChange}
             />
             <S.Submit>
@@ -80,6 +101,16 @@ const Profile = () => {
               name="currentPassword"
               type="password"
               variant="outlined"
+              onBlur={passwordFormik.handleBlur}
+              value={passwordFormik.values.currentPassword}
+              error={
+                passwordFormik.touched.currentPassword &&
+                Boolean(passwordFormik.errors.currentPassword)
+              }
+              helperText={
+                passwordFormik.touched.currentPassword &&
+                passwordFormik.errors.currentPassword
+              }
               onChange={passwordFormik.handleChange}
             />
             <S.NewPassword>
@@ -88,12 +119,32 @@ const Profile = () => {
                 name="newPassword"
                 type="password"
                 variant="outlined"
+                onBlur={passwordFormik.handleBlur}
+                value={passwordFormik.values.newPassword}
+                error={
+                  passwordFormik.touched.newPassword &&
+                  Boolean(passwordFormik.errors.newPassword)
+                }
+                helperText={
+                  passwordFormik.touched.newPassword &&
+                  passwordFormik.errors.newPassword
+                }
                 onChange={passwordFormik.handleChange}
               />
               <S.TextInput
                 label="Confirm new password"
                 name="confirmPassword"
                 type="password"
+                onBlur={passwordFormik.handleBlur}
+                value={passwordFormik.values.confirmPassword}
+                error={
+                  passwordFormik.touched.confirmPassword &&
+                  Boolean(passwordFormik.errors.confirmPassword)
+                }
+                helperText={
+                  passwordFormik.touched.confirmPassword &&
+                  passwordFormik.errors.confirmPassword
+                }
                 variant="outlined"
                 onChange={passwordFormik.handleChange}
               />

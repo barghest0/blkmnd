@@ -8,8 +8,14 @@ import { ModalsTypes } from '../../redux/modals/types';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import { useFormik } from 'formik';
-import { FormControl, Checkbox, FormControlLabel } from '@mui/material';
+import {
+  FormControl,
+  Checkbox,
+  FormControlLabel,
+  FormHelperText,
+} from '@mui/material';
 import Button from '../Button/Button';
+import downloadValidation from '../../shared/formValidations/download';
 
 type DownloadModalProps = {
   background?: string;
@@ -19,7 +25,7 @@ type DownloadValues = {
   email: string;
   name: string;
   mobilePrefix: string;
-  mobilePhone: number;
+  mobilePhone: number | null;
   agree: boolean;
 };
 
@@ -31,7 +37,7 @@ const DownloadModal: FC = () => {
     email: '',
     name: '',
     mobilePrefix: '+7',
-    mobilePhone: 0,
+    mobilePhone: null,
     agree: false,
   };
 
@@ -39,10 +45,12 @@ const DownloadModal: FC = () => {
     console.log(values);
   };
 
-  const formik = useFormik({
-    initialValues: initialDownloadValues,
-    onSubmit: onDownloadSubmit,
-  });
+  const { handleSubmit, handleBlur, handleChange, touched, values, errors } =
+    useFormik({
+      initialValues: initialDownloadValues,
+      validationSchema: downloadValidation,
+      onSubmit: onDownloadSubmit,
+    });
 
   return (
     <S.DownloadModal>
@@ -61,26 +69,33 @@ const DownloadModal: FC = () => {
                   We will send your free track to the email address you provide
                   below. Thanks!
                 </S.Tip>
-                <S.Form onSubmit={formik.handleSubmit}>
+                <S.Form onSubmit={handleSubmit}>
                   <S.Field
                     name="email"
-                    type="email"
-                    onChange={formik.handleChange}
+                    type="text"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.email}
+                    error={touched.email && Boolean(errors.email)}
+                    helperText={touched.email && errors.email}
                     variant="outlined"
                     label="Email"
                   />
                   <S.Field
                     name="name"
                     type="text"
-                    onChange={formik.handleChange}
+                    onChange={handleChange}
+                    value={values.name}
+                    error={touched.name && Boolean(errors.name)}
+                    helperText={touched.name && errors.name}
                     variant="outlined"
                     label="Name"
                   />
                   <S.PhoneFields>
                     <FormControl>
                       <S.PhonePrefix
-                        value={formik.values.mobilePrefix}
-                        onChange={formik.handleChange}
+                        value={values.mobilePrefix}
+                        onChange={handleChange}
                         name="mobilePrefix"
                       >
                         <S.Prefix value={'+7'}>+7 RU</S.Prefix>
@@ -90,15 +105,14 @@ const DownloadModal: FC = () => {
                     <S.Field
                       name="mobilePhone"
                       type="number"
-                      onChange={formik.handleChange}
+                      onChange={handleChange}
                       variant="outlined"
-                      label="Phone number"
+                      label="Phone number(optional)"
                     />
                   </S.PhoneFields>
                   <FormControlLabel
-                    control={
-                      <Checkbox onChange={formik.handleChange} name="agree" />
-                    }
+                    value={values.agree}
+                    control={<Checkbox onChange={handleChange} name="agree" />}
                     label="Yes, I would like to receive free tracks to the email address provided above."
                   />
                   <S.Submit>
