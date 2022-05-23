@@ -16,7 +16,7 @@ const BEATS_INITIAL_STATE: BeatsState = {
   beats: [],
   isFetching: false,
   featuredBeat: null,
-  beat:null,
+  beat: null,
   error: '',
 };
 

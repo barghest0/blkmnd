@@ -1,9 +1,18 @@
+import { User } from '../user/types';
+
 type BeatsState = {
   beats: Beat[];
   beat: Beat | null;
   featuredBeat: Beat | null;
   isFetching: boolean;
   error: string;
+};
+
+type Comment = {
+  id: number;
+  user: User;
+  text: string;
+  date: string;
 };
 
 type FiltersState = {
@@ -60,6 +69,7 @@ type Beat = {
   musician: Musician;
   track: string;
   licenses: License[];
+  comments: Comment[];
 };
 
-export { BeatsState, FiltersState, Beat, Tag, License };
+export { BeatsState, FiltersState, Beat, Tag, License, Comment };

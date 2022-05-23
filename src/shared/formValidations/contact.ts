@@ -7,7 +7,8 @@ const contactValidation = yup.object({
   message: yup
     .string()
     .required('Required Field')
-    .min(10, 'Message should be of minimum 10 characters length'),
+    .min(10, 'Message should be of minimum 10 characters length')
+    .max(200, 'Message should be of maximum 200 characters length'),
 });
 
 export default contactValidation;

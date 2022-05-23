@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BuyButton from '../../components/BuyButton/BuyButton';
+import Comment from '../../components/Comment/Comment';
 import CommentField from '../../components/CommentField/CommentField';
 import DownloadButton from '../../components/DownloadButton/DownloadButton';
 import Preloader from '../../components/Preloader/Preloader';
@@ -17,6 +18,12 @@ const SoundKit = () => {
   useEffect(() => {
     getSoundKit(Number(params.id));
   }, []);
+
+  const comments = soundKit?.comments.map(comment => (
+    <S.Comment key={comment.id}>
+      <Comment comment={comment} />
+    </S.Comment>
+  ));
 
   const isSoundKitFree = soundKit?.price === 0;
 
@@ -54,7 +61,7 @@ const SoundKit = () => {
         ) : (
           <S.Reviews>
             <S.ReviewsTitle>Reviews</S.ReviewsTitle>
-            <S.ReviewsComments></S.ReviewsComments>
+            <S.ReviewsComments>{comments}</S.ReviewsComments>
           </S.Reviews>
         )}
       </S.Container>

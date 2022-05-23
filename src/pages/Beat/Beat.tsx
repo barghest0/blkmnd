@@ -12,7 +12,6 @@ import Visualizer from '../../components/Visualizer/Visualizer';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import * as S from './Beat.style';
-import BuyButton from '../../components/BuyButton/BuyButton';
 import DownloadButton from '../../components/DownloadButton/DownloadButton';
 import ShareButton from '../../components/ShareButton/ShareButton';
 import TagLink from '../../components/TagLink/TagLink';
@@ -20,6 +19,7 @@ import { Tab, Tabs } from '@mui/material';
 import BeatsList from '../../components/BeatsList/BeatsList';
 import CommentField from '../../components/CommentField/CommentField';
 import ChooseLicenseButton from '../../components/ChooseLicenseButton/ChooseLicenseButton';
+import Comment from '../../components/Comment/Comment';
 
 const Beat = () => {
   const params = useParams();
@@ -42,6 +42,12 @@ const Beat = () => {
       setBeat(beat);
     }
   };
+
+  const comments = beat?.comments.map(comment => (
+    <S.Comment key={comment.id}>
+      <Comment comment={comment} />
+    </S.Comment>
+  ));
 
   const tags = beat?.tags.map(tag => (
     <S.Tag key={tag.id}>
@@ -106,9 +112,9 @@ const Beat = () => {
         </S.Content>
       )}
       <S.Container>
-        <S.Comment>
+        <S.CommentField>
           <CommentField />
-        </S.Comment>
+        </S.CommentField>
       </S.Container>
 
       <S.Tabs>
@@ -125,7 +131,9 @@ const Beat = () => {
         <S.TabPanel hidden={value !== 'related'}>
           <BeatsList beats={beats} />
         </S.TabPanel>
-        <S.TabPanel hidden={value !== 'comments'}>comments</S.TabPanel>
+        <S.TabPanel hidden={value !== 'comments'}>
+          <S.Comments>{comments}</S.Comments>
+        </S.TabPanel>
       </S.Container>
     </S.Beat>
   );

@@ -1,3 +1,5 @@
+import { Comment } from '../beats/types';
+
 type SoundKit = {
   id: number;
   title: string;
@@ -5,6 +7,7 @@ type SoundKit = {
   image: string;
   description: string;
   price: number;
+  comments: Comment[];
 };
 
 type SoundKitsState = {

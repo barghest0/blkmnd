@@ -89,7 +89,11 @@ const BeatInfo = styled.div`
   margin-bottom: 20px;
 `;
 
-const Comment = styled.div`
+const Comments = styled.div``;
+
+const Comment = styled.div``;
+
+const CommentField = styled.div`
   margin-bottom: 30px;
 `;
 
@@ -156,8 +160,10 @@ export {
   Visualizer,
   Info,
   Tabs,
-  Comment,
+  Comments,
   Background,
   ContentInner,
   BackgroundGradient,
+  CommentField,
+  Comment,
 };

@@ -12,24 +12,9 @@ const CommentField = styled.form`
 
 const Avatar = styled.img``;
 
-const CommentInput = styled.input`
-  background-color: transparent;
-  border: none;
-  outline: none;
-  width: 100%;
-  height: 100%;
-  border-bottom: 1px solid ${ThemeColors.borderColor};
-  color: ${ThemeColors.white};
-  font-size: 16px;
-
-  ::placeholder {
-    font-weight: 600;
-  }
-`;
-
 const Submit = styled.div`
   width: 100%;
   height: 100%;
 `;
 
-export { CommentInput, CommentField, Avatar, Submit };
+export { CommentField, Avatar, Submit };

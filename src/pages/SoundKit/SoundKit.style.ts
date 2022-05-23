@@ -59,6 +59,7 @@ const Reviews = styled.div``;
 
 const ReviewsTitle = styled.h2`
   font-size: 24px;
+  margin-bottom: 10px;
 `;
 
 const ReviewsComments = styled.div``;

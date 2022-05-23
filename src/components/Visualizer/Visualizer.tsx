@@ -50,6 +50,7 @@ const Visualizer: FC = memo(() => {
       source.connect(analyser);
       analyser.connect(audioContext.destination);
       analyser.fftSize = 256;
+      analyser.maxDecibels = 0;
 
       const bufferLength = analyser.frequencyBinCount;
 
