@@ -1,0 +1,1663 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Beat API",
+    "description": "This is a simple API",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/barghest0/BeatAPI/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Beats"
+    },
+    {
+      "name": "Sound Kits"
+    },
+    {
+      "name": "Services"
+    },
+    {
+      "name": "Tags"
+    },
+    {
+      "name": "Licenses"
+    },
+    {
+      "name": "FileTypes"
+    },
+    {
+      "name": "Cart"
+    },
+    {
+      "name": "Auth"
+    }
+  ],
+  "paths": {
+    "/beats": {
+      "get": {
+        "tags": [
+          "Beats"
+        ],
+        "summary": "get beats",
+        "operationId": "getBeats",
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "description": "search",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "description": "offset beats for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit beats for pagination",
+            "required": false,
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "maximum": 50,
+              "minimum": 0,
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Beat"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Beats"
+        ],
+        "summary": "add beat",
+        "operationId": "abbBeat",
+        "requestBody": {
+          "description": "add beat",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beat"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "beat created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing beat already exists"
+          }
+        }
+      }
+    },
+    "/beats/{id}": {
+      "get": {
+        "tags": [
+          "Beats"
+        ],
+        "summary": "get single beat",
+        "operationId": "getSingleBeat",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id beat",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beat"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Beats"
+        ],
+        "summary": "update beat",
+        "operationId": "updateBeat",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id beat",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "update sound kit",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Beat"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "beat created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing beat already exists"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Beats"
+        ],
+        "summary": "delete beat",
+        "operationId": "deleteBeat",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id beat",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "beat deleted"
+          }
+        }
+      }
+    },
+    "/sound-kits": {
+      "get": {
+        "tags": [
+          "Sound Kits"
+        ],
+        "summary": "get sound kit",
+        "operationId": "getSoundKits",
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundKit"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Sound Kits"
+        ],
+        "summary": "add sound kit",
+        "operationId": "abbSoundKit",
+        "requestBody": {
+          "description": "add beat",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SoundKit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sound kit created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing beat sound kit exists"
+          }
+        }
+      }
+    },
+    "/sound-kits/{id}": {
+      "get": {
+        "tags": [
+          "Sound Kits"
+        ],
+        "summary": "get single sound kit",
+        "operationId": "getSingleSoundKit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id sound kit",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SoundKit"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Sound Kits"
+        ],
+        "summary": "update sound kit",
+        "operationId": "updateSoundKit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id sound kit",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "update sound kit",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SoundKit"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "sound kit created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing sound kit already exists"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Sound Kits"
+        ],
+        "summary": "delete sound kit",
+        "operationId": "deleteSoundKit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id sound kit",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "sound kit deleted"
+          }
+        }
+      }
+    },
+    "/services": {
+      "get": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "get service",
+        "operationId": "getServices",
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Service"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "add service",
+        "operationId": "abbService",
+        "requestBody": {
+          "description": "add service",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Service"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "service created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing service service exists"
+          }
+        }
+      }
+    },
+    "/services/{id}": {
+      "get": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "get service",
+        "operationId": "getService",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id service",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Service"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "update service",
+        "operationId": "updateService",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id service",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "add service",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Service"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "service created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing service already exists"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Services"
+        ],
+        "summary": "delete service",
+        "operationId": "deleteService",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id service",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "service deleted"
+          }
+        }
+      }
+    },
+    "/tags": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "get tags",
+        "operationId": "getTags",
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "add tags",
+        "operationId": "abbTag",
+        "requestBody": {
+          "description": "add tag",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "tag created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing beat tag exists"
+          }
+        }
+      }
+    },
+    "/tags/{id}": {
+      "get": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "get tag",
+        "operationId": "getTag",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id tag",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tag"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "update tag",
+        "operationId": "updateTag",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id tag",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "add tag",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tag"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "tag created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing tag already exists"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Tags"
+        ],
+        "summary": "delete tag",
+        "operationId": "deleteTag",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id tag",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "tag deleted"
+          }
+        }
+      }
+    },
+    "/licenses": {
+      "get": {
+        "tags": [
+          "Licenses"
+        ],
+        "summary": "get licenses",
+        "operationId": "getLicenses",
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/License"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Licenses"
+        ],
+        "summary": "add license",
+        "operationId": "abbLic",
+        "requestBody": {
+          "description": "add beat",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/License"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "license created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing beat license exists"
+          }
+        }
+      }
+    },
+    "/licenses/{id}": {
+      "get": {
+        "tags": [
+          "Licenses"
+        ],
+        "summary": "get license",
+        "operationId": "getLicense",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id license",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/License"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Licenses"
+        ],
+        "summary": "update license",
+        "operationId": "updateLicense",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id license",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "add beat",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Service"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "license created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing license already exists"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Licenses"
+        ],
+        "summary": "delete license",
+        "operationId": "deleteLicense",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id license",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "license deleted"
+          }
+        }
+      }
+    },
+    "/file-types": {
+      "get": {
+        "tags": [
+          "FileTypes"
+        ],
+        "summary": "get file type",
+        "operationId": "getFileTypes",
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FileType"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "FileTypes"
+        ],
+        "summary": "add file type",
+        "operationId": "abbFile",
+        "requestBody": {
+          "description": "add beat",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "file type created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing beat file type exists"
+          }
+        }
+      }
+    },
+    "/file-types/{id}": {
+      "get": {
+        "tags": [
+          "FileTypes"
+        ],
+        "summary": "get file type",
+        "operationId": "getFileType",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id file type",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FileType"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "FileTypes"
+        ],
+        "summary": "update file type",
+        "operationId": "updateFileType",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id file type",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "add beat",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "file type created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing file type already exists"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "FileTypes"
+        ],
+        "summary": "delete file type",
+        "operationId": "deleteFileType",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id file type",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "file type deleted"
+          }
+        }
+      }
+    },
+    "/cart": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "get cart",
+        "operationId": "getCart",
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CartProduct"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "add cart product",
+        "operationId": "abbCartPro",
+        "requestBody": {
+          "description": "add beat",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartProduct"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "cart created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing beat cart exists"
+          }
+        }
+      }
+    },
+    "/cart/{id}": {
+      "get": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "cart type",
+        "operationId": "getCartProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id product",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CartProduct"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "update cart product",
+        "operationId": "updateCartProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id product",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "add beat",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CartProduct"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "file type created"
+          },
+          "400": {
+            "description": "invalid input, object invalid"
+          },
+          "409": {
+            "description": "an existing file type already exists"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cart"
+        ],
+        "summary": "delete cart product",
+        "operationId": "deleteCartProduct",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "id product",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "product deleted"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "login",
+        "operationId": "login",
+        "requestBody": {
+          "description": "login",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/auth_login_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "register",
+        "operationId": "register",
+        "requestBody": {
+          "description": "register",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/auth_register_body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/inline_response_200"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "me",
+        "operationId": "me",
+        "parameters": [
+          {
+            "name": "AuthToken",
+            "in": "header",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "$ref": "#/components/securitySchemes/Token"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Beat": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "title": {
+            "type": "string",
+            "example": "Future Mask off type beat"
+          },
+          "type": {
+            "type": "string",
+            "example": "track"
+          },
+          "price": {
+            "type": "integer",
+            "format": "int64",
+            "example": 33
+          },
+          "tags": {
+            "$ref": "#/components/schemas/Tag"
+          },
+          "bpm": {
+            "type": "integer",
+            "format": "int64",
+            "example": 100
+          },
+          "date": {
+            "type": "string",
+            "example": "01.02.2021"
+          },
+          "time": {
+            "type": "string",
+            "example": "02:12"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            }
+          },
+          "chord": {
+            "type": "string",
+            "example": "Em"
+          },
+          "musician": {
+            "$ref": "#/components/schemas/Musician"
+          },
+          "image": {
+            "type": "string",
+            "example": "image.jpg"
+          },
+          "track": {
+            "type": "string",
+            "example": "path/to/track"
+          },
+          "excerpt": {
+            "type": "string",
+            "example": "path/to/excerpt-track"
+          },
+          "featured": {
+            "type": "boolean"
+          },
+          "licenses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/License"
+            }
+          }
+        }
+      },
+      "Tag": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "example": "future"
+          }
+        }
+      },
+      "Musician": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "example": "someone"
+          }
+        }
+      },
+      "CartProduct": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "license": {
+            "$ref": "#/components/schemas/License"
+          },
+          "product": {
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "$ref": "#/components/schemas/Beat"
+                },
+                {
+                  "$ref": "#/components/schemas/Service"
+                }
+              ]
+            }
+          }
+        }
+      },
+      "License": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "example": "someone"
+          },
+          "file-types": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/FileType"
+            }
+          },
+          "contract-values": {
+            "$ref": "#/components/schemas/ContractValues"
+          }
+        }
+      },
+      "FileType": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "example": "mp3"
+          }
+        }
+      },
+      "ContractValues": {
+        "type": "object",
+        "properties": {
+          "copies": {
+            "type": "string",
+            "example": "10000 || unlimited"
+          },
+          "radio-stations": {
+            "type": "string",
+            "example": "2 || unlimited"
+          },
+          "music-video": {
+            "type": "string",
+            "example": "2 || unlimited"
+          },
+          "streams": {
+            "type": "string",
+            "example": "100000 || unlimited"
+          }
+        }
+      },
+      "SoundKit": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "type": "string",
+            "example": "sound-kit"
+          },
+          "name": {
+            "type": "string",
+            "example": "BLACK NOVEMBER"
+          },
+          "description": {
+            "type": "string",
+            "example": "something description"
+          },
+          "image": {
+            "type": "string",
+            "example": "image.jpg"
+          },
+          "price": {
+            "type": "integer",
+            "example": 0
+          },
+          "track": {
+            "type": "string",
+            "example": "path/to/track/"
+          },
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Comment"
+            }
+          }
+        }
+      },
+      "Service": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "type": {
+            "type": "string",
+            "example": "collab"
+          },
+          "name": {
+            "type": "string",
+            "example": "BLACK NOVEMBER"
+          },
+          "description": {
+            "type": "string",
+            "example": "something description"
+          },
+          "image": {
+            "type": "string",
+            "example": "image.jpg"
+          },
+          "price": {
+            "type": "integer"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "username": {
+            "type": "string",
+            "example": "future"
+          },
+          "password": {
+            "type": "string",
+            "example": "asggij5owlkpsafdlklk6kfslkp"
+          },
+          "purchases": {
+            "type": "string",
+            "example": "I don`t know what it should look like"
+          },
+          "offers": {
+            "type": "string",
+            "example": "I don`t know what it should look like"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "admin",
+              "user"
+            ]
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "text": {
+            "type": "string",
+            "example": "any text"
+          },
+          "date": {
+            "type": "string",
+            "example": "22.02.2022"
+          }
+        }
+      },
+      "Membership": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "name": {
+            "type": "string",
+            "example": "vip plan"
+          },
+          "price": {
+            "type": "integer",
+            "example": 25
+          }
+        }
+      },
+      "auth_login_body": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "inline_response_200": {
+        "type": "object",
+        "properties": {
+          "token": {
+            "type": "string"
+          }
+        }
+      },
+      "auth_register_body": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Token": {
+        "type": "apiKey",
+        "name": "token",
+        "in": "header"
+      }
+    }
+  }
+}
