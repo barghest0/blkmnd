@@ -4,6 +4,8 @@ import useTypedDispatch from './redux/useTypedSelector';
 
 import playerSlice from '../redux/player/playerSlice';
 import modalsSlice from '../redux/modals/modalsSlice';
+import beatsSlice from '../redux/beats/beatsSlice';
+import soundKitsSlice from '../redux/soundKits/soundKitsSlice';
 
 import * as beatsActions from '../redux/beats/actions';
 import * as licensesActions from '../redux/licenses/actions';
@@ -24,7 +26,9 @@ const rootActionCreator = {
   ...cartActions,
   ...discographyActions,
   ...membershipsActions,
+  ...beatsSlice.actions,
   ...playerSlice.actions,
+  ...soundKitsSlice.actions,
   ...modalsSlice.actions,
   ...asyncPlayerActions,
   ...authActions,

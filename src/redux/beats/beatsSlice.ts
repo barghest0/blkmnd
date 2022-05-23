@@ -1,18 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Beat } from './types';
+import { Beat, Comment } from './types';
 import {
   getAllBeats,
   getPreviewBeats,
   getFeaturedBeat,
   getFilteredBeats,
   getBeat,
+  updateBeat,
 } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
 const beatsSlice = createSlice({
   name: BEATS_SLICE_NAME,
   initialState: BEATS_INITIAL_STATE,
-  reducers: {},
+  reducers: {
+    pushNewBeatComment: (state, action: PayloadAction<Comment>) => {
+      if (state.beat) {
+        state.beat.comments.push(action.payload);
+      }
+    },
+  },
   extraReducers: {
     [getPreviewBeats.fulfilled.type]: (
       state,
@@ -79,6 +86,15 @@ const beatsSlice = createSlice({
     },
 
     [getFeaturedBeat.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
+    },
+
+    [updateBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
+      state.error = '';
+      state.beat = action.payload;
+    },
+
+    [updateBeat.rejected.type]: (state, action: PayloadAction<string>) => {
       state.error = action.payload;
     },
 

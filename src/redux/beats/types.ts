@@ -9,7 +9,7 @@ type BeatsState = {
 };
 
 type Comment = {
-  id: number;
+  id?: number;
   user: User;
   text: string;
   date: string;

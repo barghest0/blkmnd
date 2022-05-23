@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Comment = styled.article`
   display: grid;
-  grid-template-columns: 70px 1fr;
+  grid-template-columns: 70px 700px;
   grid-template-rows: 1fr 4fr;
   column-gap: 10px;
 `;
@@ -25,6 +25,8 @@ const Date = styled.div`
 `;
 
 const Content = styled.p`
+  white-space: normal;
+  word-wrap: break-word;
   grid-column-start: 2;
 `;
 

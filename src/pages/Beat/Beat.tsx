@@ -17,17 +17,28 @@ import ShareButton from '../../components/ShareButton/ShareButton';
 import TagLink from '../../components/TagLink/TagLink';
 import { Tab, Tabs } from '@mui/material';
 import BeatsList from '../../components/BeatsList/BeatsList';
-import CommentField from '../../components/CommentField/CommentField';
+import CommentField, {
+  CommentValues,
+} from '../../components/CommentField/CommentField';
 import ChooseLicenseButton from '../../components/ChooseLicenseButton/ChooseLicenseButton';
 import Comment from '../../components/Comment/Comment';
+import format from 'date-fns/format';
+import { User } from '../../redux/user/types';
 
 const Beat = () => {
   const params = useParams();
 
   const { beats, beat } = useTypedSelector(state => state.beats);
 
-  const { getBeat, getAllBeats, setBeat, openPlayer, togglePlaying } =
-    useActions();
+  const {
+    getBeat,
+    getAllBeats,
+    setBeat,
+    openPlayer,
+    togglePlaying,
+    pushNewBeatComment,
+    updateBeat,
+  } = useActions();
 
   const [value, setValue] = useState('related');
 
@@ -41,6 +52,19 @@ const Beat = () => {
       togglePlaying(beat);
       setBeat(beat);
     }
+  };
+
+  const onCommentSubmit = (values: CommentValues) => {
+    const date = format(new Date(), 'MM.dd.yyyy');
+    const user: User = {
+      id: 1251,
+      username: 'someone',
+      password: 'asdgasdfjk3k4j23',
+      role: 'user',
+    };
+    const comment = { user, text: values.comment, date };
+    pushNewBeatComment(comment);
+    updateBeat();
   };
 
   const comments = beat?.comments.map(comment => (
@@ -100,7 +124,7 @@ const Beat = () => {
                 <S.Action>
                   <ShareButton beatId={beat.id}>Share</ShareButton>
                 </S.Action>
-                <S.Tags>{tags}</S.Tags>
+                <S.Tags>{tags}</S.Tags>{' '}
               </S.Actions>
               <S.Visualizer>
                 <Visualizer />
@@ -113,7 +137,7 @@ const Beat = () => {
       )}
       <S.Container>
         <S.CommentField>
-          <CommentField />
+          <CommentField onSubmit={onCommentSubmit} />
         </S.CommentField>
       </S.Container>
 

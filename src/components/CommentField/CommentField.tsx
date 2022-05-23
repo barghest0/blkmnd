@@ -1,5 +1,6 @@
 import { TextField } from '@mui/material';
-import { useFormik } from 'formik';
+import { FormikHelpers, useFormik } from 'formik';
+import { FC, SyntheticEvent } from 'react';
 import commentValidation from '../../shared/formValidations/comment';
 import Button from '../Button/Button';
 import * as S from './CommentField.style';
@@ -8,13 +9,21 @@ type CommentValues = {
   comment: string;
 };
 
-const CommentField = () => {
+type Props = {
+  onSubmit: (values: CommentValues) => void;
+};
+
+const CommentField: FC<Props> = ({ onSubmit }) => {
   const initialValues = {
     comment: '',
   };
 
-  const onCommentSubmit = (values: CommentValues) => {
-    console.log(values);
+  const onCommentSubmit = (
+    values: CommentValues,
+    formikHelpers: FormikHelpers<CommentValues>,
+  ) => {
+    formikHelpers.resetForm();
+    onSubmit(values);
   };
 
   const formik = useFormik({
@@ -42,4 +51,5 @@ const CommentField = () => {
   );
 };
 
+export { CommentValues };
 export default CommentField;

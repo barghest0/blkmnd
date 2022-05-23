@@ -5,6 +5,7 @@ import {
   fetchFeaturedBeat,
   fetchFilteredBeats,
   fetchPreviewBeats,
+  putBeat,
 } from '../../shared/api/beats';
 import {
   GET_ALL_BEATS_NAME,
@@ -12,8 +13,9 @@ import {
   GET_FEATURED_BEAT_NAME,
   GET_FILTERED_BEATS_NAME,
   GET_PREVIEW_BEATS_NAME,
+  UPDATE_BEAT_NAME,
 } from './constants';
-import { FiltersState } from './types';
+import { Beat, FiltersState } from './types';
 
 const getPreviewBeats = createAsyncThunk(
   GET_PREVIEW_BEATS_NAME,
@@ -75,10 +77,21 @@ const getBeat = createAsyncThunk(
   },
 );
 
+const updateBeat = createAsyncThunk(UPDATE_BEAT_NAME, async (_, thunkAPI) => {
+  try {
+    const beat = thunkAPI.getState().beats.beat;
+    const response = await putBeat(beat);
+    return response.data;
+  } catch (e) {
+    thunkAPI.rejectWithValue(e);
+  }
+});
+
 export {
   getPreviewBeats,
   getAllBeats,
   getFilteredBeats,
   getFeaturedBeat,
   getBeat,
+  updateBeat,
 };

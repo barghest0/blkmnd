@@ -9,4 +9,7 @@ const fetchAllSoundKits = () => instance.get<SoundKit[]>('soundKits/');
 const fetchSoundKit = (id: number) =>
   instance.get<SoundKit[]>(`soundKits/${id}`);
 
-export { fetchPreviewSoundKits, fetchAllSoundKits, fetchSoundKit };
+const putSoundKit = (soundKit: SoundKit) =>
+  instance.put(`soundKits/${soundKit.id}`, soundKit);
+
+export { fetchPreviewSoundKits, fetchAllSoundKits, fetchSoundKit, putSoundKit };

@@ -26,11 +26,14 @@ const fetchFilteredBeats = (filters: Partial<FiltersState>) => {
   return instance.get<Beat[]>(`beats?${queryString.join('&')}`);
 };
 
+const putBeat = (beat: Beat) => instance.put<Beat>(`/beats/${beat.id}`, beat);
+
 export {
   fetchFeaturedBeat,
   fetchPreviewBeats,
   fetchBeat,
   fetchAllBeats,
+  putBeat,
   fetchDiscographyBeats,
   fetchFilteredBeats,
 };
