@@ -11,7 +11,6 @@ import useActions from '../../hooks/useActions';
 import { Beat } from '../../redux/beats/types';
 import { RouterPaths } from '../../shared/router/types';
 import { StyledLink } from '../../shared/styles/links';
-import BuyButton from '../BuyButton/BuyButton';
 import PlayButton from '../PlayButton/PlayButton';
 import Preloader from '../Preloader/Preloader';
 import ShareButton from '../ShareButton/ShareButton';
@@ -19,6 +18,7 @@ import * as S from './Player.style';
 import DurationSlider from '../DurationSlider/DurationSlider';
 import VolumeSlider from '../VolumeSlider/VolumeSlider';
 import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
+import QueueBeat from '../QueueBeat/QueueBeat';
 
 type PlayerProps = {
   isOpen: boolean;
@@ -40,20 +40,12 @@ const Player: FC<Props> = memo(({ audioRef }) => {
     togglePlaying,
     getQueueBeats,
     setBeat,
-    openPlayer,
     toggleIsLoop,
     toggleIsShuffle,
   } = useActions();
 
-  const {
-    queue,
-    isFetching,
-    isPlaying,
-    isLoop,
-    isShuffle,
-    nextBeat,
-    previousBeat,
-  } = useTypedSelector(state => state.player);
+  const { queue, isFetching, isLoop, isShuffle, nextBeat, previousBeat } =
+    useTypedSelector(state => state.player);
 
   const [isQueueListOpen, setIsQueueListOpen] = useState(false);
   const [queueBeats, setQueueBeats] = useState<Beat[]>([]);
@@ -61,8 +53,8 @@ const Player: FC<Props> = memo(({ audioRef }) => {
   const audio = audioRef.current;
 
   const onQueueBeatClick = (beat: Beat) => {
-    setBeat(beat);
     togglePlaying(beat);
+    setBeat(beat);
   };
 
   const queueBeatsList = queueBeats.map(beat => (
@@ -71,7 +63,7 @@ const Player: FC<Props> = memo(({ audioRef }) => {
       isActive={beat.id === playerBeat?.id}
       onClick={() => onQueueBeatClick(beat)}
     >
-      {beat.title}
+      <QueueBeat beat={beat} />
     </S.QueueBeat>
   ));
 

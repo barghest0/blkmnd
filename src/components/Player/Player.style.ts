@@ -140,6 +140,7 @@ const QueueList = styled.div`
   padding: 10px;
   display: grid;
   overflow: auto;
+  
 `;
 
 const QueueBeat = styled.div<QueueBeatProps>`
