@@ -11,7 +11,7 @@ import useActions from '../../hooks/useActions';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import Image from '../Image/Image';
 import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
-import player from '../../services/Player';
+import useAudio from '../../hooks/useAudio';
 
 type Props = {
   beats: Beat[];
@@ -26,15 +26,15 @@ type BeatRowProps = {
 };
 
 const BeatsList: FC<Props> = ({ beats }) => {
-  const { setBeat, openPlayer, togglePlaying } = useActions();
+  const { openPlayer } = useActions();
   const { beat: playerBeat } = useTypedSelector(state => state.player);
+
+  const { setPlayerBeat, toggleAudioPlaying } = useAudio();
 
   const onBeatRowClick = (beat: Beat) => {
     openPlayer();
-    togglePlaying(beat);
-    setBeat(beat);
-    player.setTrack(beat);
-    player.togglePlaying();
+    setPlayerBeat(beat);
+    toggleAudioPlaying(playerBeat);
   };
 
   const onActionButtonClick = (event: SyntheticEvent) => {

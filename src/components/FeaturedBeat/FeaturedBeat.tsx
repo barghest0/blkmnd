@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, memo, useCallback } from 'react';
 
 import * as S from './FeaturedBeat.style';
 
@@ -12,7 +12,8 @@ import { Beat } from '../../redux/beats/types';
 import useActions from '../../hooks/useActions';
 import PlayButton from '../PlayButton/PlayButton';
 import Image from '../Image/Image';
-import player from '../../services/Player';
+import useAudio from '../../hooks/useAudio';
+import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 
 type Props = {
   beat: Beat;
@@ -21,14 +22,16 @@ type Props = {
 const FeaturedBeat: FC<Props> = memo(({ beat }) => {
   const { id, title, image, bpm, price, tags } = beat;
 
-  const { openPlayer, togglePlaying, setBeat } = useActions();
+  const { openPlayer } = useActions();
+
+  const { beat: playerBeat } = useTypedSelector(state => state.player);
+
+  const { toggleAudioPlaying, setPlayerBeat } = useAudio();
 
   const onThumbnailClick = () => {
     openPlayer();
-    togglePlaying(beat);
-    setBeat(beat);
-    player.setTrack(beat);
-    player.togglePlaying();
+    setPlayerBeat(beat);
+    toggleAudioPlaying(playerBeat);
   };
 
   const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
@@ -59,7 +62,7 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
             <DownloadButton beatId={id} />
           </S.Action>
           <S.Action>
-            <ShareButton beatId={id} />
+            <ShareButton product={beat} />
           </S.Action>
           {tagsLinks}
         </S.Actions>

@@ -1,21 +1,22 @@
 import { FC, useEffect, useState } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
-import { Beat } from '../../redux/beat/types';
+import useAudio from '../../hooks/useAudio';
+import { Beat } from '../../redux/beats/types';
 import * as S from './DurationSlider.style';
 
 type Props = {
-  audio: HTMLAudioElement | null;
   currentBeat: Beat | null;
 };
 
-const DurationSlider: FC<Props> = ({ audio, currentBeat }) => {
+const DurationSlider: FC<Props> = ({ currentBeat }) => {
   const { setCurrentTime } = useActions();
   const [value, setValue] = useState(0);
   const { currentTime, duration, beat } = useTypedSelector(
     state => state.player,
   );
 
+  const { setAudioCurrentTime } = useAudio();
   const isInteractionSameBeat = currentBeat?.id === beat?.id;
 
   const onCurrentTimeChange = (_: Event, value: number | number[]) => {
@@ -25,8 +26,8 @@ const DurationSlider: FC<Props> = ({ audio, currentBeat }) => {
   };
 
   const onCurrentTimeCommited = () => {
-    if (audio && isInteractionSameBeat) {
-      audio.currentTime = currentTime;
+    if (isInteractionSameBeat) {
+      setAudioCurrentTime();
     }
   };
 
