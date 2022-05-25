@@ -17,9 +17,6 @@ import useActions from '../../hooks/useActions';
 import AuthModal from '../../components/AuthModal/AuthModal';
 
 const Layout = memo(() => {
-  const audioRef = useRef(null);
-
-  const { beat } = useTypedSelector(state => state.player);
 
   const { getCart } = useActions();
 
@@ -31,9 +28,8 @@ const Layout = memo(() => {
     <S.Layout>
       <Header />
       <S.Page>
-        <Outlet context={{ audio: audioRef }} />
-        <Player audioRef={audioRef} />
-        {beat && <Audio ref={audioRef} src={beat.track} />}
+        <Outlet  />
+        <Player  />
         <DownloadModal />
         <ShareModal />
         <LicensesModal />

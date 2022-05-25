@@ -1,4 +1,4 @@
-import { FC, memo, RefObject, useEffect, useState } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
@@ -19,6 +19,7 @@ import DurationSlider from '../DurationSlider/DurationSlider';
 import VolumeSlider from '../VolumeSlider/VolumeSlider';
 import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
 import QueueBeat from '../QueueBeat/QueueBeat';
+import player from '../../services/Player';
 
 type PlayerProps = {
   isOpen: boolean;
@@ -29,11 +30,7 @@ type QueueBeatProps = {
   isActive: boolean;
 };
 
-type Props = {
-  audioRef: RefObject<HTMLAudioElement>;
-};
-
-const Player: FC<Props> = memo(({ audioRef }) => {
+const Player: FC = memo(() => {
   const { isOpen, beat: playerBeat } = useTypedSelector(state => state.player);
 
   const {
@@ -50,11 +47,13 @@ const Player: FC<Props> = memo(({ audioRef }) => {
   const [isQueueListOpen, setIsQueueListOpen] = useState(false);
   const [queueBeats, setQueueBeats] = useState<Beat[]>([]);
 
-  const audio = audioRef.current;
+  const audio = player.audio;
 
   const onQueueBeatClick = (beat: Beat) => {
     togglePlaying(beat);
     setBeat(beat);
+    player.setTrack(beat)
+    player.togglePlaying()
   };
 
   const queueBeatsList = queueBeats.map(beat => (

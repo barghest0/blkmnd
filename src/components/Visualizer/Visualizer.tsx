@@ -1,21 +1,20 @@
 import { FC, memo, useEffect, useRef, useState } from 'react';
-import { useOutletContext } from 'react-router-dom';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import player from '../../services/Player';
 import ThemeColors from '../../shared/styles/theme';
 import * as S from './Visualizer.style';
 
 const Visualizer: FC = memo(() => {
-  const { isPlaying } = useTypedSelector(state => state.player);
+  const { beat } = useTypedSelector(state => state.player);
   const [analyser, setAnalyser] = useState<AnalyserNode>();
   const [bufferLength, setBufferLength] = useState(0);
   const [audioData, setAudioData] = useState(new Uint8Array(0));
 
-  const audioRef = useOutletContext();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvas = canvasRef.current;
   const canvasContext = canvasRef.current?.getContext('2d');
 
-  const audio = audioRef.audio.current;
+  const audio = player.audio;
 
   const animate = () => {
     let x = 0;
@@ -44,27 +43,22 @@ const Visualizer: FC = memo(() => {
   useEffect(() => {
     const audioContext = new AudioContext();
 
-    if (audio) {
-      const source = audioContext.createMediaElementSource(audio);
-      const analyser = audioContext.createAnalyser();
-      source.connect(analyser);
-      analyser.connect(audioContext.destination);
-      analyser.fftSize = 256;
-      analyser.maxDecibels = 0;
+    const source = audioContext.createMediaElementSource(audio);
+    const analyser = audioContext.createAnalyser();
+    source.connect(analyser);
+    analyser.connect(audioContext.destination);
+    analyser.fftSize = 256;
+    analyser.maxDecibels = 0;
 
-      const bufferLength = analyser.frequencyBinCount;
+    console.log(audioContext);
+    const bufferLength = analyser.frequencyBinCount;
 
-      setAudioData(new Uint8Array(bufferLength));
-      setAnalyser(analyser);
-      setBufferLength(bufferLength);
-    }
-  }, [audio]);
-
-  useEffect(() => {
-    if (isPlaying) {
-      animate();
-    }
-  }, [bufferLength]);
+    setAudioData(new Uint8Array(bufferLength));
+    setAnalyser(analyser);
+    setBufferLength(bufferLength);
+    animate();
+    return () => {};
+  }, [beat]);
 
   return (
     <S.Visualizer>

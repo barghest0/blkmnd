@@ -6,12 +6,12 @@ import { RouterPaths } from '../../shared/router/types';
 import TagLink from '../TagLink/TagLink';
 import DownloadButton from '../DownloadButton/DownloadButton';
 import ShareButton from '../ShareButton/ShareButton';
-import BuyButton from '../BuyButton/BuyButton';
 import { Beat } from '../../redux/beats/types';
 import useActions from '../../hooks/useActions';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import Image from '../Image/Image';
 import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
+import player from '../../services/Player';
 
 type Props = {
   beats: Beat[];
@@ -33,6 +33,8 @@ const BeatsList: FC<Props> = ({ beats }) => {
     openPlayer();
     togglePlaying(beat);
     setBeat(beat);
+    player.setTrack(beat);
+    player.togglePlaying();
   };
 
   const onActionButtonClick = (event: SyntheticEvent) => {

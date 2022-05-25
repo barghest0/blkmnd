@@ -1,8 +1,7 @@
 import { FC } from 'react';
-import { useOutletContext } from 'react-router-dom';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { Beat } from '../../redux/beats/types';
+import player from '../../services/Player';
 import { RouterPaths } from '../../shared/router/types';
 import { StyledLink } from '../../shared/styles/links';
 import DurationSlider from '../DurationSlider/DurationSlider';
@@ -19,9 +18,7 @@ const DiscographyCard: FC<Props> = ({ beat }) => {
 
   const { setBeat, openPlayer, togglePlaying } = useActions();
 
-  const audioRef = useOutletContext();
-
-  const audio = audioRef.audio.current;
+  const audio = player.audio;
 
   const onThumbnailClick = () => {
     openPlayer();

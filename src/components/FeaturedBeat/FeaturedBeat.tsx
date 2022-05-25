@@ -12,6 +12,7 @@ import { Beat } from '../../redux/beats/types';
 import useActions from '../../hooks/useActions';
 import PlayButton from '../PlayButton/PlayButton';
 import Image from '../Image/Image';
+import player from '../../services/Player';
 
 type Props = {
   beat: Beat;
@@ -26,6 +27,8 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
     openPlayer();
     togglePlaying(beat);
     setBeat(beat);
+    player.setTrack(beat);
+    player.togglePlaying();
   };
 
   const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);

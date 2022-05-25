@@ -13,13 +13,6 @@ const PATHS = {
 const config = {
   entry: ['@babel/polyfill', `${PATHS.src}/index.tsx`],
 
-  output: {
-    filename: 'index.js',
-    path: PATHS.dist,
-    clean: true,
-    publicPath: '/',
-  },
-
   devtool: 'source-map',
 
   externals: {
