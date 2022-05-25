@@ -4,7 +4,7 @@ const AUTH_SLICE_NAME = 'auth';
 
 const AUTH_INITIAL_STATE: AuthState = {
   token: localStorage.getItem('token'),
-  isAuth: false,
+  isAuth: true,
   user: null,
   isFetching: false,
   error: '',

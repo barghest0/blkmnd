@@ -533,7 +533,18 @@
       "title": "BLACK NOVEMBER MIDI MELODY PACK",
       "description": "something description",
       "image": "https://main.v2.beatstars.com/fit-in/soundkits/600x600/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/image/1638287755/black-november.jpg",
-      "comments": [],
+      "comments": [
+        {
+          "user": {
+            "id": 1251,
+            "username": "someone",
+            "password": "asdgasdfjk3k4j23",
+            "role": "user"
+          },
+          "text": "фыв",
+          "date": "05.23.2022"
+        }
+      ],
       "price": 30
     },
     {
@@ -549,7 +560,7 @@
   "collabs": [
     {
       "id": 1,
-      "type": "service",
+      "type": "collab",
       "title": "Beat Collabs",
       "price": 29.99,
       "description": "something description",
@@ -705,6 +716,28 @@
       "title": "Vip plan",
       "price": 30,
       "details": "details"
+    }
+  ],
+
+  "musicians": [
+    {
+      "id": 1,
+      "name": "someone"
+    }
+  ],
+
+  "fileTypes": [
+    {
+      "id": 1,
+      "name": "MP3"
+    },
+    {
+      "id": 2,
+      "name": "WAV"
+    },
+    {
+      "id": 3,
+      "name": "TRACK STEMS"
     }
   ],
   "cart": []

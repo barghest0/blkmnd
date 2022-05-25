@@ -7,25 +7,26 @@ import Button from '../Button/Button';
 import { ButtonThemes } from '../Button/types';
 import useActions from '../../hooks/useActions';
 import { ModalsTypes } from '../../redux/modals/types';
+import { CartProductDetails } from '../../redux/cart/types';
 
 type Props = {
   hasBackground?: boolean;
   color?: string;
-  beatId: number;
+  product: CartProductDetails;
   children?: ReactNode;
 };
 
 const ShareButton: FC<Props> = ({
   hasBackground = true,
   color = '',
-  beatId,
+  product,
   children,
 }) => {
   const { setModalVisability, getBeat } = useActions();
 
   const onShareButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.share });
-    getBeat(beatId);
+    getBeat(product.id);
   };
   return (
     <S.ShareButton onClick={onShareButtonClick}>
