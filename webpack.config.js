@@ -6,7 +6,7 @@ const __dirname = path.resolve();
 const PATHS = {
   src: path.join(__dirname, './src'),
   public: path.join(__dirname, './public'),
-  dist: path.join(__dirname, './www/default.test'),
+  dist: path.join(__dirname, './php/web'),
   assets: 'assets',
 };
 
