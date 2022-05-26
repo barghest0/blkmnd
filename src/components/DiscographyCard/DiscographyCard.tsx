@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import useAudio from '../../hooks/useAudio';
 import { Beat } from '../../redux/beats/types';
@@ -17,14 +18,16 @@ type Props = {
 const DiscographyCard: FC<Props> = ({ beat }) => {
   const { id, image, title, musician } = beat;
 
-  const { setBeat, openPlayer, togglePlaying } = useActions();
+  const { openPlayer } = useActions();
 
-  const { audio } = useAudio();
+  const { audio, toggleAudioPlaying, setPlayerBeat } = useAudio();
+
+  const { beat: playerBeat } = useTypedSelector(state => state.player);
 
   const onThumbnailClick = () => {
     openPlayer();
-    togglePlaying(beat);
-    setBeat(beat);
+    setPlayerBeat(beat);
+    toggleAudioPlaying(playerBeat);
   };
 
   return (

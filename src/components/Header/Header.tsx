@@ -36,6 +36,10 @@ type DrawerProps = {
   isOpen: boolean;
 };
 
+type SearchProps = {
+  isOpen: boolean;
+};
+
 type NavProps = {
   isSearchOpen: boolean;
 };
@@ -78,11 +82,15 @@ const Header = () => {
         <S.HeaderBurger onClick={onBurgerButtonClick}>
           {isDrawerOpen ? <CloseIcon /> : <MenuIcon />}
         </S.HeaderBurger>
-        <Logo />
+        <S.Logo>
+          <Logo />
+        </S.Logo>
       </S.LeftNav>
       <S.RightNav>
         <S.HeaderNav isSearchOpen={isSearchOpen}>{headerNavItems}</S.HeaderNav>
-        <HeaderSearch isOpen={isSearchOpen} setIsOpen={setIsSearchOpen} />
+        <S.Search>
+          <HeaderSearch isOpen={isSearchOpen} setIsOpen={setIsSearchOpen} />
+        </S.Search>
         <StyledLink to={RouterPaths.cart}>
           <S.Cart>
             <S.CartIcon>
@@ -164,5 +172,5 @@ const Header = () => {
     </S.Header>
   );
 };
-export { ProfileDropdownProps, DrawerProps, NavProps };
+export { ProfileDropdownProps, DrawerProps, NavProps, SearchProps };
 export default Header;

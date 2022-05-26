@@ -2,7 +2,12 @@ import styled, { css } from 'styled-components';
 import { breakpoint, breakpointUp } from '../../shared/styles/breakpoints';
 import { StyledLink } from '../../shared/styles/links';
 import ThemeColors from '../../shared/styles/theme';
-import { DrawerProps, NavProps, ProfileDropdownProps } from './Header';
+import {
+  DrawerProps,
+  NavProps,
+  ProfileDropdownProps,
+  SearchProps,
+} from './Header';
 
 const Header = styled.header`
   background-color: ${ThemeColors.layoutColor};
@@ -11,12 +16,13 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0px 10px;
   position: fixed;
   width: 100%;
 `;
 
-const HeaderLogo = styled.div``;
+const Logo = styled.div`
+  padding: 0 10px;
+`;
 
 const HeaderBurger = styled.div`
   cursor: pointer;
@@ -41,7 +47,6 @@ const LeftNav = styled.div`
 
 const RightNav = styled.div`
   display: flex;
-  column-gap: 20px;
   height: 4rem;
 `;
 
@@ -72,13 +77,16 @@ const Cart = styled.div`
   cursor: pointer;
   border-right: 1px solid #363636;
   border-left: 1px solid #363636;
+
+  @media ${breakpoint('sm')} {
+    padding: 0 20px;
+  }
 `;
 
 const CartIcon = styled.div`
   display: flex;
   justify-content: center;
   align-self: center;
-  margin-right: 10px;
   position: relative;
 `;
 
@@ -103,12 +111,17 @@ const CartCost = styled.div`
   display: flex;
   justify-content: center;
   align-self: center;
+  margin-left: 10px;
+
+  @media ${breakpoint('sm')} {
+    display: none;
+  }
 `;
 
 const Auth = styled.div`
-  color: ${ThemeColors.white};
-  text-decoration: none;
+  height: 100%;
   display: flex;
+  padding: 0 20px;
   justify-content: center;
   align-items: center;
   cursor: pointer;
@@ -118,12 +131,16 @@ const AuthIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 5px;
 `;
 
 const AuthAction = styled.div`
   font-size: 12px;
   font-weight: 600;
+  margin-left: 5px;
+
+  @media ${breakpoint('sm')} {
+    display: none;
+  }
 `;
 
 const ProfileDropdown = styled.div<ProfileDropdownProps>`
@@ -142,6 +159,13 @@ const ProfileDropdown = styled.div<ProfileDropdownProps>`
       border-radius: 3px;
     `;
   }}
+`;
+
+const Search = styled.div<SearchProps>`
+  display: flex;
+  align-items: center;
+  margin: 0 10px;
+  position: relative;
 `;
 
 const ProfileAction = styled.div`
@@ -170,8 +194,17 @@ const HeaderDrawer = styled.div<DrawerProps>`
       width: 25%;
       height: 100%;
       transition: all 0.3s linear;
+
       @media ${breakpointUp('lg')} {
         transform: translateX(-100%);
+      }
+
+      @media ${breakpoint('md')} {
+        width: 40%;
+
+        @media ${breakpoint('sm')} {
+          width: 100%;
+        }
       }
     `;
   }}
@@ -187,7 +220,7 @@ const DrawerNav = styled.div`
 
 export {
   Header,
-  HeaderLogo,
+  Logo,
   HeaderNav,
   RightNav,
   Cart,
@@ -203,5 +236,6 @@ export {
   LeftNav,
   HeaderDrawer,
   DrawerNav,
+  Search,
   CartProductsQuantity,
 };
