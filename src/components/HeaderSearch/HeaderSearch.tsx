@@ -10,7 +10,7 @@ type Props = {
   setIsOpen: (isOpen: boolean) => void;
 };
 
-type SearchInputProps = {
+type SearchProps = {
   isOpen: boolean;
 };
 
@@ -27,7 +27,7 @@ const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
 
   return (
     <S.HeaderSearch>
-      <S.SearchIcon onClick={onSearchIconClick}>
+      <S.SearchIcon isOpen={isOpen} onClick={onSearchIconClick}>
         <SearchIcon />
       </S.SearchIcon>
       <SearchField initialValues={{ query: query.get('q') }}>
@@ -46,5 +46,5 @@ const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
   );
 };
 
-export { SearchInputProps };
+export { SearchProps };
 export default HeaderSearch;
