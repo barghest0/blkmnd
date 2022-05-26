@@ -33,5 +33,8 @@
 Чтобы пересобрать типа прод:
 > bash build.sh
 
+Установка yii2
+> docker-compose exec php php composer.phar install
+
 
 

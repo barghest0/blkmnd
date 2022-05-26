@@ -1,6 +1,6 @@
 #!/bin/bash
 # Очищаем каталог, смотрящий наружу
-rm -rf www/default.test/*
+rm -rf php/web/*
 
 # на всякий случая устанавливаем ещё раз зависимости
 npm i
@@ -9,4 +9,4 @@ npm i
 npm run build
 
 # кидаем точку входа апи в веб каталог
-cp www/index-example.php www/default.test/index.php
+cp php/index-example.php php/web/index.php

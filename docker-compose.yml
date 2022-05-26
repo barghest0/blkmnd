@@ -7,7 +7,7 @@
           - "8000:80"
         volumes:
           - ./hosts:/etc/nginx/conf.d
-          - ./www:/var/www
+          - ./php:/var/www
           - ./logs:/var/log/nginx
         links:
           - php
@@ -16,7 +16,7 @@
         links:
           - mysql
         volumes:
-          - ./www:/var/www
+          - ./php:/var/www
       mysql:
           image: mysql
           ports:
