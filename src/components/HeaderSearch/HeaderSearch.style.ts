@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { SearchInputProps } from './HeaderSearch';
+import { SearchProps } from './HeaderSearch';
 import ThemeColors from '../../shared/styles/theme';
 import { breakpoint } from '../../shared/styles/breakpoints';
 
@@ -8,13 +8,20 @@ const HeaderSearch = styled.div`
   position: relative;
 `;
 
-const SearchIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  margin-right: 5px;
-  width: 30px;
+const SearchIcon = styled.div<SearchProps>`
+  ${({ isOpen }) => {
+    const transform = isOpen ? 'translateX(-220px)' : 'translateX(0px)';
+    return css`
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      margin-right: 5px;
+      width: 30px;
+      transform: ${transform};
+      transition: all 0.2s linear;
+    `;
+  }}
 `;
 
 const SearchFieldContainer = styled.div`
@@ -25,10 +32,9 @@ const SearchFieldContainer = styled.div`
   position: relative;
 `;
 
-const SearchInput = styled.input<SearchInputProps>`
+const SearchInput = styled.input<SearchProps>`
   ${({ isOpen }) => {
     const width = isOpen ? '220px' : 0;
-    const fullWidth = isOpen ? '100%' : 0;
 
     return css`
       max-width: ${width};
@@ -47,15 +53,11 @@ const SearchInput = styled.input<SearchInputProps>`
         font-size: 16px;
         color: ${ThemeColors.white};
       }
-
-      @media ${breakpoint('sm')} {
-        width: ${fullWidth};
-      }
     `;
   }}
 `;
 
-const CloseButton = styled.div<SearchInputProps>`
+const CloseButton = styled.div<SearchProps>`
   ${({ isOpen }) => {
     const opacity = isOpen ? 1 : 0;
     const pointerEvents = isOpen ? 'all' : 'none';

@@ -42,7 +42,7 @@ const LeftNav = styled.div`
   height: 4rem;
   display: flex;
   align-items: center;
-  column-gap: 30px;
+  column-gap: 10px;
 `;
 
 const RightNav = styled.div`
@@ -164,6 +164,7 @@ const ProfileDropdown = styled.div<ProfileDropdownProps>`
 const Search = styled.div<SearchProps>`
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: 0 10px;
   position: relative;
 `;
