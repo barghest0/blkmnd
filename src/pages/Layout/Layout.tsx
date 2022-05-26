@@ -6,9 +6,7 @@ import Footer from '../../components/Footer/Footer';
 import Header from '../../components/Header/Header';
 import Player from '../../components/Player/Player';
 import * as S from './Layout.styles';
-import { memo, useEffect, useRef } from 'react';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import Audio from '../../components/Audio/Audio';
+import { memo, useEffect } from 'react';
 import DownloadModal from '../../components/DownloadModal/DownloadModal';
 import ShareModal from '../../components/ShareModal/ShareModal';
 import LicensesModal from '../../components/LicensesModal/LicensesModal';
@@ -17,7 +15,6 @@ import useActions from '../../hooks/useActions';
 import AuthModal from '../../components/AuthModal/AuthModal';
 
 const Layout = memo(() => {
-
   const { getCart } = useActions();
 
   useEffect(() => {
@@ -28,8 +25,8 @@ const Layout = memo(() => {
     <S.Layout>
       <Header />
       <S.Page>
-        <Outlet  />
-        <Player  />
+        <Outlet />
+        <Player />
         <DownloadModal />
         <ShareModal />
         <LicensesModal />

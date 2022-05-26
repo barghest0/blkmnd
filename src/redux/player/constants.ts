@@ -10,7 +10,7 @@ const PLAYER_INITIAL_STATE: PlayerState = {
   beat: null,
   nextBeat: null,
   previousBeat: null,
-  volume: 0.3,
+  volume: 0.1,
   duration: 0,
   currentTime: 0,
   isLoop: false,

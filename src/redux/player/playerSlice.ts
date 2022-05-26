@@ -7,14 +7,15 @@ const playerSlice = createSlice({
   name: PLAYER_SLICE_NAME,
   initialState: PLAYER_INITIAL_STATE,
   reducers: {
-    togglePlaying: (state, action: PayloadAction<Beat>) => {
-      const playerBeat = state.beat;
-      const beat = action.payload;
-      if (playerBeat) {
-        if (beat.id === playerBeat.id) {
+    togglePlaying: (state, action: PayloadAction<Beat | null>) => {
+      const previousBeat = action.payload;
+      const beat = state.beat;
+
+      if (previousBeat) {
+        if (beat?.id === previousBeat.id) {
           state.isPlaying = !state.isPlaying;
         }
-        if (!state.isPlaying && beat.id !== playerBeat.id) {
+        if (!state.isPlaying && previousBeat.id !== beat?.id) {
           state.isPlaying = !state.isPlaying;
         }
       } else {

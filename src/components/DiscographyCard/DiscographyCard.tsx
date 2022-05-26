@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import useActions from '../../hooks/useActions';
+import useAudio from '../../hooks/useAudio';
 import { Beat } from '../../redux/beats/types';
 import player from '../../services/Player';
 import { RouterPaths } from '../../shared/router/types';
@@ -18,7 +19,7 @@ const DiscographyCard: FC<Props> = ({ beat }) => {
 
   const { setBeat, openPlayer, togglePlaying } = useActions();
 
-  const audio = player.audio;
+  const { audio } = useAudio();
 
   const onThumbnailClick = () => {
     openPlayer();

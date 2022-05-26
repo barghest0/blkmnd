@@ -718,14 +718,12 @@
       "details": "details"
     }
   ],
-
   "musicians": [
     {
       "id": 1,
       "name": "someone"
     }
   ],
-
   "fileTypes": [
     {
       "id": 1,
