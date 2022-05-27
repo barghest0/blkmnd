@@ -73,7 +73,23 @@ const Actions = styled.div`
   width: 100%;
 `;
 
-const Action = styled.div``;
+const Share = styled.div`
+  @media ${breakpoint('lg')} {
+    display: none;
+  }
+`;
+
+const Download = styled.div`
+  @media ${breakpoint('lg')} {
+    display: none;
+  }
+`;
+
+const Buy = styled.div`
+  @media ${breakpoint('lg')} {
+    grid-column-start: -1;
+  }
+`;
 
 export {
   BeatsListRow,
@@ -82,7 +98,9 @@ export {
   Title,
   Tag,
   Tags,
-  Action,
+  Share,
+  Download,
+  Buy,
   Actions,
   Thumbnail,
 };

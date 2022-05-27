@@ -34,7 +34,11 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
     toggleAudioPlaying(playerBeat);
   };
 
-  const tagsLinks = tags.map(tag => <TagLink tag={tag} key={tag.id} />);
+  const tagsLinks = tags.map(tag => (
+    <S.Tag key={tag.id}>
+      <TagLink tag={tag}  />
+    </S.Tag>
+  ));
 
   return (
     <S.FeaturedBeat>

@@ -13,7 +13,6 @@ type Props = {
 };
 
 const useChannelContent = ({ user, video }: Props) => {
-
   const defaultChannelInfo = {
     subscriberCount: 0,
     viewCount: 0,
