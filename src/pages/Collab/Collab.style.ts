@@ -41,7 +41,11 @@ const Thumbnail = styled.img`
 
 const Description = styled.div``;
 
-const TitleContainer = styled.div``;
+const TitleContainer = styled.div`
+  @media ${breakpoint('md')} {
+    text-align: center;
+  }
+`;
 
 const CollabInfo = styled.div`
   display: grid;

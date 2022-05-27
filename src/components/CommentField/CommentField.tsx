@@ -35,6 +35,7 @@ const CommentField: FC<Props> = ({ onSubmit }) => {
   return (
     <S.CommentField onSubmit={formik.handleSubmit}>
       <S.Avatar alt={'avatar'} />
+      <S.TextField>
       <TextField
         name="comment"
         placeholder="Write a comment..."
@@ -44,6 +45,8 @@ const CommentField: FC<Props> = ({ onSubmit }) => {
         helperText={formik.touched.comment && formik.errors.comment}
         variant="standard"
       />
+
+      </S.TextField>
       <S.Submit>
         <Button type="submit">send</Button>
       </S.Submit>
