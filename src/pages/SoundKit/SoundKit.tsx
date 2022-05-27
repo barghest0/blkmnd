@@ -39,7 +39,7 @@ const SoundKit = () => {
     };
     const comment = { user, text: values.comment, date };
     pushNewSoundKitComment(comment);
-    updateSoundKit()
+    updateSoundKit();
   };
 
   const isSoundKitFree = soundKit?.price === 0;
@@ -52,22 +52,27 @@ const SoundKit = () => {
         ) : (
           <S.Content>
             <S.Thumbnail src={soundKit.image} />
-            <S.Title>{soundKit.title}</S.Title>
-            <S.Subtitle>Sound kit by someone</S.Subtitle>
-            <S.Description>{soundKit.description}</S.Description>
-            <S.Actions>
-              {!isSoundKitFree && <S.Player>player</S.Player>}
-              <S.Action>
-                {isSoundKitFree ? (
-                  <DownloadButton beatId={soundKit.id} />
-                ) : (
-                  <BuyButton price={soundKit.price} details={soundKit} />
-                )}
-              </S.Action>
-              <S.Action>
-                <ShareButton beatId={soundKit.id} />
-              </S.Action>
-            </S.Actions>
+
+            <S.SoundKitInfo>
+              <S.TitleContainer>
+                <S.Title>{soundKit.title}</S.Title>
+                <S.Subtitle>Sound kit by someone</S.Subtitle>
+              </S.TitleContainer>
+              <S.Description>{soundKit.description}</S.Description>
+              <S.Actions>
+                {!isSoundKitFree && <S.Player>player</S.Player>}
+                <S.Action>
+                  {isSoundKitFree ? (
+                    <DownloadButton beatId={soundKit.id} />
+                  ) : (
+                    <BuyButton price={soundKit.price} details={soundKit} />
+                  )}
+                </S.Action>
+                <S.Action>
+                  <ShareButton beatId={soundKit.id} />
+                </S.Action>
+              </S.Actions>
+            </S.SoundKitInfo>
           </S.Content>
         )}
         <S.Comment>

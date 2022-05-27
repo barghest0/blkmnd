@@ -78,6 +78,17 @@ const Actions = styled.div`
   grid-template-columns: 105px repeat(2, 40px) repeat(2, minmax(100px, 150px));
   grid-template-rows: 40px;
   column-gap: 10px;
+  @media ${breakpoint('sm')} {
+    row-gap: 10px;
+    grid-template-columns: 100px repeat(2, 40px);
+    grid-template-rows: repeat(3, 40px);
+  }
+`;
+
+const Tag = styled.div`
+  @media ${breakpoint('sm')} {
+    grid-column: 1/4;
+  }
 `;
 
 const Action = styled.div``;
@@ -89,6 +100,7 @@ export {
   ThumbnailContainer,
   Info,
   Description,
+  Tag,
   Featured,
   Bpm,
   Actions,

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { container, page } from '../../shared/styles/mixins';
+import { breakpoint } from '../../shared/styles/breakpoints';
+import { container, page, textOverflow } from '../../shared/styles/mixins';
 
 const Beat = styled.div`
   ${page};
@@ -15,15 +16,21 @@ const TitleContainer = styled.div`
   column-gap: 10px;
   align-items: center;
   cursor: pointer;
+  justify-self: flex-start;
+  width: 100%;
+  ${textOverflow};
 `;
 
 const PlayButton = styled.div`
   width: 25px;
+  min-width: 25px;
   height: 25px;
 `;
 
 const Title = styled.h1`
   font-size: 32px;
+
+  ${textOverflow}
 `;
 
 const Content = styled.div`
@@ -36,10 +43,16 @@ const Content = styled.div`
 const ContentInner = styled.div`
   display: grid;
   grid-template-columns: 200px 1fr;
-  grid-template-rows: 1fr 1fr 1fr 40px 160px;
+  grid-template-rows: 1fr 250px;
   column-gap: 20px;
   z-index: 20;
   position: relative;
+
+  @media ${breakpoint('md')} {
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px 1fr 150px;
+    justify-items: center;
+  }
 `;
 
 const Background = styled.img`
@@ -53,6 +66,22 @@ const Background = styled.img`
   filter: blur(3px);
   z-index: 10;
   pointer-events: none;
+`;
+
+const ContentInfo = styled.div`
+  display: grid;
+  grid-template-rows: repeat(4, 1fr);
+  ${textOverflow}
+
+  @media ${breakpoint('md')} {
+    width: 100%;
+    grid-row-start: 2;
+  }
+
+  @media ${breakpoint('sm')} {
+    grid-template-rows: repeat(3, 1fr) 150px;
+    justify-items: center;
+  }
 `;
 
 const BackgroundGradient = styled.div`
@@ -69,7 +98,6 @@ const Thumbnail = styled.img`
   width: 200px;
   height: 200px;
   cursor: pointer;
-  grid-row: 1/5;
 `;
 
 const Musician = styled.p`
@@ -86,7 +114,6 @@ const Visualizer = styled.div`
 const BeatInfo = styled.div`
   display: flex;
   column-gap: 10px;
-  margin-bottom: 20px;
 `;
 
 const Comments = styled.div``;
@@ -106,21 +133,38 @@ const Info = styled.div`
 
 const Actions = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1.5fr 1fr 2fr 3fr;
+  grid-template-columns: 1fr 40px minmax(90px, 1fr) 1.5fr 3fr;
   grid-template-rows: 40px;
   column-gap: 10px;
+  align-self: center;
+
+  @media ${breakpoint('sm')} {
+    row-gap: 10px;
+    grid-template-columns: 100px 40px 100px;
+    grid-template-rows: repeat(3, 40px);
+  }
 `;
 
-const Action = styled.div``;
+const Buy = styled.div``;
+
+const Download = styled.div``;
+
+const Share = styled.div``;
 
 const Tags = styled.div`
   display: grid;
   grid-auto-flow: column;
   column-gap: 10px;
   grid-column-start: 5;
+
+  @media ${breakpoint('sm')} {
+    grid-column: 1/4;
+  }
 `;
 
-const Tag = styled.div``;
+const Tag = styled.div`
+  min-width: 100px;
+`;
 
 const Tabs = styled.div`
   display: flex;
@@ -152,7 +196,9 @@ export {
   Thumbnail,
   Actions,
   Tags,
-  Action,
+  Buy,
+  Download,
+  Share,
   Tag,
   TitleContainer,
   PlayButton,
@@ -166,4 +212,5 @@ export {
   BackgroundGradient,
   CommentField,
   Comment,
+  ContentInfo,
 };

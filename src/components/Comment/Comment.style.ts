@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const Comment = styled.article`
   display: grid;
-  grid-template-columns: 70px 700px;
+  grid-template-columns: 70px 70%;
   grid-template-rows: 1fr 4fr;
   column-gap: 10px;
 `;

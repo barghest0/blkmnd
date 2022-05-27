@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { container, page, pageTitle } from '../../shared/styles/mixins';
+import { breakpoint } from '../../shared/styles/breakpoints';
 
 const About = styled.div`
   ${page}
@@ -16,25 +17,45 @@ const Title = styled.h1`
 
 const Biography = styled.section`
   display: grid;
-  grid-template-rows: 70px 450px;
-  grid-template-columns: minmax(300px, 1fr) minmax(10px, 120px) 1fr;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 50px;
   overflow: hidden;
   margin-bottom: 50px;
+
+  @media ${breakpoint('md')} {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 0.5fr;
+  }
 `;
 
 const SectionTitle = styled.h2`
-  margin-bottom: 60px;
+  margin-bottom: 50px;
   font-size: 28px;
 `;
 
 const BiographyText = styled.p`
   grid-column-start: 1;
+  @media ${breakpoint('md')} {
+    grid-row-start: 2;
+  }
 `;
 
 const BiographyImage = styled.img`
-  grid-column-start: 3;
+  grid-column-start: 2;
   grid-row: 1/2;
   width: 100%;
+
+  @media ${breakpoint('md')} {
+    grid-column-start: 1;
+    width: auto;
+    height: 100%;
+    justify-self: center;
+  }
+
+  @media ${breakpoint('sm')} {
+    width: 100%;
+  }
 `;
 
 const DiscographyList = styled.div`

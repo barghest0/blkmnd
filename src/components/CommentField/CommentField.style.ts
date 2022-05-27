@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ThemeColors from '../../shared/styles/theme';
+import { breakpoint } from '../../shared/styles/breakpoints';
 
 const CommentField = styled.form`
   display: grid;
@@ -10,11 +10,24 @@ const CommentField = styled.form`
   justify-items: center;
 `;
 
-const Avatar = styled.img``;
+const TextField = styled.div`
+  display: flex;
+  align-items: center;
+  width: 100%;
+  @media ${breakpoint('sm')} {
+    grid-column: 1/3;
+  }
+`;
+
+const Avatar = styled.img`
+  @media ${breakpoint('sm')} {
+    display: none;
+  }
+`;
 
 const Submit = styled.div`
   width: 100%;
   height: 100%;
 `;
 
-export { CommentField, Avatar, Submit };
+export { CommentField, Avatar, Submit, TextField };

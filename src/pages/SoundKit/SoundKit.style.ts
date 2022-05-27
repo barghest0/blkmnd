@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakpoint } from '../../shared/styles/breakpoints';
 import { container, page } from '../../shared/styles/mixins';
 
 const SoundKit = styled.div`
@@ -12,10 +13,13 @@ const Container = styled.div`
 const Content = styled.div`
   display: grid;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 0.5fr 0.3fr 3fr 100px;
   column-gap: 30px;
   align-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  @media ${breakpoint('md')} {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 `;
 
 const Title = styled.h1`
@@ -28,20 +32,39 @@ const Subtitle = styled.h2`
 
 const Thumbnail = styled.img`
   border-radius: 5px;
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   grid-row: 1/5;
+
+  @media ${breakpoint('md')} {
+    width: 70%;
+  }
 `;
 
 const Description = styled.div``;
 
+const TitleContainer = styled.div`
+  @media ${breakpoint('md')} {
+    text-align: center;
+  }
+`;
+
 const Actions = styled.div`
   display: grid;
-  grid-column-start: 2;
   grid-template-columns: 100px 40px;
   grid-auto-rows: 40px;
   column-gap: 10px;
   align-content: center;
+`;
+
+const SoundKitInfo = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 0.5fr 1fr 40px;
+
+  @media ${breakpoint('md')} {
+    justify-items: center;
+  }
 `;
 
 const Player = styled.div`
@@ -51,7 +74,9 @@ const Player = styled.div`
 
 const Action = styled.div``;
 
-const Comment = styled.div``;
+const Comment = styled.div`
+  margin-bottom: 20px;
+`;
 
 const Reviews = styled.div``;
 
@@ -76,5 +101,7 @@ export {
   Action,
   Actions,
   Player,
+  SoundKitInfo,
+  TitleContainer,
   Description,
 };

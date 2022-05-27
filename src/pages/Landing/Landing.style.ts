@@ -32,6 +32,9 @@ const Visualizer = styled.div`
   margin: 0 auto;
   max-width: 1000px;
   padding: 0 10px;
+  @media ${breakpoint('sm')} {
+    height: 80px;
+  }
 `;
 
 const IntroTitle = styled.h1`
@@ -238,7 +241,11 @@ const ContactForm = styled.div`
   width: 50%;
 
   @media ${breakpoint('md')} {
-    width: 80%;
+    width: 90%;
+  }
+
+  @media ${breakpoint('sm')} {
+    width: 100%;
   }
 `;
 

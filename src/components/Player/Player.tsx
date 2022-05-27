@@ -96,7 +96,7 @@ const Player: FC = memo(() => {
 
   return (
     <S.Player isOpen={isOpen} isQueueListOpen={isQueueListOpen}>
-      <S.PlayerTools>
+      <S.PlayerControls>
         {!playerBeat ? (
           <Preloader />
         ) : (
@@ -161,7 +161,7 @@ const Player: FC = memo(() => {
             <FormatListBulletedIcon />
           </S.Queue>
         </S.Actions>
-      </S.PlayerTools>
+      </S.PlayerControls>
       <S.QueueList>{isFetching ? <Preloader /> : queueBeatsList}</S.QueueList>
     </S.Player>
   );

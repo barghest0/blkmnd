@@ -79,7 +79,8 @@ const Cart = styled.div`
   border-left: 1px solid #363636;
 
   @media ${breakpoint('sm')} {
-    padding: 0 20px;
+    padding: 0 10px;
+    border: none;
   }
 `;
 
@@ -113,7 +114,7 @@ const CartCost = styled.div`
   align-self: center;
   margin-left: 10px;
 
-  @media ${breakpoint('sm')} {
+  @media ${breakpoint('md')} {
     display: none;
   }
 `;
@@ -125,6 +126,11 @@ const Auth = styled.div`
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  @media ${breakpoint('sm')} {
+    padding: 0 10px;
+    border: none;
+  }
 `;
 
 const AuthIcon = styled.div`
@@ -138,7 +144,7 @@ const AuthAction = styled.div`
   font-weight: 600;
   margin-left: 5px;
 
-  @media ${breakpoint('sm')} {
+  @media ${breakpoint('md')} {
     display: none;
   }
 `;

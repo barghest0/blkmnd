@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { breakpoint } from '../../shared/styles/breakpoints';
 import ThemeColors from '../../shared/styles/theme';
 import { PlayerProps, QueueBeatProps } from './Player';
 
@@ -19,11 +20,20 @@ const Player = styled.div<PlayerProps>`
   }}
 `;
 
-const PlayerTools = styled.div`
+const PlayerControls = styled.div`
   display: grid;
   grid-template-columns: 2.7fr 2fr 3fr;
   grid-template-rows: 100%;
+  column-gap: 10px;
   align-items: center;
+
+  @media ${breakpoint('md')} {
+    grid-template-columns: 2.7fr 2fr 2fr 30px;
+  }
+
+  @media ${breakpoint('sm')} {
+    grid-template-columns: minmax(100px, 300px) 1fr;
+  }
 `;
 
 const Controls = styled.div`
@@ -31,6 +41,10 @@ const Controls = styled.div`
   justify-content: center;
   align-items: center;
   column-gap: 10px;
+
+  @media ${breakpoint('md')} {
+    grid-column-start: 3;
+  }
 `;
 
 const Shuffle = styled.div`
@@ -39,6 +53,10 @@ const Shuffle = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 10px;
+
+  @media ${breakpoint('lg')} {
+    display: none;
+  }
 `;
 
 const Loop = styled.div`
@@ -47,6 +65,10 @@ const Loop = styled.div`
   justify-content: center;
   align-items: center;
   margin: 0 10px;
+
+  @media ${breakpoint('lg')} {
+    display: none;
+  }
 `;
 
 const PreviousBeat = styled.div`
@@ -86,7 +108,11 @@ const BeatInfo = styled.div`
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  min-width: 120px;
+  min-width: 100px;
+
+  @media ${breakpoint('sm')} {
+    grid-column: 2/5;
+  }
 `;
 
 const Thumbnail = styled.img`
@@ -106,31 +132,49 @@ const Musician = styled.h4`
   cursor: default;
 `;
 
-const Share = styled.div``;
+const Share = styled.div`
+  @media ${breakpoint('sm')} {
+    display: none;
+  }
+`;
 
 const Buy = styled.div`
   font-size: 14px;
   height: 30px;
   width: 100%;
   min-width: 85px;
+  @media ${breakpoint('sm')} {
+    display: none;
+  }
 `;
 
 const Actions = styled.div`
   display: flex;
   align-items: center;
-  justify-self: flex-end;
   padding-right: 20px;
+  justify-content: flex-end;
   column-gap: 10px;
+  width: 100%;
 `;
 
 const Volume = styled.div`
   display: flex;
   align-items: center;
   column-gap: 10px;
+
+  @media ${breakpoint('md')} {
+    display: none;
+  }
 `;
 
 const Queue = styled.div`
   cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  @media ${breakpoint('md')} {
+    width: 100%;
+  }
 `;
 
 const QueueList = styled.div`
@@ -140,7 +184,6 @@ const QueueList = styled.div`
   padding: 10px;
   display: grid;
   overflow: auto;
-  
 `;
 
 const QueueBeat = styled.div<QueueBeatProps>`
@@ -174,7 +217,7 @@ export {
   NextBeat,
   QueueList,
   QueueBeat,
-  PlayerTools,
+  PlayerControls,
   Shuffle,
   Loop,
 };

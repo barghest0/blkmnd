@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { textOverflow } from '../../shared/styles/mixins';
 
 const CardProductCard = styled.div`
   display: grid;
@@ -18,9 +19,12 @@ const Info = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+  ${textOverflow}
 `;
 
-const Title = styled.h4``;
+const Title = styled.h4`
+  ${textOverflow}
+`;
 
 const Type = styled.p`
   text-transform: uppercase;

@@ -39,8 +39,8 @@ const About = () => {
       <S.Container>
         <S.Title>About</S.Title>
 
+        <S.SectionTitle>Biography</S.SectionTitle>
         <S.Biography>
-          <S.SectionTitle>Biography</S.SectionTitle>
           <S.BiographyText>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
@@ -55,8 +55,8 @@ const About = () => {
           ></S.BiographyImage>
         </S.Biography>
 
+        <S.SectionTitle>Discography</S.SectionTitle>
         <S.Discography>
-          <S.SectionTitle>Discography</S.SectionTitle>
           <ScrollContainer vertical={false}>
             <S.DiscographyList>
               {isFetching ? <Preloader /> : discographyCards}
@@ -64,9 +64,9 @@ const About = () => {
           </ScrollContainer>
         </S.Discography>
 
+        <S.SectionTitle>Gallery</S.SectionTitle>
         <S.Gallery>
-          <S.SectionTitle>Gallery</S.SectionTitle>
-          <Swiper spaceBetween={50} slidesPerView={2} loop>
+          <Swiper spaceBetween={30} slidesPerView={2} loop>
             {gallerySlides}
           </Swiper>
         </S.Gallery>

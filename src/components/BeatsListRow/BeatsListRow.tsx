@@ -62,15 +62,15 @@ const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
       <S.Bpm>{bpm}</S.Bpm>
       <S.Tags onClick={onLinkClick}>{tagsLinks}</S.Tags>
       <S.Actions>
-        <S.Action onClick={onActionButtonClick}>
+        <S.Download onClick={onActionButtonClick}>
           <DownloadButton beatId={id} />
-        </S.Action>
-        <S.Action onClick={onActionButtonClick}>
+        </S.Download>
+        <S.Share onClick={onActionButtonClick}>
           <ShareButton product={beat} />
-        </S.Action>
-        <S.Action onClick={onActionButtonClick}>
+        </S.Share>
+        <S.Buy onClick={onActionButtonClick}>
           <ChooseLicenseButton price={price} beat={beat} />
-        </S.Action>
+        </S.Buy>
       </S.Actions>
     </S.BeatsListRow>
   );

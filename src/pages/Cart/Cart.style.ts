@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { breakpoint } from '../../shared/styles/breakpoints';
 import { container, page, pageTitle } from '../../shared/styles/mixins';
 import ThemeColors from '../../shared/styles/theme';
 
@@ -20,7 +21,9 @@ const ProductsCards = styled.div`
   row-gap: 20px;
 `;
 
-const Products = styled.div``;
+const Products = styled.div`
+  width: 100%;
+`;
 
 const ProductsHeader = styled.div`
   display: grid;
@@ -41,16 +44,31 @@ const Price = styled.div`
 
 const Content = styled.div`
   display: grid;
-  grid-template-columns: 2.3fr 50px 1fr;
+  grid-template-columns: 2.3fr 1fr;
+  gap: 50px;
+
+  @media ${breakpoint('lg')} {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
 `;
 
 const Payment = styled.form`
-  grid-column-start: 3;
   min-height: 350px;
   padding: 20px;
   background-color: ${ThemeColors.layoutColor};
   border: 1px solid ${ThemeColors.borderColor};
   border-radius: 5px;
+
+  @media ${breakpoint('lg')} {
+    width: 80%;
+    grid-row-start: 2;
+    grid-column-start: 1;
+
+    @media ${breakpoint('sm')} {
+      width: 100%;
+    }
+  }
 `;
 
 const Coupon = styled.div`
