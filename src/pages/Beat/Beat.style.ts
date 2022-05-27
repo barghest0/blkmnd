@@ -50,7 +50,7 @@ const ContentInner = styled.div`
 
   @media ${breakpoint('md')} {
     grid-template-columns: 1fr;
-    grid-template-rows: 200px 1fr 200px;
+    grid-template-rows: 200px 1fr 150px;
     justify-items: center;
   }
 `;
