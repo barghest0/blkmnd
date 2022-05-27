@@ -11,26 +11,28 @@ const Footer = () => {
     <S.Footer>
       <S.Container>
         <S.FooterInner>
-          <S.Column>
+          <S.Overview>
             <S.Logo alt={'logo'} />
             <S.Description>
               Download free beats and free drum kits today
             </S.Description>
-          </S.Column>
-          <S.Column>
-            <StyledLink to={RouterPaths.landing}>Home</StyledLink>
-            <StyledLink to={RouterPaths.beats}>Beats</StyledLink>
-            <StyledLink to={RouterPaths.soundKits}>Sound Kits</StyledLink>
-          </S.Column>
-          <S.Column>
-            <StyledLink to={RouterPaths.collabs}>Collabs</StyledLink>
-            <StyledLink to={RouterPaths.contact}>Contact</StyledLink>
-          </S.Column>
-          <S.Column>
-            <StyledLink to={RouterPaths.landing}>Licensing Info</StyledLink>
-            <StyledLink to={RouterPaths.landing}>Terms of use</StyledLink>
-            <StyledLink to={RouterPaths.landing}>Privacy policy</StyledLink>
-          </S.Column>
+          </S.Overview>
+          <S.Nav>
+            <S.Column>
+              <StyledLink to={RouterPaths.landing}>Home</StyledLink>
+              <StyledLink to={RouterPaths.beats}>Beats</StyledLink>
+              <StyledLink to={RouterPaths.soundKits}>Sound Kits</StyledLink>
+            </S.Column>
+            <S.Column>
+              <StyledLink to={RouterPaths.collabs}>Collabs</StyledLink>
+              <StyledLink to={RouterPaths.contact}>Contact</StyledLink>
+            </S.Column>
+            <S.Column>
+              <StyledLink to={RouterPaths.landing}>Licensing Info</StyledLink>
+              <StyledLink to={RouterPaths.landing}>Terms of use</StyledLink>
+              <StyledLink to={RouterPaths.landing}>Privacy policy</StyledLink>
+            </S.Column>
+          </S.Nav>
           <S.Socials>
             <S.Social
               href={'https://www.twitter.com/'}
