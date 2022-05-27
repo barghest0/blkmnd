@@ -16,9 +16,8 @@ const TitleContainer = styled.div`
   column-gap: 10px;
   align-items: center;
   cursor: pointer;
-  justify-self: flex-start;
-  width: 100%;
-  ${textOverflow};
+
+  ${textOverflow}
 `;
 
 const PlayButton = styled.div`
@@ -50,7 +49,7 @@ const ContentInner = styled.div`
 
   @media ${breakpoint('md')} {
     grid-template-columns: 1fr;
-    grid-template-rows: 200px 1fr 200px;
+    grid-template-rows:repeat(2, 200px) 1fr 250px;
     justify-items: center;
   }
 `;
@@ -72,15 +71,9 @@ const ContentInfo = styled.div`
   display: grid;
   grid-template-rows: repeat(4, 1fr);
   ${textOverflow}
-
   @media ${breakpoint('md')} {
     width: 100%;
     grid-row-start: 2;
-  }
-
-  @media ${breakpoint('sm')} {
-    grid-template-rows: repeat(3, 1fr) 150px;
-    justify-items: center;
   }
 `;
 
@@ -156,14 +149,13 @@ const Tags = styled.div`
   grid-auto-flow: column;
   column-gap: 10px;
   grid-column-start: 5;
-
-  @media ${breakpoint('sm')} {
-    grid-column: 1/4;
-  }
 `;
 
 const Tag = styled.div`
   min-width: 100px;
+  @media ${breakpoint('sm')} {
+    grid-column: 1/4;
+  }
 `;
 
 const Tabs = styled.div`

@@ -24,21 +24,15 @@ import ChooseLicenseButton from '../../components/ChooseLicenseButton/ChooseLice
 import Comment from '../../components/Comment/Comment';
 import format from 'date-fns/format';
 import { User } from '../../redux/user/types';
+import useAudio from '../../hooks/useAudio';
 
 const Beat = () => {
   const params = useParams();
 
   const { beats, beat } = useTypedSelector(state => state.beats);
 
-  const {
-    getBeat,
-    getAllBeats,
-    setBeat,
-    openPlayer,
-    togglePlaying,
-    pushNewBeatComment,
-    updateBeat,
-  } = useActions();
+  const { getBeat, getAllBeats, openPlayer, pushNewBeatComment, updateBeat } =
+    useActions();
 
   const [value, setValue] = useState('related');
 
@@ -46,11 +40,15 @@ const Beat = () => {
     setValue(newValue);
   };
 
+  const { toggleAudioPlaying, setPlayerBeat } = useAudio();
+
+  const { beat: playerBeat } = useTypedSelector(state => state.player);
+
   const onPlayButtonClick = () => {
     if (beat) {
       openPlayer();
-      togglePlaying(beat);
-      setBeat(beat);
+      setPlayerBeat(beat);
+      toggleAudioPlaying(playerBeat);
     }
   };
 
@@ -93,39 +91,41 @@ const Beat = () => {
           <S.Container>
             <S.ContentInner>
               <S.Thumbnail src={beat.image} onClick={onPlayButtonClick} />
-              <S.TitleContainer onClick={onPlayButtonClick}>
-                <S.PlayButton>
-                  <PlayButton currentBeat={beat} />
-                </S.PlayButton>
-                <S.Title>{beat.title}</S.Title>
-              </S.TitleContainer>
-              <S.Musician>{beat.musician.name}</S.Musician>
-              <S.BeatInfo>
-                <S.Info>
-                  <SpeedIcon />
-                  {beat.bpm}
-                </S.Info>
-                <S.Info>
-                  <MusicNoteSharpIcon />
-                  {beat.chord}
-                </S.Info>
-                <S.Info>
-                  <AccessTimeFilledIcon fontSize="small" />
-                  {beat.date}
-                </S.Info>
-              </S.BeatInfo>
-              <S.Actions>
-                <S.Action>
-                  <ChooseLicenseButton beat={beat} price={beat.price} />
-                </S.Action>
-                <S.Action>
-                  <DownloadButton beatId={beat.id}>Download</DownloadButton>
-                </S.Action>
-                <S.Action>
-                  <ShareButton beatId={beat.id}>Share</ShareButton>
-                </S.Action>
-                <S.Tags>{tags}</S.Tags>{' '}
-              </S.Actions>
+              <S.ContentInfo>
+                <S.TitleContainer onClick={onPlayButtonClick}>
+                  <S.PlayButton>
+                    <PlayButton currentBeat={beat} />
+                  </S.PlayButton>
+                  <S.Title>{beat.title}</S.Title>
+                </S.TitleContainer>
+                <S.Musician>{beat.musician.name}</S.Musician>
+                <S.BeatInfo>
+                  <S.Info>
+                    <SpeedIcon />
+                    {beat.bpm}
+                  </S.Info>
+                  <S.Info>
+                    <MusicNoteSharpIcon />
+                    {beat.chord}
+                  </S.Info>
+                  <S.Info>
+                    <AccessTimeFilledIcon fontSize="small" />
+                    {beat.date}
+                  </S.Info>
+                </S.BeatInfo>
+                <S.Actions>
+                  <S.Buy>
+                    <ChooseLicenseButton beat={beat} price={beat.price} />
+                  </S.Buy>
+                  <S.Download>
+                    <DownloadButton beatId={beat.id}>Download</DownloadButton>
+                  </S.Download>
+                  <S.Share>
+                    <ShareButton beatId={beat.id}>Share</ShareButton>
+                  </S.Share>
+                  <S.Tags>{tags}</S.Tags>
+                </S.Actions>
+              </S.ContentInfo>
               <S.Visualizer>
                 <Visualizer />
               </S.Visualizer>
