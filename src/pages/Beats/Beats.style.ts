@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { MenuItem, Select, styled as MUIstyled } from '@mui/material';
 import { container, page, pageTitle } from '../../shared/styles/mixins';
+import { breakpoint } from '../../shared/styles/breakpoints';
 
 const Beats = styled.div`
   ${page}
@@ -24,8 +25,13 @@ const Filters = styled.div`
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 50px;
   align-items: center;
-  column-gap: 10px;
+  gap: 10px;
   margin-bottom: 20px;
+
+  @media ${breakpoint('md')} {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 50px);
+  }
 `;
 
 const FilterMenu = MUIstyled(Select)({});
