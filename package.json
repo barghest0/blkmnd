@@ -8,17 +8,14 @@
     "test": "test",
     "dev": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
-    "server": "npx json-server --watch database.json",
+    "server": "npx json-server --watch database.json --port 3000 --routes routes.json",
     "start": "concurrently \"yarn dev\" \"yarn server\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/barghest0/blkmnd.git"
   },
-  "keywords": [
-    "black",
-    "mind"
-  ],
+  "keywords": ["black", "mind"],
   "author": "",
   "license": "ISC",
   "bugs": {
