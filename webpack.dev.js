@@ -14,13 +14,6 @@ const devConfig = merge(baseConfig, {
     open: false,
     historyApiFallback: true,
   },
-
-  output: {
-    filename: 'index.js',
-    path: baseConfig.externals.path.dist,
-    clean: true,
-    publicPath: '/',
-  },
 });
 
 export default devConfig;

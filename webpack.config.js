@@ -3,6 +3,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const __dirname = path.resolve();
+
 const PATHS = {
   src: path.join(__dirname, './src'),
   public: path.join(__dirname, './public'),
@@ -14,6 +15,12 @@ const config = {
   entry: ['@babel/polyfill', `${PATHS.src}/index.tsx`],
 
   devtool: 'source-map',
+
+  output: {
+    filename: 'index.js',
+    path: PATHS.dist,
+    clean: true,
+  },
 
   externals: {
     path: PATHS,
@@ -126,7 +133,6 @@ const config = {
   plugins: [
     new HtmlWebpackPlugin({
       template: `${PATHS.public}/index.html`,
-      // favicon: `${PATHS.public}/favicon.ico`,
     }),
     new MiniCssExtractPlugin({
       filename: `css/[name].css`,
