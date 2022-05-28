@@ -21,8 +21,10 @@
           image: mysql
           ports:
             - "3307:3306"
+          command: --init-file /data/application/init.sql
           volumes:
             - ./mysql:/var/lib/mysql
+            - ./init.sql:/data/application/init.sql
           environment:
             MYSQL_ROOT_PASSWORD: root
       pma:
