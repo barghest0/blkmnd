@@ -53,7 +53,6 @@
     "webpack-merge": "^5.8.0"
   },
   "dependencies": {
-    "@emailjs/browser": "^3.6.2",
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.6.2",
@@ -71,13 +70,11 @@
     "framer-motion": "^6.3.1",
     "html-react-parser": "^1.4.12",
     "json-server": "^0.17.0",
-    "npm": "^8.8.0",
     "prettier": "^2.6.2",
     "ra-data-json-server": "^4.1.0",
     "react-admin": "^4.1.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-indiana-drag-scroll": "^2.1.0",
-    "react-music-visualizer": "^1.1.0",
     "react-redux": "^7.2.8",
     "styled-components": "^5.3.5",
     "swiper": "^8.1.4",
