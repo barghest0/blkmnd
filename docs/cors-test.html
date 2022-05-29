@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        var token = '';
+        function register() {
+            var newUser = {
+                "username": "Ivan",
+                "password": "0000",
+                "confirmPassword": "0000"
+            }
+            fetch('http://localhost:8000/api/auth/register', {
+                headers: new Headers({
+                    // 'Authorization': 'Bearer '+ token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }),
+                method: 'POST',
+                body: JSON.stringify(newUser)
+            })
+            .then((response)=>{
+                    console.log(response);
+                    if(response.status === 200){
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok');
+                })
+                .then((json)=>{
+                    alert(json);
+                })
+        }
+        function login() {
+            var newUser = {
+                "username": "Ivan",
+                "password": "0000",
+            }
+            fetch('http://localhost:8000/api/auth/login', {
+                headers: new Headers({
+                    // 'Authorization': 'Bearer '+ token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }),
+                method: 'POST',
+                body: JSON.stringify(newUser)
+            })
+            .then((response)=>{
+                    console.log(response);
+                    if(response.status === 200){
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok');
+                })
+                .then((json)=>{
+                    alert(json.token);
+                    token = json.token;
+                })
+        }
+
+        function me(){
+            fetch('http://localhost:8000/api/auth/me', {
+                headers: new Headers({
+                    'Authorization': 'Bearer '+ token,
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }),
+                method: 'GET',
+            })
+            .then((response)=>{
+                    console.log(response);
+                    if(response.status === 200){
+                        return response.json();
+                    }
+                    throw new Error('Network response was not ok');
+                })
+                .then((json)=>{
+                    alert(json.username);
+                })
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="register" onclick="register()">
+    <input type="button" value="login" onclick="login()">
+    <input type="button" value="me" onclick="me()">
+</body>
+</html>
