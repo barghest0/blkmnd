@@ -52,4 +52,10 @@ class AuthController extends BaseController
             return $validator->getErrors();
         }
     }
+
+    // TODO поправить что отдавать
+    public function actionMe()
+    {
+        return Yii::$app->user->identity;
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\repositories\ApiTokenRepository;
 use Yii;
 use yii\web\IdentityInterface;
 
@@ -48,12 +49,17 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
 
     public static function findIdentity($id)
     {
-        // TODO: Implement findIdentity() method.
+        return static::findOne(['id' => $id]);
     }
 
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        // TODO: Implement findIdentityByAccessToken() method.
+        $apiToken = ApiTokenRepository::findByToken($token);
+        if (empty($apiToken)) {
+            return null;
+        } else {
+            return static::findIdentity($apiToken->userId);
+        }
     }
 
     public function getId()

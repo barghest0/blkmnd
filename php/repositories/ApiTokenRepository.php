@@ -26,4 +26,9 @@ class ApiTokenRepository
         }
         return $model;
     }
+
+    public static function findByToken(string $token)
+    {
+        return ApiToken::find()->where(['token' => $token])->one();
+    }
 }
