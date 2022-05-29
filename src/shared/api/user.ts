@@ -1,6 +1,6 @@
-import instance from './instanse';
+import { newInstance } from './instance';
 
 const fetchUserData = (token: string) =>
-  instance.get('/auth/me', { headers: { Authorization: `Bearer ${token}` } });
+  newInstance.get('/auth/me', { headers: { Authorization: `Bearer ${token}` } });
 
 export { fetchUserData };

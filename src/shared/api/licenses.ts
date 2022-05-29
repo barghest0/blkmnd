@@ -1,5 +1,5 @@
-import { License } from '../../redux/beat/types';
-import instance from './instanse';
+import { License } from '../../redux/beats/types';
+import { instance } from './instance';
 
 const fetchLicenses = () => instance.get<License[]>('licenses');
 

@@ -1,4 +1,4 @@
-import instance from './instanse';
+import { instance } from './instance';
 
 import { Beat } from '../../redux/beats/types';
 import { FiltersState } from '../../redux/beats/types';
