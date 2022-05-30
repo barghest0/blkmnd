@@ -21,12 +21,15 @@ const authSlice = createSlice({
       state,
       action: PayloadAction<LoginResponseValues>,
     ) => {
-      const { token } = action.payload;
       state.isFetching = false;
       state.error = '';
-      state.token = token;
-      state.isAuth = true;
-      setToken(token);
+
+      if (action.payload) {
+        const { token } = action.payload;
+        state.token = token;
+        state.isAuth = true;
+        setToken(token);
+      }
     },
 
     [login.pending.type]: state => {

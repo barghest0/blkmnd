@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material';
 import { useFormik } from 'formik';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
@@ -10,10 +11,11 @@ import {
   registerFormValidation,
   loginFormValidation,
 } from '../../shared/formValidations/auth';
-import {RouterPaths} from '../../shared/router/types';
+import { RouterPaths } from '../../shared/router/types';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import ModalContainer from '../ModalContainer/ModalContainer';
+import Preloader from '../Preloader/Preloader';
 import * as S from './AuthModal.style';
 
 const loginInitialValues = {
@@ -28,25 +30,25 @@ const registerInitialValues = {
   confirmPassword: '',
 };
 
+type PreloaderProps = {
+  isFetching: boolean;
+};
+
 const AuthModal = () => {
   const { isAuthOpen } = useTypedSelector(state => state.modals);
 
   const [form, setForm] = useState('register');
 
-  const { register, login, setModalVisability } = useActions();
+  const { register, setModalVisability, login } = useActions();
 
-  const { isAuth, isFetching } = useTypedSelector(state => state.auth);
+  const { isFetching } = useTypedSelector(state => state.auth);
 
   const navigate = useNavigate();
 
-  const autoLogin = () => {
-    if (!isFetching) {
-      navigate(RouterPaths.profile);
-      setModalVisability({ visability: false, modalType: ModalsTypes.auth });
-    }
+  const redirectAfterLogin = () => {
+    navigate(RouterPaths.profile);
+    setModalVisability({ visability: false, modalType: ModalsTypes.auth });
   };
-
-  const navigateAfterLogin = useCallback(autoLogin, [isAuth, isFetching]);
 
   const onRegisterSubmit = ({
     username,
@@ -56,9 +58,8 @@ const AuthModal = () => {
     register({ username, password, confirmPassword });
   };
 
-  const onLoginSubmit = ({ username, password }: LoginValues) => {
+  const onLoginSubmit = async ({ username, password }: LoginValues) => {
     login({ username, password });
-    navigateAfterLogin();
   };
 
   const onAuthActionClick = () => {
@@ -91,6 +92,9 @@ const AuthModal = () => {
             modalType={ModalsTypes.auth}
           >
             <S.FormContainer hidden={form !== 'register'}>
+              <S.Preloader isFetching={isFetching}>
+                <Preloader />
+              </S.Preloader>
               <S.Form onSubmit={registerFormik.handleSubmit}>
                 <TextField
                   label="Email"
@@ -165,6 +169,10 @@ const AuthModal = () => {
               </S.Form>
             </S.FormContainer>
             <S.FormContainer hidden={form !== 'login'}>
+              <S.Preloader isFetching={isFetching}>
+                <Preloader />
+              </S.Preloader>
+
               <S.Form onSubmit={loginFormik.handleSubmit}>
                 <TextField
                   label="Username"
@@ -212,4 +220,5 @@ const AuthModal = () => {
   );
 };
 
+export { PreloaderProps };
 export default AuthModal;
