@@ -6,6 +6,7 @@ import playerSlice from '../redux/player/playerSlice';
 import modalsSlice from '../redux/modals/modalsSlice';
 import beatsSlice from '../redux/beats/beatsSlice';
 import soundKitsSlice from '../redux/soundKits/soundKitsSlice';
+import authSlice from '../redux/auth/authSlice';
 
 import * as beatsActions from '../redux/beats/actions';
 import * as licensesActions from '../redux/licenses/actions';
@@ -30,6 +31,7 @@ const rootActionCreator = {
   ...playerSlice.actions,
   ...soundKitsSlice.actions,
   ...modalsSlice.actions,
+  ...authSlice.actions,
   ...asyncPlayerActions,
   ...authActions,
   ...userActions,

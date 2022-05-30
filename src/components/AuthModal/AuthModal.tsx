@@ -1,26 +1,19 @@
 import { TextField } from '@mui/material';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import useActions from '../../hooks/useActions';
+import { LoginValues, RegisterValues } from '../../redux/auth/types';
 import { ModalsTypes } from '../../redux/modals/types';
-import authFormValidation from '../../shared/formValidations/auth';
-import {StyledLink} from '../../shared/styles/links';
+import {
+  registerFormValidation,
+  loginFormValidation,
+} from '../../shared/formValidations/auth';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import * as S from './AuthModal.style';
-
-type LoginValues = {
-  username: string;
-  password: string;
-};
-
-type RegisterValues = {
-  username: string;
-  password: string;
-  email: string;
-  passwordConfirm: string;
-};
 
 const loginInitialValues = {
   username: '',
@@ -31,7 +24,7 @@ const registerInitialValues = {
   username: '',
   email: '',
   password: '',
-  passwordConfirm: '',
+  confirmPassword: '',
 };
 
 const AuthModal = () => {
@@ -39,12 +32,32 @@ const AuthModal = () => {
 
   const [form, setForm] = useState('register');
 
-  const onLoginSubmit = (values: LoginValues) => {
-    console.log(values);
+  const { register, login, setModalVisability } = useActions();
+
+  const { isAuth, isFetching } = useTypedSelector(state => state.auth);
+
+  const navigate = useNavigate();
+
+  const autoLogin = () => {
+    if (!isFetching) {
+      navigate('/profile');
+      setModalVisability({ visability: false, modalType: ModalsTypes.auth });
+    }
   };
 
-  const onRegisterSubmit = (values: RegisterValues) => {
-    console.log(values);
+  const navigateAfterLogin = useCallback(autoLogin, [isAuth, isFetching]);
+
+  const onRegisterSubmit = ({
+    username,
+    password,
+    confirmPassword,
+  }: RegisterValues) => {
+    register({ username, password, confirmPassword });
+  };
+
+  const onLoginSubmit = ({ username, password }: LoginValues) => {
+    login({ username, password });
+    navigateAfterLogin();
   };
 
   const onAuthActionClick = () => {
@@ -57,13 +70,13 @@ const AuthModal = () => {
 
   const loginFormik = useFormik({
     initialValues: loginInitialValues,
-    validationSchema: authFormValidation,
+    validationSchema: loginFormValidation,
     onSubmit: onLoginSubmit,
   });
 
   const registerFormik = useFormik({
     initialValues: registerInitialValues,
-    validationSchema: authFormValidation,
+    validationSchema: registerFormValidation,
     onSubmit: onRegisterSubmit,
   });
 
@@ -73,7 +86,7 @@ const AuthModal = () => {
         <S.Modal>
           <Modal
             isOpen={isAuthOpen}
-            title={`Authorization`}
+            title={form === 'register' ? 'Registration' : 'Authorization'}
             modalType={ModalsTypes.auth}
           >
             <S.FormContainer hidden={form !== 'register'}>
@@ -114,6 +127,7 @@ const AuthModal = () => {
                   label="Password"
                   name="password"
                   variant="standard"
+                  type="password"
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.password}
                   error={
@@ -128,18 +142,19 @@ const AuthModal = () => {
                 />
 
                 <TextField
-                  label="Password Confirm"
-                  name="passwordConfirm"
+                  label="Confirm password"
+                  name="confirmPassword"
                   variant="standard"
+                  type="password"
                   onBlur={registerFormik.handleBlur}
-                  value={registerFormik.values.passwordConfirm}
+                  value={registerFormik.values.confirmPassword}
                   error={
-                    registerFormik.touched.passwordConfirm &&
-                    Boolean(registerFormik.errors.passwordConfirm)
+                    registerFormik.touched.confirmPassword &&
+                    Boolean(registerFormik.errors.confirmPassword)
                   }
                   helperText={
-                    registerFormik.touched.passwordConfirm &&
-                    registerFormik.errors.passwordConfirm
+                    registerFormik.touched.confirmPassword &&
+                    registerFormik.errors.confirmPassword
                   }
                   onChange={registerFormik.handleChange}
                 />
@@ -169,6 +184,7 @@ const AuthModal = () => {
                   label="Password"
                   name="password"
                   variant="standard"
+                  type="password"
                   onBlur={loginFormik.handleBlur}
                   value={loginFormik.values.password}
                   error={

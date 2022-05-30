@@ -45,14 +45,13 @@ type NavProps = {
 };
 
 const Header = () => {
-  const navigate = useNavigate();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const { isAuth } = useTypedSelector(state => state.auth);
   const { quantity, totalPrice } = useTypedSelector(state => state.cart);
-  const { setModalVisability } = useActions();
+  const { setModalVisability, logout } = useActions();
 
   const onProfileClick = () => {
     if (isAuth) {
@@ -63,7 +62,7 @@ const Header = () => {
   };
 
   const onLogoutClick = () => {
-    navigate(RouterPaths.landing);
+    logout();
   };
 
   const onBurgerButtonClick = () => {

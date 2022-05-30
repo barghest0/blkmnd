@@ -1,14 +1,21 @@
 import { User } from '../user/types';
 
 type RegisterValues = {
-  email: string;
+  // email: string;
   username: string;
   password: string;
+  confirmPassword: string;
 };
 
 type LoginValues = {
   username: string;
   password: string;
+};
+
+type LoginResponseValues = {
+  id: number;
+  token: string;
+  user_id: number;
 };
 
 type AuthState = {
@@ -19,4 +26,4 @@ type AuthState = {
   error: string;
 };
 
-export { AuthState, RegisterValues, LoginValues };
+export { AuthState, RegisterValues, LoginValues, LoginResponseValues };
