@@ -7,6 +7,7 @@ import theme from './shared/theme/theme';
 import useActions from './hooks/useActions';
 import { useEffect } from 'react';
 import useTypedSelector from './hooks/redux/useTypedDispatch';
+import { getToken } from './shared/helpers/authHelper';
 
 const App = () => {
   const { autoLogin } = useActions();
@@ -14,7 +15,7 @@ const App = () => {
 
   useEffect(() => {
     if (token) {
-      autoLogin(localStorage.getItem('token'));
+      autoLogin(getToken());
     }
   }, []);
 

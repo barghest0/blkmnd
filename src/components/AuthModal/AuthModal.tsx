@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 import { useFormik } from 'formik';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
@@ -10,6 +10,7 @@ import {
   registerFormValidation,
   loginFormValidation,
 } from '../../shared/formValidations/auth';
+import {RouterPaths} from '../../shared/router/types';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import ModalContainer from '../ModalContainer/ModalContainer';
@@ -40,7 +41,7 @@ const AuthModal = () => {
 
   const autoLogin = () => {
     if (!isFetching) {
-      navigate('/profile');
+      navigate(RouterPaths.profile);
       setModalVisability({ visability: false, modalType: ModalsTypes.auth });
     }
   };

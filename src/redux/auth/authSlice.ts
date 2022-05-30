@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { deleteToken, setToken } from '../../shared/helpers/authHelper';
 import { User } from '../user/types';
 import { autoLogin, login, register } from './actions';
 import { AUTH_INITIAL_STATE, AUTH_SLICE_NAME } from './constants';
@@ -11,8 +12,8 @@ const authSlice = createSlice({
     logout: state => {
       state.isAuth = false;
       state.token = null;
-      localStorage.removeItem('token');
       state.user = null;
+      deleteToken();
     },
   },
   extraReducers: {
@@ -25,7 +26,7 @@ const authSlice = createSlice({
       state.error = '';
       state.token = token;
       state.isAuth = true;
-      localStorage.setItem('token', token);
+      setToken(token);
     },
 
     [login.pending.type]: state => {
