@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
-import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useFormik, FormikHelpers } from 'formik';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
@@ -34,32 +34,35 @@ type PreloaderProps = {
   isFetching: boolean;
 };
 
-const AuthModal = () => {
+const AuthModal = memo(() => {
   const { isAuthOpen } = useTypedSelector(state => state.modals);
 
   const [form, setForm] = useState('register');
 
   const { register, setModalVisability, login } = useActions();
 
-  const { isFetching } = useTypedSelector(state => state.auth);
+  const { isFetching, isAuth } = useTypedSelector(state => state.auth);
 
-  const navigate = useNavigate();
-
-  const redirectAfterLogin = () => {
-    navigate(RouterPaths.profile);
+  const closeModalAfterAuth = () => {
     setModalVisability({ visability: false, modalType: ModalsTypes.auth });
   };
 
-  const onRegisterSubmit = ({
-    username,
-    password,
-    confirmPassword,
-  }: RegisterValues) => {
+  const onRegisterSubmit = (
+    { username, password, confirmPassword }: RegisterValues,
+    helpers: FormikHelpers<RegisterValues>,
+  ) => {
     register({ username, password, confirmPassword });
+    closeModalAfterAuth();
+    helpers.resetForm();
   };
 
-  const onLoginSubmit = async ({ username, password }: LoginValues) => {
+  const onLoginSubmit = (
+    { username, password }: LoginValues,
+    helpers: FormikHelpers<LoginValues>,
+  ) => {
     login({ username, password });
+    closeModalAfterAuth();
+    helpers.resetForm();
   };
 
   const onAuthActionClick = () => {
@@ -218,7 +221,7 @@ const AuthModal = () => {
       </ModalContainer>
     </S.AuthModal>
   );
-};
+});
 
 export { PreloaderProps };
 export default AuthModal;

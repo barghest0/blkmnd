@@ -41,9 +41,10 @@ const authSlice = createSlice({
       state.error = action.payload;
     },
 
-    [register.fulfilled.type]: state => {
+    [register.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.isFetching = false;
       state.error = '';
+      state.user = action.payload;
     },
 
     [register.pending.type]: state => {

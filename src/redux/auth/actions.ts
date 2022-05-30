@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosError } from 'axios';
 import { loginRequest, registerRequest } from '../../shared/api/auth';
 import { fetchUserData } from '../../shared/api/user';
 import { AUTO_LOGIN_NAME, LOGIN_NAME, REGISTER_NAME } from './constants';
