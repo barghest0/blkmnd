@@ -1,5 +1,5 @@
 import { CartProduct } from '../../redux/cart/types';
-import instance from './instanse';
+import { instance } from './instance';
 
 const fetchCart = () => instance.get('cart');
 

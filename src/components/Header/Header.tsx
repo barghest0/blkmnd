@@ -11,14 +11,14 @@ import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import GroupsIcon from '@mui/icons-material/Groups';
 import InfoIcon from '@mui/icons-material/Info';
 import EmailIcon from '@mui/icons-material/Email';
+import { toast } from 'react-toastify';
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import { RouterPaths } from '../../shared/router/types';
 import HeaderSearch from '../HeaderSearch/HeaderSearch';
 import Logo from '../Logo/Logo';
 import * as S from './Header.styles';
-import { useNavigate } from 'react-router-dom';
 import navigation from '../../shared/router/navigation';
 import HeaderNavLink from '../HeaderNavLink/HeaderNavLink';
 import DrawerNavLink from '../DrawerNavLink/DrawerNavLink';
@@ -27,6 +27,7 @@ import { StyledLink } from '../../shared/styles/links';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { ModalsTypes } from '../../redux/modals/types';
+import AuthContext from '../../context/AuthContext';
 
 type ProfileDropdownProps = {
   isOpen: boolean;
@@ -45,14 +46,14 @@ type NavProps = {
 };
 
 const Header = () => {
-  const navigate = useNavigate();
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const { isAuth } = useTypedSelector(state => state.auth);
   const { quantity, totalPrice } = useTypedSelector(state => state.cart);
-  const { setModalVisability } = useActions();
+  const { setModalVisability, logout } = useActions();
+
+  const { user, isAuth } = useContext(AuthContext);
 
   const onProfileClick = () => {
     if (isAuth) {
@@ -62,8 +63,12 @@ const Header = () => {
     }
   };
 
+  const showLogoutToast = () =>
+    toast.success(`Вы успешно вышли из личного кабинета`);
+
   const onLogoutClick = () => {
-    navigate(RouterPaths.landing);
+    logout();
+    showLogoutToast();
   };
 
   const onBurgerButtonClick = () => {
@@ -106,7 +111,9 @@ const Header = () => {
           <S.AuthIcon>
             <PersonIcon />
           </S.AuthIcon>
-          <S.AuthAction>Log in</S.AuthAction>
+          <S.AuthAction>
+            {isAuth && user ? user.username : 'Log in'}
+          </S.AuthAction>
           <S.ProfileDropdown isOpen={isProfileOpen}>
             <S.ProfileAction>
               <PersonIcon fontSize="small" />

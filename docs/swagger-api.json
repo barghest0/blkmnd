@@ -40,9 +40,7 @@
   "paths": {
     "/beats": {
       "get": {
-        "tags": [
-          "Beats"
-        ],
+        "tags": ["Beats"],
         "summary": "get beats",
         "operationId": "getBeats",
         "parameters": [
@@ -105,9 +103,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Beats"
-        ],
+        "tags": ["Beats"],
         "summary": "add beat",
         "operationId": "abbBeat",
         "requestBody": {
@@ -135,9 +131,7 @@
     },
     "/beats/{id}": {
       "get": {
-        "tags": [
-          "Beats"
-        ],
+        "tags": ["Beats"],
         "summary": "get single beat",
         "operationId": "getSingleBeat",
         "parameters": [
@@ -171,9 +165,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Beats"
-        ],
+        "tags": ["Beats"],
         "summary": "update beat",
         "operationId": "updateBeat",
         "parameters": [
@@ -213,9 +205,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Beats"
-        ],
+        "tags": ["Beats"],
         "summary": "delete beat",
         "operationId": "deleteBeat",
         "parameters": [
@@ -241,9 +231,7 @@
     },
     "/sound-kits": {
       "get": {
-        "tags": [
-          "Sound Kits"
-        ],
+        "tags": ["Sound Kits"],
         "summary": "get sound kit",
         "operationId": "getSoundKits",
         "responses": {
@@ -263,9 +251,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Sound Kits"
-        ],
+        "tags": ["Sound Kits"],
         "summary": "add sound kit",
         "operationId": "abbSoundKit",
         "requestBody": {
@@ -293,9 +279,7 @@
     },
     "/sound-kits/{id}": {
       "get": {
-        "tags": [
-          "Sound Kits"
-        ],
+        "tags": ["Sound Kits"],
         "summary": "get single sound kit",
         "operationId": "getSingleSoundKit",
         "parameters": [
@@ -329,9 +313,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Sound Kits"
-        ],
+        "tags": ["Sound Kits"],
         "summary": "update sound kit",
         "operationId": "updateSoundKit",
         "parameters": [
@@ -371,9 +353,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Sound Kits"
-        ],
+        "tags": ["Sound Kits"],
         "summary": "delete sound kit",
         "operationId": "deleteSoundKit",
         "parameters": [
@@ -399,9 +379,7 @@
     },
     "/services": {
       "get": {
-        "tags": [
-          "Services"
-        ],
+        "tags": ["Services"],
         "summary": "get service",
         "operationId": "getServices",
         "responses": {
@@ -421,9 +399,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Services"
-        ],
+        "tags": ["Services"],
         "summary": "add service",
         "operationId": "abbService",
         "requestBody": {
@@ -451,9 +427,7 @@
     },
     "/services/{id}": {
       "get": {
-        "tags": [
-          "Services"
-        ],
+        "tags": ["Services"],
         "summary": "get service",
         "operationId": "getService",
         "parameters": [
@@ -487,9 +461,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Services"
-        ],
+        "tags": ["Services"],
         "summary": "update service",
         "operationId": "updateService",
         "parameters": [
@@ -529,9 +501,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Services"
-        ],
+        "tags": ["Services"],
         "summary": "delete service",
         "operationId": "deleteService",
         "parameters": [
@@ -557,9 +527,7 @@
     },
     "/tags": {
       "get": {
-        "tags": [
-          "Tags"
-        ],
+        "tags": ["Tags"],
         "summary": "get tags",
         "operationId": "getTags",
         "responses": {
@@ -579,9 +547,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Tags"
-        ],
+        "tags": ["Tags"],
         "summary": "add tags",
         "operationId": "abbTag",
         "requestBody": {
@@ -609,9 +575,7 @@
     },
     "/tags/{id}": {
       "get": {
-        "tags": [
-          "Tags"
-        ],
+        "tags": ["Tags"],
         "summary": "get tag",
         "operationId": "getTag",
         "parameters": [
@@ -645,9 +609,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Tags"
-        ],
+        "tags": ["Tags"],
         "summary": "update tag",
         "operationId": "updateTag",
         "parameters": [
@@ -687,9 +649,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Tags"
-        ],
+        "tags": ["Tags"],
         "summary": "delete tag",
         "operationId": "deleteTag",
         "parameters": [
@@ -715,9 +675,7 @@
     },
     "/licenses": {
       "get": {
-        "tags": [
-          "Licenses"
-        ],
+        "tags": ["Licenses"],
         "summary": "get licenses",
         "operationId": "getLicenses",
         "responses": {
@@ -740,9 +698,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Licenses"
-        ],
+        "tags": ["Licenses"],
         "summary": "add license",
         "operationId": "abbLic",
         "requestBody": {
@@ -770,9 +726,7 @@
     },
     "/licenses/{id}": {
       "get": {
-        "tags": [
-          "Licenses"
-        ],
+        "tags": ["Licenses"],
         "summary": "get license",
         "operationId": "getLicense",
         "parameters": [
@@ -806,9 +760,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Licenses"
-        ],
+        "tags": ["Licenses"],
         "summary": "update license",
         "operationId": "updateLicense",
         "parameters": [
@@ -848,9 +800,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Licenses"
-        ],
+        "tags": ["Licenses"],
         "summary": "delete license",
         "operationId": "deleteLicense",
         "parameters": [
@@ -876,9 +826,7 @@
     },
     "/file-types": {
       "get": {
-        "tags": [
-          "FileTypes"
-        ],
+        "tags": ["FileTypes"],
         "summary": "get file type",
         "operationId": "getFileTypes",
         "responses": {
@@ -901,9 +849,7 @@
         }
       },
       "post": {
-        "tags": [
-          "FileTypes"
-        ],
+        "tags": ["FileTypes"],
         "summary": "add file type",
         "operationId": "abbFile",
         "requestBody": {
@@ -931,9 +877,7 @@
     },
     "/file-types/{id}": {
       "get": {
-        "tags": [
-          "FileTypes"
-        ],
+        "tags": ["FileTypes"],
         "summary": "get file type",
         "operationId": "getFileType",
         "parameters": [
@@ -967,9 +911,7 @@
         }
       },
       "put": {
-        "tags": [
-          "FileTypes"
-        ],
+        "tags": ["FileTypes"],
         "summary": "update file type",
         "operationId": "updateFileType",
         "parameters": [
@@ -1009,9 +951,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "FileTypes"
-        ],
+        "tags": ["FileTypes"],
         "summary": "delete file type",
         "operationId": "deleteFileType",
         "parameters": [
@@ -1037,9 +977,7 @@
     },
     "/cart": {
       "get": {
-        "tags": [
-          "Cart"
-        ],
+        "tags": ["Cart"],
         "summary": "get cart",
         "operationId": "getCart",
         "responses": {
@@ -1062,9 +1000,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Cart"
-        ],
+        "tags": ["Cart"],
         "summary": "add cart product",
         "operationId": "abbCartPro",
         "requestBody": {
@@ -1092,9 +1028,7 @@
     },
     "/cart/{id}": {
       "get": {
-        "tags": [
-          "Cart"
-        ],
+        "tags": ["Cart"],
         "summary": "cart type",
         "operationId": "getCartProduct",
         "parameters": [
@@ -1128,9 +1062,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Cart"
-        ],
+        "tags": ["Cart"],
         "summary": "update cart product",
         "operationId": "updateCartProduct",
         "parameters": [
@@ -1170,9 +1102,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Cart"
-        ],
+        "tags": ["Cart"],
         "summary": "delete cart product",
         "operationId": "deleteCartProduct",
         "parameters": [
@@ -1198,9 +1128,7 @@
     },
     "/auth/login": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "login",
         "operationId": "login",
         "requestBody": {
@@ -1232,9 +1160,7 @@
     },
     "/auth/register": {
       "post": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "register",
         "operationId": "register",
         "requestBody": {
@@ -1266,9 +1192,7 @@
     },
     "/auth/me": {
       "get": {
-        "tags": [
-          "Auth"
-        ],
+        "tags": ["Auth"],
         "summary": "me",
         "operationId": "me",
         "parameters": [
@@ -1574,10 +1498,7 @@
           },
           "role": {
             "type": "string",
-            "enum": [
-              "admin",
-              "user"
-            ]
+            "enum": ["admin", "user"]
           }
         }
       },

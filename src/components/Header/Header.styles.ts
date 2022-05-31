@@ -167,7 +167,7 @@ const ProfileDropdown = styled.div<ProfileDropdownProps>`
   }}
 `;
 
-const Search = styled.div<SearchProps>`
+const Search = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;

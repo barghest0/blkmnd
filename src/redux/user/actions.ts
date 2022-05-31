@@ -4,7 +4,7 @@ import { GET_USER_DATA_NAME } from './constants';
 
 const getUserData = createAsyncThunk(
   GET_USER_DATA_NAME,
-  async (token: string, thunkAPI) => {
+  async (token: string|null, thunkAPI) => {
     try {
       const response = await fetchUserData(token);
       return response.data;

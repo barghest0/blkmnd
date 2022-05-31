@@ -1,5 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ThemeColors from '../../shared/styles/theme';
+import { PreloaderProps } from './AuthModal';
 
 const AuthModal = styled.div``;
 
@@ -10,6 +11,7 @@ const Modal = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 `;
 
 const FormContainer = styled.div``;
@@ -33,4 +35,26 @@ const AuthAction = styled.div`
   text-decoration: underline;
 `;
 
-export { AuthModal, Modal, Form, Submit, AuthAction, FormContainer };
+const Preloader = styled.div<PreloaderProps>`
+  ${({ isFetching }) => {
+    const opacity = isFetching ? 1 : 0;
+    const pointerEvents = isFetching ? 'all' : 'none';
+    return css`
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      opacity: ${opacity};
+      align-items: center;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 100;
+      pointer-events: ${pointerEvents};
+      transition: all 0.2s linear;
+    `;
+  }}
+`;
+
+export { AuthModal, Modal, Form, Submit, AuthAction, FormContainer, Preloader };

@@ -1,26 +1,21 @@
 import { TextField } from '@mui/material';
-import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useFormik, FormikHelpers } from 'formik';
+import { memo, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
+import useActions from '../../hooks/useActions';
+import { LoginValues, RegisterValues } from '../../redux/auth/types';
 import { ModalsTypes } from '../../redux/modals/types';
-import authFormValidation from '../../shared/formValidations/auth';
-import {StyledLink} from '../../shared/styles/links';
+import {
+  registerFormValidation,
+  loginFormValidation,
+} from '../../shared/formValidations/auth';
+import { ToastTextRow, ToastTextContainer } from '../../shared/styles/toast';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import ModalContainer from '../ModalContainer/ModalContainer';
+import Preloader from '../Preloader/Preloader';
 import * as S from './AuthModal.style';
-
-type LoginValues = {
-  username: string;
-  password: string;
-};
-
-type RegisterValues = {
-  username: string;
-  password: string;
-  email: string;
-  passwordConfirm: string;
-};
 
 const loginInitialValues = {
   username: '',
@@ -31,20 +26,83 @@ const registerInitialValues = {
   username: '',
   email: '',
   password: '',
-  passwordConfirm: '',
+  confirmPassword: '',
 };
 
-const AuthModal = () => {
+type PreloaderProps = {
+  isFetching: boolean;
+};
+
+const AuthModal = memo(() => {
   const { isAuthOpen } = useTypedSelector(state => state.modals);
 
   const [form, setForm] = useState('register');
 
-  const onLoginSubmit = (values: LoginValues) => {
-    console.log(values);
+  const { register, setModalVisability, login } = useActions();
+
+  const {
+    isFetching,
+    isRegisterSuccess,
+    isLoginSuccess,
+    loginErrors,
+    user,
+    registerErrors,
+  } = useTypedSelector(state => state.auth);
+
+  const showSuccessLoginToast = () =>
+    toast.success(`Привет! ${user?.username}`);
+
+  const loginErrorsText =
+    loginErrors &&
+    Object.values(loginErrors)
+      .flat()
+      .map((error, index) => <ToastTextRow key={index}>{error}</ToastTextRow>);
+
+  const showSuccessRegisterToast = () =>
+    toast.success(`Пользователь успешно зарегестрирован`);
+
+  const showErrorLoginToast = () => {
+    toast.error(<ToastTextContainer>{loginErrorsText}</ToastTextContainer>);
   };
 
-  const onRegisterSubmit = (values: RegisterValues) => {
-    console.log(values);
+  const closeModalAfterAuth = () => {
+    setModalVisability({ visability: false, modalType: ModalsTypes.auth });
+  };
+
+  const onRegisterSubmit = (
+    { username, password, confirmPassword }: RegisterValues,
+    helpers: FormikHelpers<RegisterValues>,
+  ) => {
+    register({ username, password, confirmPassword });
+    helpers.resetForm();
+  };
+
+  useEffect(() => {
+    if (isRegisterSuccess) {
+      setForm('login');
+      showSuccessRegisterToast();
+    }
+  }, [isRegisterSuccess]);
+
+  useEffect(() => {
+    if (isLoginSuccess && user) {
+      closeModalAfterAuth();
+      showSuccessLoginToast();
+    }
+  }, [isLoginSuccess, user]);
+
+  useEffect(() => {
+    if (loginErrors) {
+      showErrorLoginToast();
+    }
+  }, [loginErrors, registerErrors]);
+
+  const onLoginSubmit = (
+    { username, password }: LoginValues,
+    helpers: FormikHelpers<LoginValues>,
+  ) => {
+    login({ username, password });
+    helpers.resetForm();
   };
 
   const onAuthActionClick = () => {
@@ -57,13 +115,13 @@ const AuthModal = () => {
 
   const loginFormik = useFormik({
     initialValues: loginInitialValues,
-    validationSchema: authFormValidation,
+    validationSchema: loginFormValidation,
     onSubmit: onLoginSubmit,
   });
 
   const registerFormik = useFormik({
     initialValues: registerInitialValues,
-    validationSchema: authFormValidation,
+    validationSchema: registerFormValidation,
     onSubmit: onRegisterSubmit,
   });
 
@@ -73,10 +131,13 @@ const AuthModal = () => {
         <S.Modal>
           <Modal
             isOpen={isAuthOpen}
-            title={`Authorization`}
+            title={form === 'register' ? 'Registration' : 'Authorization'}
             modalType={ModalsTypes.auth}
           >
             <S.FormContainer hidden={form !== 'register'}>
+              <S.Preloader isFetching={isFetching}>
+                <Preloader />
+              </S.Preloader>
               <S.Form onSubmit={registerFormik.handleSubmit}>
                 <TextField
                   label="Email"
@@ -114,6 +175,7 @@ const AuthModal = () => {
                   label="Password"
                   name="password"
                   variant="standard"
+                  type="password"
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.password}
                   error={
@@ -128,18 +190,19 @@ const AuthModal = () => {
                 />
 
                 <TextField
-                  label="Password Confirm"
-                  name="passwordConfirm"
+                  label="Confirm password"
+                  name="confirmPassword"
                   variant="standard"
+                  type="password"
                   onBlur={registerFormik.handleBlur}
-                  value={registerFormik.values.passwordConfirm}
+                  value={registerFormik.values.confirmPassword}
                   error={
-                    registerFormik.touched.passwordConfirm &&
-                    Boolean(registerFormik.errors.passwordConfirm)
+                    registerFormik.touched.confirmPassword &&
+                    Boolean(registerFormik.errors.confirmPassword)
                   }
                   helperText={
-                    registerFormik.touched.passwordConfirm &&
-                    registerFormik.errors.passwordConfirm
+                    registerFormik.touched.confirmPassword &&
+                    registerFormik.errors.confirmPassword
                   }
                   onChange={registerFormik.handleChange}
                 />
@@ -149,6 +212,10 @@ const AuthModal = () => {
               </S.Form>
             </S.FormContainer>
             <S.FormContainer hidden={form !== 'login'}>
+              <S.Preloader isFetching={isFetching}>
+                <Preloader />
+              </S.Preloader>
+
               <S.Form onSubmit={loginFormik.handleSubmit}>
                 <TextField
                   label="Username"
@@ -169,6 +236,7 @@ const AuthModal = () => {
                   label="Password"
                   name="password"
                   variant="standard"
+                  type="password"
                   onBlur={loginFormik.handleBlur}
                   value={loginFormik.values.password}
                   error={
@@ -193,6 +261,7 @@ const AuthModal = () => {
       </ModalContainer>
     </S.AuthModal>
   );
-};
+});
 
+export { PreloaderProps };
 export default AuthModal;

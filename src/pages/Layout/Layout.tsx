@@ -27,11 +27,6 @@ const Layout = memo(() => {
       <S.Page>
         <Outlet />
         <Player />
-        <DownloadModal />
-        <ShareModal />
-        <LicensesModal />
-        <BuyModal />
-        <AuthModal />
       </S.Page>
       <motion.div
         initial={{ opacity: 0 }}

@@ -1,4 +1,4 @@
-import instance from './instanse';
+import { instance } from './instance';
 
 const fetchAllMemberships = () => instance.get('memberships/');
 

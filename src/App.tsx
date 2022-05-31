@@ -4,15 +4,35 @@ import * as S from './App.style';
 import './shared/styles/scss/index.scss';
 import { ThemeProvider } from '@mui/material';
 import theme from './shared/theme/theme';
+import DownloadModal from './components/DownloadModal/DownloadModal';
+import ShareModal from './components/ShareModal/ShareModal';
+import LicensesModal from './components/LicensesModal/LicensesModal';
+import BuyModal from './components/BuyModal/BuyModal';
+import AuthModal from './components/AuthModal/AuthModal';
+import AuthProvider from './hoc/AuthProvider';
+import 'react-toastify/dist/ReactToastify.css';
+import { StyledToastContainer } from './shared/styles/toast';
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <S.App>
-        <Router />
-        <GlobalStyle />
-      </S.App>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider theme={theme}>
+        <S.App>
+          <Router />
+          <GlobalStyle />
+          <DownloadModal />
+          <ShareModal />
+          <LicensesModal />
+          <BuyModal />
+          <AuthModal />
+          <StyledToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={true}
+          />
+        </S.App>
+      </ThemeProvider>
+    </AuthProvider>
   );
 };
 
