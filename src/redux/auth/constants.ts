@@ -6,6 +6,8 @@ const AUTH_INITIAL_STATE: AuthState = {
   token: localStorage.getItem('token'),
   isAuth: false,
   user: null,
+  isLoginSuccess: false,
+  isRegisterSuccess: false,
   isFetching: false,
   error: '',
 };

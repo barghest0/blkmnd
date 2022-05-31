@@ -28,6 +28,7 @@ const authSlice = createSlice({
         const { token } = action.payload;
         state.token = token;
         state.isAuth = true;
+        state.isLoginSuccess = true;
         setToken(token);
       }
     },
@@ -45,6 +46,7 @@ const authSlice = createSlice({
       state.isFetching = false;
       state.error = '';
       state.user = action.payload;
+      state.isRegisterSuccess = true;
     },
 
     [register.pending.type]: state => {

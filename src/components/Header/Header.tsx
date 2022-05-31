@@ -53,7 +53,6 @@ const Header = () => {
   const { setModalVisability, logout } = useActions();
 
   const { user, isAuth } = useContext(AuthContext);
-  console.log(user);
 
   const onProfileClick = () => {
     if (isAuth) {

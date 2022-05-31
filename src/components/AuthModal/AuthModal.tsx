@@ -1,8 +1,6 @@
 import { TextField } from '@mui/material';
 import { useFormik, FormikHelpers } from 'formik';
-import { memo, useCallback, useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { memo, useEffect, useState } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { LoginValues, RegisterValues } from '../../redux/auth/types';
@@ -11,7 +9,6 @@ import {
   registerFormValidation,
   loginFormValidation,
 } from '../../shared/formValidations/auth';
-import { RouterPaths } from '../../shared/router/types';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import ModalContainer from '../ModalContainer/ModalContainer';
@@ -41,7 +38,9 @@ const AuthModal = memo(() => {
 
   const { register, setModalVisability, login } = useActions();
 
-  const { isFetching, isAuth } = useTypedSelector(state => state.auth);
+  const { isFetching, isRegisterSuccess, isLoginSuccess } = useTypedSelector(
+    state => state.auth,
+  );
 
   const closeModalAfterAuth = () => {
     setModalVisability({ visability: false, modalType: ModalsTypes.auth });
@@ -52,16 +51,23 @@ const AuthModal = memo(() => {
     helpers: FormikHelpers<RegisterValues>,
   ) => {
     register({ username, password, confirmPassword });
-    closeModalAfterAuth();
     helpers.resetForm();
   };
+
+  useEffect(() => {
+    if (isRegisterSuccess) {
+      setForm('login');
+    }
+    if (isLoginSuccess) {
+      closeModalAfterAuth();
+    }
+  }, [isRegisterSuccess, isLoginSuccess]);
 
   const onLoginSubmit = (
     { username, password }: LoginValues,
     helpers: FormikHelpers<LoginValues>,
   ) => {
     login({ username, password });
-    closeModalAfterAuth();
     helpers.resetForm();
   };
 

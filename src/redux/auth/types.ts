@@ -23,6 +23,8 @@ type AuthState = {
   isAuth: boolean;
   user: User | null;
   isFetching: boolean;
+  isLoginSuccess: boolean;
+  isRegisterSuccess: boolean;
   error: string;
 };
 
