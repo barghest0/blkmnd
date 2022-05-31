@@ -11,6 +11,7 @@ import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import GroupsIcon from '@mui/icons-material/Groups';
 import InfoIcon from '@mui/icons-material/Info';
 import EmailIcon from '@mui/icons-material/Email';
+import { toast } from 'react-toastify';
 
 import { useContext, useState } from 'react';
 
@@ -62,8 +63,12 @@ const Header = () => {
     }
   };
 
+  const showLogoutToast = () =>
+    toast.success(`Вы успешно вышли из личного кабинета`);
+
   const onLogoutClick = () => {
     logout();
+    showLogoutToast();
   };
 
   const onBurgerButtonClick = () => {
