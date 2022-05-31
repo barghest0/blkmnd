@@ -58,6 +58,9 @@ const AuthModal = memo(() => {
       .flat()
       .map((error, index) => <ToastTextRow key={index}>{error}</ToastTextRow>);
 
+  const showSuccessRegisterToast = () =>
+    toast.success(`Пользователь успешно зарегестрирован`);
+
   const showErrorLoginToast = () => {
     toast.error(<ToastTextContainer>{loginErrorsText}</ToastTextContainer>);
   };
@@ -77,15 +80,22 @@ const AuthModal = memo(() => {
   useEffect(() => {
     if (isRegisterSuccess) {
       setForm('login');
+      showSuccessRegisterToast();
     }
+  }, [isRegisterSuccess]);
+
+  useEffect(() => {
     if (isLoginSuccess && user) {
       closeModalAfterAuth();
       showSuccessLoginToast();
     }
+  }, [isLoginSuccess, user]);
+
+  useEffect(() => {
     if (loginErrors) {
       showErrorLoginToast();
     }
-  }, [isRegisterSuccess, isLoginSuccess, user, loginErrors, registerErrors]);
+  }, [loginErrors, registerErrors]);
 
   const onLoginSubmit = (
     { username, password }: LoginValues,

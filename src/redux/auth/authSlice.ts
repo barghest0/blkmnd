@@ -45,7 +45,6 @@ const authSlice = createSlice({
     [register.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.isFetching = false;
       state.registerErrors = null;
-      state.user = action.payload;
       state.isRegisterSuccess = true;
     },
 
