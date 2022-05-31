@@ -9,7 +9,8 @@ const AUTH_INITIAL_STATE: AuthState = {
   isLoginSuccess: false,
   isRegisterSuccess: false,
   isFetching: false,
-  error: '',
+  registerErrors: null,
+  loginErrors: null,
 };
 
 const LOGIN_NAME = 'login';

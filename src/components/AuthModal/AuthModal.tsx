@@ -1,6 +1,7 @@
 import { TextField } from '@mui/material';
 import { useFormik, FormikHelpers } from 'formik';
 import { memo, useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { LoginValues, RegisterValues } from '../../redux/auth/types';
@@ -9,6 +10,7 @@ import {
   registerFormValidation,
   loginFormValidation,
 } from '../../shared/formValidations/auth';
+import { ToastTextRow, ToastTextContainer } from '../../shared/styles/toast';
 import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import ModalContainer from '../ModalContainer/ModalContainer';
@@ -38,9 +40,27 @@ const AuthModal = memo(() => {
 
   const { register, setModalVisability, login } = useActions();
 
-  const { isFetching, isRegisterSuccess, isLoginSuccess } = useTypedSelector(
-    state => state.auth,
-  );
+  const {
+    isFetching,
+    isRegisterSuccess,
+    isLoginSuccess,
+    loginErrors,
+    user,
+    registerErrors,
+  } = useTypedSelector(state => state.auth);
+
+  const showSuccessLoginToast = () =>
+    toast.success(`Привет! ${user?.username}`);
+
+  const loginErrorsText =
+    loginErrors &&
+    Object.values(loginErrors)
+      .flat()
+      .map((error, index) => <ToastTextRow key={index}>{error}</ToastTextRow>);
+
+  const showErrorLoginToast = () => {
+    toast.error(<ToastTextContainer>{loginErrorsText}</ToastTextContainer>);
+  };
 
   const closeModalAfterAuth = () => {
     setModalVisability({ visability: false, modalType: ModalsTypes.auth });
@@ -58,10 +78,14 @@ const AuthModal = memo(() => {
     if (isRegisterSuccess) {
       setForm('login');
     }
-    if (isLoginSuccess) {
+    if (isLoginSuccess && user) {
       closeModalAfterAuth();
+      showSuccessLoginToast();
     }
-  }, [isRegisterSuccess, isLoginSuccess]);
+    if (loginErrors) {
+      showErrorLoginToast();
+    }
+  }, [isRegisterSuccess, isLoginSuccess, user, loginErrors, registerErrors]);
 
   const onLoginSubmit = (
     { username, password }: LoginValues,

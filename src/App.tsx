@@ -10,6 +10,8 @@ import LicensesModal from './components/LicensesModal/LicensesModal';
 import BuyModal from './components/BuyModal/BuyModal';
 import AuthModal from './components/AuthModal/AuthModal';
 import AuthProvider from './hoc/AuthProvider';
+import 'react-toastify/dist/ReactToastify.css';
+import { StyledToastContainer } from './shared/styles/toast';
 
 const App = () => {
   return (
@@ -23,6 +25,11 @@ const App = () => {
           <LicensesModal />
           <BuyModal />
           <AuthModal />
+          <StyledToastContainer
+            position="bottom-right"
+            autoClose={3000}
+            hideProgressBar={true}
+          />
         </S.App>
       </ThemeProvider>
     </AuthProvider>

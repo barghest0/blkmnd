@@ -1,8 +1,9 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { AxiosError } from 'axios';
 import { loginRequest, registerRequest } from '../../shared/api/auth';
 import { fetchUserData } from '../../shared/api/user';
 import { AUTO_LOGIN_NAME, LOGIN_NAME, REGISTER_NAME } from './constants';
-import { LoginValues, RegisterValues } from './types';
+import { LoginErrors, LoginValues, RegisterValues } from './types';
 
 const register = createAsyncThunk(
   REGISTER_NAME,
@@ -11,7 +12,7 @@ const register = createAsyncThunk(
       const response = await registerRequest(userData);
       return response.data;
     } catch (e) {
-      thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e);
     }
   },
 );
@@ -22,10 +23,8 @@ const login = createAsyncThunk(
     try {
       const response = await loginRequest(userData);
       return response.data;
-    } catch (exception) {
-      console.log(exception.response.data);
-
-      thunkAPI.rejectWithValue(exception.response.data);
+    } catch (ex: Error | AxiosError<LoginErrors>) {
+      return thunkAPI.rejectWithValue(ex.response.data);
     }
   },
 );
@@ -37,7 +36,7 @@ const autoLogin = createAsyncThunk(
       const response = await fetchUserData(token);
       return response.data;
     } catch (e) {
-      thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e);
     }
   },
 );

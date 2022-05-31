@@ -3,7 +3,7 @@ import { deleteToken, setToken } from '../../shared/helpers/authHelper';
 import { User } from '../user/types';
 import { autoLogin, login, register } from './actions';
 import { AUTH_INITIAL_STATE, AUTH_SLICE_NAME } from './constants';
-import { LoginResponseValues } from './types';
+import { LoginErrors, LoginResponseValues, RegisterErrors } from './types';
 
 const authSlice = createSlice({
   name: AUTH_SLICE_NAME,
@@ -22,7 +22,7 @@ const authSlice = createSlice({
       action: PayloadAction<LoginResponseValues>,
     ) => {
       state.isFetching = false;
-      state.error = '';
+      state.loginErrors = null;
 
       if (action.payload) {
         const { token } = action.payload;
@@ -37,14 +37,14 @@ const authSlice = createSlice({
       state.isFetching = true;
     },
 
-    [login.rejected.type]: (state, action: PayloadAction<string>) => {
+    [login.rejected.type]: (state, action: PayloadAction<LoginErrors>) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.loginErrors = action.payload;
     },
 
     [register.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.isFetching = false;
-      state.error = '';
+      state.registerErrors = null;
       state.user = action.payload;
       state.isRegisterSuccess = true;
     },
@@ -53,14 +53,17 @@ const authSlice = createSlice({
       state.isFetching = true;
     },
 
-    [register.rejected.type]: (state, action: PayloadAction<string>) => {
+    [register.rejected.type]: (
+      state,
+      action: PayloadAction<RegisterErrors>,
+    ) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.registerErrors = action.payload;
     },
 
     [autoLogin.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.isFetching = false;
-      state.error = '';
+      state.loginErrors = null;
       state.user = action.payload;
       state.isAuth = true;
     },
@@ -69,9 +72,9 @@ const authSlice = createSlice({
       state.isFetching = true;
     },
 
-    [autoLogin.rejected.type]: (state, action: PayloadAction<string>) => {
+    [autoLogin.rejected.type]: (state, action: PayloadAction<LoginErrors>) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.loginErrors = action.payload;
     },
   },
 });

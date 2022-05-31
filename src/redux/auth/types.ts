@@ -1,5 +1,14 @@
 import { User } from '../user/types';
 
+type LoginErrors = {
+  password: string[];
+  username: string[];
+};
+
+type RegisterErrors = {
+  username: string[];
+};
+
 type RegisterValues = {
   // email: string;
   username: string;
@@ -25,7 +34,15 @@ type AuthState = {
   isFetching: boolean;
   isLoginSuccess: boolean;
   isRegisterSuccess: boolean;
-  error: string;
+  loginErrors: LoginErrors | null;
+  registerErrors: RegisterErrors | null;
 };
 
-export { AuthState, RegisterValues, LoginValues, LoginResponseValues };
+export {
+  AuthState,
+  RegisterValues,
+  LoginValues,
+  LoginResponseValues,
+  LoginErrors,
+  RegisterErrors,
+};
