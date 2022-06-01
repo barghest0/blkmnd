@@ -13,12 +13,12 @@ const MODALS_INITIAL_STATE: ModalsState = {
   isTermsOpen: false,
   isLicenseOpen: false,
   isPrivacyPolicyOpen: false,
-  isAuthModal:false,
+  isAuthOpen: false,
   beat: null,
   license: null,
-  terms: '',
+  term: '',
   privacyPolicy: '',
-  error: '',
+  errors: '',
 };
 
 export {

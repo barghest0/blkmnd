@@ -17,7 +17,7 @@ const PLAYER_INITIAL_STATE: PlayerState = {
   isShuffle: false,
   queue: [],
   isFetching: false,
-  error: '',
+  errors: '',
 };
 
 export { PLAYER_INITIAL_STATE, PLAYER_SLICE_NAME, GET_PLAYER_QUEUE_BEATS };

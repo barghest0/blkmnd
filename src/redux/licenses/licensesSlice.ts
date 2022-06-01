@@ -10,7 +10,7 @@ const licensesSlice = createSlice({
   extraReducers: {
     [getLicenses.fulfilled.type]: (state, action: PayloadAction<License[]>) => {
       state.isFetching = false;
-      state.error = '';
+      state.errors = '';
       state.licenses = action.payload;
     },
 
@@ -20,16 +20,16 @@ const licensesSlice = createSlice({
 
     [getLicenses.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.errors = action.payload;
     },
 
     [getLicense.fulfilled.type]: (state, action: PayloadAction<License>) => {
-      state.error = '';
+      state.errors = '';
       state.license = action.payload;
     },
 
     [getLicense.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
+      state.errors = action.payload;
     },
   },
 });

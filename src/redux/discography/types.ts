@@ -1,9 +1,9 @@
-import { Beat } from '../beat/types';
+import {Beat} from "../beats/types";
 
 type DiscographyState = {
   beats: Beat[];
   isFetching: boolean;
-  error: string;
+  errors: string;
 };
 
 export { DiscographyState };

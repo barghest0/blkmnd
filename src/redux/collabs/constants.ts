@@ -12,7 +12,7 @@ const COLLABS_INITIAL_STATE: CollabsState = {
   collabs: [],
   collab: null,
   isFetching: false,
-  error: '',
+  errors: '',
 };
 
 export {

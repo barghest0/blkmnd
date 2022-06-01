@@ -14,7 +14,7 @@ const SOUND_KITS_INITIAL_STATE: SoundKitsState = {
   soundKits: [],
   soundKit: null,
   isFetching: false,
-  error: '',
+  errors: '',
 };
 
 export {

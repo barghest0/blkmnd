@@ -1,9 +1,10 @@
+import { getToken } from '../../shared/helpers/authHelper';
 import { AuthState } from './types';
 
 const AUTH_SLICE_NAME = 'auth';
 
 const AUTH_INITIAL_STATE: AuthState = {
-  token: localStorage.getItem('token'),
+  token: getToken(),
   isAuth: false,
   user: null,
   isLoginSuccess: false,

@@ -26,8 +26,8 @@ type ModalsState = {
   beat: Beat | null;
   license: License | null;
   privacyPolicy: string;
-  terms: string;
-  error: string;
+  term: string;
+  errors: string;
 };
 
 export { ModalsState, ModalsTypes, SetVisabilityPayload };

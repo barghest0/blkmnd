@@ -8,7 +8,7 @@ const CART_INITIAL_STATE: CartState = {
   totalPrice: 0,
   discount: 0,
   isFetching: false,
-  error: '',
+  errors: '',
 };
 
 const GET_CART_NAME = 'cart/all';

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Beat } from '../beat/types';
+import { Beat } from '../beats/types';
 import { getDiscographyBeats } from './actions';
 import { DISCOGRAPHY_INITIAL_STATE, DISCORGAPHY_SLICE_NAME } from './constants';
 
@@ -13,7 +13,7 @@ const discographySlice = createSlice({
       action: PayloadAction<Beat[]>,
     ) => {
       state.isFetching = false;
-      state.error = '';
+      state.errors = '';
       state.beats = action.payload;
     },
 
@@ -26,7 +26,7 @@ const discographySlice = createSlice({
       action: PayloadAction<string>,
     ) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.errors = action.payload;
     },
   },
 });

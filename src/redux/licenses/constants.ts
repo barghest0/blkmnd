@@ -8,9 +8,14 @@ const LICENSE_INITIAL_STATE: LicenseState = {
   licenses: [],
   license: null,
   isFetching: false,
-  error: '',
+  errors: '',
 };
 
-const GET_LICENSE_NAME = 'license/single'
+const GET_LICENSE_NAME = 'license/single';
 
-export { LICENSE_INITIAL_STATE, LICENSE_SLICE_NAME, GET_LICENSES_NAME, GET_LICENSE_NAME };
+export {
+  LICENSE_INITIAL_STATE,
+  LICENSE_SLICE_NAME,
+  GET_LICENSES_NAME,
+  GET_LICENSE_NAME,
+};

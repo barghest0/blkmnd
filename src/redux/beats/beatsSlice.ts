@@ -26,7 +26,7 @@ const beatsSlice = createSlice({
       action: PayloadAction<Beat[]>,
     ) => {
       state.isFetching = false;
-      state.error = '';
+      state.errors = '';
       state.beats = action.payload;
     },
 
@@ -36,12 +36,12 @@ const beatsSlice = createSlice({
 
     [getPreviewBeats.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.errors = action.payload;
     },
 
     [getAllBeats.fulfilled.type]: (state, action: PayloadAction<Beat[]>) => {
       state.isFetching = false;
-      state.error = '';
+      state.errors = '';
       state.beats = action.payload;
     },
 
@@ -51,7 +51,7 @@ const beatsSlice = createSlice({
 
     [getAllBeats.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.errors = action.payload;
     },
 
     [getFilteredBeats.fulfilled.type]: (
@@ -59,7 +59,7 @@ const beatsSlice = createSlice({
       action: PayloadAction<Beat[]>,
     ) => {
       state.isFetching = false;
-      state.error = '';
+      state.errors = '';
       state.beats = action.payload;
     },
 
@@ -72,39 +72,39 @@ const beatsSlice = createSlice({
       action: PayloadAction<string>,
     ) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.errors = action.payload;
     },
 
     [getFeaturedBeat.fulfilled.type]: (
       state,
       action: PayloadAction<Beat[]>,
     ) => {
-      state.error = '';
+      state.errors = '';
       const featuredBeat =
         action.payload[Math.floor(Math.random() * action.payload.length)];
       state.featuredBeat = featuredBeat;
     },
 
     [getFeaturedBeat.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
+      state.errors = action.payload;
     },
 
     [updateBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
-      state.error = '';
+      state.errors = '';
       state.beat = action.payload;
     },
 
     [updateBeat.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
+      state.errors = action.payload;
     },
 
     [getBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
-      state.error = '';
+      state.errors = '';
       state.beat = action.payload;
     },
 
     [getBeat.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.error = action.payload;
+      state.errors = action.payload;
     },
   },
 });
