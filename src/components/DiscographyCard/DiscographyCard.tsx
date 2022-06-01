@@ -1,9 +1,6 @@
 import { FC } from 'react';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
-import useAudio from '../../hooks/useAudio';
 import { Beat } from '../../redux/beats/types';
-import player from '../../services/Player';
 import { RouterPaths } from '../../shared/router/types';
 import { StyledLink } from '../../shared/styles/links';
 import DurationSlider from '../DurationSlider/DurationSlider';
@@ -18,16 +15,12 @@ type Props = {
 const DiscographyCard: FC<Props> = ({ beat }) => {
   const { id, image, title, musician } = beat;
 
-  const { openPlayer } = useActions();
-
-  const { audio, toggleAudioPlaying, setPlayerBeat } = useAudio();
-
-  const { beat: playerBeat } = useTypedSelector(state => state.player);
+  const { openPlayer, setBeat, togglePlaying } = useActions();
 
   const onThumbnailClick = () => {
     openPlayer();
-    setPlayerBeat(beat);
-    toggleAudioPlaying(playerBeat);
+    setBeat(beat);
+    togglePlaying(beat);
   };
 
   return (
@@ -46,7 +39,7 @@ const DiscographyCard: FC<Props> = ({ beat }) => {
         </StyledLink>
         <S.Musician>{musician.name}</S.Musician>
         <S.Duration>
-          <DurationSlider audio={audio} currentBeat={beat} />
+          <DurationSlider currentBeat={beat} />
         </S.Duration>
       </S.Info>
     </S.DiscographyCard>

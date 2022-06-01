@@ -1,7 +1,6 @@
 import { FC, SyntheticEvent } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
-import useAudio from '../../hooks/useAudio';
 import { Beat } from '../../redux/beats/types';
 import { RouterPaths } from '../../shared/router/types';
 import { StyledLink } from '../../shared/styles/links';
@@ -24,16 +23,14 @@ type RowProps = {
 const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
   const { image, id, title, time, bpm, tags, price } = beat;
 
-  const { openPlayer } = useActions();
+  const { openPlayer, setBeat, togglePlaying } = useActions();
 
   const { beat: playerBeat } = useTypedSelector(state => state.player);
 
-  const { setPlayerBeat, toggleAudioPlaying } = useAudio();
-
   const onBeatRowClick = () => {
     openPlayer();
-    setPlayerBeat(beat);
-    toggleAudioPlaying(playerBeat);
+    setBeat(beat);
+    togglePlaying(playerBeat);
   };
 
   const onActionButtonClick = (event: SyntheticEvent) => {

@@ -155,6 +155,9 @@ const Actions = styled.div`
   justify-content: flex-end;
   column-gap: 10px;
   width: 100%;
+  @media ${breakpoint('sm')} {
+    display: none;
+  }
 `;
 
 const Volume = styled.div`

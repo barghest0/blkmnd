@@ -12,8 +12,6 @@ import { Beat } from '../../redux/beats/types';
 import useActions from '../../hooks/useActions';
 import PlayButton from '../PlayButton/PlayButton';
 import Image from '../Image/Image';
-import useAudio from '../../hooks/useAudio';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 
 type Props = {
   beat: Beat;
@@ -22,16 +20,12 @@ type Props = {
 const FeaturedBeat: FC<Props> = memo(({ beat }) => {
   const { id, title, image, bpm, price, tags } = beat;
 
-  const { openPlayer } = useActions();
-
-  const { beat: playerBeat } = useTypedSelector(state => state.player);
-
-  const { toggleAudioPlaying, setPlayerBeat } = useAudio();
+  const { openPlayer, setBeat, togglePlaying } = useActions();
 
   const onThumbnailClick = () => {
     openPlayer();
-    setPlayerBeat(beat);
-    toggleAudioPlaying(playerBeat);
+    setBeat(beat);
+    togglePlaying(beat);
   };
 
   const tagsLinks = tags.map(tag => (

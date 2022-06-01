@@ -1,8 +1,9 @@
-import { FC, memo, useEffect, useRef, useState } from 'react';
+import { FC, memo, useContext, useEffect, useRef, useState } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import ThemeColors from '../../shared/styles/theme';
 import * as S from './Visualizer.style';
-import useAudio from '../../hooks/useAudio';
+import PlayerContext from '../../context/PlayerContext';
+import VisualizerContext from '../../context/VisualizerContext';
 
 const Visualizer: FC = memo(() => {
   const { beat } = useTypedSelector(state => state.player);
@@ -14,7 +15,7 @@ const Visualizer: FC = memo(() => {
   const canvas = canvasRef.current;
   const canvasContext = canvasRef.current?.getContext('2d');
 
-  const { audio } = useAudio();
+  const { audio } = useContext(PlayerContext);
 
   const animate = () => {
     let x = 0;
