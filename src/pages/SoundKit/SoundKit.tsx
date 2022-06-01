@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import BuyButton from '../../components/BuyButton/BuyButton';
 import Comment from '../../components/Comment/Comment';
@@ -9,6 +9,7 @@ import CommentField, {
 import DownloadButton from '../../components/DownloadButton/DownloadButton';
 import Preloader from '../../components/Preloader/Preloader';
 import ShareButton from '../../components/ShareButton/ShareButton';
+import AuthContext from '../../context/AuthContext';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { User } from '../../redux/user/types';
@@ -29,17 +30,21 @@ const SoundKit = () => {
     </S.Comment>
   ));
 
+  const { user } = useContext(AuthContext);
+
   const onCommentSubmit = (values: CommentValues) => {
-    const date = format(new Date(), 'MM.dd.yyyy');
-    const user: User = {
-      id: 1251,
-      username: 'someone',
-      password: 'asdgasdfjk3k4j23',
-      role: 'user',
-    };
-    const comment = { user, text: values.comment, date };
-    pushNewSoundKitComment(comment);
-    updateSoundKit();
+    if (user) {
+      const date = format(new Date(), 'MM.dd.yyyy');
+      const commentUser: User = {
+        id: user.id,
+        username: user.username,
+        password: user.password,
+        role: 'user',
+      };
+      const comment = { user: commentUser, text: values.comment, date };
+      pushNewSoundKitComment(comment);
+      updateSoundKit();
+    }
   };
 
   const isSoundKitFree = soundKit?.price === 0;

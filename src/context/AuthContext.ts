@@ -1,12 +1,12 @@
 import { createContext } from 'react';
-import {User} from '../redux/user/types';
+import { User } from '../redux/user/types';
 
-type AuthContextState ={
-  user: User|null,
-  isAuth: boolean
-}
+type AuthContextState = {
+  user: User | null;
+  isAuth: boolean;
+};
 
-const auth:AuthContextState = {
+const auth: AuthContextState = {
   user: null,
   isAuth: false,
 };

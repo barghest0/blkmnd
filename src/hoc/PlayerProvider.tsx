@@ -1,6 +1,7 @@
-import { FC, memo, useEffect } from 'react';
+import { FC, memo, useCallback, useEffect } from 'react';
 import PlayerContext from '../context/PlayerContext';
 import useTypedSelector from '../hooks/redux/useTypedDispatch';
+import useActions from '../hooks/useActions';
 
 type Props = {
   children: React.ReactNode;
@@ -9,12 +10,36 @@ type Props = {
 
 const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
   const playerState = useTypedSelector(state => state.player);
-  const { beat: playerBeat, isPlaying, volume } = playerState;
+  const { beat: playerBeat, isPlaying, volume, nextBeat, isLoop } = playerState;
   const state = playerState;
+
+  const { setCurrentTime, setDuration, setBeat } = useActions();
+
+  const onAudioTimeUpdate = useCallback(event => {
+    setCurrentTime(event.currentTarget.currentTime);
+  }, []);
+
+  const onAudioDataLoad = useCallback(event => {
+    setDuration(event.target.duration);
+    audio.volume = volume;
+  }, []);
+
+  const onAudioEnded = () => {
+    if (nextBeat) {
+      setBeat(nextBeat);
+    }
+  };
 
   useEffect(() => {
     audio.crossOrigin = 'anonymous';
-    audio.volume = volume;
+    audio.addEventListener('timeupdate', onAudioTimeUpdate);
+    audio.addEventListener('loadeddata', onAudioDataLoad);
+    audio.addEventListener('ended', onAudioEnded);
+    return () => {
+      audio.removeEventListener('loadeddata', onAudioDataLoad);
+      audio.removeEventListener('timeupdate', onAudioTimeUpdate);
+      audio.removeEventListener('ended', onAudioEnded);
+    };
   }, []);
 
   useEffect(() => {
@@ -30,6 +55,14 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
       audio.pause();
     }
   }, [isPlaying, playerBeat]);
+
+  useEffect(() => {
+    audio.volume = volume;
+  }, [volume]);
+
+  useEffect(() => {
+    audio.loop = isLoop;
+  }, [isLoop]);
 
   return (
     <PlayerContext.Provider value={{ state, audio }}>

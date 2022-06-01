@@ -1,4 +1,4 @@
-import { SyntheticEvent, useEffect, useState } from 'react';
+import { SyntheticEvent, useContext, useEffect, useState } from 'react';
 
 import { useParams } from 'react-router-dom';
 
@@ -24,15 +24,22 @@ import ChooseLicenseButton from '../../components/ChooseLicenseButton/ChooseLice
 import Comment from '../../components/Comment/Comment';
 import format from 'date-fns/format';
 import { User } from '../../redux/user/types';
-import useAudio from '../../hooks/useAudio';
+import AuthContext from '../../context/AuthContext';
 
 const Beat = () => {
   const params = useParams();
 
   const { beats, beat } = useTypedSelector(state => state.beats);
 
-  const { getBeat, getAllBeats, openPlayer, pushNewBeatComment, updateBeat } =
-    useActions();
+  const {
+    getBeat,
+    setBeat,
+    togglePlaying,
+    getAllBeats,
+    openPlayer,
+    pushNewBeatComment,
+    updateBeat,
+  } = useActions();
 
   const [value, setValue] = useState('related');
 
@@ -40,29 +47,29 @@ const Beat = () => {
     setValue(newValue);
   };
 
-  const { toggleAudioPlaying, setPlayerBeat } = useAudio();
-
-  const { beat: playerBeat } = useTypedSelector(state => state.player);
+  const { user } = useContext(AuthContext);
 
   const onPlayButtonClick = () => {
     if (beat) {
       openPlayer();
-      setPlayerBeat(beat);
-      toggleAudioPlaying(playerBeat);
+      setBeat(beat);
+      togglePlaying(beat);
     }
   };
 
   const onCommentSubmit = (values: CommentValues) => {
-    const date = format(new Date(), 'MM.dd.yyyy');
-    const user: User = {
-      id: 1251,
-      username: 'someone',
-      password: 'asdgasdfjk3k4j23',
-      role: 'user',
-    };
-    const comment = { user, text: values.comment, date };
-    pushNewBeatComment(comment);
-    updateBeat();
+    if (user) {
+      const date = format(new Date(), 'MM.dd.yyyy');
+      const commentUser: User = {
+        id: user.id,
+        username: user.username,
+        password: user.password,
+        role: 'user',
+      };
+      const comment = { user: commentUser, text: values.comment, date };
+      pushNewBeatComment(comment);
+      updateBeat();
+    }
   };
 
   const comments = beat?.comments.map(comment => (

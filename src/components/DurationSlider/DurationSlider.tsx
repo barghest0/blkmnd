@@ -1,4 +1,12 @@
-import { FC, useEffect, useState } from 'react';
+import {
+  FC,
+  SyntheticEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
+import PlayerContext from '../../context/PlayerContext';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import useAudio from '../../hooks/useAudio';
@@ -16,7 +24,8 @@ const DurationSlider: FC<Props> = ({ currentBeat }) => {
     state => state.player,
   );
 
-  const { setAudioCurrentTime } = useAudio();
+  const { audio } = useContext(PlayerContext);
+
   const isInteractionSameBeat = currentBeat?.id === beat?.id;
 
   const onCurrentTimeChange = (_: Event, value: number | number[]) => {
@@ -27,7 +36,7 @@ const DurationSlider: FC<Props> = ({ currentBeat }) => {
 
   const onCurrentTimeCommited = () => {
     if (isInteractionSameBeat) {
-      setAudioCurrentTime();
+      audio.currentTime = value;
     }
   };
 
