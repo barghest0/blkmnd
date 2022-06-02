@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import { Beat } from '../redux/beats/types';
 import useTypedSelector from './redux/useTypedDispatch';
 import useActions from './useActions';

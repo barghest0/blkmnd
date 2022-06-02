@@ -1,5 +1,6 @@
-import { FC } from 'react';
+import { FC, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
+import AuthContext from '../context/AuthContext';
 import { RouterPaths } from '../shared/router/types';
 
 type Props = {
@@ -7,7 +8,7 @@ type Props = {
 };
 
 const RequireAdmin: FC<Props> = ({ children }) => {
-  const isAuth = true;
+  const { isAuth } = useContext(AuthContext);
   const isAdmin = true;
 
   if (!isAuth || !isAdmin) {

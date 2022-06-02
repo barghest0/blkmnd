@@ -33,7 +33,13 @@ type QueueBeatProps = {
 const Player: FC = memo(() => {
   const { isOpen, beat: playerBeat } = useTypedSelector(state => state.player);
 
-  const { getQueueBeats, toggleIsLoop, toggleIsShuffle } = useActions();
+  const {
+    getQueueBeats,
+    togglePlaying,
+    setBeat,
+    toggleIsLoop,
+    toggleIsShuffle,
+  } = useActions();
 
   const { queue, isFetching, isLoop, isShuffle, nextBeat, previousBeat } =
     useTypedSelector(state => state.player);
@@ -44,8 +50,8 @@ const Player: FC = memo(() => {
   const { setPlayerBeat, toggleAudioPlaying, setAudioLoop } = useAudio();
 
   const onQueueBeatClick = (beat: Beat) => {
-    toggleAudioPlaying(beat);
-    setPlayerBeat(beat);
+    togglePlaying(beat);
+    setBeat(beat);
   };
 
   const queueBeatsList = queueBeats.map(beat => (

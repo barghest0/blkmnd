@@ -12,26 +12,34 @@ import AuthModal from './components/AuthModal/AuthModal';
 import AuthProvider from './hoc/AuthProvider';
 import 'react-toastify/dist/ReactToastify.css';
 import { StyledToastContainer } from './shared/styles/toast';
+import PlayerProvider from './hoc/PlayerProvider';
+import VisualizerProvider from './hoc/VisualizerProvider';
 
 const App = () => {
+  const audio = new Audio();
+
   return (
     <AuthProvider>
-      <ThemeProvider theme={theme}>
-        <S.App>
-          <Router />
-          <GlobalStyle />
-          <DownloadModal />
-          <ShareModal />
-          <LicensesModal />
-          <BuyModal />
-          <AuthModal />
-          <StyledToastContainer
-            position="bottom-right"
-            autoClose={3000}
-            hideProgressBar={true}
-          />
-        </S.App>
-      </ThemeProvider>
+      <PlayerProvider audio={audio}>
+        <VisualizerProvider audio={audio}>
+          <ThemeProvider theme={theme}>
+            <S.App>
+              <Router />
+              <GlobalStyle />
+              <DownloadModal />
+              <ShareModal />
+              <LicensesModal />
+              <BuyModal />
+              <AuthModal />
+              <StyledToastContainer
+                position="bottom-right"
+                autoClose={3000}
+                hideProgressBar={true}
+              />
+            </S.App>
+          </ThemeProvider>
+        </VisualizerProvider>
+      </PlayerProvider>
     </AuthProvider>
   );
 };
