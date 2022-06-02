@@ -8,6 +8,7 @@ import { Checkbox, FormControlLabel, TextField } from '@mui/material';
 import { StyledLink } from '../../shared/styles/links';
 import { RouterPaths } from '../../shared/router/types';
 import Button from '../../components/Button/Button';
+import * as cartSelectors from '../../redux/cart/selectors';
 
 type PaymentValues = {
   hasCoupon: boolean;
@@ -16,13 +17,14 @@ type PaymentValues = {
 
 const Cart = () => {
   const { getCart } = useActions();
-  const { products, quantity, totalPrice, discount } = useTypedSelector(
-    state => state.cart,
+  const products = useTypedSelector(cartSelectors.products);
+  const { productsQuantity, totalCartPrice, cartDiscount } = useTypedSelector(
+    cartSelectors.details,
   );
 
   useEffect(() => {
     getCart();
-  }, [quantity]);
+  }, [productsQuantity]);
 
   const productsCards = products.map(product => (
     <CartProductCard product={product} key={product.id} />
@@ -74,15 +76,15 @@ const Cart = () => {
             <S.CashSettlement>
               <S.Settlement>
                 <S.SettlementText>Price</S.SettlementText>
-                <S.SettlementText>${totalPrice}</S.SettlementText>
+                <S.SettlementText>${totalCartPrice}</S.SettlementText>
               </S.Settlement>
               <S.Settlement>
                 <S.SettlementText>Discount</S.SettlementText>
-                <S.SettlementText>- ${discount}</S.SettlementText>
+                <S.SettlementText>- ${cartDiscount}</S.SettlementText>
               </S.Settlement>
               <S.Settlement>
                 <S.TotalText>Total</S.TotalText>
-                <S.TotalText>${totalPrice - discount}</S.TotalText>
+                <S.TotalText>${totalCartPrice - cartDiscount}</S.TotalText>
               </S.Settlement>
             </S.CashSettlement>
             <S.UserEmail>

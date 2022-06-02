@@ -4,11 +4,13 @@ import Preloader from '../../components/Preloader/Preloader';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import * as S from './Membership.style';
+import * as membershipsSelectors from '../../redux/memberships/selectors';
 
 const Membership = () => {
   const { getMemberships } = useActions();
-  const { memberships, isFetching } = useTypedSelector(
-    state => state.memberships,
+  const memberships = useTypedSelector(membershipsSelectors.allMemberships);
+  const isMembershipsFetching = useTypedSelector(
+    membershipsSelectors.isFetching,
   );
 
   const membershipsCard = memberships.map(membership => (
@@ -24,7 +26,7 @@ const Membership = () => {
       <S.Container>
         <S.Title>Membership</S.Title>
         <S.MembershipList>
-          {isFetching ? <Preloader /> : membershipsCard}
+          {isMembershipsFetching ? <Preloader /> : membershipsCard}
         </S.MembershipList>
       </S.Container>
     </S.Membership>

@@ -14,11 +14,14 @@ import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { User } from '../../redux/user/types';
 import * as S from './SoundKit.style';
+import * as soundKitsSelectors from '../../redux/soundKits/selectors';
 
 const SoundKit = () => {
   const params = useParams();
-  const { soundKit } = useTypedSelector(state => state.soundKits);
+  const soundKit = useTypedSelector(soundKitsSelectors.soundKit);
   const { getSoundKit, pushNewSoundKitComment, updateSoundKit } = useActions();
+
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     getSoundKit(Number(params.id));
@@ -29,8 +32,6 @@ const SoundKit = () => {
       <Comment comment={comment} />
     </S.Comment>
   ));
-
-  const { user } = useContext(AuthContext);
 
   const onCommentSubmit = (values: CommentValues) => {
     if (user) {

@@ -4,10 +4,12 @@ import Preloader from '../../components/Preloader/Preloader';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import * as S from './Collabs.style';
+import * as collabsSelectors from '../../redux/collabs/selectors';
 
 const Collabs = () => {
   const { getAllCollabs } = useActions();
-  const { collabs, isFetching } = useTypedSelector(state => state.collabs);
+  const collabs = useTypedSelector(collabsSelectors.allCollabs);
+  const isCollabsFetching = useTypedSelector(collabsSelectors.isFetching);
 
   const collabsCards = collabs.map(collab => (
     <CollabCard collab={collab} key={collab.id} />
@@ -22,7 +24,7 @@ const Collabs = () => {
       <S.Container>
         <S.Title>Collabs</S.Title>
         <S.CollabsList>
-        {isFetching ? <Preloader /> : collabsCards}
+          {isCollabsFetching ? <Preloader /> : collabsCards}
         </S.CollabsList>
       </S.Container>
     </S.Collabs>
