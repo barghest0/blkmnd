@@ -2,6 +2,7 @@ import { FC, memo, useCallback, useEffect } from 'react';
 import PlayerContext from '../context/PlayerContext';
 import useTypedSelector from '../hooks/redux/useTypedDispatch';
 import useActions from '../hooks/useActions';
+import * as playerSelectors from '../redux/player/selectors';
 
 type Props = {
   children: React.ReactNode;
@@ -9,7 +10,7 @@ type Props = {
 };
 
 const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
-  const playerState = useTypedSelector(state => state.player);
+  const playerState = useTypedSelector(playerSelectors.fullState);
   const { beat: playerBeat, isPlaying, volume, nextBeat, isLoop } = playerState;
   const state = playerState;
 

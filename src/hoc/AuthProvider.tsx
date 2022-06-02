@@ -4,16 +4,19 @@ import useTypedSelector from '../hooks/redux/useTypedDispatch';
 import useActions from '../hooks/useActions';
 import { useEffect } from 'react';
 import { getToken } from '../shared/helpers/authHelper';
+import * as authSelectors from '../redux/auth/selectors';
 
 type Props = {
   children: React.ReactNode;
 };
 
 const AuthProvider: FC<Props> = ({ children }) => {
-  const { user, isAuth } = useTypedSelector(state => state.auth);
-  const authValues = { user, isAuth };
+  const isAuth = useTypedSelector(authSelectors.isAuth);
+  const user = useTypedSelector(authSelectors.user);
+  const token = useTypedSelector(authSelectors.token);
   const { autoLogin } = useActions();
-  const { token } = useTypedSelector(state => state.auth);
+
+  const authValues = { user, isAuth };
 
   useEffect(() => {
     if (token) {

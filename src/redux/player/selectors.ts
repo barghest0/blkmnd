@@ -1,5 +1,7 @@
 import { State } from '../types';
 
+const fullState = (state: State) => state.player;
+
 const state = (state: State) => ({
   isPlayerOpen: state.player.isOpen,
   isPlayerPlaying: state.player.isPlaying,
@@ -25,4 +27,4 @@ const beats = (state: State) => ({
   previousPlayerBeat: state.player.previousBeat,
 });
 
-export { controls, queue, isFetching, errors, beats, state };
+export { fullState, controls, queue, isFetching, errors, beats, state };
