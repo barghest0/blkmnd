@@ -14,6 +14,7 @@ const ChooseLicenseCard: FC<Props> = ({ license, beat }) => {
   const fileTypes = license.fileTypes.map(type => (
     <S.FileType key={type.id}>{type.name}</S.FileType>
   ));
+
   const [isOpen, setIsOpen] = useState(false);
 
   const { name, price } = license;

@@ -35,7 +35,9 @@ type PreloaderProps = {
 };
 
 const AuthModal = memo(() => {
-  const visabilities = useTypedSelector(modalsSelectors.visabilities);
+  const { authModalVisability } = useTypedSelector(
+    modalsSelectors.visabilities,
+  );
 
   const [form, setForm] = useState('register');
 
@@ -128,10 +130,10 @@ const AuthModal = memo(() => {
 
   return (
     <S.AuthModal>
-      <ModalContainer isOpen={visabilities.auth} modalType={ModalsTypes.auth}>
+      <ModalContainer isOpen={authModalVisability} modalType={ModalsTypes.auth}>
         <S.Modal>
           <Modal
-            isOpen={visabilities.auth}
+            isOpen={authModalVisability}
             title={form === 'register' ? 'Registration' : 'Authorization'}
             modalType={ModalsTypes.auth}
           >

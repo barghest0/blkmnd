@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useEffect, useState } from 'react';
+import { FC, memo, useContext, useEffect, useState } from 'react';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
@@ -19,7 +19,8 @@ import DurationSlider from '../DurationSlider/DurationSlider';
 import VolumeSlider from '../VolumeSlider/VolumeSlider';
 import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
 import QueueBeat from '../QueueBeat/QueueBeat';
-import useAudio from '../../hooks/useAudio';
+import * as playerSelectors from '../../redux/player/selectors';
+import PlayerContext from '../../context/PlayerContext';
 
 type PlayerProps = {
   isOpen: boolean;
@@ -31,7 +32,18 @@ type QueueBeatProps = {
 };
 
 const Player: FC = memo(() => {
-  const { isOpen, beat: playerBeat } = useTypedSelector(state => state.player);
+  const { isPlayerOpen } = useTypedSelector(playerSelectors.state);
+
+  const { audioShuffle, audioLoop } = useTypedSelector(
+    playerSelectors.controls,
+  );
+
+  const isPlayerBeatFeatching = useTypedSelector(playerSelectors.isFetching);
+
+  const queue = useTypedSelector(playerSelectors.queue);
+
+  const { currentPlayerBeat, nextPlayerBeat, previousPlayerBeat } =
+    useTypedSelector(playerSelectors.beats);
 
   const {
     getQueueBeats,
@@ -41,23 +53,18 @@ const Player: FC = memo(() => {
     toggleIsShuffle,
   } = useActions();
 
-  const { queue, isFetching, isLoop, isShuffle, nextBeat, previousBeat } =
-    useTypedSelector(state => state.player);
-
   const [isQueueListOpen, setIsQueueListOpen] = useState(false);
   const [queueBeats, setQueueBeats] = useState<Beat[]>([]);
 
-  const { setPlayerBeat, toggleAudioPlaying, setAudioLoop } = useAudio();
-
   const onQueueBeatClick = (beat: Beat) => {
-    togglePlaying(beat);
     setBeat(beat);
+    togglePlaying(beat);
   };
 
   const queueBeatsList = queueBeats.map(beat => (
     <S.QueueBeat
       key={beat.id}
-      isActive={beat.id === playerBeat?.id}
+      isActive={beat.id === currentPlayerBeat?.id}
       onClick={() => onQueueBeatClick(beat)}
     >
       <QueueBeat beat={beat} />
@@ -65,8 +72,8 @@ const Player: FC = memo(() => {
   ));
 
   const onPlayButtonClick = () => {
-    if (playerBeat) {
-      toggleAudioPlaying(playerBeat);
+    if (currentPlayerBeat) {
+      togglePlaying(currentPlayerBeat);
     }
   };
 
@@ -76,7 +83,6 @@ const Player: FC = memo(() => {
 
   const onLoopButtonClick = () => {
     toggleIsLoop();
-    setAudioLoop();
   };
 
   useEffect(() => {
@@ -84,14 +90,14 @@ const Player: FC = memo(() => {
   }, []);
 
   const onNextButtonClick = () => {
-    if (nextBeat) {
-      setPlayerBeat(nextBeat);
+    if (nextPlayerBeat) {
+      setBeat(nextPlayerBeat);
     }
   };
 
   const onPreviousButtonClick = () => {
-    if (previousBeat) {
-      setPlayerBeat(previousBeat);
+    if (previousPlayerBeat) {
+      setBeat(previousPlayerBeat);
     }
   };
 
@@ -101,30 +107,33 @@ const Player: FC = memo(() => {
   };
 
   return (
-    <S.Player isOpen={isOpen} isQueueListOpen={isQueueListOpen}>
+    <S.Player isOpen={isPlayerOpen} isQueueListOpen={isQueueListOpen}>
       <S.PlayerControls>
-        {!playerBeat ? (
+        {!currentPlayerBeat ? (
           <Preloader />
         ) : (
           <S.Beat>
-            <S.Thumbnail src={playerBeat.image} />
+            <S.Thumbnail src={currentPlayerBeat.image} />
             <S.BeatInfo>
               <S.Title>
-                <StyledLink to={`${RouterPaths.beats}/${playerBeat.id}`}>
-                  {playerBeat.title}
+                <StyledLink to={`${RouterPaths.beats}/${currentPlayerBeat.id}`}>
+                  {currentPlayerBeat.title}
                 </StyledLink>
               </S.Title>
-              <S.Musician>{playerBeat.musician.name}</S.Musician>
+              <S.Musician>{currentPlayerBeat.musician.name}</S.Musician>
             </S.BeatInfo>
             <S.Share>
               <ShareButton
                 color={'#e8e8e8'}
                 hasBackground={false}
-                beatId={playerBeat.id}
+                beatId={currentPlayerBeat.id}
               />
             </S.Share>
             <S.Buy>
-              <ChooseLicenseButton price={playerBeat.price} beat={playerBeat} />
+              <ChooseLicenseButton
+                price={currentPlayerBeat.price}
+                beat={currentPlayerBeat}
+              />
             </S.Buy>
           </S.Beat>
         )}
@@ -132,17 +141,17 @@ const Player: FC = memo(() => {
           <S.Loop onClick={onLoopButtonClick}>
             <RepeatIcon
               fontSize="small"
-              color={isLoop ? 'primary' : 'inherit'}
+              color={audioLoop ? 'primary' : 'inherit'}
             />
           </S.Loop>
           <S.PreviousBeat onClick={onPreviousButtonClick}>
             <SkipPreviousIcon />
           </S.PreviousBeat>
           <S.PlayButton onClick={onPlayButtonClick}>
-            {!playerBeat ? (
+            {!currentPlayerBeat ? (
               <Preloader />
             ) : (
-              <PlayButton currentBeat={playerBeat} />
+              <PlayButton currentBeat={currentPlayerBeat} />
             )}
           </S.PlayButton>
           <S.NextBeat onClick={onNextButtonClick}>
@@ -150,13 +159,13 @@ const Player: FC = memo(() => {
           </S.NextBeat>
           <S.Shuffle onClick={onShuffleButtonClick}>
             <ShuffleIcon
-              color={isShuffle ? 'primary' : 'inherit'}
+              color={audioShuffle ? 'primary' : 'inherit'}
               fontSize="small"
             />
           </S.Shuffle>
         </S.Controls>
         <S.Duration>
-          <DurationSlider currentBeat={playerBeat} />
+          <DurationSlider currentBeat={currentPlayerBeat} />
         </S.Duration>
         <S.Actions>
           <S.Volume>
@@ -168,7 +177,9 @@ const Player: FC = memo(() => {
           </S.Queue>
         </S.Actions>
       </S.PlayerControls>
-      <S.QueueList>{isFetching ? <Preloader /> : queueBeatsList}</S.QueueList>
+      <S.QueueList>
+        {isPlayerBeatFeatching ? <Preloader /> : queueBeatsList}
+      </S.QueueList>
     </S.Player>
   );
 });

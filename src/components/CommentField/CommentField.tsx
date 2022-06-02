@@ -1,6 +1,6 @@
 import { TextField } from '@mui/material';
 import { FormikHelpers, useFormik } from 'formik';
-import { FC, SyntheticEvent } from 'react';
+import { FC } from 'react';
 import commentValidation from '../../shared/formValidations/comment';
 import Button from '../Button/Button';
 import * as S from './CommentField.style';
@@ -36,16 +36,15 @@ const CommentField: FC<Props> = ({ onSubmit }) => {
     <S.CommentField onSubmit={formik.handleSubmit}>
       <S.Avatar alt={'avatar'} />
       <S.TextField>
-      <TextField
-        name="comment"
-        placeholder="Write a comment..."
-        onChange={formik.handleChange}
-        value={formik.values.comment}
-        error={formik.touched.comment && Boolean(formik.errors.comment)}
-        helperText={formik.touched.comment && formik.errors.comment}
-        variant="standard"
-      />
-
+        <TextField
+          name="comment"
+          placeholder="Write a comment..."
+          onChange={formik.handleChange}
+          value={formik.values.comment}
+          error={formik.touched.comment && Boolean(formik.errors.comment)}
+          helperText={formik.touched.comment && formik.errors.comment}
+          variant="standard"
+        />
       </S.TextField>
       <S.Submit>
         <Button type="submit">send</Button>

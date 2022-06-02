@@ -5,8 +5,8 @@ const allBeats = (state: State) => state.beats.beats;
 const isFetching = (state: State) => state.beats.isFetching;
 
 const separatedBeats = (state: State) => ({
-  featured: state.beats.featuredBeat,
-  common: state.beats.beat,
+  featuredBeat: state.beats.featuredBeat,
+  beat: state.beats.beat,
 });
 
 const errors = (state: State) => state.beats.errors;

@@ -1,19 +1,20 @@
 import { State } from '../types';
 
 const visabilities = (state: State) => ({
-  buy: state.modals.isBuyOpen,
-  share: state.modals.isShareOpen,
-  download: state.modals.isDownloadOpen,
-  terms: state.modals.isTermsOpen,
-  privacyPolicy: state.modals.isPrivacyPolicyOpen,
-  auth: state.modals.isAuthOpen,
+  buyModalVisability: state.modals.isBuyOpen,
+  shareModalVisability: state.modals.isShareOpen,
+  downloadModalVisability: state.modals.isDownloadOpen,
+  termsModalVisability: state.modals.isTermsOpen,
+  privacyPolicyModalVisability: state.modals.isPrivacyPolicyOpen,
+  licenseModalVisability: state.modals.isLicenseOpen,
+  authModalVisability: state.modals.isAuthOpen,
 });
 
 const details = (state: State) => ({
-  beat: state.modals.beat,
-  license: state.modals.license,
-  privacyPolicy: state.modals.privacyPolicy,
-  term: state.modals.term,
+  modalBeat: state.modals.beat,
+  modalLicense: state.modals.license,
+  modalPrivacyPolicy: state.modals.privacyPolicy,
+  modalTerm: state.modals.term,
 });
 
 const errors = (state: State) => state.modals.errors;

@@ -5,20 +5,28 @@ import Modal from '../Modal/Modal';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import Preloader from '../Preloader/Preloader';
 import * as S from './LicensesModal.style';
+import * as modalSelectors from '../../redux/modals/selectors';
+import * as licensesSelectors from '../../redux/licenses/selectors';
 
 const LicensesModal: FC = () => {
-  const { isLicenseOpen } = useTypedSelector(state => state.modals);
-  const { license } = useTypedSelector(state => state.licenses);
+  const { licenseModalVisability } = useTypedSelector(
+    modalSelectors.visabilities,
+  );
+
+  const license = useTypedSelector(licensesSelectors.license);
 
   return (
     <S.LicensesModal>
-      <ModalContainer isOpen={isLicenseOpen} modalType={ModalsTypes.license}>
+      <ModalContainer
+        isOpen={licenseModalVisability}
+        modalType={ModalsTypes.license}
+      >
         <S.Modal>
           {!license ? (
             <Preloader />
           ) : (
             <Modal
-              isOpen={isLicenseOpen}
+              isOpen={licenseModalVisability}
               title={`${license.name} license preview`}
               modalType={ModalsTypes.license}
             >

@@ -11,13 +11,13 @@ type Props = {
 };
 
 const BeatsList: FC<Props> = ({ beats }) => {
-  const playerBeats = useTypedSelector(playerSelecors.beats);
+  const { currentPlayerBeat } = useTypedSelector(playerSelecors.beats);
 
   const beatsRows = beats.map(beat => (
     <BeatsListRow
       key={beat.id}
       beat={beat}
-      isActive={beat.id === playerBeats.current?.id}
+      isActive={beat.id === currentPlayerBeat?.id}
     />
   ));
 

@@ -3,9 +3,9 @@ import { State } from '../types';
 const products = (state: State) => state.cart.products;
 
 const details = (state: State) => ({
-  quantity: state.cart.quantity,
-  totalPrice: state.cart.totalPrice,
-  discount: state.cart.discount,
+  productsQuantity: state.cart.quantity,
+  totalCartPrice: state.cart.totalPrice,
+  cartDiscount: state.cart.discount,
 });
 
 const errors = (state: State) => state.cart.errors;

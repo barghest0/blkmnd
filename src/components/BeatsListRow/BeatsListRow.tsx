@@ -1,5 +1,4 @@
 import { FC, SyntheticEvent } from 'react';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { Beat } from '../../redux/beats/types';
 import { RouterPaths } from '../../shared/router/types';
@@ -10,7 +9,6 @@ import Image from '../Image/Image';
 import ShareButton from '../ShareButton/ShareButton';
 import TagLink from '../TagLink/TagLink';
 import * as S from './BeatsListRow.style';
-import * as playerSelecors from '../../redux/player/selectors';
 
 type Props = {
   isActive: boolean;
@@ -26,12 +24,10 @@ const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
 
   const { openPlayer, setBeat, togglePlaying } = useActions();
 
-  const { beat: playerBeat } = useTypedSelector(state => state.player);
-
   const onBeatRowClick = () => {
     openPlayer();
     setBeat(beat);
-    togglePlaying(playerBeat);
+    togglePlaying(beat);
   };
 
   const onActionButtonClick = (event: SyntheticEvent) => {
