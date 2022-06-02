@@ -4,19 +4,20 @@ import * as S from './BeatsList.style';
 import { Beat } from '../../redux/beats/types';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import BeatsListRow from '../BeatsListRow/BeatsListRow';
+import * as playerSelecors from '../../redux/player/selectors';
 
 type Props = {
   beats: Beat[];
 };
 
 const BeatsList: FC<Props> = ({ beats }) => {
-  const { beat: playerBeat } = useTypedSelector(state => state.player);
+  const playerBeats = useTypedSelector(playerSelecors.beats);
 
   const beatsRows = beats.map(beat => (
     <BeatsListRow
       key={beat.id}
       beat={beat}
-      isActive={beat.id === playerBeat?.id}
+      isActive={beat.id === playerBeats.current?.id}
     />
   ));
 

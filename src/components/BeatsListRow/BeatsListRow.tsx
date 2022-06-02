@@ -10,6 +10,7 @@ import Image from '../Image/Image';
 import ShareButton from '../ShareButton/ShareButton';
 import TagLink from '../TagLink/TagLink';
 import * as S from './BeatsListRow.style';
+import * as playerSelecors from '../../redux/player/selectors';
 
 type Props = {
   isActive: boolean;
