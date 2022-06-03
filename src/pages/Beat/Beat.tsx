@@ -54,8 +54,8 @@ const Beat = () => {
   const onPlayButtonClick = () => {
     if (beat) {
       openPlayer();
-      setBeat(beat);
       togglePlaying(beat);
+      setBeat(beat);
     }
   };
 
