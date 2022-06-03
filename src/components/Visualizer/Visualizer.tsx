@@ -1,4 +1,4 @@
-import { FC, memo, useContext, useEffect, useRef } from 'react';
+import { FC, memo, useContext, useLayoutEffect, useRef } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import ThemeColors from '../../shared/styles/theme';
 import * as S from './Visualizer.style';
@@ -6,11 +6,18 @@ import VisualizerContext from '../../context/VisualizerContext';
 import * as playerSelectors from '../../redux/player/selectors';
 
 const Visualizer: FC = memo(() => {
+  const { currentPlayerBeat } = useTypedSelector(playerSelectors.beats);
   const { isPlayerPlaying } = useTypedSelector(playerSelectors.state);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvas = canvasRef.current;
 
+  let rafId: number;
+
   const { analyser, bufferLength, audioData } = useContext(VisualizerContext);
+
+  const stopVisualazerAnimate = () => {
+    cancelAnimationFrame(rafId);
+  };
 
   const animate = () => {
     let x = 0;
@@ -19,7 +26,6 @@ const Visualizer: FC = memo(() => {
       const context = canvas.getContext('2d');
       const barWidth = canvas.width / bufferLength;
       analyser.getByteFrequencyData(audioData);
-      console.log(123);
 
       if (context) {
         context.clearRect(0, 0, canvas.width, canvas.height);
@@ -33,13 +39,20 @@ const Visualizer: FC = memo(() => {
       }
     }
 
-    return requestAnimationFrame(animate);
+    rafId = requestAnimationFrame(animate);
   };
 
-  useEffect(() => {
-    const rafId = animate();
-    return () => cancelAnimationFrame(rafId);
-  }, [isPlayerPlaying]);
+  useLayoutEffect(() => {
+    animate();
+
+    if (!isPlayerPlaying) {
+      setTimeout(stopVisualazerAnimate, 500);
+    }
+
+    return () => {
+      setTimeout(stopVisualazerAnimate, 500);
+    };
+  }, [canvas, currentPlayerBeat, isPlayerPlaying]);
 
   return (
     <S.Visualizer>

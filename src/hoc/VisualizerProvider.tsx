@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import VisualizerContext from '../context/VisualizerContext';
 
 type Props = {
@@ -18,6 +18,13 @@ const VisualizerProvider: FC<Props> = ({ audio, children }) => {
   const bufferLength = analyser.frequencyBinCount;
 
   const audioData = new Uint8Array(bufferLength);
+
+  useEffect(() => {
+    return () => {
+      analyser.disconnect();
+      source.disconnect();
+    };
+  });
 
   return (
     <VisualizerContext.Provider
