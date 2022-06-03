@@ -24,13 +24,13 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
 
   const onThumbnailClick = () => {
     openPlayer();
-    setBeat(beat);
     togglePlaying(beat);
+    setBeat(beat);
   };
 
   const tagsLinks = tags.map(tag => (
     <S.Tag key={tag.id}>
-      <TagLink tag={tag}  />
+      <TagLink tag={tag} />
     </S.Tag>
   ));
 

@@ -20,8 +20,8 @@ const App = () => {
 
   return (
     <AuthProvider>
-      <PlayerProvider audio={audio}>
-        <VisualizerProvider audio={audio}>
+      <VisualizerProvider audio={audio}>
+        <PlayerProvider audio={audio}>
           <ThemeProvider theme={theme}>
             <S.App>
               <Router />
@@ -38,8 +38,8 @@ const App = () => {
               />
             </S.App>
           </ThemeProvider>
-        </VisualizerProvider>
-      </PlayerProvider>
+        </PlayerProvider>
+      </VisualizerProvider>
     </AuthProvider>
   );
 };

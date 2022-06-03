@@ -19,8 +19,8 @@ const DiscographyCard: FC<Props> = ({ beat }) => {
 
   const onThumbnailClick = () => {
     openPlayer();
-    setBeat(beat);
     togglePlaying(beat);
+    setBeat(beat);
   };
 
   return (

@@ -26,8 +26,8 @@ const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
 
   const onBeatRowClick = () => {
     openPlayer();
-    setBeat(beat);
     togglePlaying(beat);
+    setBeat(beat);
   };
 
   const onActionButtonClick = (event: SyntheticEvent) => {

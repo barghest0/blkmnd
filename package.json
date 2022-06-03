@@ -15,10 +15,7 @@
     "type": "git",
     "url": "git+https://github.com/barghest0/blkmnd.git"
   },
-  "keywords": [
-    "black",
-    "mind"
-  ],
+  "keywords": ["black", "mind"],
   "author": "",
   "license": "ISC",
   "bugs": {

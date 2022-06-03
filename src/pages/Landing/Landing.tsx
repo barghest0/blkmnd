@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from 'react';
+import { FC, memo, useContext, useEffect } from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import GroupIcon from '@mui/icons-material/Group';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -28,6 +28,7 @@ import * as discographySelectors from '../../redux/discography/selectors';
 import * as licensesSelectors from '../../redux/licenses/selectors';
 import * as soundKitsSelectors from '../../redux/soundKits/selectors';
 import * as collabsSelectors from '../../redux/collabs/selectors';
+import PlayerContext from '../../context/PlayerContext';
 
 const Landing: FC = memo(() => {
   const beats = useTypedSelector(beatsSelectors.allBeats);
@@ -49,6 +50,8 @@ const Landing: FC = memo(() => {
   const isCollabsFetching = useTypedSelector(collabsSelectors.isFetching);
 
   const { getDiscographyBeats } = useActions();
+
+  const { audio } = useContext(PlayerContext);
 
   const channel = {
     user: 'UCpi4NSNZrV3oBtgpdaEGeyw',
