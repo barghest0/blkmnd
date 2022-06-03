@@ -4,13 +4,15 @@ import Preloader from '../../components/Preloader/Preloader';
 import SoundKitCard from '../../components/SoundKitCard/SoundKitCard';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
+import * as soundKitsSelectors from '../../redux/soundKits/selectors';
 
 import * as S from './SoundKits.style';
 
 const SoundKits: FC = () => {
   const { getAllSoundKits } = useActions();
 
-  const { soundKits, isFetching } = useTypedSelector(state => state.soundKits);
+  const soundKits = useTypedSelector(soundKitsSelectors.allSoundKits);
+  const isSoundKitsFetching = useTypedSelector(soundKitsSelectors.isFetching);
 
   const soundKitsCards = soundKits.map(soundKit => (
     <SoundKitCard soundKit={soundKit} key={soundKit.id} />
@@ -25,7 +27,7 @@ const SoundKits: FC = () => {
       <S.Container>
         <S.Title>Sound Kits</S.Title>
         <S.SoundKitsList>
-          {isFetching ? <Preloader /> : soundKitsCards}
+          {isSoundKitsFetching ? <Preloader /> : soundKitsCards}
         </S.SoundKitsList>
       </S.Container>
     </S.SoundKits>

@@ -28,6 +28,7 @@ import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import { ModalsTypes } from '../../redux/modals/types';
 import AuthContext from '../../context/AuthContext';
+import * as cartSelectors from '../../redux/cart/selectors';
 
 type ProfileDropdownProps = {
   isOpen: boolean;
@@ -50,7 +51,9 @@ const Header = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
-  const { quantity, totalPrice } = useTypedSelector(state => state.cart);
+  const { productsQuantity, totalCartPrice } = useTypedSelector(
+    cartSelectors.details,
+  );
   const { setModalVisability, logout } = useActions();
 
   const { user, isAuth } = useContext(AuthContext);
@@ -99,12 +102,14 @@ const Header = () => {
         <StyledLink to={RouterPaths.cart}>
           <S.Cart>
             <S.CartIcon>
-              {quantity > 0 && (
-                <S.CartProductsQuantity>{quantity}</S.CartProductsQuantity>
+              {productsQuantity > 0 && (
+                <S.CartProductsQuantity>
+                  {productsQuantity}
+                </S.CartProductsQuantity>
               )}
               <ShoppingBagOutlinedIcon />
             </S.CartIcon>
-            <S.CartCost>${totalPrice.toFixed(2)}</S.CartCost>
+            <S.CartCost>${totalCartPrice.toFixed(2)}</S.CartCost>
           </S.Cart>
         </StyledLink>
         <S.Auth onClick={onProfileClick}>

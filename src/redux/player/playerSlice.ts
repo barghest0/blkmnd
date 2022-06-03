@@ -84,7 +84,7 @@ const playerSlice = createSlice({
   extraReducers: {
     [getQueueBeats.fulfilled.type]: (state, action: PayloadAction<Beat[]>) => {
       state.isFetching = false;
-      state.error = '';
+      state.errors = '';
       state.queue = action.payload;
     },
 
@@ -94,7 +94,7 @@ const playerSlice = createSlice({
 
     [getQueueBeats.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.errors = action.payload;
     },
   },
 });

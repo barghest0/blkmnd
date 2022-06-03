@@ -1,4 +1,4 @@
-import { use, useFormik } from 'formik';
+import { useFormik } from 'formik';
 import contactValidation from '../../shared/formValidations/contact';
 import Button from '../Button/Button';
 import * as S from './ContactForm.style';

@@ -9,10 +9,12 @@ import PlayButton from '../PlayButton/PlayButton';
 import ChooseLicenseCard from '../ChooseLicenseCard/ChooseLicenseCard';
 import Image from '../Image/Image';
 import useActions from '../../hooks/useActions';
+import * as modalsSelectors from '../../redux/modals/selectors';
+import * as beatsSelectors from '../../redux/beats/selectors';
 
 const BuyModal = () => {
-  const { isBuyOpen } = useTypedSelector(state => state.modals);
-  const { beat } = useTypedSelector(state => state.beats);
+  const { buyModalVisability } = useTypedSelector(modalsSelectors.visabilities);
+  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
 
   const licensesCards = beat?.licenses.map(license => (
     <ChooseLicenseCard license={license} beat={beat} key={license.id} />
@@ -30,13 +32,13 @@ const BuyModal = () => {
 
   return (
     <S.BuyModal>
-      <ModalContainer isOpen={isBuyOpen} modalType={ModalsTypes.buy}>
+      <ModalContainer isOpen={buyModalVisability} modalType={ModalsTypes.buy}>
         <S.Modal>
           {!beat ? (
             <Preloader />
           ) : (
             <Modal
-              isOpen={isBuyOpen}
+              isOpen={buyModalVisability}
               title={'Choose license type'}
               modalType={ModalsTypes.buy}
             >

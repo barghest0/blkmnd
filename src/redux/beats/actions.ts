@@ -15,7 +15,7 @@ import {
   GET_PREVIEW_BEATS_NAME,
   UPDATE_BEAT_NAME,
 } from './constants';
-import { Beat, FiltersState } from './types';
+import { FiltersState } from './types';
 
 const getPreviewBeats = createAsyncThunk(
   GET_PREVIEW_BEATS_NAME,

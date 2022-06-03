@@ -14,9 +14,15 @@ import GalleryImage from './images/gallery-image.jpg';
 import DiscographyCard from '../../components/DiscographyCard/DiscographyCard';
 import ScrollContainer from 'react-indiana-drag-scroll';
 
+import * as discographySelectors from '../../redux/discography/selectors';
+
 const About = () => {
   const { getDiscographyBeats } = useActions();
-  const { beats, isFetching } = useTypedSelector(state => state.discography);
+  const discographyBeats = useTypedSelector(discographySelectors.allBeats);
+
+  const isDiscographyFetching = useTypedSelector(
+    discographySelectors.isFetching,
+  );
 
   const gallery = [GalleryImage, GalleryImage, GalleryImage];
 
@@ -24,7 +30,7 @@ const About = () => {
     getDiscographyBeats();
   }, []);
 
-  const discographyCards = beats.map(beat => (
+  const discographyCards = discographyBeats.map(beat => (
     <DiscographyCard beat={beat} key={beat.id} />
   ));
 
@@ -59,7 +65,7 @@ const About = () => {
         <S.Discography>
           <ScrollContainer vertical={false}>
             <S.DiscographyList>
-              {isFetching ? <Preloader /> : discographyCards}
+              {isDiscographyFetching ? <Preloader /> : discographyCards}
             </S.DiscographyList>
           </ScrollContainer>
         </S.Discography>

@@ -27,6 +27,7 @@ const FilterMenu: FC<Props> = ({
       {text}
     </S.Option>
   ));
+
   return (
     <S.FilterMenu>
       <S.Dropdown

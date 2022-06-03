@@ -25,11 +25,13 @@ import Comment from '../../components/Comment/Comment';
 import format from 'date-fns/format';
 import { User } from '../../redux/user/types';
 import AuthContext from '../../context/AuthContext';
+import * as beatsSelectors from '../../redux/beats/selectors';
 
 const Beat = () => {
   const params = useParams();
 
-  const { beats, beat } = useTypedSelector(state => state.beats);
+  const beats = useTypedSelector(beatsSelectors.allBeats);
+  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
 
   const {
     getBeat,

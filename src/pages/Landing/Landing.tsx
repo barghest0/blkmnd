@@ -1,11 +1,9 @@
 import { FC, memo, useEffect } from 'react';
-
 import ScrollContainer from 'react-indiana-drag-scroll';
 import GroupIcon from '@mui/icons-material/Group';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-
 import Parser from 'html-react-parser';
 
 import * as S from './Landing.style';
@@ -25,22 +23,32 @@ import SoundKitCard from '../../components/SoundKitCard/SoundKitCard';
 import DiscographyCard from '../../components/DiscographyCard/DiscographyCard';
 import Button from '../../components/Button/Button';
 import useChannelContent from '../../hooks/useChannelContent';
+import * as beatsSelectors from '../../redux/beats/selectors';
+import * as discographySelectors from '../../redux/discography/selectors';
+import * as licensesSelectors from '../../redux/licenses/selectors';
+import * as soundKitsSelectors from '../../redux/soundKits/selectors';
+import * as collabsSelectors from '../../redux/collabs/selectors';
 
 const Landing: FC = memo(() => {
-  const { beats, isFetching } = useTypedSelector(state => state.beats);
-  const { beats: discographyBeats, isFetching: isDiscographyFetching } =
-    useTypedSelector(state => state.discography);
+  const beats = useTypedSelector(beatsSelectors.allBeats);
+  const isBeatsFetching = useTypedSelector(beatsSelectors.isFetching);
+  const { featuredBeat } = useTypedSelector(beatsSelectors.separatedBeats);
+
+  const licenses = useTypedSelector(licensesSelectors.allLicenses);
+  const isLicensesFetching = useTypedSelector(licensesSelectors.isFetching);
+
+  const discographyBeats = useTypedSelector(discographySelectors.allBeats);
+  const isDiscographyFetching = useTypedSelector(
+    discographySelectors.isFetching,
+  );
+
+  const soundKits = useTypedSelector(soundKitsSelectors.allSoundKits);
+  const isSoundKitsFetching = useTypedSelector(soundKitsSelectors.isFetching);
+
+  const collabs = useTypedSelector(collabsSelectors.allCollabs);
+  const isCollabsFetching = useTypedSelector(collabsSelectors.isFetching);
+
   const { getDiscographyBeats } = useActions();
-  const { featuredBeat } = useTypedSelector(state => state.beats);
-  const { licenses, isFetching: isLicensesFetching } = useTypedSelector(
-    state => state.licenses,
-  );
-  const { soundKits, isFetching: isSoundKitsFetching } = useTypedSelector(
-    state => state.soundKits,
-  );
-  const { collabs, isFetching: isCollabsFetching } = useTypedSelector(
-    state => state.collabs,
-  );
 
   const channel = {
     user: 'UCpi4NSNZrV3oBtgpdaEGeyw',
@@ -124,7 +132,7 @@ const Landing: FC = memo(() => {
       <S.Section>
         <S.Container>
           <S.BeatsList>
-            {isFetching ? <Preloader /> : <BeatsList beats={beats} />}
+            {isBeatsFetching ? <Preloader /> : <BeatsList beats={beats} />}
           </S.BeatsList>
           <S.DetailsButton>
             <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>

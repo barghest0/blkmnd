@@ -1,4 +1,5 @@
 import { FC, SyntheticEvent, useState } from 'react';
+import { Tab, Tabs } from '@mui/material';
 import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
@@ -11,11 +12,14 @@ import { ModalsTypes } from '../../redux/modals/types';
 import Modal from '../Modal/Modal';
 import Preloader from '../Preloader/Preloader';
 import ModalContainer from '../ModalContainer/ModalContainer';
-import { Tab, Tabs } from '@mui/material';
+import * as modalsSelectors from '../../redux/modals/selectors';
+import * as beatsSelectors from '../../redux/beats/selectors';
 
 const ShareModal: FC = () => {
-  const { isShareOpen } = useTypedSelector(state => state.modals);
-  const { beat } = useTypedSelector(state => state.beats);
+  const { shareModalVisability } = useTypedSelector(
+    modalsSelectors.visabilities,
+  );
+  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
   const [tab, setTab] = useState('share');
   const [copiedState, setCopiedState] = useState({
     value: '',
@@ -40,13 +44,16 @@ const ShareModal: FC = () => {
 
   return (
     <S.ShareModal>
-      <ModalContainer isOpen={isShareOpen} modalType={ModalsTypes.share}>
+      <ModalContainer
+        isOpen={shareModalVisability}
+        modalType={ModalsTypes.share}
+      >
         <S.Modal>
           {!beat ? (
             <Preloader />
           ) : (
             <Modal
-              isOpen={isShareOpen}
+              isOpen={shareModalVisability}
               title={`Share: ${beat.title}`}
               modalType={ModalsTypes.share}
             >

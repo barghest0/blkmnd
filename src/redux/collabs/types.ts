@@ -9,9 +9,9 @@ type Collab = {
 
 type CollabsState = {
   collabs: Collab[];
-  collab: Collab;
+  collab: Collab | null;
   isFetching: boolean;
-  error: string;
+  errors: string;
 };
 
 export { Collab, CollabsState };

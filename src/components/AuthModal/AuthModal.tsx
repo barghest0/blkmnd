@@ -15,6 +15,7 @@ import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import Preloader from '../Preloader/Preloader';
+import * as modalsSelectors from '../../redux/modals/selectors';
 import * as S from './AuthModal.style';
 
 const loginInitialValues = {
@@ -34,7 +35,9 @@ type PreloaderProps = {
 };
 
 const AuthModal = memo(() => {
-  const { isAuthOpen } = useTypedSelector(state => state.modals);
+  const { authModalVisability } = useTypedSelector(
+    modalsSelectors.visabilities,
+  );
 
   const [form, setForm] = useState('register');
 
@@ -127,10 +130,10 @@ const AuthModal = memo(() => {
 
   return (
     <S.AuthModal>
-      <ModalContainer isOpen={isAuthOpen} modalType={ModalsTypes.auth}>
+      <ModalContainer isOpen={authModalVisability} modalType={ModalsTypes.auth}>
         <S.Modal>
           <Modal
-            isOpen={isAuthOpen}
+            isOpen={authModalVisability}
             title={form === 'register' ? 'Registration' : 'Authorization'}
             modalType={ModalsTypes.auth}
           >

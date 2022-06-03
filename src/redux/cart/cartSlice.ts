@@ -11,7 +11,7 @@ const cartSlice = createSlice({
   extraReducers: {
     [getCart.fulfilled.type]: (state, action: PayloadAction<CartProduct[]>) => {
       state.isFetching = false;
-      state.error = '';
+      state.errors = '';
       state.products = action.payload;
       state.quantity = action.payload.length;
       state.totalPrice = action.payload.reduce(
@@ -26,7 +26,7 @@ const cartSlice = createSlice({
 
     [getCart.rejected.type]: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.errors = action.payload;
     },
 
     [addProductToCart.fulfilled.type]: (
@@ -34,7 +34,7 @@ const cartSlice = createSlice({
       action: PayloadAction<CartProduct>,
     ) => {
       state.isFetching = false;
-      state.error = '';
+      state.errors = '';
       state.quantity += 1;
       state.totalPrice += action.payload.price;
     },
@@ -48,12 +48,12 @@ const cartSlice = createSlice({
       action: PayloadAction<string>,
     ) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.errors = action.payload;
     },
 
     [deleteCartProduct.fulfilled.type]: state => {
       state.isFetching = false;
-      state.error = '';
+      state.errors = '';
       state.quantity -= 1;
     },
 
@@ -66,7 +66,7 @@ const cartSlice = createSlice({
       action: PayloadAction<string>,
     ) => {
       state.isFetching = false;
-      state.error = action.payload;
+      state.errors = action.payload;
     },
   },
 });

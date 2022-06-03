@@ -14,7 +14,7 @@ type SoundKitsState = {
   soundKits: SoundKit[];
   soundKit: SoundKit | null;
   isFetching: boolean;
-  error: string;
+  errors: string;
 };
 
 export { SoundKit, SoundKitsState };

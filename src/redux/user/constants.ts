@@ -4,7 +4,7 @@ const USER_SLICE_NAME = 'user';
 
 const USER_INITIAL_STATE: UserState = {
   user: null,
-  error: '',
+  errors: '',
 };
 
 const GET_USER_DATA_NAME = 'user/me';

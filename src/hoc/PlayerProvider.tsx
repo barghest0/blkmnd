@@ -2,6 +2,7 @@ import { FC, memo, useCallback, useEffect } from 'react';
 import PlayerContext from '../context/PlayerContext';
 import useTypedSelector from '../hooks/redux/useTypedDispatch';
 import useActions from '../hooks/useActions';
+import * as playerSelectors from '../redux/player/selectors';
 
 type Props = {
   children: React.ReactNode;
@@ -9,9 +10,12 @@ type Props = {
 };
 
 const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
-  const playerState = useTypedSelector(state => state.player);
-  const { beat: playerBeat, isPlaying, volume, nextBeat, isLoop } = playerState;
-  const state = playerState;
+  const playerState = useTypedSelector(playerSelectors.fullState);
+  const { currentPlayerBeat, nextPlayerBeat } = useTypedSelector(
+    playerSelectors.beats,
+  );
+  const { isPlayerPlaying } = useTypedSelector(playerSelectors.state);
+  const { audioVolume, audioLoop } = useTypedSelector(playerSelectors.controls);
 
   const { setCurrentTime, setDuration, setBeat } = useActions();
 
@@ -21,12 +25,12 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
 
   const onAudioDataLoad = useCallback(event => {
     setDuration(event.target.duration);
-    audio.volume = volume;
+    audio.volume = audioVolume;
   }, []);
 
   const onAudioEnded = () => {
-    if (nextBeat) {
-      setBeat(nextBeat);
+    if (nextPlayerBeat) {
+      setBeat(nextPlayerBeat);
     }
   };
 
@@ -43,29 +47,29 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
   }, []);
 
   useEffect(() => {
-    if (playerBeat) {
-      audio.src = playerBeat.track;
+    if (currentPlayerBeat) {
+      audio.src = currentPlayerBeat.track;
     }
-  }, [playerBeat]);
+  }, [currentPlayerBeat]);
 
   useEffect(() => {
-    if (isPlaying) {
+    if (isPlayerPlaying) {
       audio.play();
     } else {
       audio.pause();
     }
-  }, [isPlaying, playerBeat]);
+  }, [isPlayerPlaying, currentPlayerBeat]);
 
   useEffect(() => {
-    audio.volume = volume;
-  }, [volume]);
+    audio.volume = audioVolume;
+  }, [audioVolume]);
 
   useEffect(() => {
-    audio.loop = isLoop;
-  }, [isLoop]);
+    audio.loop = audioLoop;
+  }, [audioLoop]);
 
   return (
-    <PlayerContext.Provider value={{ state, audio }}>
+    <PlayerContext.Provider value={{ state: playerState, audio }}>
       {children}
     </PlayerContext.Provider>
   );

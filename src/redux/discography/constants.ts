@@ -1,11 +1,11 @@
-import {DiscographyState} from "./types";
+import { DiscographyState } from './types';
 
 const DISCORGAPHY_SLICE_NAME = 'discography';
 
-const DISCOGRAPHY_INITIAL_STATE:DiscographyState = {
+const DISCOGRAPHY_INITIAL_STATE: DiscographyState = {
   beats: [],
   isFetching: false,
-  error: '',
+  errors: '',
 };
 
 const GET_DISCOGRAPHY_BEATS = 'beats/discography';

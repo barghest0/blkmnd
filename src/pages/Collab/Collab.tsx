@@ -6,10 +6,11 @@ import ShareButton from '../../components/ShareButton/ShareButton';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import useActions from '../../hooks/useActions';
 import * as S from './Collab.style';
+import * as collabsSelectors from '../../redux/collabs/selectors';
 
 const Collab = () => {
   const params = useParams();
-  const { collab } = useTypedSelector(state => state.collabs);
+  const collab = useTypedSelector(collabsSelectors.collab);
   const { getCollab } = useActions();
 
   useEffect(() => {

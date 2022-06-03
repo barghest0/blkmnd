@@ -9,7 +9,7 @@ type User = {
 
 type UserState = {
   user: User | null;
-  error:string
+  errors: string;
 };
 
 export { User, UserState };

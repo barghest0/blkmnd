@@ -8,14 +8,11 @@ import { ModalsTypes } from '../../redux/modals/types';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import ModalContainer from '../ModalContainer/ModalContainer';
 import { useFormik } from 'formik';
-import {
-  FormControl,
-  Checkbox,
-  FormControlLabel,
-  FormHelperText,
-} from '@mui/material';
+import { FormControl, Checkbox, FormControlLabel } from '@mui/material';
 import Button from '../Button/Button';
 import downloadValidation from '../../shared/formValidations/download';
+import * as modalsSelectors from '../../redux/modals/selectors';
+import * as beatsSelectors from '../../redux/beats/selectors';
 
 type DownloadModalProps = {
   background?: string;
@@ -30,8 +27,10 @@ type DownloadValues = {
 };
 
 const DownloadModal: FC = () => {
-  const { isDownloadOpen } = useTypedSelector(state => state.modals);
-  const { beat } = useTypedSelector(state => state.beats);
+  const { downloadModalVisability } = useTypedSelector(
+    modalsSelectors.visabilities,
+  );
+  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
 
   const initialDownloadValues: DownloadValues = {
     email: '',
@@ -54,13 +53,16 @@ const DownloadModal: FC = () => {
 
   return (
     <S.DownloadModal>
-      <ModalContainer isOpen={isDownloadOpen} modalType={ModalsTypes.download}>
+      <ModalContainer
+        isOpen={downloadModalVisability}
+        modalType={ModalsTypes.download}
+      >
         <S.Modal background={beat?.image}>
           {!beat ? (
             <Preloader />
           ) : (
             <Modal
-              isOpen={isDownloadOpen}
+              isOpen={downloadModalVisability}
               title={`Download: ${beat.title}`}
               modalType={ModalsTypes.download}
             >

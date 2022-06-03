@@ -3,34 +3,33 @@ import useTypedSelector from '../../hooks/redux/useTypedDispatch';
 import ThemeColors from '../../shared/styles/theme';
 import * as S from './Visualizer.style';
 import VisualizerContext from '../../context/VisualizerContext';
+import * as playerSelectors from '../../redux/player/selectors';
 
 const Visualizer: FC = memo(() => {
-  const { isPlaying } = useTypedSelector(state => state.player);
+  const { isPlayerPlaying } = useTypedSelector(playerSelectors.state);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvas = canvasRef.current;
-  const canvasContext = canvasRef.current?.getContext('2d');
 
   const { analyser, bufferLength, audioData } = useContext(VisualizerContext);
 
   const animate = () => {
     let x = 0;
 
-    if (canvasContext && canvas) {
+    if (canvas) {
+      const context = canvas.getContext('2d');
       const barWidth = canvas.width / bufferLength;
-      canvasContext.clearRect(0, 0, canvas.width, canvas.height);
       analyser.getByteFrequencyData(audioData);
+      console.log(123);
 
-      for (let i = 0; i < bufferLength; i += 1) {
-        const barHeight = audioData[i] / 1.5;
-        canvasContext.fillStyle = ThemeColors.secondColor;
-        canvasContext.fillRect(
-          x,
-          canvas.height - barHeight,
-          barWidth,
-          barHeight,
-        );
+      if (context) {
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < bufferLength; i += 1) {
+          const barHeight = audioData[i] / 1.5;
+          context.fillStyle = ThemeColors.secondColor;
+          context.fillRect(x, canvas.height - barHeight, barWidth, barHeight);
 
-        x += barWidth + 1;
+          x += barWidth + 1;
+        }
       }
     }
 
@@ -40,7 +39,7 @@ const Visualizer: FC = memo(() => {
   useEffect(() => {
     const rafId = animate();
     return () => cancelAnimationFrame(rafId);
-  }, [isPlaying]);
+  }, [isPlayerPlaying]);
 
   return (
     <S.Visualizer>

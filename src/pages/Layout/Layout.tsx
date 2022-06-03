@@ -7,12 +7,7 @@ import Header from '../../components/Header/Header';
 import Player from '../../components/Player/Player';
 import * as S from './Layout.styles';
 import { memo, useEffect } from 'react';
-import DownloadModal from '../../components/DownloadModal/DownloadModal';
-import ShareModal from '../../components/ShareModal/ShareModal';
-import LicensesModal from '../../components/LicensesModal/LicensesModal';
-import BuyModal from '../../components/BuyModal/BuyModal';
 import useActions from '../../hooks/useActions';
-import AuthModal from '../../components/AuthModal/AuthModal';
 
 const Layout = memo(() => {
   const { getCart } = useActions();

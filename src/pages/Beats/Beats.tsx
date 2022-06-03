@@ -9,6 +9,7 @@ import Preloader from '../../components/Preloader/Preloader';
 import { useSearchParams } from 'react-router-dom';
 import FilterMenu from '../../components/FilterMenu/FilterMenu';
 import { SelectChangeEvent } from '@mui/material';
+import * as beatsSelectors from '../../redux/beats/selectors';
 
 type FilterValues = {
   genre: string;
@@ -20,7 +21,8 @@ type FilterValues = {
 
 const Beats = () => {
   const { getAllBeats, getFilteredBeats } = useActions();
-  const { beats, isFetching } = useTypedSelector(state => state.beats);
+  const beats = useTypedSelector(beatsSelectors.allBeats);
+  const isBeatsFetching = useTypedSelector(beatsSelectors.isFetching);
 
   const [filters, setFilters] = useSearchParams();
 
@@ -145,7 +147,7 @@ const Beats = () => {
           </SearchField>
         </S.SearchContainer>
         <S.BeatsList>
-          {isFetching ? <Preloader /> : <BeatsList beats={beats} />}
+          {isBeatsFetching ? <Preloader /> : <BeatsList beats={beats} />}
         </S.BeatsList>
       </S.Container>
     </S.Beats>

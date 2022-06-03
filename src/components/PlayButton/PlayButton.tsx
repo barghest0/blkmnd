@@ -1,6 +1,7 @@
 import { FC } from 'react';
 import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import { Beat } from '../../redux/beat/types';
+import { Beat } from '../../redux/beats/types';
+import * as playerSelectors from '../../redux/player/selectors';
 import * as S from './PlayButton.style';
 
 type Props = {
@@ -8,11 +9,12 @@ type Props = {
 };
 
 const PlayButton: FC<Props> = ({ currentBeat }) => {
-  const { isPlaying, beat } = useTypedSelector(state => state.player);
+  const { isPlayerPlaying } = useTypedSelector(playerSelectors.state);
+  const { currentPlayerBeat } = useTypedSelector(playerSelectors.beats);
 
   return (
     <S.PlayButton>
-      {beat?.id === currentBeat.id && isPlaying ? (
+      {currentPlayerBeat?.id === currentBeat.id && isPlayerPlaying ? (
         <S.PauseIcon className={'override'} />
       ) : (
         <S.PlayIcon className={'override'} />

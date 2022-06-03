@@ -4,7 +4,7 @@ type LicenseState = {
   licenses: License[];
   license: License | null;
   isFetching: boolean;
-  error: string;
+  errors: string;
 };
 
 export { LicenseState };

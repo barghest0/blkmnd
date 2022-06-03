@@ -2,13 +2,13 @@ type Membership = {
   id: number;
   title: string;
   price: number;
-  details: number;
+  details: string;
 };
 
 type MembershipsState = {
   memberships: Membership[];
   isFetching: boolean;
-  error: string;
+  errors: string;
 };
 
 export { Membership, MembershipsState };
