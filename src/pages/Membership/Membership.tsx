@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
-import MembershipCard from '../../components/MembershipCard/MembershipCard';
-import Preloader from '../../components/Preloader/Preloader';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
+
+import MembershipCard from 'components/MembershipCard/MembershipCard';
+import Preloader from 'components/Preloader/Preloader';
+import useActions from 'hooks/useActions';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import * as membershipsSelectors from 'reduxStore/memberships/selectors';
+
 import * as S from './Membership.style';
-import * as membershipsSelectors from '../../redux/memberships/selectors';
 
 const Membership = () => {
   const { getMemberships } = useActions();

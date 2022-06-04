@@ -10,11 +10,10 @@ import Preloader from 'components/Preloader/Preloader';
 import DiscographyCard from 'components/DiscographyCard/DiscographyCard';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import useActions from 'hooks/useActions';
+import * as discographySelectors from 'reduxStore/discography/selectors';
 
 import * as S from './About.style';
 import GalleryImage from './images/gallery-image.jpg';
-
-import * as discographySelectors from 'reduxStore/discography/selectors';
 
 const About = () => {
   const { getDiscographyBeats } = useActions();

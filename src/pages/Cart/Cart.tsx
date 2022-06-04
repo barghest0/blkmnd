@@ -1,14 +1,16 @@
 import { useEffect } from 'react';
 import { useFormik } from 'formik';
-import CartProductCard from '../../components/CartProductCard/CartProductCard';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
-import * as S from './Cart.style';
 import { Checkbox, FormControlLabel, TextField } from '@mui/material';
-import { StyledLink } from '../../shared/styles/links';
-import { RouterPaths } from '../../shared/router/types';
-import Button from '../../components/Button/Button';
-import * as cartSelectors from '../../redux/cart/selectors';
+
+import CartProductCard from 'components/CartProductCard/CartProductCard';
+import Button from 'components/Button/Button';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
+import { StyledLink } from 'shared/styles/links';
+import { RouterPaths } from 'shared/router/types';
+import * as cartSelectors from 'reduxStore/cart/selectors';
+
+import * as S from './Cart.style';
 
 type PaymentValues = {
   hasCoupon: boolean;

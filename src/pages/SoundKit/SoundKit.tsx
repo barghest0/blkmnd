@@ -1,20 +1,22 @@
 import { format } from 'date-fns';
 import { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import BuyButton from '../../components/BuyButton/BuyButton';
-import Comment from '../../components/Comment/Comment';
+
+import BuyButton from 'components/BuyButton/BuyButton';
+import Comment from 'components/Comment/Comment';
 import CommentField, {
   CommentValues,
-} from '../../components/CommentField/CommentField';
-import DownloadButton from '../../components/DownloadButton/DownloadButton';
-import Preloader from '../../components/Preloader/Preloader';
-import ShareButton from '../../components/ShareButton/ShareButton';
-import AuthContext from '../../context/AuthContext';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
-import { User } from '../../redux/user/types';
+} from 'components/CommentField/CommentField';
+import DownloadButton from 'components/DownloadButton/DownloadButton';
+import Preloader from 'components/Preloader/Preloader';
+import ShareButton from 'components/ShareButton/ShareButton';
+import AuthContext from 'contexts/AuthContext';
+import useActions from 'hooks/useActions';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import { User } from 'reduxStore/user/types';
+import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
+
 import * as S from './SoundKit.style';
-import * as soundKitsSelectors from '../../redux/soundKits/selectors';
 
 const SoundKit = () => {
   const params = useParams();

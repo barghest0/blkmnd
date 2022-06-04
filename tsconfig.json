@@ -10,7 +10,9 @@
     "baseUrl": ".",
     "paths": {
       "*": ["./src/*"],
-      "reduxStore/*": ["./src/redux/*"]
+      "reduxStore/*": ["./src/redux/*"],
+      "contexts/*": ["./src/context/*"],
+      "hocs/*": ["./src/hoc/*"]
     }
   }
 }

@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
-import * as S from './Beats.style';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
-import BeatsList from '../../components/BeatsList/BeatsList';
-import { useFormik } from 'formik';
-import SearchField from '../../components/SearchField/SearchField';
-import Preloader from '../../components/Preloader/Preloader';
-import { useSearchParams } from 'react-router-dom';
-import FilterMenu from '../../components/FilterMenu/FilterMenu';
 import { SelectChangeEvent } from '@mui/material';
-import * as beatsSelectors from '../../redux/beats/selectors';
+import { useFormik } from 'formik';
+
+import BeatsList from 'components/BeatsList/BeatsList';
+import SearchField from 'components/SearchField/SearchField';
+import Preloader from 'components/Preloader/Preloader';
+import { useSearchParams } from 'react-router-dom';
+import FilterMenu from 'components/FilterMenu/FilterMenu';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
+import * as beatsSelectors from 'reduxStore/beats/selectors';
+
+import * as S from './Beats.style';
 
 type FilterValues = {
   genre: string;

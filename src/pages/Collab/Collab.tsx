@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import BuyButton from '../../components/BuyButton/BuyButton';
-import Preloader from '../../components/Preloader/Preloader';
-import ShareButton from '../../components/ShareButton/ShareButton';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
+
+import BuyButton from 'components/BuyButton/BuyButton';
+import Preloader from 'components/Preloader/Preloader';
+import ShareButton from 'components/ShareButton/ShareButton';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
+import * as collabsSelectors from 'reduxStore/collabs/selectors';
+
 import * as S from './Collab.style';
-import * as collabsSelectors from '../../redux/collabs/selectors';
 
 const Collab = () => {
   const params = useParams();

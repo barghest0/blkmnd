@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
-import CollabCard from '../../components/CollabCard/CollabCard';
-import Preloader from '../../components/Preloader/Preloader';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
+
+import CollabCard from 'components/CollabCard/CollabCard';
+import Preloader from 'components/Preloader/Preloader';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
+import * as collabsSelectors from 'reduxStore/collabs/selectors';
+
 import * as S from './Collabs.style';
-import * as collabsSelectors from '../../redux/collabs/selectors';
 
 const Collabs = () => {
   const { getAllCollabs } = useActions();

@@ -1,11 +1,13 @@
 import { useFormik } from 'formik';
-import Button from '../../components/Button/Button';
+
+import Button from 'components/Button/Button';
 import {
   profileInfoValidation,
   profilePasswordValidation,
-} from '../../shared/formValidations/profile';
-import { RouterPaths } from '../../shared/router/types';
-import { ButtonLink } from '../../shared/styles/links';
+} from 'shared/formValidations/profile';
+import { RouterPaths } from 'shared/router/types';
+import { ButtonLink } from 'shared/styles/links';
+
 import * as S from './Profile.style';
 
 type InfoValues = {

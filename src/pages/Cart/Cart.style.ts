@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { breakpoint } from '../../shared/styles/breakpoints';
-import { container, page, pageTitle } from '../../shared/styles/mixins';
-import ThemeColors from '../../shared/styles/theme';
+
+import { breakpoint } from 'shared/styles/breakpoints';
+import { container, page, pageTitle } from 'shared/styles/mixins';
+import ThemeColors from 'shared/styles/theme';
 
 const Cart = styled.div`
   ${page}
