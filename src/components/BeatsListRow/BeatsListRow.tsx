@@ -1,13 +1,15 @@
 import { FC, SyntheticEvent } from 'react';
-import useActions from '../../hooks/useActions';
-import { Beat } from '../../redux/beats/types';
-import { RouterPaths } from '../../shared/router/types';
-import { StyledLink } from '../../shared/styles/links';
-import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
-import DownloadButton from '../DownloadButton/DownloadButton';
-import Image from '../Image/Image';
-import ShareButton from '../ShareButton/ShareButton';
-import TagLink from '../TagLink/TagLink';
+
+import ChooseLicenseButton from 'components/ChooseLicenseButton/ChooseLicenseButton';
+import DownloadButton from 'components/DownloadButton/DownloadButton';
+import Image from 'components/Image/Image';
+import ShareButton from 'components/ShareButton/ShareButton';
+import TagLink from 'components/TagLink/TagLink';
+import { RouterPaths } from 'shared/router/types';
+import { StyledLink } from 'shared/styles/links';
+import useActions from 'hooks/useActions';
+import { Beat } from 'reduxStore/beats/types';
+
 import * as S from './BeatsListRow.style';
 
 type Props = {

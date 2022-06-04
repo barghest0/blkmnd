@@ -1,5 +1,7 @@
 import { FC } from 'react';
-import useImagePreloader from '../../hooks/useImagePreloader';
+
+import useImagePreloader from 'hooks/useImagePreloader';
+
 import * as S from './Image.style';
 
 type Props = {

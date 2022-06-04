@@ -1,4 +1,4 @@
-import { FC, memo, useContext, useEffect, useState } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
@@ -6,21 +6,21 @@ import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
 import SkipPreviousIcon from '@mui/icons-material/SkipPrevious';
 import SkipNextIcon from '@mui/icons-material/SkipNext';
 
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
-import { Beat } from '../../redux/beats/types';
-import { RouterPaths } from '../../shared/router/types';
-import { StyledLink } from '../../shared/styles/links';
-import PlayButton from '../PlayButton/PlayButton';
-import Preloader from '../Preloader/Preloader';
-import ShareButton from '../ShareButton/ShareButton';
+import PlayButton from 'components/PlayButton/PlayButton';
+import Preloader from 'components/Preloader/Preloader';
+import ShareButton from 'components/ShareButton/ShareButton';
+import DurationSlider from 'components/DurationSlider/DurationSlider';
+import VolumeSlider from 'components/VolumeSlider/VolumeSlider';
+import ChooseLicenseButton from 'components/ChooseLicenseButton/ChooseLicenseButton';
+import QueueBeat from 'components/QueueBeat/QueueBeat';
+import useActions from 'hooks/useActions';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import { RouterPaths } from 'shared/router/types';
+import { StyledLink } from 'shared/styles/links';
+import { Beat } from 'reduxStore/beats/types';
+import * as playerSelectors from 'reduxStore/player/selectors';
+
 import * as S from './Player.style';
-import DurationSlider from '../DurationSlider/DurationSlider';
-import VolumeSlider from '../VolumeSlider/VolumeSlider';
-import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
-import QueueBeat from '../QueueBeat/QueueBeat';
-import * as playerSelectors from '../../redux/player/selectors';
-import PlayerContext from '../../context/PlayerContext';
 
 type PlayerProps = {
   isOpen: boolean;

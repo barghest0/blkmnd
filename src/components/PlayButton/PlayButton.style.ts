@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PauseSharpIcon from '@mui/icons-material/PauseSharp';
+
 import ThemeColors from '../../shared/styles/theme';
 
 const PlayButton = styled.div`

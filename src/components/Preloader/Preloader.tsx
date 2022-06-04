@@ -1,5 +1,5 @@
-import * as S from './Preloader.style';
 import PreloaderCircle from './images/preloader.svg';
+import * as S from './Preloader.style';
 
 const Preloader = () => {
   return (

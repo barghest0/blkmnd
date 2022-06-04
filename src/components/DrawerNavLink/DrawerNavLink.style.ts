@@ -1,6 +1,7 @@
 import { styled as MUIstyled } from '@mui/material';
-import { StyledNavLink } from '../../shared/styles/links';
-import ThemeColors from '../../shared/styles/theme';
+
+import { StyledNavLink } from 'shared/styles/links';
+import ThemeColors from 'shared/styles/theme';
 
 const DrawerNavLink = MUIstyled(StyledNavLink)({
   '&.active': {

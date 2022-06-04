@@ -1,10 +1,12 @@
-import { RouterPaths } from '../../shared/router/types';
-import { StyledLink } from '../../shared/styles/links';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 import InstagramIcon from '@mui/icons-material/Instagram';
+
+import { RouterPaths } from 'shared/router/types';
+import { StyledLink } from 'shared/styles/links';
+import ThemeColors from 'shared/styles/theme';
+
 import * as S from './Footer.style';
-import ThemeColors from '../../shared/styles/theme';
 
 const Footer = () => {
   return (

@@ -2,20 +2,22 @@ import { TextField } from '@mui/material';
 import { useFormik, FormikHelpers } from 'formik';
 import { memo, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
-import { LoginValues, RegisterValues } from '../../redux/auth/types';
-import { ModalsTypes } from '../../redux/modals/types';
+
+import Button from 'components/Button/Button';
+import Modal from 'components/Modal/Modal';
+import ModalContainer from 'components/ModalContainer/ModalContainer';
+import Preloader from 'components/Preloader/Preloader';
+import useActions from 'hooks/useActions';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import { LoginValues, RegisterValues } from 'reduxStore/auth/types';
+import { ModalsTypes } from 'reduxStore/modals/types';
+import * as modalsSelectors from 'reduxStore/modals/selectors';
 import {
   registerFormValidation,
   loginFormValidation,
-} from '../../shared/formValidations/auth';
-import { ToastTextRow, ToastTextContainer } from '../../shared/styles/toast';
-import Button from '../Button/Button';
-import Modal from '../Modal/Modal';
-import ModalContainer from '../ModalContainer/ModalContainer';
-import Preloader from '../Preloader/Preloader';
-import * as modalsSelectors from '../../redux/modals/selectors';
+} from 'shared/formValidations/auth';
+import { ToastTextRow, ToastTextContainer } from 'shared/styles/toast';
+
 import * as S from './AuthModal.style';
 
 const loginInitialValues = {

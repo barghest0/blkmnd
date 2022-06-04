@@ -5,8 +5,10 @@ import {
   styled as MUIstyled,
   TextField,
 } from '@mui/material';
+
+import ThemeColors from 'shared/styles/theme';
+
 import { DownloadModalProps } from './DownloadModal';
-import ThemeColors from '../../shared/styles/theme';
 
 const DownloadModal = styled.div``;
 

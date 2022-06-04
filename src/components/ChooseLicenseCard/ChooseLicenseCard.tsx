@@ -1,9 +1,11 @@
+import { FC, useState } from 'react';
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import ArrowForwardIosSharpIcon from '@mui/icons-material/ArrowForwardIosSharp';
-import { FC, useState } from 'react';
-import { License, Beat } from '../../redux/beats/types';
+
+import BuyButton from 'components/BuyButton/BuyButton';
+import { License, Beat } from 'reduxStore/beats/types';
+
 import * as S from './ChooseLicenseCard.style';
-import BuyButton from '../BuyButton/BuyButton';
 
 type Props = {
   license: License;

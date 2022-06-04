@@ -1,13 +1,13 @@
-import { ShareOutlined } from '@mui/icons-material';
 import { FC, ReactNode } from 'react';
+import { ShareOutlined } from '@mui/icons-material';
+
+import Button from 'components/Button/Button';
+import { ButtonThemes } from 'components/Button/types';
+import useActions from 'hooks/useActions';
+import { ModalsTypes } from 'reduxStore/modals/types';
+import { CartProductDetails } from 'reduxStore/cart/types';
 
 import * as S from './ShareButton.style';
-
-import Button from '../Button/Button';
-import { ButtonThemes } from '../Button/types';
-import useActions from '../../hooks/useActions';
-import { ModalsTypes } from '../../redux/modals/types';
-import { CartProductDetails } from '../../redux/cart/types';
 
 type Props = {
   hasBackground?: boolean;

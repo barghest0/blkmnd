@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import useActions from '../../hooks/useActions';
-import { License } from '../../redux/beats/types';
-import { CartProductDetails } from '../../redux/cart/types';
-import { ModalsTypes } from '../../redux/modals/types';
-import Button from '../Button/Button';
+
+import Button from 'components/Button/Button';
+import useActions from 'hooks/useActions';
+import { License } from 'reduxStore/beats/types';
+import { CartProductDetails } from 'reduxStore/cart/types';
+import { ModalsTypes } from 'reduxStore/modals/types';
+
 import * as S from './BuyButton.style';
 
 type Props = {

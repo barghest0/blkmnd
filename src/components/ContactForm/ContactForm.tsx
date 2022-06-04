@@ -1,6 +1,8 @@
 import { useFormik } from 'formik';
-import contactValidation from '../../shared/formValidations/contact';
-import Button from '../Button/Button';
+
+import Button from 'components/Button/Button';
+import contactValidation from 'shared/formValidations/contact';
+
 import * as S from './ContactForm.style';
 
 type FormValues = {

@@ -1,12 +1,14 @@
 import { FC } from 'react';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import { ModalsTypes } from '../../redux/modals/types';
-import Modal from '../Modal/Modal';
-import ModalContainer from '../ModalContainer/ModalContainer';
-import Preloader from '../Preloader/Preloader';
+
+import Modal from 'components/Modal/Modal';
+import ModalContainer from 'components/ModalContainer/ModalContainer';
+import Preloader from 'components/Preloader/Preloader';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import * as modalSelectors from 'reduxStore/modals/selectors';
+import { ModalsTypes } from 'reduxStore/modals/types';
+import * as licensesSelectors from 'reduxStore/licenses/selectors';
+
 import * as S from './LicensesModal.style';
-import * as modalSelectors from '../../redux/modals/selectors';
-import * as licensesSelectors from '../../redux/licenses/selectors';
 
 const LicensesModal: FC = () => {
   const { licenseModalVisability } = useTypedSelector(

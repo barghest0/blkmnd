@@ -1,10 +1,10 @@
 import styled, { css } from 'styled-components';
 
+import ThemeColors from 'shared/styles/theme';
+import { button } from 'shared/styles/mixins';
+
 import { Props } from './Button';
 import { ButtonThemes } from './types';
-
-import ThemeColors from '../../shared/styles/theme';
-import { button } from '../../shared/styles/mixins';
 
 const Button = styled.button<Props>`
   ${({ theme, hasBackground }) => {

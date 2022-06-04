@@ -1,8 +1,10 @@
-import { TextField } from '@mui/material';
-import { FormikHelpers, useFormik } from 'formik';
 import { FC } from 'react';
-import commentValidation from '../../shared/formValidations/comment';
-import Button from '../Button/Button';
+import { FormikHelpers, useFormik } from 'formik';
+import { TextField } from '@mui/material';
+
+import Button from 'components/Button/Button';
+import commentValidation from 'shared/formValidations/comment';
+
 import * as S from './CommentField.style';
 
 type CommentValues = {

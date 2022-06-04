@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { StyledNavLink } from '../../shared/styles/links';
-import ThemeColors from '../../shared/styles/theme';
+
+import { StyledNavLink } from 'shared/styles/links';
+import ThemeColors from 'shared/styles/theme';
 
 const HeaderNavLink = styled(StyledNavLink)`
   ::after {

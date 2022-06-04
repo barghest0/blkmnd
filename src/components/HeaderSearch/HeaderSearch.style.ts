@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
+
+import ThemeColors from 'shared/styles/theme';
+
 import { SearchProps } from './HeaderSearch';
-import ThemeColors from '../../shared/styles/theme';
-import { breakpoint } from '../../shared/styles/breakpoints';
 
 const HeaderSearch = styled.div`
   display: flex;

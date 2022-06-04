@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { breakpoint } from '../../shared/styles/breakpoints';
+
+import { breakpoint } from 'shared/styles/breakpoints';
 
 const FeaturedBeat = styled.div`
   display: grid;

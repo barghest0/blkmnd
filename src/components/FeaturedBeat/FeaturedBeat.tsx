@@ -1,17 +1,17 @@
-import { FC, memo, useCallback } from 'react';
+import { FC, memo } from 'react';
+
+import TagLink from 'components/TagLink/TagLink';
+import PlayButton from 'components/PlayButton/PlayButton';
+import Image from 'components/Image/Image';
+import ChooseLicenseButton from 'components/ChooseLicenseButton/ChooseLicenseButton';
+import DownloadButton from 'components/DownloadButton/DownloadButton';
+import ShareButton from 'components/ShareButton/ShareButton';
+import { StyledLink } from 'shared/styles/links';
+import { RouterPaths } from 'shared/router/types';
+import useActions from 'hooks/useActions';
+import { Beat } from 'reduxStore/beats/types';
 
 import * as S from './FeaturedBeat.style';
-
-import TagLink from '../TagLink/TagLink';
-import { StyledLink } from '../../shared/styles/links';
-import { RouterPaths } from '../../shared/router/types';
-import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
-import DownloadButton from '../DownloadButton/DownloadButton';
-import ShareButton from '../ShareButton/ShareButton';
-import { Beat } from '../../redux/beats/types';
-import useActions from '../../hooks/useActions';
-import PlayButton from '../PlayButton/PlayButton';
-import Image from '../Image/Image';
 
 type Props = {
   beat: Beat;

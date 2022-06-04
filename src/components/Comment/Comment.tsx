@@ -1,5 +1,7 @@
-import { Comment as CommentType } from '../../redux/beats/types';
 import { FC } from 'react';
+
+import { Comment as CommentType } from 'reduxStore/beats/types';
+
 import * as S from './Comment.style';
 
 type Props = {

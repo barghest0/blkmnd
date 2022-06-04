@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import { Tag } from '../../redux/beats/types';
-import { RouterPaths } from '../../shared/router/types';
-import { StyledLink } from '../../shared/styles/links';
+
+import { Tag } from 'reduxStore/beats/types';
+import { RouterPaths } from 'shared/router/types';
+import { StyledLink } from 'shared/styles/links';
+
 import * as S from './TagLink.style';
 
 type Props = {

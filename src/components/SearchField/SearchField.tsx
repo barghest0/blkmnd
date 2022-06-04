@@ -1,9 +1,11 @@
 import { cloneElement, FC, SyntheticEvent } from 'react';
 import { useFormik } from 'formik';
-import * as S from './SearchField.styles';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { RouterPaths } from '../../shared/router/types';
-import useActions from '../../hooks/useActions';
+
+import { RouterPaths } from 'shared/router/types';
+import useActions from 'hooks/useActions';
+
+import * as S from './SearchField.styles';
 
 type QueryInitialValues = {
   query: string;

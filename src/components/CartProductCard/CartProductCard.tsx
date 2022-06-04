@@ -1,11 +1,11 @@
 import { FC } from 'react';
-
 import CloseIcon from '@mui/icons-material/Close';
 
-import useActions from '../../hooks/useActions';
-import { CartProduct } from '../../redux/cart/types';
+import useActions from 'hooks/useActions';
+import { CartProduct } from 'reduxStore/cart/types';
+import Preloader from 'components/Preloader/Preloader';
+
 import * as S from './CartProductCard.style';
-import Preloader from '../Preloader/Preloader';
 
 type Props = {
   product: CartProduct;

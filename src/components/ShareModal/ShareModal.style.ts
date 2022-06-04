@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { styled as MUIstyled, TextField } from '@mui/material';
-import ThemeColors from '../../shared/styles/theme';
+
+import ThemeColors from 'shared/styles/theme';
 
 const ShareModal = styled.div``;
 

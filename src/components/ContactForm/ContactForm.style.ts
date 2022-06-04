@@ -1,6 +1,5 @@
-import { styled as MUIstyled } from '@mui/material';
-import { TextField as MUITextField } from '@mui/material';
 import styled from 'styled-components';
+import { styled as MUIstyled, TextField as MUITextField } from '@mui/material';
 
 const ContactForm = styled.form`
   display: flex;

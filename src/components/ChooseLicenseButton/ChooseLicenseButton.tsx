@@ -1,8 +1,9 @@
 import { FC } from 'react';
-import useActions from '../../hooks/useActions';
-import { Beat } from '../../redux/beats/types';
-import { ModalsTypes } from '../../redux/modals/types';
-import Button from '../Button/Button';
+
+import Button from 'components/Button/Button';
+import { Beat } from 'reduxStore/beats/types';
+import { ModalsTypes } from 'reduxStore/modals/types';
+import useActions from 'hooks/useActions';
 
 import * as S from './ChooseLicenseButton.style';
 

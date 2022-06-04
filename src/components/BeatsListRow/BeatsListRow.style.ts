@@ -1,7 +1,9 @@
 import styled, { css } from 'styled-components';
-import { breakpoint } from '../../shared/styles/breakpoints';
-import { textOverflow } from '../../shared/styles/mixins';
-import ThemeColors from '../../shared/styles/theme';
+
+import { breakpoint } from 'shared/styles/breakpoints';
+import { textOverflow } from 'shared/styles/mixins';
+import ThemeColors from 'shared/styles/theme';
+
 import { RowProps } from './BeatsListRow';
 
 const BeatsListRow = styled.div<RowProps>`
