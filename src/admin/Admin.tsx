@@ -2,18 +2,18 @@ import { Admin as ReactAdmin, RaThemeOptions, Resource } from 'react-admin';
 import { defaultTheme } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 
-import BeatCreate from './components/BeatForms/BeatCreate/BeatCreate';
-import BeatUpdate from './components/BeatForms/BeatUpdate/BeatUpdate';
-import SoundKitsList from './components/Lists/SoundKitsList/SoundKitsList';
-import BeatsList from './components/Lists/BeatsList/BeatsList';
-import LicensesList from './components/Lists/LicensesList/LicensesList';
-import SoundKitCreate from './components/SoundKitForms/SoundKitCreate/SoundKitCreate';
-import SoundKitUpdate from './components/SoundKitForms/SoundKitUpdate/SoundKitUpdate';
-import ServicesList from './components/Lists/ServicesList/ServicesList';
-import ServiceCreate from './components/ServiceForms/ServiceCreate/ServiceCreate';
-import ServiceUpdate from './components/ServiceForms/ServiceUpdate/ServiceUpdate';
-import LicenseCreate from './components/LicensesForms/LicenseCreate/LicenseCreate';
-import LicenseUpdate from './components/LicensesForms/LicenseUpdate/LicenseUpdate';
+import BeatCreate from 'adminComponents/BeatForms/BeatCreate/BeatCreate';
+import BeatUpdate from 'adminComponents/BeatForms/BeatUpdate/BeatUpdate';
+import SoundKitsList from 'adminComponents/Lists/SoundKitsList/SoundKitsList';
+import BeatsList from 'adminComponents/Lists/BeatsList/BeatsList';
+import LicensesList from 'adminComponents/Lists/LicensesList/LicensesList';
+import SoundKitCreate from 'adminComponents/SoundKitForms/SoundKitCreate/SoundKitCreate';
+import SoundKitUpdate from 'adminComponents/SoundKitForms/SoundKitUpdate/SoundKitUpdate';
+import ServicesList from 'adminComponents/Lists/ServicesList/ServicesList';
+import ServiceCreate from 'adminComponents/ServiceForms/ServiceCreate/ServiceCreate';
+import ServiceUpdate from 'adminComponents/ServiceForms/ServiceUpdate/ServiceUpdate';
+import LicenseCreate from 'adminComponents/LicensesForms/LicenseCreate/LicenseCreate';
+import LicenseUpdate from 'adminComponents/LicensesForms/LicenseUpdate/LicenseUpdate';
 
 const theme: RaThemeOptions = {
   ...defaultTheme,

@@ -1,27 +1,27 @@
 import { AnimatePresence } from 'framer-motion';
 import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
-import PageTransition from '../../hoc/PageTransition';
-import RequireAuth from '../../hoc/RequireAuth';
-import About from '../../pages/About/About';
-import Beat from '../../pages/Beat/Beat';
-import Beats from '../../pages/Beats/Beats';
-import Collab from '../../pages/Collab/Collab';
-import Collabs from '../../pages/Collabs/Collabs';
-import Contact from '../../pages/Contact/Contact';
-import Landing from '../../pages/Landing/Landing';
-import Layout from '../../pages/Layout/Layout';
-import Membership from '../../pages/Membership/Membership';
-import Offers from '../../pages/Offers/Offers';
-import Profile from '../../pages/Profile/Profile';
-import Purchases from '../../pages/Purchases/Purchases';
-import SoundKit from '../../pages/SoundKit/SoundKit';
-import SoundKits from '../../pages/SoundKits/SoundKits';
+import PageTransition from 'hocs/PageTransition';
+import RequireAuth from 'hocs/RequireAuth';
+import RequireAdmin from 'hocs/RequireAdmin';
+import About from 'pages/About/About';
+import Beat from 'pages/Beat/Beat';
+import Beats from 'pages/Beats/Beats';
+import Collab from 'pages/Collab/Collab';
+import Collabs from 'pages/Collabs/Collabs';
+import Contact from 'pages/Contact/Contact';
+import Landing from 'pages/Landing/Landing';
+import Layout from 'pages/Layout/Layout';
+import Membership from 'pages/Membership/Membership';
+import Offers from 'pages/Offers/Offers';
+import Profile from 'pages/Profile/Profile';
+import Purchases from 'pages/Purchases/Purchases';
+import SoundKit from 'pages/SoundKit/SoundKit';
+import SoundKits from 'pages/SoundKits/SoundKits';
+import Cart from 'pages/Cart/Cart';
+import Admin from 'admin/Admin';
 
 import { RouterNames } from './types';
-import Cart from '../../pages/Cart/Cart';
-import Admin from '../../admin/Admin';
-import RequireAdmin from '../../hoc/RequireAdmin';
 
 const Router = () => {
   const location = useLocation();

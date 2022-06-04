@@ -1,5 +1,6 @@
 import { FC, useEffect } from 'react';
-import VisualizerContext from '../context/VisualizerContext';
+
+import VisualizerContext from 'contexts/VisualizerContext';
 
 type Props = {
   audio: HTMLAudioElement;

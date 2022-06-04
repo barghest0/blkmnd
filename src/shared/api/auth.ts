@@ -1,4 +1,5 @@
-import { LoginValues, RegisterValues } from '../../redux/auth/types';
+import { LoginValues, RegisterValues } from 'reduxStore/auth/types';
+
 import { newInstance } from './instance';
 
 const registerRequest = (userData: RegisterValues) =>

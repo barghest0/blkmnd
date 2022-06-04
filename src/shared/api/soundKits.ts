@@ -1,4 +1,5 @@
-import { SoundKit } from '../../redux/soundKits/types';
+import { SoundKit } from 'reduxStore/soundKits/types';
+
 import { instance } from './instance';
 
 const fetchPreviewSoundKits = () =>
