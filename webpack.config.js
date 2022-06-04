@@ -27,6 +27,15 @@ const config = {
   },
 
   resolve: {
+    alias: {
+      components: path.resolve(__dirname, './src/components'),
+      pages: path.resolve(__dirname, './src/pages'),
+      hocs: path.resolve(__dirname, './src/hoc'),
+      hooks: path.resolve(__dirname, './src/hooks'),
+      contexts: path.resolve(__dirname, './src/context'),
+      shared: path.resolve(__dirname, './src/shared'),
+      reduxStore: path.resolve(__dirname, './src/redux'),
+    },
     extensions: ['.ts', '.tsx', '.js'],
   },
 
