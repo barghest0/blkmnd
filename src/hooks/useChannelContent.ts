@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { fetchChannelContent, fetchChannelVideo } from '../shared/api/youtube';
+
+import { fetchChannelContent, fetchChannelVideo } from 'shared/api/youtube';
 
 type ChannelInfo = {
   subscriberCount: number;

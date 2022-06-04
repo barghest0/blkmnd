@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { container, page, pageTitle } from '../../shared/styles/mixins';
+
+import { container, page, pageTitle } from 'shared/styles/mixins';
 
 const Offers = styled.div`
   ${page}

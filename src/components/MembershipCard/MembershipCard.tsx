@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import { Membership } from '../../redux/memberships/types';
-import { RouterPaths } from '../../shared/router/types';
-import { ButtonLink } from '../../shared/styles/links';
+
+import { Membership } from 'reduxStore/memberships/types';
+import { RouterPaths } from 'shared/router/types';
+import { ButtonLink } from 'shared/styles/links';
+
 import * as S from './MembershipCard.style';
 
 type Props = {

@@ -1,4 +1,5 @@
-import { CartProduct } from '../../redux/cart/types';
+import { CartProduct } from 'reduxStore/cart/types';
+
 import { instance } from './instance';
 
 const fetchCart = () => instance.get('cart');

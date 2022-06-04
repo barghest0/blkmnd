@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { breakpoint } from '../../shared/styles/breakpoints';
-import ThemeColors from '../../shared/styles/theme';
+
+import { breakpoint } from 'shared/styles/breakpoints';
+import ThemeColors from 'shared/styles/theme';
 
 const BeatsList = styled.div`
   width: 100%;

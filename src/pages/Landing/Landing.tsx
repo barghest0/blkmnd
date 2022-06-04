@@ -1,34 +1,34 @@
-import { FC, memo, useContext, useEffect } from 'react';
+import { FC, memo, useEffect } from 'react';
 import ScrollContainer from 'react-indiana-drag-scroll';
+import Parser from 'html-react-parser';
 import GroupIcon from '@mui/icons-material/Group';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import VideocamIcon from '@mui/icons-material/Videocam';
 import YouTubeIcon from '@mui/icons-material/YouTube';
-import Parser from 'html-react-parser';
+
+import FeaturedBeat from 'components/FeaturedBeat/FeaturedBeat';
+import SearchField from 'components/SearchField/SearchField';
+import Preloader from 'components/Preloader/Preloader';
+import BeatsList from 'components/BeatsList/BeatsList';
+import { ButtonLink } from 'shared/styles/links';
+import { RouterPaths } from 'shared/router/types';
+import useActions from 'hooks/useActions';
+import Visualizer from 'components/Visualizer/Visualizer';
+import ContactForm from 'components/ContactForm/ContactForm';
+import CollabCard from 'components/CollabCard/CollabCard';
+import LicenseCard from 'components/LicenseCard/LicenseCard';
+import SoundKitCard from 'components/SoundKitCard/SoundKitCard';
+import DiscographyCard from 'components/DiscographyCard/DiscographyCard';
+import useChannelContent from 'hooks/useChannelContent';
+import Button from 'components/Button/Button';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import * as beatsSelectors from 'reduxStore/beats/selectors';
+import * as discographySelectors from 'reduxStore/discography/selectors';
+import * as licensesSelectors from 'reduxStore/licenses/selectors';
+import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
+import * as collabsSelectors from 'reduxStore/collabs/selectors';
 
 import * as S from './Landing.style';
-import FeaturedBeat from '../../components/FeaturedBeat/FeaturedBeat';
-import SearchField from '../../components/SearchField/SearchField';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import Preloader from '../../components/Preloader/Preloader';
-import BeatsList from '../../components/BeatsList/BeatsList';
-import { ButtonLink } from '../../shared/styles/links';
-import { RouterPaths } from '../../shared/router/types';
-import useActions from '../../hooks/useActions';
-import Visualizer from '../../components/Visualizer/Visualizer';
-import ContactForm from '../../components/ContactForm/ContactForm';
-import CollabCard from '../../components/CollabCard/CollabCard';
-import LicenseCard from '../../components/LicenseCard/LicenseCard';
-import SoundKitCard from '../../components/SoundKitCard/SoundKitCard';
-import DiscographyCard from '../../components/DiscographyCard/DiscographyCard';
-import Button from '../../components/Button/Button';
-import useChannelContent from '../../hooks/useChannelContent';
-import * as beatsSelectors from '../../redux/beats/selectors';
-import * as discographySelectors from '../../redux/discography/selectors';
-import * as licensesSelectors from '../../redux/licenses/selectors';
-import * as soundKitsSelectors from '../../redux/soundKits/selectors';
-import * as collabsSelectors from '../../redux/collabs/selectors';
-import PlayerContext from '../../context/PlayerContext';
 
 const Landing: FC = memo(() => {
   const beats = useTypedSelector(beatsSelectors.allBeats);
@@ -50,8 +50,6 @@ const Landing: FC = memo(() => {
   const isCollabsFetching = useTypedSelector(collabsSelectors.isFetching);
 
   const { getDiscographyBeats } = useActions();
-
-  const { audio } = useContext(PlayerContext);
 
   const channel = {
     user: 'UCpi4NSNZrV3oBtgpdaEGeyw',

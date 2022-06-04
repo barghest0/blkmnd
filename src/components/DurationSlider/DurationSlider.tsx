@@ -1,10 +1,12 @@
 import { FC, useContext, useEffect, useState } from 'react';
-import PlayerContext from '../../context/PlayerContext';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
-import { Beat } from '../../redux/beats/types';
+
+import PlayerContext from 'contexts/PlayerContext';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
+import { Beat } from 'reduxStore/beats/types';
+import * as playerSelectors from 'reduxStore/player/selectors';
+
 import * as S from './DurationSlider.style';
-import * as playerSelectors from '../../redux/player/selectors';
 
 type Props = {
   currentBeat: Beat | null;

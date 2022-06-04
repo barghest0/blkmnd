@@ -1,9 +1,11 @@
 import { FC, memo, useContext, useLayoutEffect, useRef } from 'react';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import ThemeColors from '../../shared/styles/theme';
+
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import ThemeColors from 'shared/styles/theme';
+import * as playerSelectors from 'reduxStore/player/selectors';
+import VisualizerContext from 'contexts/VisualizerContext';
+
 import * as S from './Visualizer.style';
-import VisualizerContext from '../../context/VisualizerContext';
-import * as playerSelectors from '../../redux/player/selectors';
 
 const Visualizer: FC = memo(() => {
   const { currentPlayerBeat } = useTypedSelector(playerSelectors.beats);

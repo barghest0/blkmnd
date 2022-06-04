@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import { Collab } from '../../redux/collabs/types';
-import { RouterPaths } from '../../shared/router/types';
-import { StyledLink } from '../../shared/styles/links';
-import Image from '../Image/Image';
+
+import Image from 'components/Image/Image';
+import { RouterPaths } from 'shared/router/types';
+import { StyledLink } from 'shared/styles/links';
+import { Collab } from 'reduxStore/collabs/types';
+
 import * as S from './CollabCard.style';
 
 type Props = {

@@ -4,16 +4,15 @@ import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
 import DoneOutlinedIcon from '@mui/icons-material/DoneOutlined';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
+import Modal from 'components/Modal/Modal';
+import Preloader from 'components/Preloader/Preloader';
+import ModalContainer from 'components/ModalContainer/ModalContainer';
+import { ModalsTypes } from 'reduxStore/modals/types';
+import * as modalsSelectors from 'reduxStore/modals/selectors';
+import * as beatsSelectors from 'reduxStore/beats/selectors';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+
 import * as S from './ShareModal.style';
-
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import { ModalsTypes } from '../../redux/modals/types';
-
-import Modal from '../Modal/Modal';
-import Preloader from '../Preloader/Preloader';
-import ModalContainer from '../ModalContainer/ModalContainer';
-import * as modalsSelectors from '../../redux/modals/selectors';
-import * as beatsSelectors from '../../redux/beats/selectors';
 
 const ShareModal: FC = () => {
   const { shareModalVisability } = useTypedSelector(

@@ -1,31 +1,29 @@
 import { SyntheticEvent, useContext, useEffect, useState } from 'react';
-
 import { useParams } from 'react-router-dom';
-
 import MusicNoteSharpIcon from '@mui/icons-material/MusicNoteSharp';
 import SpeedIcon from '@mui/icons-material/Speed';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import format from 'date-fns/format';
 
-import PlayButton from '../../components/PlayButton/PlayButton';
-import Preloader from '../../components/Preloader/Preloader';
-import Visualizer from '../../components/Visualizer/Visualizer';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
+import PlayButton from 'components/PlayButton/PlayButton';
+import Preloader from 'components/Preloader/Preloader';
+import Visualizer from 'components/Visualizer/Visualizer';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
 import * as S from './Beat.style';
-import DownloadButton from '../../components/DownloadButton/DownloadButton';
-import ShareButton from '../../components/ShareButton/ShareButton';
-import TagLink from '../../components/TagLink/TagLink';
+import DownloadButton from 'components/DownloadButton/DownloadButton';
+import ShareButton from 'components/ShareButton/ShareButton';
+import TagLink from 'components/TagLink/TagLink';
 import { Tab, Tabs } from '@mui/material';
-import BeatsList from '../../components/BeatsList/BeatsList';
+import BeatsList from 'components/BeatsList/BeatsList';
 import CommentField, {
   CommentValues,
-} from '../../components/CommentField/CommentField';
-import ChooseLicenseButton from '../../components/ChooseLicenseButton/ChooseLicenseButton';
-import Comment from '../../components/Comment/Comment';
-import format from 'date-fns/format';
-import { User } from '../../redux/user/types';
-import AuthContext from '../../context/AuthContext';
-import * as beatsSelectors from '../../redux/beats/selectors';
+} from 'components/CommentField/CommentField';
+import ChooseLicenseButton from 'components/ChooseLicenseButton/ChooseLicenseButton';
+import Comment from 'components/Comment/Comment';
+import { User } from 'reduxStore/user/types';
+import * as beatsSelectors from 'reduxStore/beats/selectors';
+import AuthContext from 'contexts/AuthContext';
 
 const Beat = () => {
   const params = useParams();

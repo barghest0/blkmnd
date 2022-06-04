@@ -1,10 +1,10 @@
-import { FC } from 'react';
-import AuthContext from '../context/AuthContext';
-import useTypedSelector from '../hooks/redux/useTypedDispatch';
-import useActions from '../hooks/useActions';
-import { useEffect } from 'react';
-import { getToken } from '../shared/helpers/authHelper';
-import * as authSelectors from '../redux/auth/selectors';
+import { FC, useEffect } from 'react';
+
+import AuthContext from 'contexts/AuthContext';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
+import { getToken } from 'shared/helpers/authHelper';
+import * as authSelectors from 'reduxStore/auth/selectors';
 
 type Props = {
   children: React.ReactNode;

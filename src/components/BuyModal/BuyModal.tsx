@@ -1,16 +1,16 @@
-import * as S from './BuyModal.style';
+import Modal from 'components/Modal/Modal';
+import Preloader from 'components/Preloader/Preloader';
+import ModalContainer from 'components/ModalContainer/ModalContainer';
+import PlayButton from 'components/PlayButton/PlayButton';
+import ChooseLicenseCard from 'components/ChooseLicenseCard/ChooseLicenseCard';
+import Image from 'components/Image/Image';
+import useActions from 'hooks/useActions';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import * as modalsSelectors from 'reduxStore/modals/selectors';
+import { ModalsTypes } from 'reduxStore/modals/types';
+import * as beatsSelectors from 'reduxStore/beats/selectors';
 
-import Modal from '../Modal/Modal';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import Preloader from '../Preloader/Preloader';
-import { ModalsTypes } from '../../redux/modals/types';
-import ModalContainer from '../ModalContainer/ModalContainer';
-import PlayButton from '../PlayButton/PlayButton';
-import ChooseLicenseCard from '../ChooseLicenseCard/ChooseLicenseCard';
-import Image from '../Image/Image';
-import useActions from '../../hooks/useActions';
-import * as modalsSelectors from '../../redux/modals/selectors';
-import * as beatsSelectors from '../../redux/beats/selectors';
+import * as S from './BuyModal.style';
 
 const BuyModal = () => {
   const { buyModalVisability } = useTypedSelector(modalsSelectors.visabilities);

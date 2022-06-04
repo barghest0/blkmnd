@@ -1,5 +1,6 @@
-import { NavLink, Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink, Link } from 'react-router-dom';
+
 import { button } from './mixins';
 import ThemeColors from './theme';
 

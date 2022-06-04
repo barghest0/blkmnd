@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import useActions from '../../hooks/useActions';
-import { ModalsTypes } from '../../redux/modals/types';
-import Button from '../Button/Button';
-import { ButtonThemes } from '../Button/types';
+
+import Button from 'components/Button/Button';
+import { ButtonThemes } from 'components/Button/types';
+import useActions from 'hooks/useActions';
+import { ModalsTypes } from 'reduxStore/modals/types';
+
 import * as S from './DownloadButton.style';
 
 type Props = {

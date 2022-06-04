@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import * as S from './ModalContainer.style';
+import useActions from 'hooks/useActions';
+import { ModalsTypes } from 'reduxStore/modals/types';
 
-import useActions from '../../hooks/useActions';
-import { ModalsTypes } from '../../redux/modals/types';
+import * as S from './ModalContainer.style';
 
 type Props = {
   children: JSX.Element;

@@ -2,8 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+
+import store from 'reduxStore/store';
+
 import App from './App';
-import store from './redux/store';
 
 const AppStore = store();
 

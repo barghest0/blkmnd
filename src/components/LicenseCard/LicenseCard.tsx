@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import * as S from './LicenseCard.style';
+import Button from 'components/Button/Button';
+import useActions from 'hooks/useActions';
+import { ModalsTypes } from 'reduxStore/modals/types';
+import { License } from 'reduxStore/beats/types';
 
-import { License } from '../../redux/beats/types';
-import Button from '../Button/Button';
-import useActions from '../../hooks/useActions';
-import { ModalsTypes } from '../../redux/modals/types';
+import * as S from './LicenseCard.style';
 
 type Props = {
   license: License;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { breakpoint } from '../../shared/styles/breakpoints';
-import { container, page } from '../../shared/styles/mixins';
+
+import { breakpoint } from 'shared/styles/breakpoints';
+import { container, page } from 'shared/styles/mixins';
 
 const SoundKit = styled.div`
   ${page}

@@ -1,9 +1,11 @@
 import { FC, SyntheticEvent } from 'react';
-import { Beat } from '../../redux/beats/types';
-import ThemeColors from '../../shared/styles/theme';
-import ChooseLicenseButton from '../ChooseLicenseButton/ChooseLicenseButton';
-import ShareButton from '../ShareButton/ShareButton';
-import TagLink from '../TagLink/TagLink';
+
+import ChooseLicenseButton from 'components/ChooseLicenseButton/ChooseLicenseButton';
+import ShareButton from 'components/ShareButton/ShareButton';
+import TagLink from 'components/TagLink/TagLink';
+import { Beat } from 'reduxStore/beats/types';
+import ThemeColors from 'shared/styles/theme';
+
 import * as S from './QueueBeat.style';
 
 type Props = {

@@ -1,10 +1,11 @@
 import { FC } from 'react';
 
+import BeatsListRow from 'components/BeatsListRow/BeatsListRow';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import { Beat } from 'reduxStore/beats/types';
+import * as playerSelecors from 'reduxStore/player/selectors';
+
 import * as S from './BeatsList.style';
-import { Beat } from '../../redux/beats/types';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import BeatsListRow from '../BeatsListRow/BeatsListRow';
-import * as playerSelecors from '../../redux/player/selectors';
 
 type Props = {
   beats: Beat[];

@@ -1,5 +1,6 @@
 import { createContext } from 'react';
-import { User } from '../redux/user/types';
+
+import { User } from 'reduxStore/user/types';
 
 type AuthContextState = {
   user: User | null;

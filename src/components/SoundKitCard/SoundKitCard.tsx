@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import { SoundKit } from '../../redux/soundKits/types';
-import { RouterPaths } from '../../shared/router/types';
-import { StyledLink } from '../../shared/styles/links';
-import Image from '../Image/Image';
+
+import Image from 'components/Image/Image';
+import { RouterPaths } from 'shared/router/types';
+import { StyledLink } from 'shared/styles/links';
+import { SoundKit } from 'reduxStore/soundKits/types';
+
 import * as S from './SoundKitCard.style';
 
 type Props = {

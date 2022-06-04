@@ -1,13 +1,13 @@
+import { memo, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-
 import { motion } from 'framer-motion';
 
-import Footer from '../../components/Footer/Footer';
-import Header from '../../components/Header/Header';
-import Player from '../../components/Player/Player';
+import Footer from 'components/Footer/Footer';
+import Header from 'components/Header/Header';
+import Player from 'components/Player/Player';
+import useActions from 'hooks/useActions';
+
 import * as S from './Layout.styles';
-import { memo, useEffect } from 'react';
-import useActions from '../../hooks/useActions';
 
 const Layout = memo(() => {
   const { getCart } = useActions();

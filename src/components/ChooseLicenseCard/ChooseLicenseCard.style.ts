@@ -1,8 +1,7 @@
+import styled from 'styled-components';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 
-import styled from 'styled-components';
-
-import ThemeColors from '../../shared/styles/theme';
+import ThemeColors from 'shared/styles/theme';
 
 const ChooseLicenseCard = styled.div`
   background-color: ${ThemeColors.dark};

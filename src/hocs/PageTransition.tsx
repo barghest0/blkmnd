@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
 import { FC, ReactNode } from 'react';
+import { motion } from 'framer-motion';
 
 type Props = {
   children: ReactNode;

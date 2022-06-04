@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
-import ThemeColors from '../../shared/styles/theme';
+
+import ThemeColors from 'shared/styles/theme';
+
 import { ModalContainerProps } from './ModalContainer';
 
 const ModalContainer = styled.div<ModalContainerProps>`

@@ -1,11 +1,13 @@
 import { FC } from 'react';
-import useActions from '../../hooks/useActions';
-import { Beat } from '../../redux/beats/types';
-import { RouterPaths } from '../../shared/router/types';
-import { StyledLink } from '../../shared/styles/links';
-import DurationSlider from '../DurationSlider/DurationSlider';
-import Image from '../Image/Image';
-import PlayButton from '../PlayButton/PlayButton';
+
+import DurationSlider from 'components/DurationSlider/DurationSlider';
+import Image from 'components/Image/Image';
+import PlayButton from 'components/PlayButton/PlayButton';
+import { RouterPaths } from 'shared/router/types';
+import { StyledLink } from 'shared/styles/links';
+import { Beat } from 'reduxStore/beats/types';
+import useActions from 'hooks/useActions';
+
 import * as S from './DiscographyCard.style';
 
 type Props = {

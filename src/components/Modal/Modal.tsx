@@ -1,6 +1,8 @@
 import { FC, SyntheticEvent } from 'react';
-import useActions from '../../hooks/useActions';
-import { ModalsTypes } from '../../redux/modals/types';
+
+import useActions from 'hooks/useActions';
+import { ModalsTypes } from 'reduxStore/modals/types';
+
 import * as S from './Modal.style';
 
 type Props = {

@@ -1,7 +1,8 @@
 import styled, { css } from 'styled-components';
 import CloseIcon from '@mui/icons-material/Close';
 
-import { textOverflow } from '../../shared/styles/mixins';
+import { textOverflow } from 'shared/styles/mixins';
+
 import { ModalProps } from './Modal';
 
 const Modal = styled.div<ModalProps>`

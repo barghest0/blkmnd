@@ -1,7 +1,7 @@
-import { instance } from './instance';
+import { Beat } from 'reduxStore/beats/types';
+import { FiltersState } from 'reduxStore/beats/types';
 
-import { Beat } from '../../redux/beats/types';
-import { FiltersState } from '../../redux/beats/types';
+import { instance } from './instance';
 
 const fetchFeaturedBeat = () => instance.get<Beat[]>(`beats?featured=true`);
 

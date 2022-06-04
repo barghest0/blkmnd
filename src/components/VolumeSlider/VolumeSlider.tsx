@@ -1,8 +1,10 @@
 import { FC } from 'react';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
+
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
+import * as playerSelectors from 'reduxStore/player/selectors';
+
 import * as S from './VolumeSlider.style';
-import * as playerSelectors from '../../redux/player/selectors';
 
 const VolumeSlider: FC = () => {
   const { audioVolume } = useTypedSelector(playerSelectors.controls);

@@ -1,13 +1,10 @@
 import styled, { css } from 'styled-components';
-import { breakpoint, breakpointUp } from '../../shared/styles/breakpoints';
-import { StyledLink } from '../../shared/styles/links';
-import ThemeColors from '../../shared/styles/theme';
-import {
-  DrawerProps,
-  NavProps,
-  ProfileDropdownProps,
-  SearchProps,
-} from './Header';
+
+import { breakpoint, breakpointUp } from 'shared/styles/breakpoints';
+import { StyledLink } from 'shared/styles/links';
+import ThemeColors from 'shared/styles/theme';
+
+import { DrawerProps, NavProps, ProfileDropdownProps } from './Header';
 
 const Header = styled.header`
   background-color: ${ThemeColors.layoutColor};

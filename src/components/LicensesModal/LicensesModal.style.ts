@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import { textOverflow } from '../../shared/styles/mixins';
-import ThemeColors from '../../shared/styles/theme';
+
+import { textOverflow } from 'shared/styles/mixins';
+import ThemeColors from 'shared/styles/theme';
 
 const LicensesModal = styled.div``;
 

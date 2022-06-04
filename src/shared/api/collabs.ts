@@ -1,4 +1,5 @@
-import { Collab } from '../../redux/collabs/types';
+import { Collab } from 'reduxStore/collabs/types';
+
 import { instance } from './instance';
 
 const fetchPreviewCollabs = () => instance.get<Collab[]>('collabs?_limit=4');

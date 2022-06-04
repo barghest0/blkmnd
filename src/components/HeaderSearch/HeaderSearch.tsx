@@ -1,9 +1,11 @@
 import { FC } from 'react';
-import * as S from './HeaderSearch.style';
+import { useSearchParams } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
-import SearchField from '../SearchField/SearchField';
-import { useSearchParams } from 'react-router-dom';
+
+import SearchField from 'components/SearchField/SearchField';
+
+import * as S from './HeaderSearch.style';
 
 type Props = {
   isOpen: boolean;

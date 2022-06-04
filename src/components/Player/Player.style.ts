@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
-import { breakpoint } from '../../shared/styles/breakpoints';
-import ThemeColors from '../../shared/styles/theme';
+
+import { breakpoint } from 'shared/styles/breakpoints';
+import ThemeColors from 'shared/styles/theme';
+
 import { PlayerProps, QueueBeatProps } from './Player';
 
 const Player = styled.div<PlayerProps>`

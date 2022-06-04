@@ -1,8 +1,9 @@
 import { FC, memo, useCallback, useEffect } from 'react';
-import PlayerContext from '../context/PlayerContext';
-import useTypedSelector from '../hooks/redux/useTypedDispatch';
-import useActions from '../hooks/useActions';
-import * as playerSelectors from '../redux/player/selectors';
+
+import PlayerContext from 'contexts/PlayerContext';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
+import * as playerSelectors from 'reduxStore/player/selectors';
 
 type Props = {
   children: React.ReactNode;

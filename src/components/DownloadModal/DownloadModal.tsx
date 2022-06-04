@@ -1,18 +1,18 @@
 import { FC } from 'react';
-
-import * as S from './DownloadModal.style';
-
-import Modal from '../Modal/Modal';
-import Preloader from '../Preloader/Preloader';
-import { ModalsTypes } from '../../redux/modals/types';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import ModalContainer from '../ModalContainer/ModalContainer';
 import { useFormik } from 'formik';
 import { FormControl, Checkbox, FormControlLabel } from '@mui/material';
-import Button from '../Button/Button';
-import downloadValidation from '../../shared/formValidations/download';
-import * as modalsSelectors from '../../redux/modals/selectors';
-import * as beatsSelectors from '../../redux/beats/selectors';
+
+import Modal from 'components/Modal/Modal';
+import Preloader from 'components/Preloader/Preloader';
+import ModalContainer from 'components/ModalContainer/ModalContainer';
+import Button from 'components/Button/Button';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import downloadValidation from 'shared/formValidations/download';
+import * as modalsSelectors from 'reduxStore/modals/selectors';
+import { ModalsTypes } from 'reduxStore/modals/types';
+import * as beatsSelectors from 'reduxStore/beats/selectors';
+
+import * as S from './DownloadModal.style';
 
 type DownloadModalProps = {
   background?: string;

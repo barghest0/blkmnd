@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import { container, page, pageTitle } from '../../shared/styles/mixins';
-import { breakpoint } from '../../shared/styles/breakpoints';
+import { container, page, pageTitle } from 'shared/styles/mixins';
+import { breakpoint } from 'shared/styles/breakpoints';
 
 const About = styled.div`
   ${page}

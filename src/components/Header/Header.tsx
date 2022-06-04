@@ -1,3 +1,6 @@
+import { useContext, useState } from 'react';
+import { toast } from 'react-toastify';
+import { Button } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import AddModeratorIcon from '@mui/icons-material/AddModerator';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
@@ -11,24 +14,21 @@ import GraphicEqIcon from '@mui/icons-material/GraphicEq';
 import GroupsIcon from '@mui/icons-material/Groups';
 import InfoIcon from '@mui/icons-material/Info';
 import EmailIcon from '@mui/icons-material/Email';
-import { toast } from 'react-toastify';
 
-import { useContext, useState } from 'react';
+import HeaderSearch from 'components/HeaderSearch/HeaderSearch';
+import Logo from 'components/Logo/Logo';
+import HeaderNavLink from 'components/HeaderNavLink/HeaderNavLink';
+import DrawerNavLink from 'components/DrawerNavLink/DrawerNavLink';
+import { RouterPaths } from 'shared/router/types';
+import navigation from 'shared/router/navigation';
+import { StyledLink } from 'shared/styles/links';
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useActions from 'hooks/useActions';
+import AuthContext from 'contexts/AuthContext';
+import { ModalsTypes } from 'reduxStore/modals/types';
+import * as cartSelectors from 'reduxStore/cart/selectors';
 
-import { RouterPaths } from '../../shared/router/types';
-import HeaderSearch from '../HeaderSearch/HeaderSearch';
-import Logo from '../Logo/Logo';
 import * as S from './Header.styles';
-import navigation from '../../shared/router/navigation';
-import HeaderNavLink from '../HeaderNavLink/HeaderNavLink';
-import DrawerNavLink from '../DrawerNavLink/DrawerNavLink';
-import { Button } from '@mui/material';
-import { StyledLink } from '../../shared/styles/links';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import useActions from '../../hooks/useActions';
-import { ModalsTypes } from '../../redux/modals/types';
-import AuthContext from '../../context/AuthContext';
-import * as cartSelectors from '../../redux/cart/selectors';
 
 type ProfileDropdownProps = {
   isOpen: boolean;

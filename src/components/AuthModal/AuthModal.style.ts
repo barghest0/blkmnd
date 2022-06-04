@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
-import ThemeColors from '../../shared/styles/theme';
+
+import ThemeColors from 'shared/styles/theme';
+
 import { PreloaderProps } from './AuthModal';
 
 const AuthModal = styled.div``;

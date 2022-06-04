@@ -1,5 +1,5 @@
-import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 import styled from 'styled-components';
+import FileDownloadOutlinedIcon from '@mui/icons-material/FileDownloadOutlined';
 
 const DownloadButton = styled.div`
   width: 100%;

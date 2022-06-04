@@ -1,5 +1,6 @@
 import { createContext } from 'react';
-import { PlayerState } from '../redux/player/types';
+
+import { PlayerState } from 'reduxStore/player/types';
 
 type PlayerContextState = {
   state: PlayerState;

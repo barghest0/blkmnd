@@ -1,23 +1,23 @@
 import { bindActionCreators } from '@reduxjs/toolkit';
 
-import useTypedDispatch from './redux/useTypedSelector';
+import useTypedDispatch from 'hooks/redux/useTypedSelector';
 
-import playerSlice from '../redux/player/playerSlice';
-import modalsSlice from '../redux/modals/modalsSlice';
-import beatsSlice from '../redux/beats/beatsSlice';
-import soundKitsSlice from '../redux/soundKits/soundKitsSlice';
-import authSlice from '../redux/auth/authSlice';
+import playerSlice from 'reduxStore/player/playerSlice';
+import modalsSlice from 'reduxStore/modals/modalsSlice';
+import beatsSlice from 'reduxStore/beats/beatsSlice';
+import soundKitsSlice from 'reduxStore/soundKits/soundKitsSlice';
+import authSlice from 'reduxStore/auth/authSlice';
 
-import * as beatsActions from '../redux/beats/actions';
-import * as licensesActions from '../redux/licenses/actions';
-import * as soundKitsActions from '../redux/soundKits/actions';
-import * as collabsActions from '../redux/collabs/actions';
-import * as discographyActions from '../redux/discography/actions';
-import * as membershipsActions from '../redux/memberships/actions';
-import * as asyncPlayerActions from '../redux/player/actions';
-import * as cartActions from '../redux/cart/actions';
-import * as authActions from '../redux/auth/actions';
-import * as userActions from '../redux/user/actions';
+import * as beatsActions from 'reduxStore/beats/actions';
+import * as licensesActions from 'reduxStore/licenses/actions';
+import * as soundKitsActions from 'reduxStore/soundKits/actions';
+import * as collabsActions from 'reduxStore/collabs/actions';
+import * as discographyActions from 'reduxStore/discography/actions';
+import * as membershipsActions from 'reduxStore/memberships/actions';
+import * as asyncPlayerActions from 'reduxStore/player/actions';
+import * as cartActions from 'reduxStore/cart/actions';
+import * as authActions from 'reduxStore/auth/actions';
+import * as userActions from 'reduxStore/user/actions';
 
 const rootActionCreator = {
   ...beatsActions,

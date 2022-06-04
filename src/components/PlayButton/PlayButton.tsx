@@ -1,7 +1,9 @@
 import { FC } from 'react';
-import useTypedSelector from '../../hooks/redux/useTypedDispatch';
-import { Beat } from '../../redux/beats/types';
-import * as playerSelectors from '../../redux/player/selectors';
+
+import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import { Beat } from 'reduxStore/beats/types';
+import * as playerSelectors from 'reduxStore/player/selectors';
+
 import * as S from './PlayButton.style';
 
 type Props = {

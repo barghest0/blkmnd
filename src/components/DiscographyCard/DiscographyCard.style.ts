@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import ThemeColors from '../../shared/styles/theme';
+
+import ThemeColors from 'shared/styles/theme';
 
 const DiscographyCard = styled.div`
   display: flex;

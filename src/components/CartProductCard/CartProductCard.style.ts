@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { textOverflow } from '../../shared/styles/mixins';
+
+import { textOverflow } from 'shared/styles/mixins';
 
 const CardProductCard = styled.div`
   display: grid;

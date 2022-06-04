@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import { MenuItem, Select, styled as MUIstyled } from '@mui/material';
-import { container, page, pageTitle } from '../../shared/styles/mixins';
-import { breakpoint } from '../../shared/styles/breakpoints';
+
+import { container, page, pageTitle } from 'shared/styles/mixins';
+import { breakpoint } from 'shared/styles/breakpoints';
 
 const Beats = styled.div`
   ${page}
