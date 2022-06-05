@@ -20,6 +20,7 @@ const config = {
     filename: 'index.js',
     path: PATHS.dist,
     clean: true,
+    publicPath: path.resolve(__dirname, '/'),
   },
 
   externals: {

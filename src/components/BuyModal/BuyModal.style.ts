@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import ThemeColors from 'shared/styles/theme';
+import { breakpoint } from 'shared/styles/breakpoints';
 
 const BuyModal = styled.div``;
 
@@ -8,6 +9,11 @@ const Modal = styled.div`
   width: 80%;
   height: 80%;
   background-color: ${ThemeColors.mainColor};
+
+  @media ${breakpoint('sm')} {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const Content = styled.div`
@@ -16,7 +22,10 @@ const Content = styled.div`
   margin-top: 40px;
   display: grid;
   grid-template-columns: 200px 1fr;
-  column-gap: 20px;
+  gap: 20px;
+  @media ${breakpoint('lg')} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 const Beat = styled.div`
