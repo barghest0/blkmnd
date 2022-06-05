@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import ThemeColors from 'shared/styles/theme';
+import { breakpoint } from 'shared/styles/breakpoints';
 
 import { PreloaderProps } from './AuthModal';
 
@@ -14,6 +15,10 @@ const Modal = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
+
+  @media ${breakpoint('sm')} {
+    width: 100%;
+  }
 `;
 
 const FormContainer = styled.div``;

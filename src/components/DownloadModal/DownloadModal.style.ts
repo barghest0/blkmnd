@@ -7,6 +7,7 @@ import {
 } from '@mui/material';
 
 import ThemeColors from 'shared/styles/theme';
+import { breakpoint } from 'shared/styles/breakpoints';
 
 import { DownloadModalProps } from './DownloadModal';
 
@@ -23,7 +24,9 @@ const Modal = styled.div<DownloadModalProps>`
       background-size: cover;
       background-color: ${ThemeColors.dark};
       width: 450px;
-      height: 500px;
+      @media ${breakpoint('sm')} {
+        width: 100%;
+      }
     `;
   }}
 `;
