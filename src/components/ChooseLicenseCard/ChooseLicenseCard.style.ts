@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 
 import ThemeColors from 'shared/styles/theme';
+import { breakpoint } from 'shared/styles/breakpoints';
 
 const ChooseLicenseCard = styled.div`
   background-color: ${ThemeColors.dark};
@@ -15,24 +16,37 @@ const Info = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+
+  @media ${breakpoint('sm')} {
+    flex-direction: column;
+    row-gap: 10px;
+  }
 `;
 
-const License = styled.div``;
+const License = styled.div`
+  @media ${breakpoint('sm')} {
+    text-align: center;
+  }
+`;
 
 const Title = styled.h2`
   font-weight: 600;
   font-size: 18px;
 `;
 
+const FileTypes = styled.div`
+  display: flex;
+  column-gap: 5px;
+
+  @media ${breakpoint('sm')} {
+    justify-content: center;
+  }
+`;
+
 const FileType = styled.h3`
   font-size: 12px;
   opacity: 0.5;
   font-weight: 500;
-`;
-
-const FileTypes = styled.div`
-  display: flex;
-  column-gap: 5px;
 `;
 
 const Buy = styled.div`

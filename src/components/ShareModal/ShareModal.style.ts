@@ -2,13 +2,16 @@ import styled from 'styled-components';
 import { styled as MUIstyled, TextField } from '@mui/material';
 
 import ThemeColors from 'shared/styles/theme';
+import { breakpoint } from 'shared/styles/breakpoints';
 
 const ShareModal = styled.div``;
 
 const Modal = styled.div`
   background-color: ${ThemeColors.mainColor};
   width: 450px;
-  height: 350px;
+  @media ${breakpoint('sm')} {
+    width: 100%;
+  }
 `;
 
 const Content = styled.div`
