@@ -29,7 +29,7 @@ const soundKitsSlice = createSlice({
       state.errors = '';
     },
 
-    [getPreviewSoundKits.pending.type]: (state) => {
+    [getPreviewSoundKits.pending.type]: state => {
       state.isFetching = true;
     },
 
@@ -50,7 +50,7 @@ const soundKitsSlice = createSlice({
       state.errors = '';
     },
 
-    [getAllSoundKits.pending.type]: (state) => {
+    [getAllSoundKits.pending.type]: state => {
       state.isFetching = true;
     },
 
