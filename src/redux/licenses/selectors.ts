@@ -8,4 +8,6 @@ const isFetching = (state: State) => state.licenses.isFetching;
 
 const errors = (state: State) => state.licenses.errors;
 
-export { allLicenses, license, isFetching, errors };
+export {
+  allLicenses, license, isFetching, errors,
+};

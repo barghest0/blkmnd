@@ -23,4 +23,6 @@ const Form = styled.div`
   }
 `;
 
-export { Contact, Container, Title, Form };
+export {
+  Contact, Container, Title, Form,
+};

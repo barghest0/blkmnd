@@ -8,4 +8,6 @@ const isFetching = (state: State) => state.collabs.isFetching;
 
 const errors = (state: State) => state.collabs.errors;
 
-export { allCollabs, collab, isFetching, errors };
+export {
+  allCollabs, collab, isFetching, errors,
+};

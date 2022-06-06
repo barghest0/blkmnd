@@ -1,4 +1,6 @@
-import { FC, useContext, useEffect, useState } from 'react';
+import {
+  FC, useContext, useEffect, useState,
+} from 'react';
 
 import PlayerContext from 'contexts/PlayerContext';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
@@ -50,7 +52,7 @@ const DurationSlider: FC<Props> = ({ currentBeat }) => {
       onChange={onCurrentTimeChange}
       onChangeCommitted={onCurrentTimeCommited}
       max={audioDuration}
-    ></S.DurationSlider>
+    />
   );
 };
 

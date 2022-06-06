@@ -6,7 +6,7 @@ import {
   NumberInput,
 } from 'react-admin';
 
-const SoundKitCreate = () => {
+function SoundKitCreate() {
   return (
     <Create>
       <SimpleForm>
@@ -19,6 +19,6 @@ const SoundKitCreate = () => {
       </SimpleForm>
     </Create>
   );
-};
+}
 
 export default SoundKitCreate;

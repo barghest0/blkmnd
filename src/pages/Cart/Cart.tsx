@@ -17,7 +17,7 @@ type PaymentValues = {
   coupon: string;
 };
 
-const Cart = () => {
+function Cart() {
   const { getCart } = useActions();
   const products = useTypedSelector(cartSelectors.products);
   const { productsQuantity, totalCartPrice, cartDiscount } = useTypedSelector(
@@ -28,7 +28,7 @@ const Cart = () => {
     getCart();
   }, [productsQuantity]);
 
-  const productsCards = products.map(product => (
+  const productsCards = products.map((product) => (
     <CartProductCard product={product} key={product.id} />
   ));
 
@@ -78,15 +78,24 @@ const Cart = () => {
             <S.CashSettlement>
               <S.Settlement>
                 <S.SettlementText>Price</S.SettlementText>
-                <S.SettlementText>${totalCartPrice}</S.SettlementText>
+                <S.SettlementText>
+                  $
+                  {totalCartPrice}
+                </S.SettlementText>
               </S.Settlement>
               <S.Settlement>
                 <S.SettlementText>Discount</S.SettlementText>
-                <S.SettlementText>- ${cartDiscount}</S.SettlementText>
+                <S.SettlementText>
+                  - $
+                  {cartDiscount}
+                </S.SettlementText>
               </S.Settlement>
               <S.Settlement>
                 <S.TotalText>Total</S.TotalText>
-                <S.TotalText>${totalCartPrice - cartDiscount}</S.TotalText>
+                <S.TotalText>
+                  $
+                  {totalCartPrice - cartDiscount}
+                </S.TotalText>
               </S.Settlement>
             </S.CashSettlement>
             <S.UserEmail>
@@ -101,6 +110,6 @@ const Cart = () => {
       </S.Container>
     </S.Cart>
   );
-};
+}
 
 export default Cart;

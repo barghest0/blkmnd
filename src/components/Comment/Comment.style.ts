@@ -30,4 +30,6 @@ const Content = styled.p`
   grid-column-start: 2;
 `;
 
-export { Content, Avatar, Info, Comment, Username, Date };
+export {
+  Content, Avatar, Info, Comment, Username, Date,
+};

@@ -46,7 +46,7 @@ type NavProps = {
   isSearchOpen: boolean;
 };
 
-const Header = () => {
+function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -66,8 +66,7 @@ const Header = () => {
     }
   };
 
-  const showLogoutToast = () =>
-    toast.success(`Вы успешно вышли из личного кабинета`);
+  const showLogoutToast = () => toast.success('Вы успешно вышли из личного кабинета');
 
   const onLogoutClick = () => {
     logout();
@@ -109,7 +108,10 @@ const Header = () => {
               )}
               <ShoppingBagOutlinedIcon />
             </S.CartIcon>
-            <S.CartCost>${totalCartPrice.toFixed(2)}</S.CartCost>
+            <S.CartCost>
+              $
+              {totalCartPrice.toFixed(2)}
+            </S.CartCost>
           </S.Cart>
         </StyledLink>
         <S.Auth onClick={onProfileClick}>
@@ -183,6 +185,8 @@ const Header = () => {
       </S.HeaderDrawer>
     </S.Header>
   );
+}
+export {
+  ProfileDropdownProps, DrawerProps, NavProps, SearchProps,
 };
-export { ProfileDropdownProps, DrawerProps, NavProps, SearchProps };
 export default Header;

@@ -8,7 +8,7 @@ import {
   ReferenceInput,
 } from 'react-admin';
 
-const LicenseUpdate = () => {
+function LicenseUpdate() {
   return (
     <Edit>
       <SimpleForm>
@@ -31,6 +31,6 @@ const LicenseUpdate = () => {
       </SimpleForm>
     </Edit>
   );
-};
+}
 
 export default LicenseUpdate;

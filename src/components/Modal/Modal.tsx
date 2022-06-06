@@ -16,7 +16,9 @@ type ModalProps = {
   isOpen: boolean;
 };
 
-const Modal: FC<Props> = ({ children, isOpen, title, modalType }) => {
+const Modal: FC<Props> = ({
+  children, isOpen, title, modalType,
+}) => {
   const { setModalVisability } = useActions();
 
   const onContentClick = (event: SyntheticEvent) => {

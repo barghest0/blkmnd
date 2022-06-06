@@ -1,4 +1,3 @@
+const TOKEN_KEY = 'token';
 
-const TOKEN_KEY = 'token'
-
-export {TOKEN_KEY}
+export { TOKEN_KEY };

@@ -6,7 +6,7 @@ import {
   NumberInput,
 } from 'react-admin';
 
-const SoundKitUpdate = () => {
+function SoundKitUpdate() {
   return (
     <Edit>
       <SimpleForm>
@@ -19,6 +19,6 @@ const SoundKitUpdate = () => {
       </SimpleForm>
     </Edit>
   );
-};
+}
 
 export default SoundKitUpdate;

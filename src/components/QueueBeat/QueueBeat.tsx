@@ -13,11 +13,13 @@ type Props = {
 };
 
 const QueueBeat: FC<Props> = ({ beat }) => {
-  const { title, tags, price, bpm, image, time } = beat;
+  const {
+    title, tags, price, bpm, image, time,
+  } = beat;
   const onActionClick = (event: SyntheticEvent) => {
     event.stopPropagation();
   };
-  const tagsLinks = tags.map(tag => (
+  const tagsLinks = tags.map((tag) => (
     <S.Tag onClick={onActionClick} key={tag.id}>
       <TagLink tag={tag} />
     </S.Tag>

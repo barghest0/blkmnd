@@ -9,7 +9,7 @@ import {
   BooleanInput,
 } from 'react-admin';
 
-const BeatCreate = () => {
+function BeatCreate() {
   return (
     <Create>
       <SimpleForm>
@@ -38,6 +38,6 @@ const BeatCreate = () => {
       </SimpleForm>
     </Create>
   );
-};
+}
 
 export default BeatCreate;

@@ -18,7 +18,7 @@ import 'shared/styles/scss/index.scss';
 
 import * as S from './App.style';
 
-const App = () => {
+function App() {
   const audio = new Audio();
 
   return (
@@ -37,7 +37,7 @@ const App = () => {
               <StyledToastContainer
                 position="bottom-right"
                 autoClose={3000}
-                hideProgressBar={true}
+                hideProgressBar
               />
             </S.App>
           </ThemeProvider>
@@ -45,6 +45,6 @@ const App = () => {
       </VisualizerProvider>
     </AuthProvider>
   );
-};
+}
 
 export default App;

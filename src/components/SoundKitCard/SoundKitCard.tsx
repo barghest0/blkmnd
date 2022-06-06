@@ -12,7 +12,9 @@ type Props = {
 };
 
 const SoundKitsList: FC<Props> = ({ soundKit }) => {
-  const { id, image, title, price } = soundKit;
+  const {
+    id, image, title, price,
+  } = soundKit;
 
   return (
     <S.SoundKitCard>

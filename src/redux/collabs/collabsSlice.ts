@@ -17,7 +17,7 @@ const collabsSlice = createSlice({
       state.collabs = action.payload;
     },
 
-    [getPreviewCollabs.pending.type]: state => {
+    [getPreviewCollabs.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -38,7 +38,7 @@ const collabsSlice = createSlice({
       state.collabs = action.payload;
     },
 
-    [getAllCollabs.pending.type]: state => {
+    [getAllCollabs.pending.type]: (state) => {
       state.isFetching = true;
     },
 

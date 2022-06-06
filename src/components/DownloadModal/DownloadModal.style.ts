@@ -14,8 +14,7 @@ import { DownloadModalProps } from './DownloadModal';
 const DownloadModal = styled.div``;
 
 const Modal = styled.div<DownloadModalProps>`
-  ${({ background }) => {
-    return css`
+  ${({ background }) => css`
       display: flex;
       justify-content: center;
       align-items: center;
@@ -27,8 +26,7 @@ const Modal = styled.div<DownloadModalProps>`
       @media ${breakpoint('sm')} {
         width: 100%;
       }
-    `;
-  }}
+    `}
 `;
 
 const Content = styled.div`

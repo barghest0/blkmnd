@@ -6,7 +6,7 @@ import {
   NumberInput,
 } from 'react-admin';
 
-const ServiceCreate = () => {
+function ServiceCreate() {
   return (
     <Create>
       <SimpleForm>
@@ -18,6 +18,6 @@ const ServiceCreate = () => {
       </SimpleForm>
     </Create>
   );
-};
+}
 
 export default ServiceCreate;

@@ -6,7 +6,7 @@ import {
   NumberInput,
 } from 'react-admin';
 
-const ServiceUpdate = () => {
+function ServiceUpdate() {
   return (
     <Edit>
       <SimpleForm>
@@ -18,6 +18,6 @@ const ServiceUpdate = () => {
       </SimpleForm>
     </Edit>
   );
-};
+}
 
 export default ServiceUpdate;

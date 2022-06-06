@@ -18,7 +18,7 @@ import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
 
 import * as S from './SoundKit.style';
 
-const SoundKit = () => {
+function SoundKit() {
   const params = useParams();
   const soundKit = useTypedSelector(soundKitsSelectors.soundKit);
   const { getSoundKit, pushNewSoundKitComment, updateSoundKit } = useActions();
@@ -29,7 +29,7 @@ const SoundKit = () => {
     getSoundKit(Number(params.id));
   }, []);
 
-  const comments = soundKit?.comments.map(comment => (
+  const comments = soundKit?.comments.map((comment) => (
     <S.Comment key={comment.id}>
       <Comment comment={comment} />
     </S.Comment>
@@ -97,6 +97,6 @@ const SoundKit = () => {
       </S.Container>
     </S.SoundKit>
   );
-};
+}
 
 export default SoundKit;

@@ -22,4 +22,6 @@ const SubmitForm = styled.div`
   height: 50px;
 `;
 
-export { TextField, ContactForm, MainFields, SubmitForm };
+export {
+  TextField, ContactForm, MainFields, SubmitForm,
+};

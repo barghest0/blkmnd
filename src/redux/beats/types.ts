@@ -72,4 +72,6 @@ type Beat = {
   comments: Comment[];
 };
 
-export { BeatsState, FiltersState, Beat, Tag, License, Comment };
+export {
+  BeatsState, FiltersState, Beat, Tag, License, Comment,
+};

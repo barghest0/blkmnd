@@ -79,7 +79,7 @@ const getBeat = createAsyncThunk(
 
 const updateBeat = createAsyncThunk(UPDATE_BEAT_NAME, async (_, thunkAPI) => {
   try {
-    const beat = thunkAPI.getState().beats.beat;
+    const { beat } = thunkAPI.getState().beats;
     const response = await putBeat(beat);
     return response.data;
   } catch (e) {

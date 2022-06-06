@@ -27,4 +27,6 @@ const Price = styled.div`
   font-size: 14px;
 `;
 
-export { SoundKitCard, Thumbnail, Title, Price };
+export {
+  SoundKitCard, Thumbnail, Title, Price,
+};

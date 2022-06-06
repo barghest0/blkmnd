@@ -12,4 +12,6 @@ const errors = (state: State) => state.cart.errors;
 
 const isFetching = (state: State) => state.cart.isFetching;
 
-export { products, details, errors, isFetching };
+export {
+  products, details, errors, isFetching,
+};

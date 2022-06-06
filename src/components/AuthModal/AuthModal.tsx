@@ -52,19 +52,16 @@ const AuthModal = memo(() => {
     loginErrors,
     user,
     registerErrors,
-  } = useTypedSelector(state => state.auth);
+  } = useTypedSelector((state) => state.auth);
 
-  const showSuccessLoginToast = () =>
-    toast.success(`Привет! ${user?.username}`);
+  const showSuccessLoginToast = () => toast.success(`Привет! ${user?.username}`);
 
-  const loginErrorsText =
-    loginErrors &&
-    Object.values(loginErrors)
+  const loginErrorsText = loginErrors
+    && Object.values(loginErrors)
       .flat()
       .map((error, index) => <ToastTextRow key={index}>{error}</ToastTextRow>);
 
-  const showSuccessRegisterToast = () =>
-    toast.success(`Пользователь успешно зарегестрирован`);
+  const showSuccessRegisterToast = () => toast.success('Пользователь успешно зарегестрирован');
 
   const showErrorLoginToast = () => {
     toast.error(<ToastTextContainer>{loginErrorsText}</ToastTextContainer>);
@@ -152,8 +149,8 @@ const AuthModal = memo(() => {
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.email}
                   error={
-                    registerFormik.touched.email &&
-                    Boolean(registerFormik.errors.email)
+                    registerFormik.touched.email
+                    && Boolean(registerFormik.errors.email)
                   }
                   helperText={
                     registerFormik.touched.email && registerFormik.errors.email
@@ -167,12 +164,12 @@ const AuthModal = memo(() => {
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.username}
                   error={
-                    registerFormik.touched.username &&
-                    Boolean(registerFormik.errors.username)
+                    registerFormik.touched.username
+                    && Boolean(registerFormik.errors.username)
                   }
                   helperText={
-                    registerFormik.touched.username &&
-                    registerFormik.errors.username
+                    registerFormik.touched.username
+                    && registerFormik.errors.username
                   }
                   onChange={registerFormik.handleChange}
                 />
@@ -184,12 +181,12 @@ const AuthModal = memo(() => {
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.password}
                   error={
-                    registerFormik.touched.password &&
-                    Boolean(registerFormik.errors.password)
+                    registerFormik.touched.password
+                    && Boolean(registerFormik.errors.password)
                   }
                   helperText={
-                    registerFormik.touched.password &&
-                    registerFormik.errors.password
+                    registerFormik.touched.password
+                    && registerFormik.errors.password
                   }
                   onChange={registerFormik.handleChange}
                 />
@@ -202,12 +199,12 @@ const AuthModal = memo(() => {
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.confirmPassword}
                   error={
-                    registerFormik.touched.confirmPassword &&
-                    Boolean(registerFormik.errors.confirmPassword)
+                    registerFormik.touched.confirmPassword
+                    && Boolean(registerFormik.errors.confirmPassword)
                   }
                   helperText={
-                    registerFormik.touched.confirmPassword &&
-                    registerFormik.errors.confirmPassword
+                    registerFormik.touched.confirmPassword
+                    && registerFormik.errors.confirmPassword
                   }
                   onChange={registerFormik.handleChange}
                 />
@@ -229,8 +226,8 @@ const AuthModal = memo(() => {
                   onBlur={loginFormik.handleBlur}
                   value={loginFormik.values.username}
                   error={
-                    loginFormik.touched.username &&
-                    Boolean(loginFormik.errors.username)
+                    loginFormik.touched.username
+                    && Boolean(loginFormik.errors.username)
                   }
                   helperText={
                     loginFormik.touched.username && loginFormik.errors.username
@@ -245,8 +242,8 @@ const AuthModal = memo(() => {
                   onBlur={loginFormik.handleBlur}
                   value={loginFormik.values.password}
                   error={
-                    loginFormik.touched.password &&
-                    Boolean(loginFormik.errors.password)
+                    loginFormik.touched.password
+                    && Boolean(loginFormik.errors.password)
                   }
                   helperText={
                     loginFormik.touched.password && loginFormik.errors.password

@@ -10,7 +10,7 @@ import * as collabsSelectors from 'reduxStore/collabs/selectors';
 
 import * as S from './Collab.style';
 
-const Collab = () => {
+function Collab() {
   const params = useParams();
   const collab = useTypedSelector(collabsSelectors.collab);
   const { getCollab } = useActions();
@@ -47,6 +47,6 @@ const Collab = () => {
       </S.Container>
     </S.Collab>
   );
-};
+}
 
 export default Collab;

@@ -18,4 +18,6 @@ const succeses = (state: State) => ({
 
 const isFetching = (state: State) => state.auth.isFetching;
 
-export { token, isAuth, user, succeses, isFetching, errors };
+export {
+  token, isAuth, user, succeses, isFetching, errors,
+};

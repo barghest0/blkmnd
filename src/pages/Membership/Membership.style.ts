@@ -24,4 +24,6 @@ const MembershipList = styled.div`
   gap: 40px;
 `;
 
-export { Membership, Container, Title, MembershipList };
+export {
+  Membership, Container, Title, MembershipList,
+};

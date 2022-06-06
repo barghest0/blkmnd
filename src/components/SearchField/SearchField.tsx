@@ -42,7 +42,7 @@ const SearchField: FC<Props> = ({ children, initialValues }) => {
   };
 
   const formik = useFormik({
-    initialValues: initialValues,
+    initialValues,
     onSubmit: onSearchSubmit,
   });
 

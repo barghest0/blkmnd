@@ -1,5 +1,6 @@
-import { Admin as ReactAdmin, RaThemeOptions, Resource } from 'react-admin';
-import { defaultTheme } from 'react-admin';
+import {
+  Admin as ReactAdmin, RaThemeOptions, Resource, defaultTheme,
+} from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 
 import BeatCreate from 'adminComponents/BeatForms/BeatCreate/BeatCreate';
@@ -22,7 +23,7 @@ const theme: RaThemeOptions = {
   },
 };
 
-const Admin = () => {
+function Admin() {
   return (
     <ReactAdmin
       theme={theme}
@@ -55,6 +56,6 @@ const Admin = () => {
       />
     </ReactAdmin>
   );
-};
+}
 
 export default Admin;

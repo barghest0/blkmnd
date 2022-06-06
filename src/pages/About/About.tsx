@@ -15,7 +15,7 @@ import * as discographySelectors from 'reduxStore/discography/selectors';
 import * as S from './About.style';
 import GalleryImage from './images/gallery-image.jpg';
 
-const About = () => {
+function About() {
   const { getDiscographyBeats } = useActions();
   const discographyBeats = useTypedSelector(discographySelectors.allBeats);
 
@@ -29,7 +29,7 @@ const About = () => {
     getDiscographyBeats();
   }, []);
 
-  const discographyCards = discographyBeats.map(beat => (
+  const discographyCards = discographyBeats.map((beat) => (
     <DiscographyCard beat={beat} key={beat.id} />
   ));
 
@@ -57,7 +57,7 @@ const About = () => {
           </S.BiographyText>
           <S.BiographyImage
             src={require('./images/biography-image.png')}
-          ></S.BiographyImage>
+          />
         </S.Biography>
 
         <S.SectionTitle>Discography</S.SectionTitle>
@@ -78,6 +78,6 @@ const About = () => {
       </S.Container>
     </S.About>
   );
-};
+}
 
 export default About;

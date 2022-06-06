@@ -9,7 +9,7 @@ import {
   BooleanInput,
 } from 'react-admin';
 
-const BeatUpdate = () => {
+function BeatUpdate() {
   return (
     <Edit>
       <SimpleForm>
@@ -38,6 +38,6 @@ const BeatUpdate = () => {
       </SimpleForm>
     </Edit>
   );
-};
+}
 
 export default BeatUpdate;

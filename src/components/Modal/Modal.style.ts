@@ -54,4 +54,6 @@ const CloseButton = styled(CloseIcon)`
   cursor: pointer;
 `;
 
-export { Modal, Title, Content, Header, CloseButton, Inner };
+export {
+  Modal, Title, Content, Header, CloseButton, Inner,
+};

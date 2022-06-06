@@ -1,12 +1,12 @@
 import PreloaderCircle from './images/preloader.svg';
 import * as S from './Preloader.style';
 
-const Preloader = () => {
+function Preloader() {
   return (
     <S.Preloader>
       <PreloaderCircle />
     </S.Preloader>
   );
-};
+}
 
 export default Preloader;

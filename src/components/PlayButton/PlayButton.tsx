@@ -17,9 +17,9 @@ const PlayButton: FC<Props> = ({ currentBeat }) => {
   return (
     <S.PlayButton>
       {currentPlayerBeat?.id === currentBeat.id && isPlayerPlaying ? (
-        <S.PauseIcon className={'override'} />
+        <S.PauseIcon className="override" />
       ) : (
-        <S.PlayIcon className={'override'} />
+        <S.PlayIcon className="override" />
       )}
     </S.PlayButton>
   );

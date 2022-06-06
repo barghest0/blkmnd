@@ -17,7 +17,8 @@ const TagLink: FC<Props> = ({ tag }) => {
     <S.TagLink>
       <S.Link>
         <StyledLink to={`${RouterPaths.beats}?tag=${tag.name}`}>
-          #{name}
+          #
+          {name}
         </StyledLink>
       </S.Link>
     </S.TagLink>

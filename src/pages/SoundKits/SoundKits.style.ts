@@ -24,4 +24,6 @@ const SoundKitsList = styled.div`
   justify-items: center;
 `;
 
-export { SoundKits, Container, Title, SoundKitsList };
+export {
+  SoundKits, Container, Title, SoundKitsList,
+};

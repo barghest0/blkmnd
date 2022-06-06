@@ -8,12 +8,12 @@ import * as collabsSelectors from 'reduxStore/collabs/selectors';
 
 import * as S from './Collabs.style';
 
-const Collabs = () => {
+function Collabs() {
   const { getAllCollabs } = useActions();
   const collabs = useTypedSelector(collabsSelectors.allCollabs);
   const isCollabsFetching = useTypedSelector(collabsSelectors.isFetching);
 
-  const collabsCards = collabs.map(collab => (
+  const collabsCards = collabs.map((collab) => (
     <CollabCard collab={collab} key={collab.id} />
   ));
 
@@ -31,6 +31,6 @@ const Collabs = () => {
       </S.Container>
     </S.Collabs>
   );
-};
+}
 
 export default Collabs;

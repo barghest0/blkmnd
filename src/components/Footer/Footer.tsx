@@ -8,13 +8,13 @@ import ThemeColors from 'shared/styles/theme';
 
 import * as S from './Footer.style';
 
-const Footer = () => {
+function Footer() {
   return (
     <S.Footer>
       <S.Container>
         <S.FooterInner>
           <S.Overview>
-            <S.Logo alt={'logo'} />
+            <S.Logo alt="logo" />
             <S.Description>
               Download free beats and free drum kits today
             </S.Description>
@@ -37,21 +37,21 @@ const Footer = () => {
           </S.Nav>
           <S.Socials>
             <S.Social
-              href={'https://www.twitter.com/'}
+              href="https://www.twitter.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <TwitterIcon fontSize="small" sx={{ fill: ThemeColors.white }} />
             </S.Social>
             <S.Social
-              href={'https://www.youtube.com/'}
+              href="https://www.youtube.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
               <YouTubeIcon fontSize="small" sx={{ fill: ThemeColors.white }} />
             </S.Social>
             <S.Social
-              href={'https://www.instagram.com/'}
+              href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -65,6 +65,6 @@ const Footer = () => {
       </S.Container>
     </S.Footer>
   );
-};
+}
 
 export default Footer;

@@ -32,4 +32,6 @@ const Text = styled.p`
   padding: 0 20px;
   overflow: auto;
 `;
-export { LicensesModal, Modal, Content, Title, Text };
+export {
+  LicensesModal, Modal, Content, Title, Text,
+};

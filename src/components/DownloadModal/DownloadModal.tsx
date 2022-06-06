@@ -44,12 +44,13 @@ const DownloadModal: FC = () => {
     console.log(values);
   };
 
-  const { handleSubmit, handleBlur, handleChange, touched, values, errors } =
-    useFormik({
-      initialValues: initialDownloadValues,
-      validationSchema: downloadValidation,
-      onSubmit: onDownloadSubmit,
-    });
+  const {
+    handleSubmit, handleBlur, handleChange, touched, values, errors,
+  } = useFormik({
+    initialValues: initialDownloadValues,
+    validationSchema: downloadValidation,
+    onSubmit: onDownloadSubmit,
+  });
 
   return (
     <S.DownloadModal>
@@ -100,7 +101,7 @@ const DownloadModal: FC = () => {
                         onChange={handleChange}
                         name="mobilePrefix"
                       >
-                        <S.Prefix value={'+7'}>+7 RU</S.Prefix>
+                        <S.Prefix value="+7">+7 RU</S.Prefix>
                       </S.PhonePrefix>
                     </FormControl>
 
@@ -118,7 +119,7 @@ const DownloadModal: FC = () => {
                     label="Yes, I would like to receive free tracks to the email address provided above."
                   />
                   <S.Submit>
-                    <Button type={'submit'}>Send beat to your e-mail</Button>
+                    <Button type="submit">Send beat to your e-mail</Button>
                   </S.Submit>
                 </S.Form>
               </S.Content>

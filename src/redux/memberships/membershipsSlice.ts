@@ -17,7 +17,7 @@ const membershipsSlice = createSlice({
       state.memberships = action.payload;
     },
 
-    [getMemberships.pending.type]: state => {
+    [getMemberships.pending.type]: (state) => {
       state.isFetching = true;
     },
 

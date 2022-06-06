@@ -15,7 +15,9 @@ type Props = {
 };
 
 const DiscographyCard: FC<Props> = ({ beat }) => {
-  const { id, image, title, musician } = beat;
+  const {
+    id, image, title, musician,
+  } = beat;
 
   const { openPlayer, setBeat, togglePlaying } = useActions();
 

@@ -1,4 +1,6 @@
-import { SyntheticEvent, useContext, useEffect, useState } from 'react';
+import {
+  SyntheticEvent, useContext, useEffect, useState,
+} from 'react';
 import { useParams } from 'react-router-dom';
 import MusicNoteSharpIcon from '@mui/icons-material/MusicNoteSharp';
 import SpeedIcon from '@mui/icons-material/Speed';
@@ -10,7 +12,6 @@ import Preloader from 'components/Preloader/Preloader';
 import Visualizer from 'components/Visualizer/Visualizer';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import useActions from 'hooks/useActions';
-import * as S from './Beat.style';
 import DownloadButton from 'components/DownloadButton/DownloadButton';
 import ShareButton from 'components/ShareButton/ShareButton';
 import TagLink from 'components/TagLink/TagLink';
@@ -24,8 +25,9 @@ import Comment from 'components/Comment/Comment';
 import { User } from 'reduxStore/user/types';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
 import AuthContext from 'contexts/AuthContext';
+import * as S from './Beat.style';
 
-const Beat = () => {
+function Beat() {
   const params = useParams();
 
   const beats = useTypedSelector(beatsSelectors.allBeats);
@@ -72,13 +74,13 @@ const Beat = () => {
     }
   };
 
-  const comments = beat?.comments.map(comment => (
+  const comments = beat?.comments.map((comment) => (
     <S.Comment key={comment.id}>
       <Comment comment={comment} />
     </S.Comment>
   ));
 
-  const tags = beat?.tags.map(tag => (
+  const tags = beat?.tags.map((tag) => (
     <S.Tag key={tag.id}>
       <TagLink tag={tag} />
     </S.Tag>
@@ -139,7 +141,7 @@ const Beat = () => {
             </S.ContentInner>
           </S.Container>
           <S.Background src={beat.image} alt="background" />
-          <S.BackgroundGradient></S.BackgroundGradient>
+          <S.BackgroundGradient />
         </S.Content>
       )}
       <S.Container>
@@ -168,6 +170,6 @@ const Beat = () => {
       </S.Container>
     </S.Beat>
   );
-};
+}
 
 export default Beat;

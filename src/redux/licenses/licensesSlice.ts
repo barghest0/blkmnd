@@ -14,7 +14,7 @@ const licensesSlice = createSlice({
       state.licenses = action.payload;
     },
 
-    [getLicenses.pending.type]: state => {
+    [getLicenses.pending.type]: (state) => {
       state.isFetching = true;
     },
 

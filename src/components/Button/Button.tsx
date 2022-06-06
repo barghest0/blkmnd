@@ -15,13 +15,11 @@ const Button: FC<Props> = ({
   type = 'button',
   hasBackground = true,
   theme = 'light',
-}) => {
-  return (
-    <S.Button type={type} theme={theme} hasBackground={hasBackground}>
-      {children}
-    </S.Button>
-  );
-};
+}) => (
+  <S.Button type={type} theme={theme} hasBackground={hasBackground}>
+    {children}
+  </S.Button>
+);
 
 export default Button;
 export { Props };

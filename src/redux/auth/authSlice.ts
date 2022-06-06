@@ -9,7 +9,7 @@ const authSlice = createSlice({
   name: AUTH_SLICE_NAME,
   initialState: AUTH_INITIAL_STATE,
   reducers: {
-    logout: state => {
+    logout: (state) => {
       state.isAuth = false;
       state.token = null;
       state.user = null;
@@ -33,7 +33,7 @@ const authSlice = createSlice({
       }
     },
 
-    [login.pending.type]: state => {
+    [login.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -48,7 +48,7 @@ const authSlice = createSlice({
       state.isRegisterSuccess = true;
     },
 
-    [register.pending.type]: state => {
+    [register.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -67,7 +67,7 @@ const authSlice = createSlice({
       state.isAuth = true;
     },
 
-    [autoLogin.pending.type]: state => {
+    [autoLogin.pending.type]: (state) => {
       state.isFetching = true;
     },
 

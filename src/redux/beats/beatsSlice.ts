@@ -30,7 +30,7 @@ const beatsSlice = createSlice({
       state.beats = action.payload;
     },
 
-    [getPreviewBeats.pending.type]: state => {
+    [getPreviewBeats.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -45,7 +45,7 @@ const beatsSlice = createSlice({
       state.beats = action.payload;
     },
 
-    [getAllBeats.pending.type]: state => {
+    [getAllBeats.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -63,7 +63,7 @@ const beatsSlice = createSlice({
       state.beats = action.payload;
     },
 
-    [getFilteredBeats.pending.type]: state => {
+    [getFilteredBeats.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -80,8 +80,7 @@ const beatsSlice = createSlice({
       action: PayloadAction<Beat[]>,
     ) => {
       state.errors = '';
-      const featuredBeat =
-        action.payload[Math.floor(Math.random() * action.payload.length)];
+      const featuredBeat = action.payload[Math.floor(Math.random() * action.payload.length)];
       state.featuredBeat = featuredBeat;
     },
 

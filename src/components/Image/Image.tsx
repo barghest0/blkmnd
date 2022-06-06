@@ -10,7 +10,7 @@ type Props = {
 
 const Image: FC<Props> = ({ image }) => {
   const isLoad = useImagePreloader(image);
-  return !isLoad ? <S.Overlay></S.Overlay> : <S.Image src={image} />;
+  return !isLoad ? <S.Overlay /> : <S.Image src={image} />;
 };
 
 export default Image;

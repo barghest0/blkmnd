@@ -1,6 +1,6 @@
 import * as S from './Offers.style';
 
-const Offers = () => {
+function Offers() {
   return (
     <S.Offers>
       <S.Container>
@@ -8,6 +8,6 @@ const Offers = () => {
       </S.Container>
     </S.Offers>
   );
-};
+}
 
 export default Offers;

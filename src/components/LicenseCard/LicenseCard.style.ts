@@ -22,4 +22,6 @@ const Details = styled.div`
   font-size: 14px;
 `;
 
-export { LicenseCard, Title, Price, Details };
+export {
+  LicenseCard, Title, Price, Details,
+};

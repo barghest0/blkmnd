@@ -2,7 +2,7 @@ import ContactForm from 'components/ContactForm/ContactForm';
 
 import * as S from './Contact.style';
 
-const Contact = () => {
+function Contact() {
   return (
     <S.Contact>
       <S.Container>
@@ -13,6 +13,6 @@ const Contact = () => {
       </S.Container>
     </S.Contact>
   );
-};
+}
 
 export default Contact;

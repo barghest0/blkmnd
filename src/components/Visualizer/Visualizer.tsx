@@ -1,4 +1,6 @@
-import { FC, memo, useContext, useLayoutEffect, useRef } from 'react';
+import {
+  FC, memo, useContext, useLayoutEffect, useRef,
+} from 'react';
 
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import ThemeColors from 'shared/styles/theme';
@@ -58,7 +60,7 @@ const Visualizer: FC = memo(() => {
 
   return (
     <S.Visualizer>
-      <S.VisualizerCanvas ref={canvasRef} width={1000}></S.VisualizerCanvas>
+      <S.VisualizerCanvas ref={canvasRef} width={1000} />
     </S.Visualizer>
   );
 });

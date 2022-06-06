@@ -12,7 +12,7 @@ type FormValues = {
   message: string;
 };
 
-const ContactForm = () => {
+function ContactForm() {
   const initialFormValues: FormValues = {
     name: '',
     email: '',
@@ -24,12 +24,13 @@ const ContactForm = () => {
     console.log(values);
   };
 
-  const { handleSubmit, handleBlur, handleChange, touched, values, errors } =
-    useFormik({
-      initialValues: initialFormValues,
-      onSubmit: onFormSubmit,
-      validationSchema: contactValidation,
-    });
+  const {
+    handleSubmit, handleBlur, handleChange, touched, values, errors,
+  } = useFormik({
+    initialValues: initialFormValues,
+    onSubmit: onFormSubmit,
+    validationSchema: contactValidation,
+  });
 
   return (
     <S.ContactForm onSubmit={handleSubmit}>
@@ -80,10 +81,10 @@ const ContactForm = () => {
         onChange={handleChange}
       />
       <S.SubmitForm>
-        <Button type={'submit'}>send message</Button>
+        <Button type="submit">send message</Button>
       </S.SubmitForm>
     </S.ContactForm>
   );
-};
+}
 
 export default ContactForm;

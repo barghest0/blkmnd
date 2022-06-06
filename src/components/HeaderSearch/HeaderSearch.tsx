@@ -37,7 +37,7 @@ const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
           <S.SearchInput
             isOpen={isOpen}
             name="query"
-            placeholder={'Search beats'}
+            placeholder="Search beats"
           />
           <S.CloseButton isOpen={isOpen} onClick={onCloseButtonClick}>
             <CloseIcon />

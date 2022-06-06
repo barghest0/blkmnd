@@ -24,4 +24,6 @@ const Price = styled.p`
   font-size: 14px;
 `;
 
-export { CollabCard, Thumbnail, Title, Price };
+export {
+  CollabCard, Thumbnail, Title, Price,
+};

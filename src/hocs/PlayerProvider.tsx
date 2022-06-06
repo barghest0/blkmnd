@@ -1,4 +1,6 @@
-import { FC, memo, useCallback, useEffect } from 'react';
+import {
+  FC, memo, useCallback, useEffect,
+} from 'react';
 
 import PlayerContext from 'contexts/PlayerContext';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
@@ -20,11 +22,11 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
 
   const { setCurrentTime, setDuration, setBeat } = useActions();
 
-  const onAudioTimeUpdate = useCallback(event => {
+  const onAudioTimeUpdate = useCallback((event) => {
     setCurrentTime(event.currentTarget.currentTime);
   }, []);
 
-  const onAudioDataLoad = useCallback(event => {
+  const onAudioDataLoad = useCallback((event) => {
     setDuration(event.target.duration);
     audio.volume = audioVolume;
   }, []);

@@ -17,7 +17,7 @@ const discographySlice = createSlice({
       state.beats = action.payload;
     },
 
-    [getDiscographyBeats.pending.type]: state => {
+    [getDiscographyBeats.pending.type]: (state) => {
       state.isFetching = true;
     },
 

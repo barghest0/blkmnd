@@ -1,4 +1,4 @@
-import {Beat} from "../beats/types";
+import { Beat } from '../beats/types';
 
 type DiscographyState = {
   beats: Beat[];
