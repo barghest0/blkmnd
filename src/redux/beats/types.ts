@@ -73,5 +73,5 @@ type Beat = {
 };
 
 export {
-  BeatsState, FiltersState, Beat, Tag, License, Comment,
+ BeatsState, FiltersState, Beat, Tag, License, Comment 
 };

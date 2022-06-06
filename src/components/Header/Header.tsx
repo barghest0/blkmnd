@@ -110,7 +110,7 @@ function Header() {
             </S.CartIcon>
             <S.CartCost>
               $
-              {totalCartPrice.toFixed(2)}
+{totalCartPrice.toFixed(2)}
             </S.CartCost>
           </S.Cart>
         </StyledLink>
@@ -187,6 +187,6 @@ function Header() {
   );
 }
 export {
-  ProfileDropdownProps, DrawerProps, NavProps, SearchProps,
+ ProfileDropdownProps, DrawerProps, NavProps, SearchProps 
 };
 export default Header;

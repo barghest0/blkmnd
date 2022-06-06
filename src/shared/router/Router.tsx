@@ -1,7 +1,5 @@
 import { AnimatePresence } from 'framer-motion';
-import {
-  Navigate, Route, Routes, useLocation,
-} from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 
 import PageTransition from 'hocs/PageTransition';
 import RequireAuth from 'hocs/RequireAuth';
@@ -33,132 +31,132 @@ function Router() {
       <Routes location={location} key={location.pathname}>
         <Route
           path={RouterNames.admin}
-          element={(
+          element={
             <RequireAdmin>
               <Admin />
             </RequireAdmin>
-          )}
+          }
         />
         <Route path={RouterNames.layout} element={<Layout />}>
           <Route
             path={RouterNames.landing}
-            element={(
+            element={
               <PageTransition>
                 <Landing />
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.beats}
-            element={(
+            element={
               <PageTransition>
                 <Beats />
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.beat}
-            element={(
+            element={
               <PageTransition>
                 <Beat />
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.soundKits}
-            element={(
+            element={
               <PageTransition>
                 <SoundKits />
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.soundKit}
-            element={(
+            element={
               <PageTransition>
                 <SoundKit />
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.collabs}
-            element={(
+            element={
               <PageTransition>
                 <Collabs />
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.collab}
-            element={(
+            element={
               <PageTransition>
                 <Collab />
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.contact}
-            element={(
+            element={
               <PageTransition>
                 <Contact />
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.about}
-            element={(
+            element={
               <PageTransition>
                 <About />
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.purchases}
-            element={(
+            element={
               <PageTransition>
                 <RequireAuth>
                   <Purchases />
                 </RequireAuth>
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.offers}
-            element={(
+            element={
               <PageTransition>
                 <RequireAuth>
                   <Offers />
                 </RequireAuth>
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.membership}
-            element={(
+            element={
               <PageTransition>
                 <RequireAuth>
                   <Membership />
                 </RequireAuth>
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.profile}
-            element={(
+            element={
               <PageTransition>
                 <RequireAuth>
                   <Profile />
                 </RequireAuth>
               </PageTransition>
-            )}
+            }
           />
           <Route
             path={RouterNames.cart}
-            element={(
+            element={
               <PageTransition>
                 <Cart />
               </PageTransition>
-            )}
+            }
           />
         </Route>
         <Route

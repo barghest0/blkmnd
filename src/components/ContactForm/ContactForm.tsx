@@ -25,12 +25,12 @@ function ContactForm() {
   };
 
   const {
-    handleSubmit, handleBlur, handleChange, touched, values, errors,
-  } = useFormik({
-    initialValues: initialFormValues,
-    onSubmit: onFormSubmit,
-    validationSchema: contactValidation,
-  });
+ handleSubmit, handleBlur, handleChange, touched, values, errors 
+} =    useFormik({
+      initialValues: initialFormValues,
+      onSubmit: onFormSubmit,
+      validationSchema: contactValidation,
+    });
 
   return (
     <S.ContactForm onSubmit={handleSubmit}>

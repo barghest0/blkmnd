@@ -1,5 +1,5 @@
 import {
-  Datagrid, List, NumberField, TextField,
+ Datagrid, List, NumberField, TextField 
 } from 'react-admin';
 
 function ServicesList() {

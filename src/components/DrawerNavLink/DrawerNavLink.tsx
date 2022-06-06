@@ -7,6 +7,8 @@ type Props = {
   path: string;
 };
 
-const DrawerNavLink: FC<Props> = ({ children, path }) => <S.DrawerNavLink to={path}>{children}</S.DrawerNavLink>;
+const DrawerNavLink: FC<Props> = ({ children, path }) => (
+  <S.DrawerNavLink to={path}>{children}</S.DrawerNavLink>
+);
 
 export default DrawerNavLink;

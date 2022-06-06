@@ -1,5 +1,8 @@
 import {
-  Admin as ReactAdmin, RaThemeOptions, Resource, defaultTheme,
+  Admin as ReactAdmin,
+  RaThemeOptions,
+  Resource,
+  defaultTheme,
 } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 

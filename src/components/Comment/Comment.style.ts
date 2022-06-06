@@ -31,5 +31,5 @@ const Content = styled.p`
 `;
 
 export {
-  Content, Avatar, Info, Comment, Username, Date,
+ Content, Avatar, Info, Comment, Username, Date 
 };

@@ -32,5 +32,5 @@ const Submit = styled.div`
 `;
 
 export {
-  CommentField, Avatar, Submit, TextField,
+ CommentField, Avatar, Submit, TextField 
 };

@@ -23,5 +23,5 @@ const Details = styled.div`
 `;
 
 export {
-  LicenseCard, Title, Price, Details,
+ LicenseCard, Title, Price, Details 
 };

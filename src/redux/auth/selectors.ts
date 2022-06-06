@@ -19,5 +19,5 @@ const succeses = (state: State) => ({
 const isFetching = (state: State) => state.auth.isFetching;
 
 export {
-  token, isAuth, user, succeses, isFetching, errors,
+ token, isAuth, user, succeses, isFetching, errors 
 };

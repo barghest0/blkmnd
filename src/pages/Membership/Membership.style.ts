@@ -25,5 +25,5 @@ const MembershipList = styled.div`
 `;
 
 export {
-  Membership, Container, Title, MembershipList,
+ Membership, Container, Title, MembershipList 
 };

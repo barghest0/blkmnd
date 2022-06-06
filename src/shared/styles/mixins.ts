@@ -43,5 +43,5 @@ const textOverflow = css`
   white-space: nowrap;
 `;
 export {
-  container, button, pageTitle, page, textOverflow,
+ container, button, pageTitle, page, textOverflow 
 };

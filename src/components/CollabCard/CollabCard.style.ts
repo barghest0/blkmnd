@@ -25,5 +25,5 @@ const Price = styled.p`
 `;
 
 export {
-  CollabCard, Thumbnail, Title, Price,
+ CollabCard, Thumbnail, Title, Price 
 };

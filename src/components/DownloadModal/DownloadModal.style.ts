@@ -15,18 +15,18 @@ const DownloadModal = styled.div``;
 
 const Modal = styled.div<DownloadModalProps>`
   ${({ background }) => css`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('${background}') center no-repeat;
-      background-size: cover;
-      background-color: ${ThemeColors.dark};
-      width: 450px;
-      @media ${breakpoint('sm')} {
-        width: 100%;
-      }
-    `}
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('${background}') center no-repeat;
+    background-size: cover;
+    background-color: ${ThemeColors.dark};
+    width: 450px;
+    @media ${breakpoint('sm')} {
+      width: 100%;
+    }
+  `}
 `;
 
 const Content = styled.div`

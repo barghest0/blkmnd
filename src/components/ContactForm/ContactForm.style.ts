@@ -23,5 +23,5 @@ const SubmitForm = styled.div`
 `;
 
 export {
-  TextField, ContactForm, MainFields, SubmitForm,
+ TextField, ContactForm, MainFields, SubmitForm 
 };

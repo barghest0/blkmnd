@@ -80,21 +80,21 @@ function Cart() {
                 <S.SettlementText>Price</S.SettlementText>
                 <S.SettlementText>
                   $
-                  {totalCartPrice}
+{totalCartPrice}
                 </S.SettlementText>
               </S.Settlement>
               <S.Settlement>
                 <S.SettlementText>Discount</S.SettlementText>
                 <S.SettlementText>
                   - $
-                  {cartDiscount}
+{cartDiscount}
                 </S.SettlementText>
               </S.Settlement>
               <S.Settlement>
                 <S.TotalText>Total</S.TotalText>
                 <S.TotalText>
                   $
-                  {totalCartPrice - cartDiscount}
+{totalCartPrice - cartDiscount}
                 </S.TotalText>
               </S.Settlement>
             </S.CashSettlement>

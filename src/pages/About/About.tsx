@@ -55,9 +55,7 @@ function About() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </S.BiographyText>
-          <S.BiographyImage
-            src={require('./images/biography-image.png')}
-          />
+          <S.BiographyImage src={require('./images/biography-image.png')} />
         </S.Biography>
 
         <S.SectionTitle>Discography</S.SectionTitle>

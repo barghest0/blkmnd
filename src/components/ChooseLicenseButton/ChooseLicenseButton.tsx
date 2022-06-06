@@ -24,8 +24,7 @@ const ChooseLicenseButton: FC<Props> = ({ price, beat }) => {
     <S.ChooseLicenseButton onClick={onBuyButtonClick}>
       <Button>
         <S.BuyIcon />
-        $
-        {price.toFixed(2)}
+${price.toFixed(2)}
       </Button>
     </S.ChooseLicenseButton>
   );

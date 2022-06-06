@@ -24,5 +24,5 @@ const Form = styled.div`
 `;
 
 export {
-  Contact, Container, Title, Form,
+ Contact, Container, Title, Form 
 };

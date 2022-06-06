@@ -28,5 +28,5 @@ const beats = (state: State) => ({
 });
 
 export {
-  fullState, controls, queue, isFetching, errors, beats, state,
+ fullState, controls, queue, isFetching, errors, beats, state 
 };

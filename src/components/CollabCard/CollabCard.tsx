@@ -13,8 +13,8 @@ type Props = {
 
 const CollabCard: FC<Props> = ({ collab }) => {
   const {
-    image, title, id, price,
-  } = collab;
+ image, title, id, price 
+} = collab;
 
   return (
     <S.CollabCard>

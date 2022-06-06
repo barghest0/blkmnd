@@ -29,5 +29,5 @@ const Join = styled.div`
 `;
 
 export {
-  Title, MembershipCard, Details, Join,
+ Title, MembershipCard, Details, Join 
 };

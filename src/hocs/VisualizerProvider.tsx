@@ -28,7 +28,11 @@ const VisualizerProvider: FC<Props> = ({ audio, children }) => {
   return (
     <VisualizerContext.Provider
       value={{
-        audioContext, source, analyser, bufferLength, audioData,
+        audioContext,
+        source,
+        analyser,
+        bufferLength,
+        audioData,
       }}
     >
       {children}

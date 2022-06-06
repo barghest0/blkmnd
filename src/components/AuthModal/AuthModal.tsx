@@ -56,10 +56,10 @@ const AuthModal = memo(() => {
 
   const showSuccessLoginToast = () => toast.success(`Привет! ${user?.username}`);
 
-  const loginErrorsText = loginErrors
-    && Object.values(loginErrors)
-      .flat()
-      .map((error, index) => <ToastTextRow key={index}>{error}</ToastTextRow>);
+  const loginErrorsText = loginErrors;
+  Object.values(loginErrors)
+    .flat()
+    .map((error, index) => <ToastTextRow key={index}>{error}</ToastTextRow>);
 
   const showSuccessRegisterToast = () => toast.success('Пользователь успешно зарегестрирован');
 

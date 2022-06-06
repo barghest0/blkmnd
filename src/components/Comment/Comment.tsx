@@ -16,9 +16,8 @@ const Comment: FC<Props> = ({ comment }) => {
       <S.Avatar />
       <S.Info>
         <S.Username>{username}</S.Username>
-        {' '}
-        •
-        <S.Date>{date}</S.Date>
+{' '}
+•<S.Date>{date}</S.Date>
       </S.Info>
       <S.Content>{text}</S.Content>
     </S.Comment>

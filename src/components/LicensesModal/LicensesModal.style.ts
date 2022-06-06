@@ -33,5 +33,5 @@ const Text = styled.p`
   overflow: auto;
 `;
 export {
-  LicensesModal, Modal, Content, Title, Text,
+ LicensesModal, Modal, Content, Title, Text 
 };

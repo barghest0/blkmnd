@@ -32,8 +32,7 @@ const BuyButton: FC<Props> = ({ price, details, license }) => {
     <S.BuyButton onClick={onBuyButtonClick}>
       <Button>
         <S.BuyIcon />
-        $
-        {price.toFixed(2)}
+${price.toFixed(2)}
       </Button>
     </S.BuyButton>
   );

@@ -1,5 +1,5 @@
 import {
-  FC, memo, useCallback, useEffect,
+ FC, memo, useCallback, useEffect 
 } from 'react';
 
 import PlayerContext from 'contexts/PlayerContext';

@@ -45,12 +45,12 @@ const DownloadModal: FC = () => {
   };
 
   const {
-    handleSubmit, handleBlur, handleChange, touched, values, errors,
-  } = useFormik({
-    initialValues: initialDownloadValues,
-    validationSchema: downloadValidation,
-    onSubmit: onDownloadSubmit,
-  });
+ handleSubmit, handleBlur, handleChange, touched, values, errors 
+} =    useFormik({
+      initialValues: initialDownloadValues,
+      validationSchema: downloadValidation,
+      onSubmit: onDownloadSubmit,
+    });
 
   return (
     <S.DownloadModal>

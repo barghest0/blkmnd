@@ -53,5 +53,5 @@ const Actions = styled.div`
 `;
 
 export {
-  QueueBeat, Thumbnail, Title, Bpm, Tags, Actions, Time, Tag,
+ QueueBeat, Thumbnail, Title, Bpm, Tags, Actions, Time, Tag 
 };

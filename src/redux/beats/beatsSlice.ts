@@ -80,7 +80,7 @@ const beatsSlice = createSlice({
       action: PayloadAction<Beat[]>,
     ) => {
       state.errors = '';
-      const featuredBeat = action.payload[Math.floor(Math.random() * action.payload.length)];
+      const featuredBeat =        action.payload[Math.floor(Math.random() * action.payload.length)];
       state.featuredBeat = featuredBeat;
     },
 

@@ -1,5 +1,5 @@
 import {
-  FC, memo, useEffect, useState,
+ FC, memo, useEffect, useState 
 } from 'react';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
@@ -44,7 +44,7 @@ const Player: FC = memo(() => {
 
   const queue = useTypedSelector(playerSelectors.queue);
 
-  const { currentPlayerBeat, nextPlayerBeat, previousPlayerBeat } = useTypedSelector(playerSelectors.beats);
+  const { currentPlayerBeat, nextPlayerBeat, previousPlayerBeat } =    useTypedSelector(playerSelectors.beats);
 
   const {
     getQueueBeats,

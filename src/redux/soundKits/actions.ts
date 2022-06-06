@@ -61,5 +61,5 @@ const updateSoundKit = createAsyncThunk(
   },
 );
 export {
-  getPreviewSoundKits, getAllSoundKits, getSoundKit, updateSoundKit,
+ getPreviewSoundKits, getAllSoundKits, getSoundKit, updateSoundKit 
 };

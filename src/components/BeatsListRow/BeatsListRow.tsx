@@ -23,8 +23,8 @@ type RowProps = {
 
 const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
   const {
-    image, id, title, time, bpm, tags, price,
-  } = beat;
+ image, id, title, time, bpm, tags, price 
+} = beat;
 
   const { openPlayer, setBeat, togglePlaying } = useActions();
 

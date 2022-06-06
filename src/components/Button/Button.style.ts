@@ -8,8 +8,8 @@ import { ButtonThemes } from './types';
 
 const Button = styled.button<Props>`
   ${({ theme, hasBackground }) => {
-    const color = theme === ButtonThemes.dark ? ThemeColors.actionColor : ThemeColors.black;
-    const backgroundColor = theme === ButtonThemes.dark ? ThemeColors.black : ThemeColors.secondColor;
+    const color =      theme === ButtonThemes.dark ? ThemeColors.actionColor : ThemeColors.black;
+    const backgroundColor =      theme === ButtonThemes.dark ? ThemeColors.black : ThemeColors.secondColor;
 
     return css`
       ${button}

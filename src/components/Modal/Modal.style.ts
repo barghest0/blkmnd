@@ -55,5 +55,5 @@ const CloseButton = styled(CloseIcon)`
 `;
 
 export {
-  Modal, Title, Content, Header, CloseButton, Inner,
+ Modal, Title, Content, Header, CloseButton, Inner 
 };

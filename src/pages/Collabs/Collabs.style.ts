@@ -25,5 +25,5 @@ const CollabsList = styled.div`
 `;
 
 export {
-  Collabs, Title, Container, CollabsList,
+ Collabs, Title, Container, CollabsList 
 };

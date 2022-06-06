@@ -65,5 +65,5 @@ const Preloader = styled.div<PreloaderProps>`
 `;
 
 export {
-  AuthModal, Modal, Form, Submit, AuthAction, FormContainer, Preloader,
+ AuthModal, Modal, Form, Submit, AuthAction, FormContainer, Preloader 
 };

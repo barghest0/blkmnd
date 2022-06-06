@@ -28,5 +28,5 @@ const Price = styled.div`
 `;
 
 export {
-  SoundKitCard, Thumbnail, Title, Price,
+ SoundKitCard, Thumbnail, Title, Price 
 };

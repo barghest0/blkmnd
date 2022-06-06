@@ -25,5 +25,5 @@ const SoundKitsList = styled.div`
 `;
 
 export {
-  SoundKits, Container, Title, SoundKitsList,
+ SoundKits, Container, Title, SoundKitsList 
 };

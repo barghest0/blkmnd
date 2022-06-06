@@ -12,5 +12,5 @@ const separatedBeats = (state: State) => ({
 const errors = (state: State) => state.beats.errors;
 
 export {
-  allBeats, isFetching, separatedBeats, errors,
+ allBeats, isFetching, separatedBeats, errors 
 };
