@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const token = (state: State) => state.auth.token;
 
@@ -18,6 +18,4 @@ const succeses = (state: State) => ({
 
 const isFetching = (state: State) => state.auth.isFetching;
 
-export {
- token, isAuth, user, succeses, isFetching, errors 
-};
+export { token, isAuth, user, succeses, isFetching, errors };

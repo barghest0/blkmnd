@@ -34,17 +34,17 @@ const SearchField: FC<Props> = ({ children, initialValues }) => {
     }
   };
 
-  const onSearchChange = (event: SyntheticEvent<HTMLInputElement>) => {
-    formik.handleChange(event);
-    const query = event.target.value;
-
-    getFilteredBeats({ query });
-  };
-
   const formik = useFormik({
     initialValues,
     onSubmit: onSearchSubmit,
   });
+
+  const onSearchChange = (event: SyntheticEvent<HTMLInputElement>) => {
+    formik.handleChange(event);
+    const query = event.currentTarget.value;
+
+    getFilteredBeats({ query });
+  };
 
   return (
     <S.SearchField onSubmit={formik.handleSubmit}>

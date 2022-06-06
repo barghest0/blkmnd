@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import useId from '@mui/material/utils/useId';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -14,8 +15,9 @@ import * as discographySelectors from 'reduxStore/discography/selectors';
 
 import * as S from './About.style';
 import GalleryImage from './images/gallery-image.jpg';
+import BiograpyImage from './images/biography-image.png';
 
-function About() {
+const About = () => {
   const { getDiscographyBeats } = useActions();
   const discographyBeats = useTypedSelector(discographySelectors.allBeats);
 
@@ -33,17 +35,19 @@ function About() {
     <DiscographyCard beat={beat} key={beat.id} />
   ));
 
-  const gallerySlides = gallery.map((image, index) => (
-    <SwiperSlide key={index}>
-      <S.GalleryImage src={image} />
-    </SwiperSlide>
-  ));
+  const gallerySlides = gallery.map((image) => {
+    const key = useId();
+    return (
+      <SwiperSlide key={key}>
+        <S.GalleryImage src={image} />
+      </SwiperSlide>
+    );
+  });
 
   return (
     <S.About>
       <S.Container>
         <S.Title>About</S.Title>
-
         <S.SectionTitle>Biography</S.SectionTitle>
         <S.Biography>
           <S.BiographyText>
@@ -55,7 +59,7 @@ function About() {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </S.BiographyText>
-          <S.BiographyImage src={require('./images/biography-image.png')} />
+          <S.BiographyImage src={BiograpyImage} />
         </S.Biography>
 
         <S.SectionTitle>Discography</S.SectionTitle>
@@ -76,6 +80,6 @@ function About() {
       </S.Container>
     </S.About>
   );
-}
+};
 
 export default About;

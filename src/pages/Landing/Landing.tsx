@@ -208,10 +208,7 @@ const Landing: FC = memo(() => {
                   <VideocamIcon />
                 </S.InfoIcon>
                 <S.InfoTitle>Videos</S.InfoTitle>
-                <S.InfoText>
-{channelContent.videoCount}
-{' '}
- </S.InfoText>
+                <S.InfoText>{channelContent.videoCount} </S.InfoText>
               </S.Info>
               <S.Subscribe>
                 <S.SubscribeButton

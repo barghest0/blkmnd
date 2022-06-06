@@ -4,7 +4,17 @@ import { breakpoint, breakpointUp } from 'shared/styles/breakpoints';
 import { StyledLink } from 'shared/styles/links';
 import ThemeColors from 'shared/styles/theme';
 
-import { DrawerProps, NavProps, ProfileDropdownProps } from './Header';
+type ProfileDropdownProps = {
+  isOpen: boolean;
+};
+
+type DrawerProps = {
+  isOpen: boolean;
+};
+
+type NavProps = {
+  isSearchOpen: boolean;
+};
 
 const Header = styled.header`
   background-color: ${ThemeColors.layoutColor};

@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Beat } from '../beats/types';
+
+import { Beat } from 'reduxStore/beats/types';
+
 import { getQueueBeats } from './actions';
 import { PLAYER_SLICE_NAME, PLAYER_INITIAL_STATE } from './constants';
 

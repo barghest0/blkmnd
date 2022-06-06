@@ -26,39 +26,37 @@ const theme: RaThemeOptions = {
   },
 };
 
-function Admin() {
-  return (
-    <ReactAdmin
-      theme={theme}
-      basename="/admin"
-      dataProvider={jsonServerProvider('http://localhost:3000')}
-    >
-      <Resource
-        name="beats"
-        list={BeatsList}
-        create={BeatCreate}
-        edit={BeatUpdate}
-      />
-      <Resource
-        name="soundKits"
-        list={SoundKitsList}
-        create={SoundKitCreate}
-        edit={SoundKitUpdate}
-      />
-      <Resource
-        name="collabs"
-        list={ServicesList}
-        create={ServiceCreate}
-        edit={ServiceUpdate}
-      />
-      <Resource
-        name="licenses"
-        list={LicensesList}
-        create={LicenseCreate}
-        edit={LicenseUpdate}
-      />
-    </ReactAdmin>
-  );
-}
+const Admin = () => (
+  <ReactAdmin
+    theme={theme}
+    basename="/admin"
+    dataProvider={jsonServerProvider('http://localhost:3000')}
+  >
+    <Resource
+      name="beats"
+      list={BeatsList}
+      create={BeatCreate}
+      edit={BeatUpdate}
+    />
+    <Resource
+      name="soundKits"
+      list={SoundKitsList}
+      create={SoundKitCreate}
+      edit={SoundKitUpdate}
+    />
+    <Resource
+      name="collabs"
+      list={ServicesList}
+      create={ServiceCreate}
+      edit={ServiceUpdate}
+    />
+    <Resource
+      name="licenses"
+      list={LicensesList}
+      create={LicenseCreate}
+      edit={LicenseUpdate}
+    />
+  </ReactAdmin>
+);
 
 export default Admin;

@@ -17,14 +17,8 @@ type Props = {
   beat: Beat;
 };
 
-type RowProps = {
-  isActive: boolean;
-};
-
 const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
-  const {
- image, id, title, time, bpm, tags, price 
-} = beat;
+  const { image, id, title, time, bpm, tags, price } = beat;
 
   const { openPlayer, setBeat, togglePlaying } = useActions();
 
@@ -74,5 +68,4 @@ const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
   );
 };
 
-export { RowProps };
 export default BeatsListRow;

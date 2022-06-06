@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Beat } from '../beats/types';
+
+import { Beat } from 'reduxStore/beats/types';
+
 import { getDiscographyBeats } from './actions';
 import { DISCOGRAPHY_INITIAL_STATE, DISCORGAPHY_SLICE_NAME } from './constants';
 

@@ -21,7 +21,7 @@ type PasswordValues = {
   confirmPassword: string;
 };
 
-function Profile() {
+const Profile = () => {
   const isAdmin = true;
 
   const initialInfoValues: InfoValues = {
@@ -82,8 +82,8 @@ function Profile() {
               onBlur={infoFormik.handleBlur}
               value={infoFormik.values.username}
               error={
-                infoFormik.touched.username
-                && Boolean(infoFormik.errors.username)
+                infoFormik.touched.username &&
+                Boolean(infoFormik.errors.username)
               }
               helperText={
                 infoFormik.touched.username && infoFormik.errors.username
@@ -106,12 +106,12 @@ function Profile() {
               onBlur={passwordFormik.handleBlur}
               value={passwordFormik.values.currentPassword}
               error={
-                passwordFormik.touched.currentPassword
-                && Boolean(passwordFormik.errors.currentPassword)
+                passwordFormik.touched.currentPassword &&
+                Boolean(passwordFormik.errors.currentPassword)
               }
               helperText={
-                passwordFormik.touched.currentPassword
-                && passwordFormik.errors.currentPassword
+                passwordFormik.touched.currentPassword &&
+                passwordFormik.errors.currentPassword
               }
               onChange={passwordFormik.handleChange}
             />
@@ -124,12 +124,12 @@ function Profile() {
                 onBlur={passwordFormik.handleBlur}
                 value={passwordFormik.values.newPassword}
                 error={
-                  passwordFormik.touched.newPassword
-                  && Boolean(passwordFormik.errors.newPassword)
+                  passwordFormik.touched.newPassword &&
+                  Boolean(passwordFormik.errors.newPassword)
                 }
                 helperText={
-                  passwordFormik.touched.newPassword
-                  && passwordFormik.errors.newPassword
+                  passwordFormik.touched.newPassword &&
+                  passwordFormik.errors.newPassword
                 }
                 onChange={passwordFormik.handleChange}
               />
@@ -140,12 +140,12 @@ function Profile() {
                 onBlur={passwordFormik.handleBlur}
                 value={passwordFormik.values.confirmPassword}
                 error={
-                  passwordFormik.touched.confirmPassword
-                  && Boolean(passwordFormik.errors.confirmPassword)
+                  passwordFormik.touched.confirmPassword &&
+                  Boolean(passwordFormik.errors.confirmPassword)
                 }
                 helperText={
-                  passwordFormik.touched.confirmPassword
-                  && passwordFormik.errors.confirmPassword
+                  passwordFormik.touched.confirmPassword &&
+                  passwordFormik.errors.confirmPassword
                 }
                 variant="outlined"
                 onChange={passwordFormik.handleChange}
@@ -164,6 +164,6 @@ function Profile() {
       </S.Container>
     </S.Profile>
   );
-}
+};
 
 export default Profile;

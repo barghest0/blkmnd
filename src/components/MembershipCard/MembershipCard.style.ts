@@ -28,6 +28,4 @@ const Join = styled.div`
   width: 100%;
 `;
 
-export {
- Title, MembershipCard, Details, Join 
-};
+export { Title, MembershipCard, Details, Join };

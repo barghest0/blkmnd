@@ -18,7 +18,7 @@ import 'shared/styles/scss/index.scss';
 
 import * as S from './App.style';
 
-function App() {
+const App = () => {
   const audio = new Audio();
 
   return (
@@ -45,6 +45,6 @@ function App() {
       </VisualizerProvider>
     </AuthProvider>
   );
-}
+};
 
 export default App;

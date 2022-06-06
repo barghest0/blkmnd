@@ -9,7 +9,9 @@ import {
 import ThemeColors from 'shared/styles/theme';
 import { breakpoint } from 'shared/styles/breakpoints';
 
-import { DownloadModalProps } from './DownloadModal';
+type DownloadModalProps = {
+  background?: string;
+};
 
 const DownloadModal = styled.div``;
 

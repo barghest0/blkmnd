@@ -18,7 +18,7 @@ import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
 
 import * as S from './SoundKit.style';
 
-function SoundKit() {
+const SoundKit = () => {
   const params = useParams();
   const soundKit = useTypedSelector(soundKitsSelectors.soundKit);
   const { getSoundKit, pushNewSoundKitComment, updateSoundKit } = useActions();
@@ -77,7 +77,7 @@ function SoundKit() {
                   )}
                 </S.Action>
                 <S.Action>
-                  <ShareButton beatId={soundKit.id} />
+                  <ShareButton product={soundKit} />
                 </S.Action>
               </S.Actions>
             </S.SoundKitInfo>
@@ -97,6 +97,6 @@ function SoundKit() {
       </S.Container>
     </S.SoundKit>
   );
-}
+};
 
 export default SoundKit;

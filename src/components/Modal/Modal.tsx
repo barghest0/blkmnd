@@ -12,13 +12,7 @@ type Props = {
   modalType: ModalsTypes;
 };
 
-type ModalProps = {
-  isOpen: boolean;
-};
-
-const Modal: FC<Props> = ({
- children, isOpen, title, modalType 
-}) => {
+const Modal: FC<Props> = ({ children, isOpen, title, modalType }) => {
   const { setModalVisability } = useActions();
 
   const onContentClick = (event: SyntheticEvent) => {
@@ -44,4 +38,3 @@ const Modal: FC<Props> = ({
 };
 
 export default Modal;
-export { ModalProps };

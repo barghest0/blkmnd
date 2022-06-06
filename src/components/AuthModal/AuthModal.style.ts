@@ -3,7 +3,9 @@ import styled, { css } from 'styled-components';
 import ThemeColors from 'shared/styles/theme';
 import { breakpoint } from 'shared/styles/breakpoints';
 
-import { PreloaderProps } from './AuthModal';
+type PreloaderProps = {
+  isFetching: boolean;
+};
 
 const AuthModal = styled.div``;
 
@@ -64,6 +66,4 @@ const Preloader = styled.div<PreloaderProps>`
   }}
 `;
 
-export {
- AuthModal, Modal, Form, Submit, AuthAction, FormContainer, Preloader 
-};
+export { AuthModal, Modal, Form, Submit, AuthAction, FormContainer, Preloader };

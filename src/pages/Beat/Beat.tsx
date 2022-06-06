@@ -1,6 +1,4 @@
-import {
- SyntheticEvent, useContext, useEffect, useState 
-} from 'react';
+import { SyntheticEvent, useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import MusicNoteSharpIcon from '@mui/icons-material/MusicNoteSharp';
 import SpeedIcon from '@mui/icons-material/Speed';
@@ -27,7 +25,7 @@ import * as beatsSelectors from 'reduxStore/beats/selectors';
 import AuthContext from 'contexts/AuthContext';
 import * as S from './Beat.style';
 
-function Beat() {
+const Beat = () => {
   const params = useParams();
 
   const beats = useTypedSelector(beatsSelectors.allBeats);
@@ -130,7 +128,7 @@ function Beat() {
                     <DownloadButton beatId={beat.id}>Download</DownloadButton>
                   </S.Download>
                   <S.Share>
-                    <ShareButton beatId={beat.id}>Share</ShareButton>
+                    <ShareButton product={beat}>Share</ShareButton>
                   </S.Share>
                   <S.Tags>{tags}</S.Tags>
                 </S.Actions>
@@ -170,6 +168,6 @@ function Beat() {
       </S.Container>
     </S.Beat>
   );
-}
+};
 
 export default Beat;

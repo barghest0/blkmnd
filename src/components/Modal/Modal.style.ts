@@ -3,7 +3,9 @@ import CloseIcon from '@mui/icons-material/Close';
 
 import { textOverflow } from 'shared/styles/mixins';
 
-import { ModalProps } from './Modal';
+type ModalProps = {
+  isOpen: boolean;
+};
 
 const Modal = styled.div<ModalProps>`
   ${({ isOpen }) => {
@@ -54,6 +56,4 @@ const CloseButton = styled(CloseIcon)`
   cursor: pointer;
 `;
 
-export {
- Modal, Title, Content, Header, CloseButton, Inner 
-};
+export { Modal, Title, Content, Header, CloseButton, Inner };

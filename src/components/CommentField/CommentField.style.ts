@@ -31,6 +31,4 @@ const Submit = styled.div`
   height: 100%;
 `;
 
-export {
- CommentField, Avatar, Submit, TextField 
-};
+export { CommentField, Avatar, Submit, TextField };

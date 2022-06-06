@@ -1,6 +1,4 @@
-import {
- FC, memo, useCallback, useEffect 
-} from 'react';
+import { FC, memo, useCallback, useEffect } from 'react';
 
 import PlayerContext from 'contexts/PlayerContext';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';

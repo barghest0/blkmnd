@@ -14,10 +14,6 @@ import * as beatsSelectors from 'reduxStore/beats/selectors';
 
 import * as S from './DownloadModal.style';
 
-type DownloadModalProps = {
-  background?: string;
-};
-
 type DownloadValues = {
   email: string;
   name: string;
@@ -44,9 +40,8 @@ const DownloadModal: FC = () => {
     console.log(values);
   };
 
-  const {
- handleSubmit, handleBlur, handleChange, touched, values, errors 
-} =    useFormik({
+  const { handleSubmit, handleBlur, handleChange, touched, values, errors } =
+    useFormik({
       initialValues: initialDownloadValues,
       validationSchema: downloadValidation,
       onSubmit: onDownloadSubmit,
@@ -130,5 +125,5 @@ const DownloadModal: FC = () => {
     </S.DownloadModal>
   );
 };
-export { DownloadModalProps };
+
 export default DownloadModal;

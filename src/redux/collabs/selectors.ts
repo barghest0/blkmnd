@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const allCollabs = (state: State) => state.collabs.collabs;
 
@@ -8,6 +8,4 @@ const isFetching = (state: State) => state.collabs.isFetching;
 
 const errors = (state: State) => state.collabs.errors;
 
-export {
- allCollabs, collab, isFetching, errors 
-};
+export { allCollabs, collab, isFetching, errors };

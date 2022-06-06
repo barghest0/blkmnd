@@ -8,7 +8,7 @@ import * as membershipsSelectors from 'reduxStore/memberships/selectors';
 
 import * as S from './Membership.style';
 
-function Membership() {
+const Membership = () => {
   const { getMemberships } = useActions();
   const memberships = useTypedSelector(membershipsSelectors.allMemberships);
   const isMembershipsFetching = useTypedSelector(
@@ -33,6 +33,6 @@ function Membership() {
       </S.Container>
     </S.Membership>
   );
-}
+};
 
 export default Membership;

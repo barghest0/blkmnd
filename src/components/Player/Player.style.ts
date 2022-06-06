@@ -3,7 +3,14 @@ import styled, { css } from 'styled-components';
 import { breakpoint } from 'shared/styles/breakpoints';
 import ThemeColors from 'shared/styles/theme';
 
-import { PlayerProps, QueueBeatProps } from './Player';
+type PlayerProps = {
+  isOpen: boolean;
+  isQueueListOpen: boolean;
+};
+
+type QueueBeatProps = {
+  isActive: boolean;
+};
 
 const Player = styled.div<PlayerProps>`
   ${({ isOpen, isQueueListOpen }) => {

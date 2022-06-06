@@ -1,4 +1,4 @@
-import { Beat } from '../beats/types';
+import { Beat } from 'reduxStore/beats/types';
 
 type PlayerState = {
   isPlaying: boolean;

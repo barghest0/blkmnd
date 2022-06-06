@@ -23,7 +23,7 @@ import Admin from 'admin/Admin';
 
 import { RouterNames } from './types';
 
-function Router() {
+const Router = () => {
   const location = useLocation();
 
   return (
@@ -166,6 +166,6 @@ function Router() {
       </Routes>
     </AnimatePresence>
   );
-}
+};
 
 export default Router;

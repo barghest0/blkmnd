@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { License } from '../beats/types';
+
+import { License } from 'reduxStore/beats/types';
+
 import { getLicense, getLicenses } from './actions';
 import { LICENSE_INITIAL_STATE, LICENSE_SLICE_NAME } from './constants';
 
@@ -14,7 +16,7 @@ const licensesSlice = createSlice({
       state.licenses = action.payload;
     },
 
-    [getLicenses.pending.type]: state => {
+    [getLicenses.pending.type]: (state) => {
       state.isFetching = true;
     },
 

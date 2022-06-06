@@ -1,9 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import {
   fetchAllCollabs,
   fetchCollab,
   fetchPreviewCollabs,
-} from '../../shared/api/collabs';
+} from 'shared/api/collabs';
+
 import {
   GET_ALL_COLABS_NAME,
   GET_COLLAB_NAME,
@@ -17,10 +19,11 @@ const getPreviewCollabs = createAsyncThunk(
       const response = await fetchPreviewCollabs();
       return response.data;
     } catch (e) {
-      thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e);
     }
   },
 );
+
 const getAllCollabs = createAsyncThunk(
   GET_ALL_COLABS_NAME,
   async (_, thunkAPI) => {
@@ -40,7 +43,7 @@ const getCollab = createAsyncThunk(
       const response = await fetchCollab(id);
       return response.data;
     } catch (e) {
-      thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e);
     }
   },
 );

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { getPreviewCollabs, getAllCollabs, getCollab } from './actions';
 import { COLLABS_INITIAL_STATE, COLLABS_SLICE_NAME } from './constants';
 import { Collab } from './types';

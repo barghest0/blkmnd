@@ -1,6 +1,4 @@
-import {
- FC, memo, useContext, useLayoutEffect, useRef 
-} from 'react';
+import { FC, memo, useContext, useLayoutEffect, useRef } from 'react';
 
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import ThemeColors from 'shared/styles/theme';

@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const user = (state: State) => state.user.user;
 

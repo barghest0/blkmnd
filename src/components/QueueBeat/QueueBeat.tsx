@@ -13,9 +13,7 @@ type Props = {
 };
 
 const QueueBeat: FC<Props> = ({ beat }) => {
-  const {
- title, tags, price, bpm, image, time 
-} = beat;
+  const { title, tags, price, bpm, image, time } = beat;
   const onActionClick = (event: SyntheticEvent) => {
     event.stopPropagation();
   };

@@ -21,7 +21,7 @@ type FilterValues = {
   sort: string;
 };
 
-function Beats() {
+const Beats = () => {
   const { getAllBeats, getFilteredBeats } = useActions();
   const beats = useTypedSelector(beatsSelectors.allBeats);
   const isBeatsFetching = useTypedSelector(beatsSelectors.isFetching);
@@ -52,6 +52,11 @@ function Beats() {
     console.log(values);
   };
 
+  const filterFormik = useFormik({
+    initialValues: initialFilterValues,
+    onSubmit: onFilterSubmit,
+  });
+
   const onFilterChange = (event: SelectChangeEvent<unknown>) => {
     filterFormik.handleChange(event);
     const { name } = event.target;
@@ -62,11 +67,6 @@ function Beats() {
 
     setFilters(filters);
   };
-
-  const filterFormik = useFormik({
-    initialValues: initialFilterValues,
-    onSubmit: onFilterSubmit,
-  });
 
   const typeOptions = [
     { value: 'all', text: 'All types' },
@@ -154,6 +154,6 @@ function Beats() {
       </S.Container>
     </S.Beats>
   );
-}
+};
 
 export default Beats;

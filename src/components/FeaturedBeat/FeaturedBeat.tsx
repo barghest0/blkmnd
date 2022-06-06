@@ -18,9 +18,7 @@ type Props = {
 };
 
 const FeaturedBeat: FC<Props> = memo(({ beat }) => {
-  const {
- id, title, image, bpm, price, tags 
-} = beat;
+  const { id, title, image, bpm, price, tags } = beat;
 
   const { openPlayer, setBeat, togglePlaying } = useActions();
 
@@ -51,8 +49,7 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
           <S.Featured>Featured track</S.Featured>
           <S.Bpm>
             {' '}
-            •
-{bpm}
+            •{bpm}
             BPM
           </S.Bpm>
         </S.Description>

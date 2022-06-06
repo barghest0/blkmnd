@@ -10,7 +10,7 @@ import * as collabsSelectors from 'reduxStore/collabs/selectors';
 
 import * as S from './Collab.style';
 
-function Collab() {
+const Collab = () => {
   const params = useParams();
   const collab = useTypedSelector(collabsSelectors.collab);
   const { getCollab } = useActions();
@@ -38,7 +38,7 @@ function Collab() {
                   <BuyButton price={collab.price} details={collab} />
                 </S.Action>
                 <S.Action>
-                  <ShareButton beatId={collab.id} />
+                  <ShareButton product={collab} />
                 </S.Action>
               </S.Actions>
             </S.CollabInfo>
@@ -47,6 +47,6 @@ function Collab() {
       </S.Container>
     </S.Collab>
   );
-}
+};
 
 export default Collab;

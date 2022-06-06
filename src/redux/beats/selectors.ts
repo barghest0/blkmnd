@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const allBeats = (state: State) => state.beats.beats;
 
@@ -11,6 +11,4 @@ const separatedBeats = (state: State) => ({
 
 const errors = (state: State) => state.beats.errors;
 
-export {
- allBeats, isFetching, separatedBeats, errors 
-};
+export { allBeats, isFetching, separatedBeats, errors };

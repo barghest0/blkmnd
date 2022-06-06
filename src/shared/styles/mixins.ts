@@ -42,6 +42,4 @@ const textOverflow = css`
   text-overflow: ellipsis;
   white-space: nowrap;
 `;
-export {
- container, button, pageTitle, page, textOverflow 
-};
+export { container, button, pageTitle, page, textOverflow };

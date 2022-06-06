@@ -1,5 +1,6 @@
 import { memo, useEffect, useState } from 'react';
 import { TextField } from '@mui/material';
+import useId from '@mui/material/utils/useId';
 import { useFormik, FormikHelpers } from 'formik';
 import { toast } from 'react-toastify';
 
@@ -19,7 +20,6 @@ import {
 import { ToastTextRow, ToastTextContainer } from 'shared/styles/toast';
 
 import * as S from './AuthModal.style';
-import useId from '@mui/material/utils/useId';
 
 const loginInitialValues = {
   username: '',
@@ -31,10 +31,6 @@ const registerInitialValues = {
   email: '',
   password: '',
   confirmPassword: '',
-};
-
-type PreloaderProps = {
-  isFetching: boolean;
 };
 
 const AuthModal = memo(() => {
@@ -53,18 +49,19 @@ const AuthModal = memo(() => {
     loginErrors,
     user,
     registerErrors,
-  } = useTypedSelector(state => state.auth);
+  } = useTypedSelector((state) => state.auth);
 
   const showSuccessLoginToast = () =>
     toast.success(`Привет! ${user?.username}`);
 
-  const loginErrorsText = loginErrors;
-  Object.values(loginErrors)
-    .flat()
-    .map(error => {
-      const id = useId();
-      return <ToastTextRow key={id}>{error}</ToastTextRow>;
-    });
+  const loginErrorsText =
+    loginErrors &&
+    Object.values(loginErrors)
+      .flat()
+      .map((error) => {
+        const id = useId();
+        return <ToastTextRow key={id}>{error}</ToastTextRow>;
+      });
 
   const showSuccessRegisterToast = () =>
     toast.success('Пользователь успешно зарегестрирован');
@@ -82,6 +79,14 @@ const AuthModal = memo(() => {
     helpers: FormikHelpers<RegisterValues>,
   ) => {
     register({ username, password, confirmPassword });
+    helpers.resetForm();
+  };
+
+  const onLoginSubmit = (
+    { username, password }: LoginValues,
+    helpers: FormikHelpers<LoginValues>,
+  ) => {
+    login({ username, password });
     helpers.resetForm();
   };
 
@@ -104,14 +109,6 @@ const AuthModal = memo(() => {
       showErrorLoginToast();
     }
   }, [loginErrors, registerErrors]);
-
-  const onLoginSubmit = (
-    { username, password }: LoginValues,
-    helpers: FormikHelpers<LoginValues>,
-  ) => {
-    login({ username, password });
-    helpers.resetForm();
-  };
 
   const onAuthActionClick = () => {
     if (form === 'register') {
@@ -271,5 +268,4 @@ const AuthModal = memo(() => {
   );
 });
 
-export { PreloaderProps };
 export default AuthModal;

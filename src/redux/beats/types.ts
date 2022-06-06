@@ -1,4 +1,4 @@
-import { User } from '../user/types';
+import { User } from 'reduxStore/user/types';
 
 type BeatsState = {
   beats: Beat[];
@@ -72,6 +72,4 @@ type Beat = {
   comments: Comment[];
 };
 
-export {
- BeatsState, FiltersState, Beat, Tag, License, Comment 
-};
+export { BeatsState, FiltersState, Beat, Tag, License, Comment };

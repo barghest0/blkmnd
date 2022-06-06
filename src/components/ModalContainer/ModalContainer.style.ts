@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 
 import ThemeColors from 'shared/styles/theme';
 
-import { ModalContainerProps } from './ModalContainer';
+type ModalContainerProps = {
+  isOpen: boolean;
+};
 
 const ModalContainer = styled.div<ModalContainerProps>`
   ${({ isOpen }) => {

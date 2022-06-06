@@ -24,6 +24,4 @@ const CollabsList = styled.div`
   justify-items: center;
 `;
 
-export {
- Collabs, Title, Container, CollabsList 
-};
+export { Collabs, Title, Container, CollabsList };

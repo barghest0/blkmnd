@@ -6,19 +6,17 @@ import {
   NumberInput,
 } from 'react-admin';
 
-function SoundKitCreate() {
-  return (
-    <Create>
-      <SimpleForm>
-        <TextInput source="title" />
-        <TextInput source="type" />
-        <TextInput source="description" />
-        <NumberInput source="price" />
-        <FileInput source="image" />
-        <FileInput source="track" />
-      </SimpleForm>
-    </Create>
-  );
-}
+const SoundKitCreate = () => (
+  <Create>
+    <SimpleForm>
+      <TextInput source="title" />
+      <TextInput source="type" />
+      <TextInput source="description" />
+      <NumberInput source="price" />
+      <FileInput source="image" />
+      <FileInput source="track" />
+    </SimpleForm>
+  </Create>
+);
 
 export default SoundKitCreate;

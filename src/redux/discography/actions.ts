@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchDiscographyBeats } from '../../shared/api/beats';
+
+import { fetchDiscographyBeats } from 'shared/api/beats';
+
 import { GET_DISCOGRAPHY_BEATS } from './constants';
 
 const getDiscographyBeats = createAsyncThunk(

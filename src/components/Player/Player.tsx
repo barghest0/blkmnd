@@ -1,6 +1,4 @@
-import {
- FC, memo, useEffect, useState 
-} from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 import RepeatIcon from '@mui/icons-material/Repeat';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
@@ -24,15 +22,6 @@ import * as playerSelectors from 'reduxStore/player/selectors';
 
 import * as S from './Player.style';
 
-type PlayerProps = {
-  isOpen: boolean;
-  isQueueListOpen: boolean;
-};
-
-type QueueBeatProps = {
-  isActive: boolean;
-};
-
 const Player: FC = memo(() => {
   const { isPlayerOpen } = useTypedSelector(playerSelectors.state);
 
@@ -44,7 +33,8 @@ const Player: FC = memo(() => {
 
   const queue = useTypedSelector(playerSelectors.queue);
 
-  const { currentPlayerBeat, nextPlayerBeat, previousPlayerBeat } =    useTypedSelector(playerSelectors.beats);
+  const { currentPlayerBeat, nextPlayerBeat, previousPlayerBeat } =
+    useTypedSelector(playerSelectors.beats);
 
   const {
     getQueueBeats,
@@ -185,5 +175,4 @@ const Player: FC = memo(() => {
   );
 });
 
-export { PlayerProps, QueueBeatProps };
 export default Player;

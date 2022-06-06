@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const allSoundKits = (state: State) => state.soundKits.soundKits;
 
@@ -8,6 +8,4 @@ const isFetching = (state: State) => state.soundKits.isFetching;
 
 const errors = (state: State) => state.soundKits.errors;
 
-export {
- allSoundKits, soundKit, isFetching, errors 
-};
+export { allSoundKits, soundKit, isFetching, errors };

@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchAllMemberships } from '../../shared/api/memberships';
+
+import { fetchAllMemberships } from 'shared/api/memberships';
+
 import { GET_MEMBERSHIPS_NAME } from './constants';
 
 const getMemberships = createAsyncThunk(
@@ -9,7 +11,7 @@ const getMemberships = createAsyncThunk(
       const response = await fetchAllMemberships();
       return response.data;
     } catch (e) {
-      thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e);
     }
   },
 );

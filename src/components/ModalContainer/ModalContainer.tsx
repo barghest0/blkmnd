@@ -11,10 +11,6 @@ type Props = {
   modalType: ModalsTypes;
 };
 
-type ModalContainerProps = {
-  isOpen: boolean;
-};
-
 const ModalContainer: FC<Props> = ({ children, isOpen, modalType }) => {
   const { setModalVisability } = useActions();
 
@@ -30,5 +26,4 @@ const ModalContainer: FC<Props> = ({ children, isOpen, modalType }) => {
   );
 };
 
-export { ModalContainerProps };
 export default ModalContainer;

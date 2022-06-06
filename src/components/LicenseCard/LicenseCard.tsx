@@ -22,12 +22,8 @@ const LicenseCard: FC<Props> = ({ license }) => {
 
   return (
     <S.LicenseCard>
-      <S.Title>
-{name} License</S.Title>
-      <S.Price>
-        $
-{price.toFixed(2)}
-      </S.Price>
+      <S.Title>{name} License</S.Title>
+      <S.Price>${price.toFixed(2)}</S.Price>
       <S.Details onClick={onDetailsButtonClick}>
         <Button>Read license</Button>
       </S.Details>

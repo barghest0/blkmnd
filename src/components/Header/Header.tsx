@@ -30,23 +30,7 @@ import * as cartSelectors from 'reduxStore/cart/selectors';
 
 import * as S from './Header.styles';
 
-type ProfileDropdownProps = {
-  isOpen: boolean;
-};
-
-type DrawerProps = {
-  isOpen: boolean;
-};
-
-type SearchProps = {
-  isOpen: boolean;
-};
-
-type NavProps = {
-  isSearchOpen: boolean;
-};
-
-function Header() {
+const Header = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
@@ -66,7 +50,8 @@ function Header() {
     }
   };
 
-  const showLogoutToast = () => toast.success('Вы успешно вышли из личного кабинета');
+  const showLogoutToast = () =>
+    toast.success('Вы успешно вышли из личного кабинета');
 
   const onLogoutClick = () => {
     logout();
@@ -108,10 +93,7 @@ function Header() {
               )}
               <ShoppingBagOutlinedIcon />
             </S.CartIcon>
-            <S.CartCost>
-              $
-{totalCartPrice.toFixed(2)}
-            </S.CartCost>
+            <S.CartCost>${totalCartPrice.toFixed(2)}</S.CartCost>
           </S.Cart>
         </StyledLink>
         <S.Auth onClick={onProfileClick}>
@@ -185,8 +167,5 @@ function Header() {
       </S.HeaderDrawer>
     </S.Header>
   );
-}
-export {
- ProfileDropdownProps, DrawerProps, NavProps, SearchProps 
 };
 export default Header;

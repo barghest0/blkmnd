@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const fullState = (state: State) => state.player;
 
@@ -27,6 +27,4 @@ const beats = (state: State) => ({
   previousPlayerBeat: state.player.previousBeat,
 });
 
-export {
- fullState, controls, queue, isFetching, errors, beats, state 
-};
+export { fullState, controls, queue, isFetching, errors, beats, state };

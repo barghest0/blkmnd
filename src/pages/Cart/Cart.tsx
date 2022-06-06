@@ -17,7 +17,7 @@ type PaymentValues = {
   coupon: string;
 };
 
-function Cart() {
+const Cart = () => {
   const { getCart } = useActions();
   const products = useTypedSelector(cartSelectors.products);
   const { productsQuantity, totalCartPrice, cartDiscount } = useTypedSelector(
@@ -78,24 +78,15 @@ function Cart() {
             <S.CashSettlement>
               <S.Settlement>
                 <S.SettlementText>Price</S.SettlementText>
-                <S.SettlementText>
-                  $
-{totalCartPrice}
-                </S.SettlementText>
+                <S.SettlementText>${totalCartPrice}</S.SettlementText>
               </S.Settlement>
               <S.Settlement>
                 <S.SettlementText>Discount</S.SettlementText>
-                <S.SettlementText>
-                  - $
-{cartDiscount}
-                </S.SettlementText>
+                <S.SettlementText>- ${cartDiscount}</S.SettlementText>
               </S.Settlement>
               <S.Settlement>
                 <S.TotalText>Total</S.TotalText>
-                <S.TotalText>
-                  $
-{totalCartPrice - cartDiscount}
-                </S.TotalText>
+                <S.TotalText>${totalCartPrice - cartDiscount}</S.TotalText>
               </S.Settlement>
             </S.CashSettlement>
             <S.UserEmail>
@@ -110,6 +101,6 @@ function Cart() {
       </S.Container>
     </S.Cart>
   );
-}
+};
 
 export default Cart;

@@ -12,7 +12,7 @@ import * as beatsSelectors from 'reduxStore/beats/selectors';
 
 import * as S from './BuyModal.style';
 
-function BuyModal() {
+const BuyModal = () => {
   const { buyModalVisability } = useTypedSelector(modalsSelectors.visabilities);
   const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
 
@@ -63,6 +63,6 @@ function BuyModal() {
       </ModalContainer>
     </S.BuyModal>
   );
-}
+};
 
 export default BuyModal;

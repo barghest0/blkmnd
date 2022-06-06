@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchUserData } from '../../shared/api/user';
+
+import { fetchUserData } from 'shared/api/user';
 import { GET_USER_DATA_NAME } from './constants';
 
 const getUserData = createAsyncThunk(
@@ -9,7 +10,7 @@ const getUserData = createAsyncThunk(
       const response = await fetchUserData(token);
       return response.data;
     } catch (e) {
-      thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e);
     }
   },
 );
