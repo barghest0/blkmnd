@@ -17,6 +17,7 @@ import {
   registerFormValidation,
   loginFormValidation,
 } from 'shared/formValidations/auth';
+import { convertErrorsToArray } from 'shared/helpers/errorsHelper';
 import { ToastTextRow, ToastTextContainer } from 'shared/styles/toast';
 
 import * as S from './AuthModal.style';
@@ -51,20 +52,19 @@ const AuthModal = memo(() => {
     registerErrors,
   } = useTypedSelector((state) => state.auth);
 
-  const showSuccessLoginToast = () =>
+  const showSuccessLoginToast = () => {
     toast.success(`Привет! ${user?.username}`);
+  };
 
-  const loginErrorsText =
-    loginErrors &&
-    Object.values(loginErrors)
-      .flat()
-      .map((error) => {
-        const id = useId();
-        return <ToastTextRow key={id}>{error}</ToastTextRow>;
-      });
+  const loginErrorsArray = loginErrors && convertErrorsToArray(loginErrors);
 
-  const showSuccessRegisterToast = () =>
+  const loginErrorsText = loginErrorsArray?.map((error) => (
+    <ToastTextRow key={error}>{error}</ToastTextRow>
+  ));
+
+  const showSuccessRegisterToast = () => {
     toast.success('Пользователь успешно зарегестрирован');
+  };
 
   const showErrorLoginToast = () => {
     toast.error(<ToastTextContainer>{loginErrorsText}</ToastTextContainer>);
