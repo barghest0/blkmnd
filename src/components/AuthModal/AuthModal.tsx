@@ -1,11 +1,11 @@
 import { memo, useEffect, useState } from 'react';
-import { TextField } from '@mui/material';
 import useId from '@mui/material/utils/useId';
 import { useFormik, FormikHelpers } from 'formik';
 import { toast } from 'react-toastify';
 
 import Button from 'components/Button/Button';
 import Modal from 'components/Modal/Modal';
+import TextField from 'components/TextField/TextField';
 import ModalContainer from 'components/ModalContainer/ModalContainer';
 import Preloader from 'components/Preloader/Preloader';
 import useActions from 'hooks/useActions';
@@ -147,68 +147,39 @@ const AuthModal = memo(() => {
                 <TextField
                   label="Email"
                   name="email"
-                  type="text"
-                  variant="standard"
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.email}
-                  error={
-                    registerFormik.touched.email &&
-                    Boolean(registerFormik.errors.email)
-                  }
-                  helperText={
-                    registerFormik.touched.email && registerFormik.errors.email
-                  }
+                  touched={registerFormik.touched.email}
+                  error={registerFormik.errors.email}
                   onChange={registerFormik.handleChange}
                 />
                 <TextField
                   label="Username"
                   name="username"
-                  variant="standard"
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.username}
-                  error={
-                    registerFormik.touched.username &&
-                    Boolean(registerFormik.errors.username)
-                  }
-                  helperText={
-                    registerFormik.touched.username &&
-                    registerFormik.errors.username
-                  }
+                  error={registerFormik.errors.username}
+                  touched={registerFormik.touched.username}
                   onChange={registerFormik.handleChange}
                 />
                 <TextField
                   label="Password"
                   name="password"
-                  variant="standard"
                   type="password"
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.password}
-                  error={
-                    registerFormik.touched.password &&
-                    Boolean(registerFormik.errors.password)
-                  }
-                  helperText={
-                    registerFormik.touched.password &&
-                    registerFormik.errors.password
-                  }
+                  error={registerFormik.errors.password}
+                  touched={registerFormik.touched.password}
                   onChange={registerFormik.handleChange}
                 />
-
                 <TextField
                   label="Confirm password"
                   name="confirmPassword"
-                  variant="standard"
                   type="password"
                   onBlur={registerFormik.handleBlur}
                   value={registerFormik.values.confirmPassword}
-                  error={
-                    registerFormik.touched.confirmPassword &&
-                    Boolean(registerFormik.errors.confirmPassword)
-                  }
-                  helperText={
-                    registerFormik.touched.confirmPassword &&
-                    registerFormik.errors.confirmPassword
-                  }
+                  error={registerFormik.errors.confirmPassword}
+                  touched={registerFormik.touched.confirmPassword}
                   onChange={registerFormik.handleChange}
                 />
                 <S.Submit>
@@ -220,37 +191,24 @@ const AuthModal = memo(() => {
               <S.Preloader isFetching={isFetching}>
                 <Preloader />
               </S.Preloader>
-
               <S.Form onSubmit={loginFormik.handleSubmit}>
                 <TextField
                   label="Username"
                   name="username"
-                  variant="standard"
                   onBlur={loginFormik.handleBlur}
                   value={loginFormik.values.username}
-                  error={
-                    loginFormik.touched.username &&
-                    Boolean(loginFormik.errors.username)
-                  }
-                  helperText={
-                    loginFormik.touched.username && loginFormik.errors.username
-                  }
+                  error={loginFormik.errors.username}
+                  touched={loginFormik.touched.username}
                   onChange={loginFormik.handleChange}
                 />
                 <TextField
                   label="Password"
                   name="password"
-                  variant="standard"
                   type="password"
                   onBlur={loginFormik.handleBlur}
                   value={loginFormik.values.password}
-                  error={
-                    loginFormik.touched.password &&
-                    Boolean(loginFormik.errors.password)
-                  }
-                  helperText={
-                    loginFormik.touched.password && loginFormik.errors.password
-                  }
+                  error={loginFormik.errors.password}
+                  touched={loginFormik.touched.password}
                   onChange={loginFormik.handleChange}
                 />
                 <S.Submit>

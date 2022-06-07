@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { styled as MUIstyled, TextField } from '@mui/material';
 import { container, page, pageTitle } from '../../shared/styles/mixins';
 
 const Profile = styled.div`
@@ -54,8 +53,6 @@ const Submit = styled.div`
   grid-column: 1/3;
 `;
 
-const TextInput = MUIstyled(TextField)({});
-
 const AdminPanel = styled.div`
   height: 40px;
 `;
@@ -69,7 +66,6 @@ export {
   AccountForm,
   ChangePasswordForm,
   Submit,
-  TextInput,
   NewPassword,
   AdminPanel,
 };

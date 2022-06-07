@@ -4,6 +4,7 @@ import Button from 'components/Button/Button';
 import contactValidation from 'shared/formValidations/contact';
 
 import * as S from './ContactForm.style';
+import TextField from 'components/TextField/TextField';
 
 type FormValues = {
   name: string;
@@ -34,49 +35,41 @@ const ContactForm = () => {
   return (
     <S.ContactForm onSubmit={handleSubmit}>
       <S.MainFields>
-        <S.TextField
+        <TextField
           label="Name"
-          type="text"
-          variant="standard"
           name="name"
           onBlur={handleBlur}
           value={values.name}
-          error={touched.name && Boolean(errors.name)}
-          helperText={touched.name && errors.name}
+          touched={touched.name}
+          error={errors.name}
           onChange={handleChange}
         />
-        <S.TextField
+        <TextField
           label="Email"
-          type="text"
-          variant="standard"
           name="email"
           onBlur={handleBlur}
           value={values.email}
-          error={touched.email && Boolean(errors.email)}
-          helperText={touched.email && errors.email}
+          error={errors.email}
+          touched={touched.email}
           onChange={handleChange}
         />
       </S.MainFields>
-      <S.TextField
+      <TextField
         label="Subject"
-        type="text"
-        variant="standard"
         name="subject"
         onBlur={handleBlur}
         value={values.subject}
-        error={touched.subject && Boolean(errors.subject)}
-        helperText={touched.subject && errors.subject}
+        error={errors.subject}
+        touched={touched.subject}
         onChange={handleChange}
       />
-      <S.TextField
+      <TextField
         label="Message"
-        type="text"
-        variant="standard"
         name="message"
         onBlur={handleBlur}
         value={values.message}
-        error={touched.message && Boolean(errors.message)}
-        helperText={touched.message && errors.message}
+        error={errors.message}
+        touched={touched.message}
         onChange={handleChange}
       />
       <S.SubmitForm>

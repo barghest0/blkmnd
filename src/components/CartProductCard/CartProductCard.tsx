@@ -18,6 +18,8 @@ const CartProductCard: FC<Props> = ({ product }) => {
     deleteCartProduct(product);
   };
 
+  const price = product.license ? product.license.price : product.details.price;
+
   return (
     <S.CardProductCard>
       {!product.details ? (
@@ -29,9 +31,7 @@ const CartProductCard: FC<Props> = ({ product }) => {
             <S.Title>{product.details.title}</S.Title>
             <S.Type>{product.details.type}</S.Type>
           </S.Info>
-          <S.Price>
-            ${product.license ? product.license.price : product.details.price}
-          </S.Price>
+          <S.Price>${price}</S.Price>
           <S.License />
           <S.Delete onClick={onDeleteButtonClick}>
             <CloseIcon />

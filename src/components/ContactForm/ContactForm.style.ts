@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { styled as MUIstyled, TextField as MUITextField } from '@mui/material';
 
 const ContactForm = styled.form`
   display: flex;
@@ -14,12 +13,10 @@ const MainFields = styled.div`
   column-gap: 20px;
 `;
 
-const TextField = MUIstyled(MUITextField)({});
-
 const SubmitForm = styled.div`
   width: 160px;
   align-self: flex-end;
   height: 50px;
 `;
 
-export { TextField, ContactForm, MainFields, SubmitForm };
+export { ContactForm, MainFields, SubmitForm };
