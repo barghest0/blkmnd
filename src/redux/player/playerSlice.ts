@@ -33,6 +33,7 @@ const playerSlice = createSlice({
 
     setBeat: (state, action: PayloadAction<Beat>) => {
       state.beat = action.payload;
+      const firstBeat = state.queue[0];
 
       const currentBeatIndex = state.queue.findIndex(
         (beat) => beat.id === state.beat?.id,
@@ -51,8 +52,10 @@ const playerSlice = createSlice({
 
       if (nextBeat) {
         state.nextBeat = nextBeat;
-      } else if (state.isLoop) {
-        state.nextBeat = state.queue[0];
+      }
+
+      if (state.isLoop) {
+        state.nextBeat = firstBeat;
       }
 
       if (previousBeat) {

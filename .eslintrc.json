@@ -62,7 +62,7 @@
       "error",
       {
         "props": true,
-        "ignorePropertyModificationsFor": ["state"]
+        "ignorePropertyModificationsFor": ["state", "audio"]
       }
     ],
     "react/function-component-definition": [
@@ -72,6 +72,8 @@
         "unnamedComponents": "arrow-function"
       }
     ],
+    "react/prop-types": "off",
+    "react/jsx-wrap-multilines": "off",
     "import/prefer-default-export": "off",
     "object-curly-newline": [
       "error",
