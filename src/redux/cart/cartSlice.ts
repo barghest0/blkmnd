@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { deleteCartProduct } from './actions';
-import { addProductToCart, getCart } from './actions';
+
+import { deleteCartProduct, addProductToCart, getCart } from './actions';
 import { CART_INITIAL_STATE, CART_SLICE_NAME } from './constants';
 import { CartProduct } from './types';
 
@@ -20,7 +20,7 @@ const cartSlice = createSlice({
       );
     },
 
-    [getCart.pending.type]: state => {
+    [getCart.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -39,7 +39,7 @@ const cartSlice = createSlice({
       state.totalPrice += action.payload.price;
     },
 
-    [addProductToCart.pending.type]: state => {
+    [addProductToCart.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -51,13 +51,13 @@ const cartSlice = createSlice({
       state.errors = action.payload;
     },
 
-    [deleteCartProduct.fulfilled.type]: state => {
+    [deleteCartProduct.fulfilled.type]: (state) => {
       state.isFetching = false;
       state.errors = '';
       state.quantity -= 1;
     },
 
-    [deleteCartProduct.pending.type]: state => {
+    [deleteCartProduct.pending.type]: (state) => {
       state.isFetching = true;
     },
 

@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { deleteToken, setToken } from '../../shared/helpers/authHelper';
-import { User } from '../user/types';
+
+import { deleteToken, setToken } from 'shared/helpers/authHelper';
+import { User } from 'reduxStore/user/types';
+
 import { autoLogin, login, register } from './actions';
 import { AUTH_INITIAL_STATE, AUTH_SLICE_NAME } from './constants';
 import { LoginErrors, LoginResponseValues, RegisterErrors } from './types';
@@ -9,7 +11,7 @@ const authSlice = createSlice({
   name: AUTH_SLICE_NAME,
   initialState: AUTH_INITIAL_STATE,
   reducers: {
-    logout: state => {
+    logout: (state) => {
       state.isAuth = false;
       state.token = null;
       state.user = null;
@@ -33,7 +35,7 @@ const authSlice = createSlice({
       }
     },
 
-    [login.pending.type]: state => {
+    [login.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -42,13 +44,13 @@ const authSlice = createSlice({
       state.loginErrors = action.payload;
     },
 
-    [register.fulfilled.type]: (state, action: PayloadAction<User>) => {
+    [register.fulfilled.type]: (state) => {
       state.isFetching = false;
       state.registerErrors = null;
       state.isRegisterSuccess = true;
     },
 
-    [register.pending.type]: state => {
+    [register.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -67,7 +69,7 @@ const authSlice = createSlice({
       state.isAuth = true;
     },
 
-    [autoLogin.pending.type]: state => {
+    [autoLogin.pending.type]: (state) => {
       state.isFetching = true;
     },
 

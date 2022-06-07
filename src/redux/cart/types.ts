@@ -1,6 +1,6 @@
-import { Beat, License } from '../beats/types';
-import { Collab } from '../collabs/types';
-import { SoundKit } from '../soundKits/types';
+import { Beat, License } from 'reduxStore/beats/types';
+import { Collab } from 'reduxStore/collabs/types';
+import { SoundKit } from 'reduxStore/soundKits/types';
 
 type CartProductDetails = Beat | Collab | SoundKit;
 

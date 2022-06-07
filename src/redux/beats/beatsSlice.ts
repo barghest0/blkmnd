@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { Beat, Comment } from './types';
 import {
   getAllBeats,
@@ -6,7 +7,6 @@ import {
   getFeaturedBeat,
   getFilteredBeats,
   getBeat,
-  updateBeat,
 } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
@@ -30,7 +30,7 @@ const beatsSlice = createSlice({
       state.beats = action.payload;
     },
 
-    [getPreviewBeats.pending.type]: state => {
+    [getPreviewBeats.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -45,7 +45,7 @@ const beatsSlice = createSlice({
       state.beats = action.payload;
     },
 
-    [getAllBeats.pending.type]: state => {
+    [getAllBeats.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -63,7 +63,7 @@ const beatsSlice = createSlice({
       state.beats = action.payload;
     },
 
-    [getFilteredBeats.pending.type]: state => {
+    [getFilteredBeats.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -86,15 +86,6 @@ const beatsSlice = createSlice({
     },
 
     [getFeaturedBeat.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.errors = action.payload;
-    },
-
-    [updateBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
-      state.errors = '';
-      state.beat = action.payload;
-    },
-
-    [updateBeat.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errors = action.payload;
     },
 

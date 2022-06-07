@@ -36,7 +36,7 @@ const CommentField: FC<Props> = ({ onSubmit }) => {
 
   return (
     <S.CommentField onSubmit={formik.handleSubmit}>
-      <S.Avatar alt={'avatar'} />
+      <S.Avatar alt="avatar" />
       <S.TextField>
         <TextField
           name="comment"

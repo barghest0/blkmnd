@@ -1,9 +1,8 @@
-import { Beat } from 'reduxStore/beats/types';
-import { FiltersState } from 'reduxStore/beats/types';
+import { Beat, FiltersState } from 'reduxStore/beats/types';
 
 import { instance } from './instance';
 
-const fetchFeaturedBeat = () => instance.get<Beat[]>(`beats?featured=true`);
+const fetchFeaturedBeat = () => instance.get<Beat[]>('beats?featured=true');
 
 const fetchPreviewBeats = () => instance.get<Beat[]>('beats?_limit=10');
 

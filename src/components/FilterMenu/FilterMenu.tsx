@@ -22,8 +22,8 @@ const FilterMenu: FC<Props> = ({
   defaultValue,
   options,
 }) => {
-  const optionsItems = options.map(({ text, value }) => (
-    <S.Option key={value} value={value}>
+  const optionsItems = options.map(({ text, value: optionValue }) => (
+    <S.Option key={value} value={optionValue}>
       {text}
     </S.Option>
   ));

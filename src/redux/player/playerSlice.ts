@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Beat } from '../beats/types';
+
+import { Beat } from 'reduxStore/beats/types';
+
 import { getQueueBeats } from './actions';
 import { PLAYER_SLICE_NAME, PLAYER_INITIAL_STATE } from './constants';
 
@@ -9,7 +11,7 @@ const playerSlice = createSlice({
   reducers: {
     togglePlaying: (state, action: PayloadAction<Beat | null>) => {
       const previousBeat = action.payload;
-      const beat = state.beat;
+      const { beat } = state;
 
       if (previousBeat) {
         if (beat?.id === previousBeat.id) {
@@ -23,7 +25,7 @@ const playerSlice = createSlice({
       }
     },
 
-    openPlayer: state => {
+    openPlayer: (state) => {
       if (!state.isPlaying && !state.isOpen) {
         state.isOpen = true;
       }
@@ -31,9 +33,10 @@ const playerSlice = createSlice({
 
     setBeat: (state, action: PayloadAction<Beat>) => {
       state.beat = action.payload;
+      const firstBeat = state.queue[0];
 
       const currentBeatIndex = state.queue.findIndex(
-        beat => beat.id === state.beat?.id,
+        (beat) => beat.id === state.beat?.id,
       );
       const randomIndex = Math.round(Math.random() * (state.queue.length - 1));
       const nextBeatIndex = state.isShuffle
@@ -49,10 +52,10 @@ const playerSlice = createSlice({
 
       if (nextBeat) {
         state.nextBeat = nextBeat;
-      } else {
-        if (state.isLoop) {
-          state.nextBeat = state.queue[0];
-        }
+      }
+
+      if (state.isLoop) {
+        state.nextBeat = firstBeat;
       }
 
       if (previousBeat) {
@@ -72,11 +75,11 @@ const playerSlice = createSlice({
       state.volume = action.payload;
     },
 
-    toggleIsLoop: state => {
+    toggleIsLoop: (state) => {
       state.isLoop = !state.isLoop;
     },
 
-    toggleIsShuffle: state => {
+    toggleIsShuffle: (state) => {
       state.isShuffle = !state.isShuffle;
     },
   },
@@ -88,7 +91,7 @@ const playerSlice = createSlice({
       state.queue = action.payload;
     },
 
-    [getQueueBeats.pending.type]: state => {
+    [getQueueBeats.pending.type]: (state) => {
       state.isFetching = true;
     },
 

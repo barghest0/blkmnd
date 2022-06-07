@@ -7,8 +7,8 @@ type Props = {
   children: React.ReactNode;
 };
 
-const HeaderNavLink: FC<Props> = ({ path, children }) => {
-  return <S.HeaderNavLink to={path}>{children}</S.HeaderNavLink>;
-};
-export { Props };
+const HeaderNavLink: FC<Props> = ({ path, children }) => (
+  <S.HeaderNavLink to={path}>{children}</S.HeaderNavLink>
+);
+
 export default HeaderNavLink;

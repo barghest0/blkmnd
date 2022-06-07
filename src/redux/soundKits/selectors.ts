@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const allSoundKits = (state: State) => state.soundKits.soundKits;
 

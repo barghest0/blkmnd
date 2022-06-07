@@ -7,8 +7,8 @@ const Profile = styled.div`
 `;
 
 const Container = styled.div`
-  ${container}
-  max-width:650px;
+  ${container};
+  max-width: 650px;
 `;
 
 const Title = styled.h1`

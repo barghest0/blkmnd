@@ -28,7 +28,7 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
     setBeat(beat);
   };
 
-  const tagsLinks = tags.map(tag => (
+  const tagsLinks = tags.map((tag) => (
     <S.Tag key={tag.id}>
       <TagLink tag={tag} />
     </S.Tag>
@@ -47,7 +47,11 @@ const FeaturedBeat: FC<Props> = memo(({ beat }) => {
       <S.Info>
         <S.Description>
           <S.Featured>Featured track</S.Featured>
-          <S.Bpm> • {bpm}BPM</S.Bpm>
+          <S.Bpm>
+            {' '}
+            •{bpm}
+            BPM
+          </S.Bpm>
         </S.Description>
         <S.Title>
           <StyledLink to={`${RouterPaths.beats}/${id}`}>{title}</StyledLink>

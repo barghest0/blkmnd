@@ -70,19 +70,19 @@ const Landing: FC = memo(() => {
     getPreviewCollabs,
   } = useActions();
 
-  const collabsCards = collabs.map(collab => (
+  const collabsCards = collabs.map((collab) => (
     <CollabCard collab={collab} key={collab.id} />
   ));
 
-  const licensesCards = licenses.map(license => (
+  const licensesCards = licenses.map((license) => (
     <LicenseCard license={license} key={license.id} />
   ));
 
-  const soundKitsCards = soundKits.map(soundKit => (
+  const soundKitsCards = soundKits.map((soundKit) => (
     <SoundKitCard soundKit={soundKit} key={soundKit.id} />
   ));
 
-  const discographyCards = discographyBeats.map(beat => (
+  const discographyCards = discographyBeats.map((beat) => (
     <DiscographyCard beat={beat} key={beat.id} />
   ));
 
@@ -108,10 +108,10 @@ const Landing: FC = memo(() => {
                 <S.SearchFieldContainer>
                   <S.SearchField
                     name="query"
-                    placeholder={'What type of track are you looking for?'}
+                    placeholder="What type of track are you looking for?"
                   />
                   <S.SearchSubmit>
-                    <Button type={'submit'}>Search</Button>
+                    <Button type="submit">Search</Button>
                   </S.SearchSubmit>
                 </S.SearchFieldContainer>
               </SearchField>

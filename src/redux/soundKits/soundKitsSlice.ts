@@ -1,11 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Comment } from '../beats/types';
-import {
-  getAllSoundKits,
-  getPreviewSoundKits,
-  getSoundKit,
-  updateSoundKit,
-} from './actions';
+
+import { Comment } from 'reduxStore/beats/types';
+
+import { getAllSoundKits, getPreviewSoundKits, getSoundKit } from './actions';
 import { SOUND_KITS_INITIAL_STATE, SOUND_KITS_SLICE_NAME } from './constants';
 import { SoundKit } from './types';
 
@@ -29,7 +26,7 @@ const soundKitsSlice = createSlice({
       state.errors = '';
     },
 
-    [getPreviewSoundKits.pending.type]: state => {
+    [getPreviewSoundKits.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -50,7 +47,7 @@ const soundKitsSlice = createSlice({
       state.errors = '';
     },
 
-    [getAllSoundKits.pending.type]: state => {
+    [getAllSoundKits.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -65,18 +62,6 @@ const soundKitsSlice = createSlice({
     },
 
     [getSoundKit.rejected.type]: (state, action: PayloadAction<string>) => {
-      state.errors = action.payload;
-    },
-
-    [updateSoundKit.fulfilled.type]: (
-      state,
-      action: PayloadAction<SoundKit>,
-    ) => {
-      state.soundKit = action.payload;
-      state.errors = '';
-    },
-
-    [updateSoundKit.rejected.type]: (state, action: PayloadAction<string>) => {
       state.errors = action.payload;
     },
   },

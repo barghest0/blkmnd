@@ -1,4 +1,4 @@
-import { Beat, License } from '../beats/types';
+import { Beat, License } from 'reduxStore/beats/types';
 
 enum ModalsTypes {
   share = 'isShareOpen',

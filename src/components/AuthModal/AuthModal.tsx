@@ -1,6 +1,7 @@
-import { TextField } from '@mui/material';
-import { useFormik, FormikHelpers } from 'formik';
 import { memo, useEffect, useState } from 'react';
+import { TextField } from '@mui/material';
+import useId from '@mui/material/utils/useId';
+import { useFormik, FormikHelpers } from 'formik';
 import { toast } from 'react-toastify';
 
 import Button from 'components/Button/Button';
@@ -32,10 +33,6 @@ const registerInitialValues = {
   confirmPassword: '',
 };
 
-type PreloaderProps = {
-  isFetching: boolean;
-};
-
 const AuthModal = memo(() => {
   const { authModalVisability } = useTypedSelector(
     modalsSelectors.visabilities,
@@ -52,7 +49,7 @@ const AuthModal = memo(() => {
     loginErrors,
     user,
     registerErrors,
-  } = useTypedSelector(state => state.auth);
+  } = useTypedSelector((state) => state.auth);
 
   const showSuccessLoginToast = () =>
     toast.success(`Привет! ${user?.username}`);
@@ -61,10 +58,13 @@ const AuthModal = memo(() => {
     loginErrors &&
     Object.values(loginErrors)
       .flat()
-      .map((error, index) => <ToastTextRow key={index}>{error}</ToastTextRow>);
+      .map((error) => {
+        const id = useId();
+        return <ToastTextRow key={id}>{error}</ToastTextRow>;
+      });
 
   const showSuccessRegisterToast = () =>
-    toast.success(`Пользователь успешно зарегестрирован`);
+    toast.success('Пользователь успешно зарегестрирован');
 
   const showErrorLoginToast = () => {
     toast.error(<ToastTextContainer>{loginErrorsText}</ToastTextContainer>);
@@ -79,6 +79,14 @@ const AuthModal = memo(() => {
     helpers: FormikHelpers<RegisterValues>,
   ) => {
     register({ username, password, confirmPassword });
+    helpers.resetForm();
+  };
+
+  const onLoginSubmit = (
+    { username, password }: LoginValues,
+    helpers: FormikHelpers<LoginValues>,
+  ) => {
+    login({ username, password });
     helpers.resetForm();
   };
 
@@ -101,14 +109,6 @@ const AuthModal = memo(() => {
       showErrorLoginToast();
     }
   }, [loginErrors, registerErrors]);
-
-  const onLoginSubmit = (
-    { username, password }: LoginValues,
-    helpers: FormikHelpers<LoginValues>,
-  ) => {
-    login({ username, password });
-    helpers.resetForm();
-  };
 
   const onAuthActionClick = () => {
     if (form === 'register') {
@@ -268,5 +268,4 @@ const AuthModal = memo(() => {
   );
 });
 
-export { PreloaderProps };
 export default AuthModal;

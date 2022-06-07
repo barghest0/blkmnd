@@ -16,7 +16,7 @@ const BuyModal = () => {
   const { buyModalVisability } = useTypedSelector(modalsSelectors.visabilities);
   const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
 
-  const licensesCards = beat?.licenses.map(license => (
+  const licensesCards = beat?.licenses.map((license) => (
     <ChooseLicenseCard license={license} beat={beat} key={license.id} />
   ));
 
@@ -39,7 +39,7 @@ const BuyModal = () => {
           ) : (
             <Modal
               isOpen={buyModalVisability}
-              title={'Choose license type'}
+              title="Choose license type"
               modalType={ModalsTypes.buy}
             >
               <S.Content>

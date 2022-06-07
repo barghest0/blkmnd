@@ -23,7 +23,7 @@ const VolumeSlider: FC = () => {
       max={1}
       step={0.01}
       onChange={onVolumeChange}
-    ></S.VolumeSlider>
+    />
   );
 };
 

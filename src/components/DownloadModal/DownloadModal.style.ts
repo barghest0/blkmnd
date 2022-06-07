@@ -9,26 +9,26 @@ import {
 import ThemeColors from 'shared/styles/theme';
 import { breakpoint } from 'shared/styles/breakpoints';
 
-import { DownloadModalProps } from './DownloadModal';
+type DownloadModalProps = {
+  background?: string;
+};
 
 const DownloadModal = styled.div``;
 
 const Modal = styled.div<DownloadModalProps>`
-  ${({ background }) => {
-    return css`
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url('${background}') center no-repeat;
-      background-size: cover;
-      background-color: ${ThemeColors.dark};
-      width: 450px;
-      @media ${breakpoint('sm')} {
-        width: 100%;
-      }
-    `;
-  }}
+  ${({ background }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url('${background}') center no-repeat;
+    background-size: cover;
+    background-color: ${ThemeColors.dark};
+    width: 450px;
+    @media ${breakpoint('sm')} {
+      width: 100%;
+    }
+  `}
 `;
 
 const Content = styled.div`

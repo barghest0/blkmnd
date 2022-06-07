@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const visabilities = (state: State) => ({
   buyModalVisability: state.modals.isBuyOpen,

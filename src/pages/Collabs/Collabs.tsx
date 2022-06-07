@@ -13,7 +13,7 @@ const Collabs = () => {
   const collabs = useTypedSelector(collabsSelectors.allCollabs);
   const isCollabsFetching = useTypedSelector(collabsSelectors.isFetching);
 
-  const collabsCards = collabs.map(collab => (
+  const collabsCards = collabs.map((collab) => (
     <CollabCard collab={collab} key={collab.id} />
   ));
 

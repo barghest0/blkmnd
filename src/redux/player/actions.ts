@@ -1,5 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchPreviewBeats } from '../../shared/api/beats';
+
+import { fetchPreviewBeats } from 'shared/api/beats';
+
 import { GET_PLAYER_QUEUE_BEATS } from './constants';
 
 const getQueueBeats = createAsyncThunk(
@@ -9,7 +11,7 @@ const getQueueBeats = createAsyncThunk(
       const response = await fetchPreviewBeats();
       return response.data;
     } catch (e) {
-      thunkAPI.rejectWithValue(e);
+      return thunkAPI.rejectWithValue(e);
     }
   },
 );

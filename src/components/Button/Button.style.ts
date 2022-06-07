@@ -3,10 +3,14 @@ import styled, { css } from 'styled-components';
 import ThemeColors from 'shared/styles/theme';
 import { button } from 'shared/styles/mixins';
 
-import { Props } from './Button';
 import { ButtonThemes } from './types';
 
-const Button = styled.button<Props>`
+type ButtonProps = {
+  theme?: ButtonThemes;
+  hasBackground?: boolean;
+};
+
+const Button = styled.button<ButtonProps>`
   ${({ theme, hasBackground }) => {
     const color =
       theme === ButtonThemes.dark ? ThemeColors.actionColor : ThemeColors.black;

@@ -13,7 +13,7 @@ type Props = {
 };
 
 const ChooseLicenseCard: FC<Props> = ({ license, beat }) => {
-  const fileTypes = license.fileTypes.map(type => (
+  const fileTypes = license.fileTypes.map((type) => (
     <S.FileType key={type.id}>{type.name}</S.FileType>
   ));
 

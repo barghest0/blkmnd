@@ -28,7 +28,7 @@ const Cart = () => {
     getCart();
   }, [productsQuantity]);
 
-  const productsCards = products.map(product => (
+  const productsCards = products.map((product) => (
     <CartProductCard product={product} key={product.id} />
   ));
 

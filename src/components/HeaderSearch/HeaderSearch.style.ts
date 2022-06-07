@@ -2,7 +2,9 @@ import styled, { css } from 'styled-components';
 
 import ThemeColors from 'shared/styles/theme';
 
-import { SearchProps } from './HeaderSearch';
+type SearchProps = {
+  isOpen: boolean;
+};
 
 const HeaderSearch = styled.div`
   display: flex;

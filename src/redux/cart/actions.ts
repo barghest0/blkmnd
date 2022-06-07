@@ -1,9 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import {
   addProductToCart as apiAddProductToCart,
   deleteCartProduct as apiDeleteCartProduct,
   fetchCart,
-} from '../../shared/api/cart';
+} from 'shared/api/cart';
+
 import {
   ADD_PRODUCT_TO_CART_NAME,
   DELETE_CART_PRODUCT_NAME,
@@ -16,7 +18,7 @@ const getCart = createAsyncThunk(GET_CART_NAME, async (_, thunkApi) => {
     const response = await fetchCart();
     return response.data;
   } catch (e) {
-    thunkApi.rejectWithValue(e);
+    return thunkApi.rejectWithValue(e);
   }
 });
 
@@ -25,9 +27,9 @@ const addProductToCart = createAsyncThunk(
   async (product: CartProduct, thunkApi) => {
     try {
       const response = await apiAddProductToCart(product);
-      return response.data
+      return response.data;
     } catch (e) {
-      thunkApi.rejectWithValue(e);
+      return thunkApi.rejectWithValue(e);
     }
   },
 );
@@ -38,7 +40,7 @@ const deleteCartProduct = createAsyncThunk(
     try {
       await apiDeleteCartProduct(product);
     } catch (e) {
-      thunkApi.rejectWithValue(e);
+      return thunkApi.rejectWithValue(e);
     }
   },
 );

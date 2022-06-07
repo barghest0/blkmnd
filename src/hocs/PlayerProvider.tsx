@@ -20,11 +20,11 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
 
   const { setCurrentTime, setDuration, setBeat } = useActions();
 
-  const onAudioTimeUpdate = useCallback(event => {
+  const onAudioTimeUpdate = useCallback((event) => {
     setCurrentTime(event.currentTarget.currentTime);
   }, []);
 
-  const onAudioDataLoad = useCallback(event => {
+  const onAudioDataLoad = useCallback((event) => {
     setDuration(event.target.duration);
     audio.volume = audioVolume;
   }, []);

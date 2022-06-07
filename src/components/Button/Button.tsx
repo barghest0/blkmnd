@@ -10,18 +10,16 @@ type Props = {
   hasBackground?: boolean;
 };
 
-const Button: FC<Props> = ({
-  children,
-  type = 'button',
-  hasBackground = true,
-  theme = 'light',
-}) => {
-  return (
-    <S.Button type={type} theme={theme} hasBackground={hasBackground}>
-      {children}
-    </S.Button>
-  );
+const Button: FC<Props> = ({ children, type, hasBackground, theme }) => (
+  <S.Button type={type} theme={theme} hasBackground={hasBackground}>
+    {children}
+  </S.Button>
+);
+
+Button.defaultProps = {
+  type: 'button',
+  theme: ButtonThemes.light,
+  hasBackground: true,
 };
 
 export default Button;
-export { Props };

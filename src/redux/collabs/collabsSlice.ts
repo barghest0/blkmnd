@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+
 import { getPreviewCollabs, getAllCollabs, getCollab } from './actions';
 import { COLLABS_INITIAL_STATE, COLLABS_SLICE_NAME } from './constants';
 import { Collab } from './types';
@@ -17,7 +18,7 @@ const collabsSlice = createSlice({
       state.collabs = action.payload;
     },
 
-    [getPreviewCollabs.pending.type]: state => {
+    [getPreviewCollabs.pending.type]: (state) => {
       state.isFetching = true;
     },
 
@@ -38,7 +39,7 @@ const collabsSlice = createSlice({
       state.collabs = action.payload;
     },
 
-    [getAllCollabs.pending.type]: state => {
+    [getAllCollabs.pending.type]: (state) => {
       state.isFetching = true;
     },
 

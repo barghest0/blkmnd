@@ -20,16 +20,20 @@ const VisualizerProvider: FC<Props> = ({ audio, children }) => {
 
   const audioData = new Uint8Array(bufferLength);
 
-  useEffect(() => {
-    return () => {
-      analyser.disconnect();
-      source.disconnect();
-    };
+  useEffect(() => () => {
+    analyser.disconnect();
+    source.disconnect();
   });
 
   return (
     <VisualizerContext.Provider
-      value={{ audioContext, source, analyser, bufferLength, audioData }}
+      value={{
+        audioContext,
+        source,
+        analyser,
+        bufferLength,
+        audioData,
+      }}
     >
       {children}
     </VisualizerContext.Provider>

@@ -7,4 +7,5 @@ const ShareButton = styled.div`
   display: flex;
   column-gap: 5px;
 `;
+
 export { ShareButton };

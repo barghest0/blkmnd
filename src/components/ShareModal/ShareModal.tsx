@@ -31,8 +31,8 @@ const ShareModal: FC = () => {
     setCopiedState({ value: url, isCopied: true });
   };
 
-  const onTabChange = (_: SyntheticEvent, tab: string) => {
-    setTab(tab);
+  const onTabChange = (_: SyntheticEvent, nextTab: string) => {
+    setTab(nextTab);
   };
 
   const onCopyClick = () => {

@@ -37,7 +37,7 @@ const App = () => {
               <StyledToastContainer
                 position="bottom-right"
                 autoClose={3000}
-                hideProgressBar={true}
+                hideProgressBar
               />
             </S.App>
           </ThemeProvider>

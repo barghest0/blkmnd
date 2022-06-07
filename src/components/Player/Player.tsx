@@ -22,15 +22,6 @@ import * as playerSelectors from 'reduxStore/player/selectors';
 
 import * as S from './Player.style';
 
-type PlayerProps = {
-  isOpen: boolean;
-  isQueueListOpen: boolean;
-};
-
-type QueueBeatProps = {
-  isActive: boolean;
-};
-
 const Player: FC = memo(() => {
   const { isPlayerOpen } = useTypedSelector(playerSelectors.state);
 
@@ -61,7 +52,7 @@ const Player: FC = memo(() => {
     togglePlaying(beat);
   };
 
-  const queueBeatsList = queueBeats.map(beat => (
+  const queueBeatsList = queueBeats.map((beat) => (
     <S.QueueBeat
       key={beat.id}
       isActive={beat.id === currentPlayerBeat?.id}
@@ -124,7 +115,7 @@ const Player: FC = memo(() => {
             </S.BeatInfo>
             <S.Share>
               <ShareButton
-                color={'#e8e8e8'}
+                color="#e8e8e8"
                 hasBackground={false}
                 beatId={currentPlayerBeat.id}
               />
@@ -184,5 +175,4 @@ const Player: FC = memo(() => {
   );
 });
 
-export { PlayerProps, QueueBeatProps };
 export default Player;

@@ -11,7 +11,7 @@ import * as S from './BuyButton.style';
 type Props = {
   price: number;
   details: CartProductDetails;
-  license?: License;
+  license?: License | null;
 };
 
 const BuyButton: FC<Props> = ({ price, details, license }) => {
@@ -35,6 +35,10 @@ const BuyButton: FC<Props> = ({ price, details, license }) => {
       </Button>
     </S.BuyButton>
   );
+};
+
+BuyButton.defaultProps = {
+  license: null,
 };
 
 export default BuyButton;

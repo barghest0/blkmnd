@@ -52,4 +52,6 @@ const Actions = styled.div`
   height: 100%;
 `;
 
-export { QueueBeat, Thumbnail, Title, Bpm, Tags, Actions, Time, Tag };
+export {
+ QueueBeat, Thumbnail, Title, Bpm, Tags, Actions, Time, Tag 
+};

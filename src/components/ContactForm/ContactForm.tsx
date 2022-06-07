@@ -80,7 +80,7 @@ const ContactForm = () => {
         onChange={handleChange}
       />
       <S.SubmitForm>
-        <Button type={'submit'}>send message</Button>
+        <Button type="submit">send message</Button>
       </S.SubmitForm>
     </S.ContactForm>
   );

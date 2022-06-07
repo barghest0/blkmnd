@@ -10,7 +10,6 @@ import Preloader from 'components/Preloader/Preloader';
 import Visualizer from 'components/Visualizer/Visualizer';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import useActions from 'hooks/useActions';
-import * as S from './Beat.style';
 import DownloadButton from 'components/DownloadButton/DownloadButton';
 import ShareButton from 'components/ShareButton/ShareButton';
 import TagLink from 'components/TagLink/TagLink';
@@ -24,6 +23,7 @@ import Comment from 'components/Comment/Comment';
 import { User } from 'reduxStore/user/types';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
 import AuthContext from 'contexts/AuthContext';
+import * as S from './Beat.style';
 
 const Beat = () => {
   const params = useParams();
@@ -72,13 +72,13 @@ const Beat = () => {
     }
   };
 
-  const comments = beat?.comments.map(comment => (
+  const comments = beat?.comments.map((comment) => (
     <S.Comment key={comment.id}>
       <Comment comment={comment} />
     </S.Comment>
   ));
 
-  const tags = beat?.tags.map(tag => (
+  const tags = beat?.tags.map((tag) => (
     <S.Tag key={tag.id}>
       <TagLink tag={tag} />
     </S.Tag>
@@ -128,7 +128,7 @@ const Beat = () => {
                     <DownloadButton beatId={beat.id}>Download</DownloadButton>
                   </S.Download>
                   <S.Share>
-                    <ShareButton beatId={beat.id}>Share</ShareButton>
+                    <ShareButton product={beat}>Share</ShareButton>
                   </S.Share>
                   <S.Tags>{tags}</S.Tags>
                 </S.Actions>
@@ -139,7 +139,7 @@ const Beat = () => {
             </S.ContentInner>
           </S.Container>
           <S.Background src={beat.image} alt="background" />
-          <S.BackgroundGradient></S.BackgroundGradient>
+          <S.BackgroundGradient />
         </S.Content>
       )}
       <S.Container>

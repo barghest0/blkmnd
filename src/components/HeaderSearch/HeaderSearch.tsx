@@ -12,10 +12,6 @@ type Props = {
   setIsOpen: (isOpen: boolean) => void;
 };
 
-type SearchProps = {
-  isOpen: boolean;
-};
-
 const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
   const onSearchIconClick = () => {
     setIsOpen(!isOpen);
@@ -37,7 +33,7 @@ const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
           <S.SearchInput
             isOpen={isOpen}
             name="query"
-            placeholder={'Search beats'}
+            placeholder="Search beats"
           />
           <S.CloseButton isOpen={isOpen} onClick={onCloseButtonClick}>
             <CloseIcon />
@@ -48,5 +44,4 @@ const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
   );
 };
 
-export { SearchProps };
 export default HeaderSearch;

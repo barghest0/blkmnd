@@ -33,7 +33,7 @@ const LicensesModal: FC = () => {
               modalType={ModalsTypes.license}
             >
               <S.Content>
-                <S.Title></S.Title>
+                <S.Title />
               </S.Content>
             </Modal>
           )}

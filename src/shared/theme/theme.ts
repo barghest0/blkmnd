@@ -1,6 +1,6 @@
 import { createTheme } from '@mui/material/styles';
 
-import ThemeColors from '../styles/theme';
+import ThemeColors from 'shared/styles/theme';
 
 const theme = createTheme({
   palette: {

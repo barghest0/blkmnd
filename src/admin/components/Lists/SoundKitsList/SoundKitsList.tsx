@@ -1,5 +1,6 @@
-
-import { Datagrid, List, NumberField, TextField } from 'react-admin';
+import {
+ Datagrid, List, NumberField, TextField 
+} from 'react-admin';
 
 const SoundKitsList = () => (
   <List>

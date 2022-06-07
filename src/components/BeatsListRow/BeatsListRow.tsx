@@ -17,10 +17,6 @@ type Props = {
   beat: Beat;
 };
 
-type RowProps = {
-  isActive: boolean;
-};
-
 const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
   const { image, id, title, time, bpm, tags, price } = beat;
 
@@ -40,7 +36,7 @@ const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
     event.stopPropagation();
   };
 
-  const tagsLinks = tags.map(tag => (
+  const tagsLinks = tags.map((tag) => (
     <S.Tag key={tag.id}>
       <TagLink tag={tag} />
     </S.Tag>
@@ -72,5 +68,4 @@ const BeatsListRow: FC<Props> = ({ isActive, beat }) => {
   );
 };
 
-export { RowProps };
 export default BeatsListRow;

@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const allBeats = (state: State) => state.beats.beats;
 

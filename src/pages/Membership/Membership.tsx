@@ -15,7 +15,7 @@ const Membership = () => {
     membershipsSelectors.isFetching,
   );
 
-  const membershipsCard = memberships.map(membership => (
+  const membershipsCard = memberships.map((membership) => (
     <MembershipCard membership={membership} key={membership.id} />
   ));
 

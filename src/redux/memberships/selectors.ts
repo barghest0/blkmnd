@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const allMemberships = (state: State) => state.memberships.memberships;
 

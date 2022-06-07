@@ -13,12 +13,12 @@ type Props = {
   hasBackground?: boolean;
   color?: string;
   product: CartProductDetails;
-  children?: ReactNode;
+  children?: React.ReactNode | null;
 };
 
 const ShareButton: FC<Props> = ({
-  hasBackground = true,
-  color = '',
+  hasBackground,
+  color,
   product,
   children,
 }) => {
@@ -38,5 +38,10 @@ const ShareButton: FC<Props> = ({
   );
 };
 
-export { Props };
+ShareButton.defaultProps = {
+  hasBackground: true,
+  color: '',
+  children: null,
+};
+
 export default ShareButton;

@@ -32,7 +32,7 @@ const CartProductCard: FC<Props> = ({ product }) => {
           <S.Price>
             ${product.license ? product.license.price : product.details.price}
           </S.Price>
-          <S.License></S.License>
+          <S.License />
           <S.Delete onClick={onDeleteButtonClick}>
             <CloseIcon />
           </S.Delete>

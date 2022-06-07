@@ -1,4 +1,4 @@
-import { State } from '../types';
+import { State } from 'reduxStore/types';
 
 const allCollabs = (state: State) => state.collabs.collabs;
 

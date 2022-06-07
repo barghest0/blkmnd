@@ -29,7 +29,7 @@ const SoundKit = () => {
     getSoundKit(Number(params.id));
   }, []);
 
-  const comments = soundKit?.comments.map(comment => (
+  const comments = soundKit?.comments.map((comment) => (
     <S.Comment key={comment.id}>
       <Comment comment={comment} />
     </S.Comment>
@@ -77,7 +77,7 @@ const SoundKit = () => {
                   )}
                 </S.Action>
                 <S.Action>
-                  <ShareButton beatId={soundKit.id} />
+                  <ShareButton product={soundKit} />
                 </S.Action>
               </S.Actions>
             </S.SoundKitInfo>

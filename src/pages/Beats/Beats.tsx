@@ -52,9 +52,14 @@ const Beats = () => {
     console.log(values);
   };
 
+  const filterFormik = useFormik({
+    initialValues: initialFilterValues,
+    onSubmit: onFilterSubmit,
+  });
+
   const onFilterChange = (event: SelectChangeEvent<unknown>) => {
     filterFormik.handleChange(event);
-    const name = event.target.name;
+    const { name } = event.target;
     const value = event.target.value as string;
     filters.set(name, value);
 
@@ -62,11 +67,6 @@ const Beats = () => {
 
     setFilters(filters);
   };
-
-  const filterFormik = useFormik({
-    initialValues: initialFilterValues,
-    onSubmit: onFilterSubmit,
-  });
 
   const typeOptions = [
     { value: 'all', text: 'All types' },

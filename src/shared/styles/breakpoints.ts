@@ -7,11 +7,10 @@ const breakpoints = {
   xxl: 1400,
 };
 
-const breakpoint = (breakpoint: keyof typeof breakpoints) => {
-  return `(max-width: ${breakpoints[breakpoint]}px)`;
-};
+const breakpoint = (bp: keyof typeof breakpoints) =>
+  `(max-width: ${breakpoints[bp]}px)`;
 
-const breakpointUp = (breakpoint: keyof typeof breakpoints) => {
-  return `(min-width: ${breakpoints[breakpoint]}px)`;
-};
+const breakpointUp = (bp: keyof typeof breakpoints) =>
+  `(min-width: ${breakpoints[bp]}px)`;
+
 export { breakpoint, breakpointUp };

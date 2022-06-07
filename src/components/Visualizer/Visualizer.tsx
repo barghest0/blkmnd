@@ -58,7 +58,7 @@ const Visualizer: FC = memo(() => {
 
   return (
     <S.Visualizer>
-      <S.VisualizerCanvas ref={canvasRef} width={1000}></S.VisualizerCanvas>
+      <S.VisualizerCanvas ref={canvasRef} width={1000} />
     </S.Visualizer>
   );
 });
