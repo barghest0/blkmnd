@@ -76,7 +76,7 @@ const Coupon = styled.div`
   margin-bottom: 10px;
 `;
 
-const CashSettlement = styled.div`
+const CashCalculation = styled.div`
   display: grid;
   grid-template-rows: 1fr 1fr 3fr;
   row-gap: 20px;
@@ -84,14 +84,14 @@ const CashSettlement = styled.div`
   margin-bottom: 10px;
 `;
 
-const Settlement = styled.div`
+const Calculation = styled.div`
   display: flex;
   justify-content: space-between;
   font-weight: 600;
   font-size: 16px;
 `;
 
-const SettlementText = styled.div``;
+const CalculationText = styled.div``;
 
 const TotalText = styled.div`
   color: ${ThemeColors.secondColor};
@@ -115,8 +115,8 @@ export {
   Container,
   Submit,
   UserEmail,
-  Settlement,
-  SettlementText,
+  Calculation,
+  CalculationText,
   TotalText,
   Coupon,
   Title,
@@ -127,5 +127,5 @@ export {
   Content,
   Payment,
   Products,
-  CashSettlement,
+  CashCalculation,
 };

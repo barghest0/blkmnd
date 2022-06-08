@@ -11,4 +11,6 @@ const BuyIcon = styled(ShoppingBagOutlinedIcon)`
   margin-right: 5px;
 `;
 
-export { BuyIcon, ChooseLicenseButton };
+const Price = styled.div``;
+
+export { BuyIcon, ChooseLicenseButton, Price };

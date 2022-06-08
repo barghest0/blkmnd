@@ -3,6 +3,7 @@ import { FC } from 'react';
 import Image from 'components/Image/Image';
 import { RouterPaths } from 'shared/router/types';
 import { StyledLink } from 'shared/styles/links';
+import { convertPrice } from 'shared/helpers/priceHelper';
 import { Collab } from 'reduxStore/collabs/types';
 
 import * as S from './CollabCard.style';
@@ -21,7 +22,7 @@ const CollabCard: FC<Props> = ({ collab }) => {
           <Image image={image} />
         </S.Thumbnail>
         <S.Title>{title}</S.Title>
-        <S.Price>{price}</S.Price>
+        <S.Price>{convertPrice(price)}</S.Price>
       </StyledLink>
     </S.CollabCard>
   );

@@ -4,11 +4,13 @@ const LicenseCard = styled.div`
   width: 100%;
 `;
 
-const Title = styled.p`
+const Title = styled.div`
   font-weight: 600;
   font-size: 14px;
   text-align: center;
 `;
+
+const LicenseName = styled.h3``;
 
 const Price = styled.p`
   font-size: 36px;
@@ -22,4 +24,4 @@ const Details = styled.div`
   font-size: 14px;
 `;
 
-export { LicenseCard, Title, Price, Details };
+export { LicenseCard, Title, Price, Details, LicenseName };
