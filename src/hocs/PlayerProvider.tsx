@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useEffect } from 'react';
+import { FC, memo, useCallback, useEffect, useMemo } from 'react';
 
 import PlayerContext from 'contexts/PlayerContext';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
@@ -69,8 +69,12 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
     audio.loop = audioLoop;
   }, [audioLoop]);
 
+  const getPlayerContextValue = () => ({ state: playerState, audio });
+
+  const playerContextValue = useMemo(getPlayerContextValue, []);
+
   return (
-    <PlayerContext.Provider value={{ state: playerState, audio }}>
+    <PlayerContext.Provider value={playerContextValue}>
       {children}
     </PlayerContext.Provider>
   );
