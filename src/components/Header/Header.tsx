@@ -51,8 +51,9 @@ const Header = () => {
     }
   };
 
-  const showLogoutToast = () =>
+  const showLogoutToast = () => {
     toast.success('Вы успешно вышли из личного кабинета');
+  };
 
   const onLogoutClick = () => {
     logout();

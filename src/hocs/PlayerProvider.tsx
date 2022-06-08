@@ -16,9 +16,9 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
     playerSelectors.beats,
   );
   const { isPlayerPlaying } = useTypedSelector(playerSelectors.state);
-  const { audioVolume, audioLoop } = useTypedSelector(playerSelectors.controls);
+  const { audioVolume } = useTypedSelector(playerSelectors.controls);
 
-  const { setCurrentTime, setDuration, setBeat } = useActions();
+  const { setCurrentTime, setDuration, setBeat, setVolume } = useActions();
 
   const onAudioTimeUpdate = useCallback((event) => {
     setCurrentTime(event.currentTarget.currentTime);
@@ -26,7 +26,7 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
 
   const onAudioDataLoad = useCallback((event) => {
     setDuration(event.target.duration);
-    audio.volume = audioVolume;
+    setVolume(audioVolume);
   }, []);
 
   const onAudioEnded = () => {
@@ -35,15 +35,22 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
     }
   };
 
+  const onAudioVolumeChange = useCallback((event) => {
+    setVolume(event.target.volume);
+  }, []);
+
   useEffect(() => {
     audio.crossOrigin = 'anonymous';
+    audio.volume = audioVolume;
     audio.addEventListener('timeupdate', onAudioTimeUpdate);
     audio.addEventListener('loadeddata', onAudioDataLoad);
     audio.addEventListener('ended', onAudioEnded);
+    audio.addEventListener('volumechange', onAudioVolumeChange);
     return () => {
       audio.removeEventListener('loadeddata', onAudioDataLoad);
       audio.removeEventListener('timeupdate', onAudioTimeUpdate);
       audio.removeEventListener('ended', onAudioEnded);
+      audio.removeEventListener('volumechange', onAudioVolumeChange);
     };
   }, []);
 
@@ -60,14 +67,6 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
       audio.pause();
     }
   }, [isPlayerPlaying, currentPlayerBeat]);
-
-  useEffect(() => {
-    audio.volume = audioVolume;
-  }, [audioVolume]);
-
-  useEffect(() => {
-    audio.loop = audioLoop;
-  }, [audioLoop]);
 
   const getPlayerContextValue = () => ({ state: playerState, audio });
 

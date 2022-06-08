@@ -1,8 +1,7 @@
-import { FC, useContext, useEffect, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
-import PlayerContext from 'contexts/PlayerContext';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
-import useActions from 'hooks/useActions';
+import useAudio from 'hooks/useAudio';
 import { Beat } from 'reduxStore/beats/types';
 import * as playerSelectors from 'reduxStore/player/selectors';
 
@@ -13,34 +12,31 @@ type Props = {
 };
 
 const DurationSlider: FC<Props> = ({ currentBeat }) => {
-  const { setCurrentTime } = useActions();
   const [time, setTime] = useState(0);
   const { audioCurrentTime, audioDuration } = useTypedSelector(
     playerSelectors.controls,
   );
   const { currentPlayerBeat } = useTypedSelector(playerSelectors.beats);
 
-  const { audio } = useContext(PlayerContext);
+  const { setAudioCurrentTime } = useAudio();
 
   const isInteractionSameBeat = currentBeat?.id === currentPlayerBeat?.id;
 
   const onCurrentTimeChange = (_: Event, value: number | number[]) => {
     if (!Array.isArray(value) && isInteractionSameBeat) {
-      setCurrentTime(value);
+      setTime(value);
     }
   };
 
   const onCurrentTimeCommited = () => {
     if (isInteractionSameBeat) {
-      audio.currentTime = time;
+      setAudioCurrentTime(time);
     }
   };
 
   useEffect(() => {
     if (currentBeat) {
       setTime(currentBeat.id === currentPlayerBeat?.id ? audioCurrentTime : 0);
-    } else {
-      setTime(audioCurrentTime);
     }
   }, [audioCurrentTime]);
 

@@ -1,14 +1,15 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 
+import useAudio from 'hooks/useAudio';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
-import useActions from 'hooks/useActions';
 import * as playerSelectors from 'reduxStore/player/selectors';
 
 import * as S from './VolumeSlider.style';
 
 const VolumeSlider: FC = () => {
   const { audioVolume } = useTypedSelector(playerSelectors.controls);
-  const { setVolume } = useActions();
+  const [volume, setVolume] = useState(audioVolume);
+  const { setAudioVolume } = useAudio();
 
   const onVolumeChange = (_: Event, value: number | number[]) => {
     if (!Array.isArray(value)) {
@@ -16,13 +17,18 @@ const VolumeSlider: FC = () => {
     }
   };
 
+  const onVolumeChangeCommited = () => {
+    setAudioVolume(volume);
+  };
+
   return (
     <S.VolumeSlider
-      value={audioVolume}
+      value={volume}
       min={0}
       max={1}
       step={0.01}
       onChange={onVolumeChange}
+      onChangeCommitted={onVolumeChangeCommited}
     />
   );
 };

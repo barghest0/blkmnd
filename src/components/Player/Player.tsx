@@ -14,6 +14,7 @@ import VolumeSlider from 'components/VolumeSlider/VolumeSlider';
 import ChooseLicenseButton from 'components/ChooseLicenseButton/ChooseLicenseButton';
 import QueueBeat from 'components/QueueBeat/QueueBeat';
 import useActions from 'hooks/useActions';
+import useAudio from 'hooks/useAudio';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import { RouterPaths } from 'shared/router/types';
 import { StyledLink } from 'shared/styles/links';
@@ -46,10 +47,11 @@ const Player: FC = memo(() => {
 
   const [isQueueListOpen, setIsQueueListOpen] = useState(false);
   const [queueBeats, setQueueBeats] = useState<Beat[]>([]);
+  const { toggleAudioLoop } = useAudio();
 
   const onQueueBeatClick = (beat: Beat) => {
-    setBeat(beat);
     togglePlaying(beat);
+    setBeat(beat);
   };
 
   const queueBeatsList = queueBeats.map((beat) => (
@@ -74,6 +76,7 @@ const Player: FC = memo(() => {
 
   const onLoopButtonClick = () => {
     toggleIsLoop();
+    toggleAudioLoop();
   };
 
   useEffect(() => {
@@ -117,7 +120,7 @@ const Player: FC = memo(() => {
               <ShareButton
                 color="#e8e8e8"
                 hasBackground={false}
-                beatId={currentPlayerBeat.id}
+                product={currentPlayerBeat}
               />
             </S.Share>
             <S.Buy>

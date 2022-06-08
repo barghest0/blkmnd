@@ -6,9 +6,9 @@ type PlayerState = {
   beat: Beat | null;
   nextBeat: Beat | null;
   previousBeat: Beat | null;
-  volume: number;
   duration: number;
   currentTime: number;
+  volume: number;
   isLoop: boolean;
   isShuffle: boolean;
   queue: Beat[];
