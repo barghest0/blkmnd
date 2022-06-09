@@ -42,10 +42,13 @@ const Delete = styled.div`
   cursor: pointer;
 `;
 
+const Details = styled.div``;
+
 export {
   CardProductCard,
   Delete,
   Thumbnail,
+  Details,
   Info,
   Title,
   Type,

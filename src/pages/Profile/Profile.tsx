@@ -9,6 +9,7 @@ import { RouterPaths } from 'shared/router/types';
 import { ButtonLink } from 'shared/styles/links';
 
 import * as S from './Profile.style';
+import TextField from 'components/TextField/TextField';
 
 type InfoValues = {
   email: string;
@@ -62,32 +63,24 @@ const Profile = () => {
         <S.Section>
           <S.Subtitle>Account login</S.Subtitle>
           <S.AccountForm onSubmit={infoFormik.handleSubmit}>
-            <S.TextInput
+            <TextField
               label="Email"
               name="email"
-              type="text"
               variant="outlined"
               onBlur={infoFormik.handleBlur}
               value={infoFormik.values.email}
-              error={
-                infoFormik.touched.email && Boolean(infoFormik.errors.email)
-              }
-              helperText={infoFormik.touched.email && infoFormik.errors.email}
+              error={infoFormik.errors.email}
+              touched={infoFormik.touched.email}
               onChange={infoFormik.handleChange}
             />
-            <S.TextInput
+            <TextField
               label="Username"
               name="username"
               variant="outlined"
               onBlur={infoFormik.handleBlur}
               value={infoFormik.values.username}
-              error={
-                infoFormik.touched.username &&
-                Boolean(infoFormik.errors.username)
-              }
-              helperText={
-                infoFormik.touched.username && infoFormik.errors.username
-              }
+              error={infoFormik.errors.username}
+              touched={infoFormik.touched.username}
               onChange={infoFormik.handleChange}
             />
             <S.Submit>
@@ -98,57 +91,39 @@ const Profile = () => {
         <S.Section>
           <S.Subtitle>Change account password</S.Subtitle>
           <S.ChangePasswordForm onSubmit={passwordFormik.handleSubmit}>
-            <S.TextInput
+            <TextField
               label="Current password"
               name="currentPassword"
               type="password"
               variant="outlined"
               onBlur={passwordFormik.handleBlur}
               value={passwordFormik.values.currentPassword}
-              error={
-                passwordFormik.touched.currentPassword &&
-                Boolean(passwordFormik.errors.currentPassword)
-              }
-              helperText={
-                passwordFormik.touched.currentPassword &&
-                passwordFormik.errors.currentPassword
-              }
+              error={passwordFormik.errors.currentPassword}
+              touched={passwordFormik.touched.currentPassword}
               onChange={passwordFormik.handleChange}
             />
             <S.NewPassword>
-              <S.TextInput
+              <TextField
                 label="New password"
                 name="newPassword"
                 type="password"
                 variant="outlined"
                 onBlur={passwordFormik.handleBlur}
                 value={passwordFormik.values.newPassword}
-                error={
-                  passwordFormik.touched.newPassword &&
-                  Boolean(passwordFormik.errors.newPassword)
-                }
-                helperText={
-                  passwordFormik.touched.newPassword &&
-                  passwordFormik.errors.newPassword
-                }
+                error={passwordFormik.errors.newPassword}
+                touched={passwordFormik.touched.newPassword}
                 onChange={passwordFormik.handleChange}
               />
-              <S.TextInput
+              <TextField
                 label="Confirm new password"
                 name="confirmPassword"
                 type="password"
+                variant="outlined"
                 onBlur={passwordFormik.handleBlur}
                 value={passwordFormik.values.confirmPassword}
-                error={
-                  passwordFormik.touched.confirmPassword &&
-                  Boolean(passwordFormik.errors.confirmPassword)
-                }
-                helperText={
-                  passwordFormik.touched.confirmPassword &&
-                  passwordFormik.errors.confirmPassword
-                }
-                variant="outlined"
+                error={passwordFormik.errors.confirmPassword}
                 onChange={passwordFormik.handleChange}
+                touched={passwordFormik.touched.confirmPassword}
               />
             </S.NewPassword>
             <S.Submit>

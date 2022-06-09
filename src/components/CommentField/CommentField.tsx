@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { FormikHelpers, useFormik } from 'formik';
-import { TextField } from '@mui/material';
 
 import Button from 'components/Button/Button';
+import TextField from 'components/TextField/TextField';
 import commentValidation from 'shared/formValidations/comment';
 
 import * as S from './CommentField.style';
@@ -43,9 +43,8 @@ const CommentField: FC<Props> = ({ onSubmit }) => {
           placeholder="Write a comment..."
           onChange={formik.handleChange}
           value={formik.values.comment}
-          error={formik.touched.comment && Boolean(formik.errors.comment)}
-          helperText={formik.touched.comment && formik.errors.comment}
-          variant="standard"
+          error={formik.errors.comment}
+          touched={formik.touched.comment}
         />
       </S.TextField>
       <S.Submit>

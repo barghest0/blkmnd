@@ -5,13 +5,14 @@ import useActions from 'hooks/useActions';
 import { License } from 'reduxStore/beats/types';
 import { CartProductDetails } from 'reduxStore/cart/types';
 import { ModalsTypes } from 'reduxStore/modals/types';
+import { convertPrice } from 'shared/helpers/priceHelper';
 
 import * as S from './BuyButton.style';
 
 type Props = {
   price: number;
   details: CartProductDetails;
-  license?: License | null;
+  license?: License;
 };
 
 const BuyButton: FC<Props> = ({ price, details, license }) => {
@@ -31,14 +32,15 @@ const BuyButton: FC<Props> = ({ price, details, license }) => {
   return (
     <S.BuyButton onClick={onBuyButtonClick}>
       <Button>
-        <S.BuyIcon />${price.toFixed(2)}
+        <S.BuyIcon />
+        <S.Price>{convertPrice(price)}</S.Price>
       </Button>
     </S.BuyButton>
   );
 };
 
 BuyButton.defaultProps = {
-  license: null,
+  license: undefined,
 };
 
 export default BuyButton;

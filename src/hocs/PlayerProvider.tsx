@@ -1,4 +1,4 @@
-import { FC, memo, useCallback, useEffect } from 'react';
+import { FC, memo, useCallback, useEffect, useMemo } from 'react';
 
 import PlayerContext from 'contexts/PlayerContext';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
@@ -16,9 +16,9 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
     playerSelectors.beats,
   );
   const { isPlayerPlaying } = useTypedSelector(playerSelectors.state);
-  const { audioVolume, audioLoop } = useTypedSelector(playerSelectors.controls);
+  const { audioVolume } = useTypedSelector(playerSelectors.controls);
 
-  const { setCurrentTime, setDuration, setBeat } = useActions();
+  const { setCurrentTime, setDuration, setBeat, setVolume } = useActions();
 
   const onAudioTimeUpdate = useCallback((event) => {
     setCurrentTime(event.currentTarget.currentTime);
@@ -26,7 +26,7 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
 
   const onAudioDataLoad = useCallback((event) => {
     setDuration(event.target.duration);
-    audio.volume = audioVolume;
+    setVolume(audioVolume);
   }, []);
 
   const onAudioEnded = () => {
@@ -35,15 +35,22 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
     }
   };
 
+  const onAudioVolumeChange = useCallback((event) => {
+    setVolume(event.target.volume);
+  }, []);
+
   useEffect(() => {
     audio.crossOrigin = 'anonymous';
+    audio.volume = audioVolume;
     audio.addEventListener('timeupdate', onAudioTimeUpdate);
     audio.addEventListener('loadeddata', onAudioDataLoad);
     audio.addEventListener('ended', onAudioEnded);
+    audio.addEventListener('volumechange', onAudioVolumeChange);
     return () => {
       audio.removeEventListener('loadeddata', onAudioDataLoad);
       audio.removeEventListener('timeupdate', onAudioTimeUpdate);
       audio.removeEventListener('ended', onAudioEnded);
+      audio.removeEventListener('volumechange', onAudioVolumeChange);
     };
   }, []);
 
@@ -61,16 +68,12 @@ const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
     }
   }, [isPlayerPlaying, currentPlayerBeat]);
 
-  useEffect(() => {
-    audio.volume = audioVolume;
-  }, [audioVolume]);
+  const getPlayerContextValue = () => ({ state: playerState, audio });
 
-  useEffect(() => {
-    audio.loop = audioLoop;
-  }, [audioLoop]);
+  const playerContextValue = useMemo(getPlayerContextValue, []);
 
   return (
-    <PlayerContext.Provider value={{ state: playerState, audio }}>
+    <PlayerContext.Provider value={playerContextValue}>
       {children}
     </PlayerContext.Provider>
   );

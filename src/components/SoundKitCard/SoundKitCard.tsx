@@ -3,6 +3,7 @@ import { FC } from 'react';
 import Image from 'components/Image/Image';
 import { RouterPaths } from 'shared/router/types';
 import { StyledLink } from 'shared/styles/links';
+import { convertPrice } from 'shared/helpers/priceHelper';
 import { SoundKit } from 'reduxStore/soundKits/types';
 
 import * as S from './SoundKitCard.style';
@@ -21,7 +22,7 @@ const SoundKitsList: FC<Props> = ({ soundKit }) => {
           <Image image={image} />
         </S.Thumbnail>
         <S.Title>{title}</S.Title>
-        <S.Price>{price > 0 ? `$${price.toFixed(2)}` : 'FREE'}</S.Price>
+        <S.Price>{price > 0 ? `${convertPrice(price)}` : 'FREE'}</S.Price>
       </StyledLink>
     </S.SoundKitCard>
   );

@@ -4,6 +4,7 @@ import Button from 'components/Button/Button';
 import useActions from 'hooks/useActions';
 import { ModalsTypes } from 'reduxStore/modals/types';
 import { License } from 'reduxStore/beats/types';
+import { convertPrice } from 'shared/helpers/priceHelper';
 
 import * as S from './LicenseCard.style';
 
@@ -22,8 +23,11 @@ const LicenseCard: FC<Props> = ({ license }) => {
 
   return (
     <S.LicenseCard>
-      <S.Title>{name} License</S.Title>
-      <S.Price>${price.toFixed(2)}</S.Price>
+      <S.Title>
+        <S.LicenseName>{name}</S.LicenseName>
+        License
+      </S.Title>
+      <S.Price>{convertPrice(price)}</S.Price>
       <S.Details onClick={onDetailsButtonClick}>
         <Button>Read license</Button>
       </S.Details>

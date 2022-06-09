@@ -52,9 +52,7 @@ const playerSlice = createSlice({
 
       if (nextBeat) {
         state.nextBeat = nextBeat;
-      }
-
-      if (state.isLoop) {
+      } else {
         state.nextBeat = firstBeat;
       }
 

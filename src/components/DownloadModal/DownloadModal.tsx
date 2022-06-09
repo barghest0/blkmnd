@@ -68,28 +68,26 @@ const DownloadModal: FC = () => {
                   below. Thanks!
                 </S.Tip>
                 <S.Form onSubmit={handleSubmit}>
-                  <S.Field
+                  <S.CommonTextField
+                    label="Email"
                     name="email"
-                    type="text"
+                    variant="outlined"
                     onChange={handleChange}
                     onBlur={handleBlur}
                     value={values.email}
-                    error={touched.email && Boolean(errors.email)}
-                    helperText={touched.email && errors.email}
-                    variant="outlined"
-                    label="Email"
+                    error={errors.email}
+                    touched={touched.email}
                   />
-                  <S.Field
+                  <S.CommonTextField
+                    label="Name"
+                    variant="outlined"
                     name="name"
-                    type="text"
                     onChange={handleChange}
                     value={values.name}
-                    error={touched.name && Boolean(errors.name)}
-                    helperText={touched.name && errors.name}
-                    variant="outlined"
-                    label="Name"
+                    error={errors.name}
+                    touched={touched.name}
                   />
-                  <S.PhoneFields>
+                  <S.PhoneTextFields>
                     <FormControl>
                       <S.PhonePrefix
                         value={values.mobilePrefix}
@@ -100,14 +98,15 @@ const DownloadModal: FC = () => {
                       </S.PhonePrefix>
                     </FormControl>
 
-                    <S.Field
+                    <S.CommonTextField
+                      label="Phone number(optional)"
                       name="mobilePhone"
                       type="number"
-                      onChange={handleChange}
                       variant="outlined"
-                      label="Phone number(optional)"
+                      onChange={handleChange}
+                      value={values.mobilePhone}
                     />
-                  </S.PhoneFields>
+                  </S.PhoneTextFields>
                   <FormControlLabel
                     value={values.agree}
                     control={<Checkbox onChange={handleChange} name="agree" />}

@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 
 import VisualizerContext from 'contexts/VisualizerContext';
 
@@ -25,16 +25,18 @@ const VisualizerProvider: FC<Props> = ({ audio, children }) => {
     source.disconnect();
   });
 
+  const getVisualizerContextValue = () => ({
+    audioContext,
+    source,
+    analyser,
+    bufferLength,
+    audioData,
+  });
+
+  const visualizerContextValue = useMemo(getVisualizerContextValue, []);
+
   return (
-    <VisualizerContext.Provider
-      value={{
-        audioContext,
-        source,
-        analyser,
-        bufferLength,
-        audioData,
-      }}
-    >
+    <VisualizerContext.Provider value={visualizerContextValue}>
       {children}
     </VisualizerContext.Provider>
   );

@@ -22,6 +22,7 @@ import DrawerNavLink from 'components/DrawerNavLink/DrawerNavLink';
 import { RouterPaths } from 'shared/router/types';
 import navigation from 'shared/router/navigation';
 import { StyledLink } from 'shared/styles/links';
+import { convertPrice } from 'shared/helpers/priceHelper';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import useActions from 'hooks/useActions';
 import AuthContext from 'contexts/AuthContext';
@@ -50,8 +51,9 @@ const Header = () => {
     }
   };
 
-  const showLogoutToast = () =>
+  const showLogoutToast = () => {
     toast.success('Вы успешно вышли из личного кабинета');
+  };
 
   const onLogoutClick = () => {
     logout();
@@ -93,7 +95,7 @@ const Header = () => {
               )}
               <ShoppingBagOutlinedIcon />
             </S.CartIcon>
-            <S.CartCost>${totalCartPrice.toFixed(2)}</S.CartCost>
+            <S.CartCost>{convertPrice(totalCartPrice)}</S.CartCost>
           </S.Cart>
         </StyledLink>
         <S.Auth onClick={onProfileClick}>

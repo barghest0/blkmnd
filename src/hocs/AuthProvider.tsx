@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useMemo } from 'react';
 
 import AuthContext from 'contexts/AuthContext';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
@@ -16,7 +16,9 @@ const AuthProvider: FC<Props> = ({ children }) => {
   const token = useTypedSelector(authSelectors.token);
   const { autoLogin } = useActions();
 
-  const authValues = { user, isAuth };
+  const getAuthContextValue = () => ({ user, isAuth });
+
+  const authContextValue = useMemo(getAuthContextValue, [user]);
 
   useEffect(() => {
     if (token) {
@@ -25,7 +27,9 @@ const AuthProvider: FC<Props> = ({ children }) => {
   }, [isAuth]);
 
   return (
-    <AuthContext.Provider value={authValues}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authContextValue}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

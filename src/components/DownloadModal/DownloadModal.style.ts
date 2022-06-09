@@ -1,11 +1,7 @@
 import styled, { css } from 'styled-components';
-import {
-  MenuItem,
-  Select,
-  styled as MUIstyled,
-  TextField,
-} from '@mui/material';
+import { MenuItem, Select, styled as MUIstyled } from '@mui/material';
 
+import TextField from 'components/TextField/TextField';
 import ThemeColors from 'shared/styles/theme';
 import { breakpoint } from 'shared/styles/breakpoints';
 
@@ -46,7 +42,7 @@ const Form = styled.form`
   row-gap: 30px;
 `;
 
-const Field = MUIstyled(TextField)({
+const CommonTextField = MUIstyled(TextField)({
   backgroundColor: 'rgba(218, 218, 218, 0.1)',
   height: 50,
 
@@ -59,7 +55,7 @@ const Field = MUIstyled(TextField)({
   },
 });
 
-const PhoneFields = styled.div`
+const PhoneTextFields = styled.div`
   display: grid;
   grid-template-columns: 100px 1fr;
   grid-template-rows: 50px;
@@ -81,10 +77,10 @@ export {
   DownloadModal,
   Modal,
   Tip,
-  Field,
+  CommonTextField,
   Form,
   PhonePrefix,
-  PhoneFields,
+  PhoneTextFields,
   Prefix,
   Submit,
 };

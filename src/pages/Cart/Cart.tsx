@@ -11,6 +11,7 @@ import { RouterPaths } from 'shared/router/types';
 import * as cartSelectors from 'reduxStore/cart/selectors';
 
 import * as S from './Cart.style';
+import { convertPrice } from 'shared/helpers/priceHelper';
 
 type PaymentValues = {
   hasCoupon: boolean;
@@ -46,6 +47,8 @@ const Cart = () => {
     onSubmit: onPaymentSubmit,
   });
 
+  const totalPriceWithDiscount = totalCartPrice - cartDiscount;
+
   return (
     <S.Cart>
       <S.Container>
@@ -75,20 +78,26 @@ const Cart = () => {
                 />
               )}
             </S.Coupon>
-            <S.CashSettlement>
-              <S.Settlement>
-                <S.SettlementText>Price</S.SettlementText>
-                <S.SettlementText>${totalCartPrice}</S.SettlementText>
-              </S.Settlement>
-              <S.Settlement>
-                <S.SettlementText>Discount</S.SettlementText>
-                <S.SettlementText>- ${cartDiscount}</S.SettlementText>
-              </S.Settlement>
-              <S.Settlement>
+            <S.CashCalculation>
+              <S.Calculation>
+                <S.CalculationText>Price</S.CalculationText>
+                <S.CalculationText>
+                  ${convertPrice(totalCartPrice)}
+                </S.CalculationText>
+              </S.Calculation>
+              <S.Calculation>
+                <S.CalculationText>Discount</S.CalculationText>
+                <S.CalculationText>
+                  - ${convertPrice(cartDiscount)}
+                </S.CalculationText>
+              </S.Calculation>
+              <S.Calculation>
                 <S.TotalText>Total</S.TotalText>
-                <S.TotalText>${totalCartPrice - cartDiscount}</S.TotalText>
-              </S.Settlement>
-            </S.CashSettlement>
+                <S.TotalText>
+                  ${convertPrice(totalPriceWithDiscount)}
+                </S.TotalText>
+              </S.Calculation>
+            </S.CashCalculation>
             <S.UserEmail>
               You are checking out as you@mail.ru. Not you?
               <StyledLink to={RouterPaths.landing}> Sign out</StyledLink>
