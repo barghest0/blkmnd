@@ -78,7 +78,7 @@
     "operator-linebreak": [
       2,
       "after",
-      { "overrides": { "?": "before", ":": "before" } }
+      { "overrides": { "?": "before", ":": "before", "=>": "before" } }
     ],
     "object-curly-newline": [
       "error",
