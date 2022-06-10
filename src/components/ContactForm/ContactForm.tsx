@@ -1,10 +1,10 @@
 import { useFormik } from 'formik';
 
 import Button from 'components/Button/Button';
+import TextField from 'components/TextField/TextField';
 import contactValidation from 'shared/formValidations/contact';
 
 import * as S from './ContactForm.style';
-import TextField from 'components/TextField/TextField';
 
 type FormValues = {
   name: string;

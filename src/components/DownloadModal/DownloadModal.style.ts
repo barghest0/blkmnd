@@ -42,18 +42,18 @@ const Form = styled.form`
   row-gap: 30px;
 `;
 
-const CommonTextField = MUIstyled(TextField)({
-  backgroundColor: 'rgba(218, 218, 218, 0.1)',
-  height: 50,
+const CommonTextField = styled(TextField)`
+  background-color: rgba(218, 218, 218, 0.1);
+  height: 50px;
 
-  '& .MuiOutlinedInput-root': {
-    backgroundColor: 'transparent',
-  },
+  & .MuiOutlinedInput-root {
+    background-color: transparent;
+  }
 
-  '& .MuiOutlinedInput-notchedOutline': {
-    borderColor: 'rgba(218, 218, 218, 0.1)',
-  },
-});
+  & .MuiOutlinedInput-notchedOutline {
+    border-color: rgba(218, 218, 218, 0.1);
+  }
+`;
 
 const PhoneTextFields = styled.div`
   display: grid;

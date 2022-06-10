@@ -8,10 +8,10 @@ import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import useActions from 'hooks/useActions';
 import { StyledLink } from 'shared/styles/links';
 import { RouterPaths } from 'shared/router/types';
+import { convertPrice } from 'shared/helpers/priceHelper';
 import * as cartSelectors from 'reduxStore/cart/selectors';
 
 import * as S from './Cart.style';
-import { convertPrice } from 'shared/helpers/priceHelper';
 
 type PaymentValues = {
   hasCoupon: boolean;

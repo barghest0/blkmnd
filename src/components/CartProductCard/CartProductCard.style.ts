@@ -2,13 +2,7 @@ import styled from 'styled-components';
 
 import { textOverflow } from 'shared/styles/mixins';
 
-const CardProductCard = styled.div`
-  display: grid;
-  grid-template-columns: 60px 7fr 1fr 3fr 15px;
-  grid-template-rows: 60px;
-  column-gap: 10px;
-  align-items: center;
-`;
+const CardProductCard = styled.div``;
 
 const Thumbnail = styled.img`
   width: 100%;
@@ -42,7 +36,13 @@ const Delete = styled.div`
   cursor: pointer;
 `;
 
-const Details = styled.div``;
+const Details = styled.div`
+  display: grid;
+  grid-template-columns: 60px 7fr 1fr 3fr 15px;
+  grid-template-rows: 60px;
+  column-gap: 10px;
+  align-items: center;
+`;
 
 export {
   CardProductCard,
