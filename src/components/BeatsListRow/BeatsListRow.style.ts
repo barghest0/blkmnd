@@ -23,6 +23,7 @@ const BeatsListRow = styled.div<RowProps>`
       font-weight: 500;
       cursor: pointer;
       border-bottom: 1px solid ${ThemeColors.borderColor};
+
       @media ${breakpoint('lg')} {
         grid-template-columns: 0.1fr 3fr 1fr;
       }
