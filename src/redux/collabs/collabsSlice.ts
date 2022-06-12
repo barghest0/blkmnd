@@ -14,7 +14,7 @@ const collabsSlice = createSlice({
       action: PayloadAction<Collab[]>,
     ) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.collabs = action.payload;
     },
 
@@ -35,7 +35,7 @@ const collabsSlice = createSlice({
       action: PayloadAction<Collab[]>,
     ) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.collabs = action.payload;
     },
 
@@ -43,18 +43,22 @@ const collabsSlice = createSlice({
       state.isFetching = true;
     },
 
-    [getAllCollabs.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getAllCollabs.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },
 
     [getCollab.fulfilled.type]: (state, action: PayloadAction<Collab>) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.collab = action.payload;
     },
 
-    [getCollab.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getCollab.pending.type]: (state) => {
+      state.isFetching = true;
+    },
+
+    [getCollab.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },
