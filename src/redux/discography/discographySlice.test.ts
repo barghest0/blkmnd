@@ -17,8 +17,8 @@ describe('discographySlice state tests', () => {
   });
 });
 
-describe('correct set discographySlice all beats with mock action payload', () => {
-  test('expect set correct fulfilled all beats', () => {
+describe('correct set discographySlice all discography beats with mock action payload', () => {
+  test('expect set correct fulfilled discography beats', () => {
     const action = {
       type: getDiscographyBeats.fulfilled.type,
       payload: [mockBeat],
@@ -30,7 +30,7 @@ describe('correct set discographySlice all beats with mock action payload', () =
     });
   });
 
-  test('expect set isFetching during all beats pending', () => {
+  test('expect set isFetching during discography beats pending', () => {
     const action = { type: getDiscographyBeats.pending.type };
     const newState = discographySlice.reducer(state, action);
     expect(newState).toEqual({
@@ -39,7 +39,7 @@ describe('correct set discographySlice all beats with mock action payload', () =
     });
   });
 
-  test('expect set errors after rejected get all beats', () => {
+  test('expect set errors after rejected get discography beats', () => {
     const action = {
       type: getDiscographyBeats.rejected.type,
       payload: 'error',
