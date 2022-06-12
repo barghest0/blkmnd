@@ -1,5 +1,6 @@
 import { CartProduct } from 'redux/cart/types';
 import { SoundKit } from 'redux/soundKits/types';
+import { User } from 'redux/user/types';
 import { Beat, Comment } from 'reduxStore/beats/types';
 
 const mockBeat = {
@@ -483,7 +484,7 @@ const mockUser = {
   username: 'user',
   password: 'adsfjkfg2jelowkgjk%Q@$@42k5j3',
   role: 'user',
-};
+} as User;
 
 export {
   mockBeat,

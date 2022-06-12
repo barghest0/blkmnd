@@ -23,7 +23,7 @@ const soundKitsSlice = createSlice({
     ) => {
       state.isFetching = false;
       state.soundKits = action.payload;
-      state.errors = '';
+      state.errors = null;
     },
 
     [getPreviewSoundKits.pending.type]: (state) => {
@@ -44,24 +44,28 @@ const soundKitsSlice = createSlice({
     ) => {
       state.isFetching = false;
       state.soundKits = action.payload;
-      state.errors = '';
+      state.errors = null;
     },
 
     [getAllSoundKits.pending.type]: (state) => {
       state.isFetching = true;
     },
 
-    [getAllSoundKits.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getAllSoundKits.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },
 
     [getSoundKit.fulfilled.type]: (state, action: PayloadAction<SoundKit>) => {
       state.soundKit = action.payload;
-      state.errors = '';
+      state.errors = null;
     },
 
-    [getSoundKit.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getSoundKit.pending.type]: (state) => {
+      state.isFetching = true;
+    },
+
+    [getSoundKit.rejected.type]: (state, action: PayloadAction<any>) => {
       state.errors = action.payload;
     },
   },

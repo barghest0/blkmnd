@@ -115,8 +115,8 @@ describe('correct autoLogin authSlice with mock action payload', () => {
   });
 });
 
-describe('correct logout authSlice ', () => {
-  test('expect correct fulfilled auto login', () => {
+describe('correct logout authSlice', () => {
+  test('expect correct logout', () => {
     const newState = authSlice.reducer(state, authSlice.actions.logout());
     expect(newState).toEqual({
       ...authSlice.getInitialState(),
