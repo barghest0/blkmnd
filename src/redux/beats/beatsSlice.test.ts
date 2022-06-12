@@ -1,7 +1,12 @@
 import { mockBeat } from 'test-utils/mocks';
 
 import beatsSlice from './beatsSlice';
-import { getAllBeats, getBeat, getFeaturedBeat } from './actions';
+import {
+  getAllBeats,
+  getBeat,
+  getFeaturedBeat,
+  getPreviewBeats,
+} from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
 const state = beatsSlice.getInitialState();
@@ -15,8 +20,8 @@ describe('beatsSlice state tests', () => {
   });
 });
 
-describe('beatsSlice extra reducers tests', () => {
-  test('expect correct fulfilled all beats', () => {
+describe('correct set beatsSlice all beats with mock action payload', () => {
+  test('expect set correct fulfilled all beats', () => {
     const action = { type: getAllBeats.fulfilled.type, payload: [mockBeat] };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
@@ -25,7 +30,7 @@ describe('beatsSlice extra reducers tests', () => {
     });
   });
 
-  test('expect set isFetching during beats pending', () => {
+  test('expect set isFetching during all beats pending', () => {
     const action = { type: getAllBeats.pending.type };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
@@ -34,7 +39,7 @@ describe('beatsSlice extra reducers tests', () => {
     });
   });
 
-  test('expect set errors after rejected get beats', () => {
+  test('expect set errors after rejected get all beats', () => {
     const action = { type: getAllBeats.rejected.type, payload: 'error' };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
@@ -42,8 +47,42 @@ describe('beatsSlice extra reducers tests', () => {
       errors: 'error',
     });
   });
+});
 
-  test('expect correct fulfilled separated beats', () => {
+describe('correct set beatsSlice preview beats with mock action payload', () => {
+  test('expect set correct fulfilled preview beats', () => {
+    const action = {
+      type: getPreviewBeats.fulfilled.type,
+      payload: [mockBeat],
+    };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      beats: [mockBeat],
+    });
+  });
+
+  test('expect set isFetching during preview beats pending', () => {
+    const action = { type: getPreviewBeats.pending.type };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      isFetching: true,
+    });
+  });
+
+  test('expect set errors after rejected get preview beats', () => {
+    const action = { type: getPreviewBeats.rejected.type, payload: 'error' };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      errors: 'error',
+    });
+  });
+});
+
+describe('correct set beatsSlice beat with mock action payload', () => {
+  test('expect set correct fulfilled beat', () => {
     const action = { type: getBeat.fulfilled.type, payload: mockBeat };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
@@ -69,8 +108,10 @@ describe('beatsSlice extra reducers tests', () => {
       errors: 'error',
     });
   });
+});
 
-  test('expect correct fulfilled featured beat', () => {
+describe('correct set beatsSlice featured beat with mock action payload', () => {
+  test('expect set correct fulfilled featured beat', () => {
     const action = {
       type: getFeaturedBeat.fulfilled.type,
       payload: [mockBeat],

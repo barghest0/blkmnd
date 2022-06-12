@@ -15,8 +15,8 @@ describe('userSlice state tests', () => {
   });
 });
 
-describe('userSlice extra reducers tests', () => {
-  test('expect correct fulfilled all beats', () => {
+describe('correct set userSlice user data with mock action payload', () => {
+  test('expect correct fulfilled user data', () => {
     const action = { type: getUserData.fulfilled.type, payload: mockUser };
     const newState = userSlice.reducer(state, action);
     expect(newState).toEqual({
@@ -25,7 +25,7 @@ describe('userSlice extra reducers tests', () => {
     });
   });
 
-  test('expect set isFetching during beats pending', () => {
+  test('expect set isFetching during user data pending', () => {
     const action = { type: getUserData.pending.type };
     const newState = userSlice.reducer(state, action);
     expect(newState).toEqual({
@@ -34,7 +34,7 @@ describe('userSlice extra reducers tests', () => {
     });
   });
 
-  test('expect set errors after rejected get beats', () => {
+  test('expect set errors after rejected get user data', () => {
     const action = { type: getUserData.rejected.type, payload: 'error' };
     const newState = userSlice.reducer(state, action);
     expect(newState).toEqual({
