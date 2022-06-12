@@ -9,7 +9,8 @@ type User = {
 
 type UserState = {
   user: User | null;
-  errors: string;
+  isFetching: boolean;
+  errors: null | any;
 };
 
 export { User, UserState };

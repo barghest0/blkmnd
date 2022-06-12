@@ -478,6 +478,13 @@ const mockTag = {
   name: 'future',
 };
 
+const mockUser = {
+  id: 1,
+  username: 'user',
+  password: 'adsfjkfg2jelowkgjk%Q@$@42k5j3',
+  role: 'user',
+};
+
 export {
   mockBeat,
   mockCartProduct,
@@ -486,4 +493,5 @@ export {
   mockComment,
   mockSoundKit,
   mockTag,
+  mockUser,
 };

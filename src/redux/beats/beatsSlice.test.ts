@@ -1,14 +1,9 @@
-import { waitFor } from '@testing-library/react';
-import store from 'reduxStore/store';
-
 import { mockBeat } from 'test-utils/mocks';
 
 import beatsSlice from './beatsSlice';
 import { getAllBeats, getBeat, getFeaturedBeat } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
-const mockStore = store();
-const { dispatch } = mockStore;
 const state = beatsSlice.getInitialState();
 
 describe('beatsSlice state tests', () => {

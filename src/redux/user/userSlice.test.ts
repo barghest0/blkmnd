@@ -1,12 +1,10 @@
-import { waitFor } from '@testing-library/react';
-import store from 'reduxStore/store';
+import { mockUser } from 'test-utils/mocks';
+
 import { getUserData } from './actions';
 import { USER_INITIAL_STATE, USER_SLICE_NAME } from './constants';
 import userSlice from './userSlice';
 
-const mockStore = store();
-const { dispatch } = mockStore;
-const state = mockStore.getState().user;
+const state = userSlice.getInitialState();
 
 describe('userSlice state tests', () => {
   test('expect set correct initial state', () => {
@@ -18,15 +16,30 @@ describe('userSlice state tests', () => {
 });
 
 describe('userSlice extra reducers tests', () => {
-  test('expect correct get user data', async () => {
-    try {
-      await dispatch(getUserData('8TToQ8qnzERgrd0d_3RuDQvE1SxDKwuv'));
-      waitFor(() => {
-        expect(state.user?.username).toBe('test');
-      });
-    } catch (e) {
-      expect(e).toThrow();
-      expect(state.user).toBeNull();
-    }
+  test('expect correct fulfilled all beats', () => {
+    const action = { type: getUserData.fulfilled.type, payload: mockUser };
+    const newState = userSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...userSlice.getInitialState(),
+      user: mockUser,
+    });
+  });
+
+  test('expect set isFetching during beats pending', () => {
+    const action = { type: getUserData.pending.type };
+    const newState = userSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...userSlice.getInitialState(),
+      isFetching: true,
+    });
+  });
+
+  test('expect set errors after rejected get beats', () => {
+    const action = { type: getUserData.rejected.type, payload: 'error' };
+    const newState = userSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...userSlice.getInitialState(),
+      errors: 'error',
+    });
   });
 });
