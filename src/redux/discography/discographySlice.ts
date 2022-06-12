@@ -15,7 +15,7 @@ const discographySlice = createSlice({
       action: PayloadAction<Beat[]>,
     ) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.beats = action.payload;
     },
 
@@ -25,7 +25,7 @@ const discographySlice = createSlice({
 
     [getDiscographyBeats.rejected.type]: (
       state,
-      action: PayloadAction<string>,
+      action: PayloadAction<any>,
     ) => {
       state.isFetching = false;
       state.errors = action.payload;

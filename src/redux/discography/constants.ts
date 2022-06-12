@@ -5,7 +5,7 @@ const DISCORGAPHY_SLICE_NAME = 'discography';
 const DISCOGRAPHY_INITIAL_STATE: DiscographyState = {
   beats: [],
   isFetching: false,
-  errors: '',
+  errors: null,
 };
 
 const GET_DISCOGRAPHY_BEATS = 'beats/discography';
