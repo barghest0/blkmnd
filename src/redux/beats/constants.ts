@@ -19,7 +19,7 @@ const BEATS_INITIAL_STATE: BeatsState = {
   isFetching: false,
   featuredBeat: null,
   beat: null,
-  errors: '',
+  errors: null,
 };
 
 export {

@@ -1,13 +1,15 @@
 import { waitFor } from '@testing-library/react';
 import store from 'reduxStore/store';
 
+import { mockBeat } from 'test-utils/mocks';
+
 import beatsSlice from './beatsSlice';
 import { getAllBeats, getBeat, getFeaturedBeat } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
 const mockStore = store();
 const { dispatch } = mockStore;
-const state = mockStore.getState().beats;
+const state = beatsSlice.getInitialState();
 
 describe('beatsSlice state tests', () => {
   test('expect set correct initial state', () => {
@@ -19,32 +21,87 @@ describe('beatsSlice state tests', () => {
 });
 
 describe('beatsSlice extra reducers tests', () => {
-  test('expect correct get all beats', async () => {
-    try {
-      await dispatch(getAllBeats());
-      waitFor(() => {
-        expect(state.beats.length).toBeGreaterThan(0);
-        expect(state.isFetching).toBe(false);
-      });
-    } catch (e) {
-      expect(e).toThrow();
-      expect(state.beats.length).toBe(0);
-      expect(state.isFetching).toBe(false);
-    }
+  test('expect correct fulfilled all beats', () => {
+    const action = { type: getAllBeats.fulfilled.type, payload: [mockBeat] };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      beats: [mockBeat],
+    });
   });
 
-  test('expect correct get separated beats', async () => {
-    try {
-      await dispatch(getBeat(1));
-      await dispatch(getFeaturedBeat());
-      waitFor(() => {
-        expect(state.beat).not.toBeNull();
-        expect(state.featuredBeat).not.toBeNull();
-      });
-    } catch (e) {
-      expect(e).toThrow();
-      expect(state.beat).toBeNull();
-      expect(state.featuredBeat).toBeNull();
-    }
+  test('expect set isFetching during beats pending', () => {
+    const action = { type: getAllBeats.pending.type };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      isFetching: true,
+    });
+  });
+
+  test('expect set errors after rejected get beats', () => {
+    const action = { type: getAllBeats.rejected.type, payload: 'error' };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      errors: 'error',
+    });
+  });
+
+  test('expect correct fulfilled separated beats', () => {
+    const action = { type: getBeat.fulfilled.type, payload: mockBeat };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      beat: mockBeat,
+    });
+  });
+
+  test('expect set isFetching during beat pending', () => {
+    const action = { type: getBeat.pending.type };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      isFetching: true,
+    });
+  });
+
+  test('expect set errors after rejected get beat', () => {
+    const action = { type: getBeat.rejected.type, payload: 'error' };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      errors: 'error',
+    });
+  });
+
+  test('expect correct fulfilled featured beat', () => {
+    const action = {
+      type: getFeaturedBeat.fulfilled.type,
+      payload: [mockBeat],
+    };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      featuredBeat: mockBeat,
+    });
+  });
+
+  test('expect set isFetching during featured beat pending', () => {
+    const action = { type: getFeaturedBeat.pending.type };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      isFetching: true,
+    });
+  });
+
+  test('expect set errors after rejected get featured beat', () => {
+    const action = { type: getFeaturedBeat.rejected.type, payload: 'error' };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...beatsSlice.getInitialState(),
+      errors: 'error',
+    });
   });
 });

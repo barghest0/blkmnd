@@ -26,7 +26,7 @@ const beatsSlice = createSlice({
       action: PayloadAction<Beat[]>,
     ) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.beats = action.payload;
     },
 
@@ -34,14 +34,14 @@ const beatsSlice = createSlice({
       state.isFetching = true;
     },
 
-    [getPreviewBeats.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getPreviewBeats.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },
 
     [getAllBeats.fulfilled.type]: (state, action: PayloadAction<Beat[]>) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.beats = action.payload;
     },
 
@@ -49,7 +49,7 @@ const beatsSlice = createSlice({
       state.isFetching = true;
     },
 
-    [getAllBeats.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getAllBeats.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },
@@ -59,7 +59,7 @@ const beatsSlice = createSlice({
       action: PayloadAction<Beat[]>,
     ) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.beats = action.payload;
     },
 
@@ -67,10 +67,7 @@ const beatsSlice = createSlice({
       state.isFetching = true;
     },
 
-    [getFilteredBeats.rejected.type]: (
-      state,
-      action: PayloadAction<string>,
-    ) => {
+    [getFilteredBeats.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },
@@ -79,23 +76,34 @@ const beatsSlice = createSlice({
       state,
       action: PayloadAction<Beat[]>,
     ) => {
-      state.errors = '';
-      const featuredBeat =
+      state.featuredBeat =
         action.payload[Math.floor(Math.random() * action.payload.length)];
-      state.featuredBeat = featuredBeat;
+      state.isFetching = false;
+      state.errors = null;
     },
 
-    [getFeaturedBeat.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getFeaturedBeat.rejected.type]: (state, action: PayloadAction<any>) => {
       state.errors = action.payload;
+      state.isFetching = false;
+    },
+
+    [getFeaturedBeat.pending.type]: (state) => {
+      state.isFetching = true;
     },
 
     [getBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
-      state.errors = '';
+      state.errors = null;
       state.beat = action.payload;
+      state.isFetching = false;
     },
 
-    [getBeat.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getBeat.pending.type]: (state) => {
+      state.isFetching = true;
+    },
+
+    [getBeat.rejected.type]: (state, action: PayloadAction<any>) => {
       state.errors = action.payload;
+      state.isFetching = false;
     },
   },
 });
