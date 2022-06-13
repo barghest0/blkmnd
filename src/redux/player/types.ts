@@ -13,7 +13,7 @@ type PlayerState = {
   isShuffle: boolean;
   queue: Beat[];
   isFetching: boolean;
-  errors: string;
+  errors: any | null;
 };
 
 export { PlayerState };
