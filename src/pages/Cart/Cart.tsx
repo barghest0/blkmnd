@@ -21,13 +21,13 @@ type PaymentValues = {
 const Cart = () => {
   const { getCart } = useActions();
   const products = useTypedSelector(cartSelectors.products);
-  const { productsQuantity, totalCartPrice, cartDiscount } = useTypedSelector(
+  const { totalCartPrice, cartDiscount } = useTypedSelector(
     cartSelectors.details,
   );
 
   useEffect(() => {
     getCart();
-  }, [productsQuantity]);
+  }, []);
 
   const productsCards = products.map((product) => (
     <CartProductCard product={product} key={product.id} />
