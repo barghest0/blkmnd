@@ -8,9 +8,7 @@ const state = discographySlice.getInitialState();
 
 describe('discographySlice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(discographySlice.getInitialState()).toEqual(
-      DISCOGRAPHY_INITIAL_STATE,
-    );
+    expect(state).toEqual(DISCOGRAPHY_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
     expect(discographySlice.name).toEqual(DISCORGAPHY_SLICE_NAME);
@@ -25,7 +23,7 @@ describe('correct set discographySlice all discography beats with mock action pa
     };
     const newState = discographySlice.reducer(state, action);
     expect(newState).toEqual({
-      ...discographySlice.getInitialState(),
+      ...state,
       beats: [mockBeat],
     });
   });
@@ -34,7 +32,7 @@ describe('correct set discographySlice all discography beats with mock action pa
     const action = { type: getDiscographyBeats.pending.type };
     const newState = discographySlice.reducer(state, action);
     expect(newState).toEqual({
-      ...discographySlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -46,7 +44,7 @@ describe('correct set discographySlice all discography beats with mock action pa
     };
     const newState = discographySlice.reducer(state, action);
     expect(newState).toEqual({
-      ...discographySlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });

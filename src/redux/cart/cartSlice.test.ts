@@ -1,4 +1,5 @@
 import { mockCartProduct } from 'test-utils/mocks';
+
 import { addProductToCart, deleteCartProduct, getCart } from './actions';
 import cartSlice from './cartSlice';
 import { CART_INITIAL_STATE, CART_SLICE_NAME } from './constants';
@@ -7,7 +8,7 @@ const state = cartSlice.getInitialState();
 
 describe('cartSlice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(cartSlice.getInitialState()).toEqual(CART_INITIAL_STATE);
+    expect(state).toEqual(CART_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
     expect(cartSlice.name).toEqual(CART_SLICE_NAME);
@@ -19,7 +20,7 @@ describe('correct cartSlice get cart with mock action payload', () => {
     const action = { type: getCart.fulfilled.type, payload: [mockCartProduct] };
     const newState = cartSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...cartSlice.getInitialState(),
+      ...state,
       products: [mockCartProduct],
       quantity: 1,
       totalPrice: mockCartProduct.price,
@@ -30,7 +31,7 @@ describe('correct cartSlice get cart with mock action payload', () => {
     const action = { type: getCart.pending.type };
     const newState = cartSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...cartSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -42,7 +43,7 @@ describe('correct cartSlice get cart with mock action payload', () => {
     };
     const newState = cartSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...cartSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -56,7 +57,7 @@ describe('correct cartSlice add product to cart with mock action payload', () =>
     };
     const newState = cartSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...cartSlice.getInitialState(),
+      ...state,
       products: [mockCartProduct],
       quantity: 1,
       totalPrice: mockCartProduct.price,
@@ -67,7 +68,7 @@ describe('correct cartSlice add product to cart with mock action payload', () =>
     const action = { type: addProductToCart.pending.type };
     const newState = cartSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...cartSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -79,7 +80,7 @@ describe('correct cartSlice add product to cart with mock action payload', () =>
     };
     const newState = cartSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...cartSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -101,7 +102,7 @@ describe('correct cartSlice delete product to cart with mock action payload', ()
     };
     const newState = cartSlice.reducer(stateWithProduct, action);
     expect(newState).toEqual({
-      ...cartSlice.getInitialState(),
+      ...state,
       products: [],
       quantity: 0,
       totalPrice: 0,
@@ -112,7 +113,7 @@ describe('correct cartSlice delete product to cart with mock action payload', ()
     const action = { type: deleteCartProduct.pending.type };
     const newState = cartSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...cartSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -124,7 +125,7 @@ describe('correct cartSlice delete product to cart with mock action payload', ()
     };
     const newState = cartSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...cartSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });

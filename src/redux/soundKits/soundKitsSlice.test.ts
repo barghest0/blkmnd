@@ -1,4 +1,5 @@
-import { mockSoundKit, mockUser } from 'test-utils/mocks';
+import { mockComment, mockSoundKit } from 'test-utils/mocks';
+
 import { getAllSoundKits, getPreviewSoundKits, getSoundKit } from './actions';
 import { SOUND_KITS_INITIAL_STATE, SOUND_KITS_SLICE_NAME } from './constants';
 import soundKitsSlice from './soundKitsSlice';
@@ -7,7 +8,7 @@ const state = soundKitsSlice.getInitialState();
 
 describe('soundKitsSlice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(soundKitsSlice.getInitialState()).toEqual(SOUND_KITS_INITIAL_STATE);
+    expect(state).toEqual(SOUND_KITS_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
     expect(soundKitsSlice.name).toEqual(SOUND_KITS_SLICE_NAME);
@@ -22,7 +23,7 @@ describe('correct set soundKitsSlice all sound kits with mock action payload', (
     };
     const newState = soundKitsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...soundKitsSlice.getInitialState(),
+      ...state,
       soundKits: [mockSoundKit],
     });
   });
@@ -31,7 +32,7 @@ describe('correct set soundKitsSlice all sound kits with mock action payload', (
     const action = { type: getAllSoundKits.pending.type };
     const newState = soundKitsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...soundKitsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -43,7 +44,7 @@ describe('correct set soundKitsSlice all sound kits with mock action payload', (
     };
     const newState = soundKitsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...soundKitsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -57,7 +58,7 @@ describe('correct set soundKitsSlice preview sound kits with mock action payload
     };
     const newState = soundKitsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...soundKitsSlice.getInitialState(),
+      ...state,
       soundKits: [mockSoundKit],
     });
   });
@@ -66,7 +67,7 @@ describe('correct set soundKitsSlice preview sound kits with mock action payload
     const action = { type: getPreviewSoundKits.pending.type };
     const newState = soundKitsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...soundKitsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -78,7 +79,7 @@ describe('correct set soundKitsSlice preview sound kits with mock action payload
     };
     const newState = soundKitsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...soundKitsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -92,7 +93,7 @@ describe('correct set soundKitsSlice sound kits with mock action payload', () =>
     };
     const newState = soundKitsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...soundKitsSlice.getInitialState(),
+      ...state,
       soundKit: mockSoundKit,
     });
   });
@@ -101,7 +102,7 @@ describe('correct set soundKitsSlice sound kits with mock action payload', () =>
     const action = { type: getSoundKit.pending.type };
     const newState = soundKitsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...soundKitsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -113,13 +114,13 @@ describe('correct set soundKitsSlice sound kits with mock action payload', () =>
     };
     const newState = soundKitsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...soundKitsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
 });
 
-describe('correct soundKitsSlice push comment', () => {
+describe('correct performance sync soundKitsSlice actions with mock action payload', () => {
   test('expect correct push comment to sound kit', () => {
     const action = {
       type: getSoundKit.fulfilled.type,
@@ -127,15 +128,10 @@ describe('correct soundKitsSlice push comment', () => {
     };
     const stateWithSoundKit = soundKitsSlice.reducer(state, action);
 
-    const comment = {
-      user: mockUser,
-      text: 'text',
-      date: '20.10.1902',
-    };
     const newState = soundKitsSlice.reducer(
       stateWithSoundKit,
-      soundKitsSlice.actions.pushNewSoundKitComment(comment),
+      soundKitsSlice.actions.pushNewSoundKitComment(mockComment),
     );
-    expect(newState.soundKit?.comments).toContain(comment);
+    expect(newState.soundKit?.comments).toContain(mockComment);
   });
 });

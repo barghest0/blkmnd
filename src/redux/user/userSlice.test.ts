@@ -8,7 +8,7 @@ const state = userSlice.getInitialState();
 
 describe('userSlice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(userSlice.getInitialState()).toEqual(USER_INITIAL_STATE);
+    expect(state).toEqual(USER_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
     expect(userSlice.name).toEqual(USER_SLICE_NAME);
@@ -20,7 +20,7 @@ describe('correct set userSlice user data with mock action payload', () => {
     const action = { type: getUserData.fulfilled.type, payload: mockUser };
     const newState = userSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...userSlice.getInitialState(),
+      ...state,
       user: mockUser,
     });
   });
@@ -29,7 +29,7 @@ describe('correct set userSlice user data with mock action payload', () => {
     const action = { type: getUserData.pending.type };
     const newState = userSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...userSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -38,7 +38,7 @@ describe('correct set userSlice user data with mock action payload', () => {
     const action = { type: getUserData.rejected.type, payload: 'error' };
     const newState = userSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...userSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });

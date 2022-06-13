@@ -502,5 +502,5 @@ export {
   mockSoundKit,
   mockTag,
   mockUser,
-  mockMembership
+  mockMembership,
 };

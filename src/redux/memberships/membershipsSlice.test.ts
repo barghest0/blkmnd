@@ -8,9 +8,7 @@ const state = membershipsSlice.getInitialState();
 
 describe('membershipsSlice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(membershipsSlice.getInitialState()).toEqual(
-      MEMBERSHIPS_INITIAL_STATE,
-    );
+    expect(state).toEqual(MEMBERSHIPS_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
     expect(membershipsSlice.name).toEqual(MEMBERSHIPS_SLICE_NAME);
@@ -25,7 +23,7 @@ describe('correct set membershipsSlice memberships beats with mock action payloa
     };
     const newState = membershipsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...membershipsSlice.getInitialState(),
+      ...state,
       memberships: [mockMembership],
     });
   });
@@ -34,7 +32,7 @@ describe('correct set membershipsSlice memberships beats with mock action payloa
     const action = { type: getMemberships.pending.type };
     const newState = membershipsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...membershipsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -43,7 +41,7 @@ describe('correct set membershipsSlice memberships beats with mock action payloa
     const action = { type: getMemberships.rejected.type, payload: 'error' };
     const newState = membershipsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...membershipsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });

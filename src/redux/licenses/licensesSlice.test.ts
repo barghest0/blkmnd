@@ -1,13 +1,14 @@
 import { mockLicense } from 'test-utils/mocks';
+
+import licensesSlice from './licensesSlice';
 import { getLicense, getLicenses } from './actions';
 import { LICENSE_INITIAL_STATE, LICENSE_SLICE_NAME } from './constants';
-import licensesSlice from './licensesSlice';
 
 const state = licensesSlice.getInitialState();
 
 describe('licensesSlice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(licensesSlice.getInitialState()).toEqual(LICENSE_INITIAL_STATE);
+    expect(state).toEqual(LICENSE_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
     expect(licensesSlice.name).toEqual(LICENSE_SLICE_NAME);
@@ -22,7 +23,7 @@ describe('correct set licensesSlice all licenses with mock action payload', () =
     };
     const newState = licensesSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...licensesSlice.getInitialState(),
+      ...state,
       licenses: [mockLicense],
     });
   });
@@ -31,7 +32,7 @@ describe('correct set licensesSlice all licenses with mock action payload', () =
     const action = { type: getLicenses.pending.type };
     const newState = licensesSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...licensesSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -43,7 +44,7 @@ describe('correct set licensesSlice all licenses with mock action payload', () =
     };
     const newState = licensesSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...licensesSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -57,7 +58,7 @@ describe('correct set licensesSlice license with mock action payload', () => {
     };
     const newState = licensesSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...licensesSlice.getInitialState(),
+      ...state,
       license: mockLicense,
     });
   });
@@ -66,7 +67,7 @@ describe('correct set licensesSlice license with mock action payload', () => {
     const action = { type: getLicense.pending.type };
     const newState = licensesSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...licensesSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -78,7 +79,7 @@ describe('correct set licensesSlice license with mock action payload', () => {
     };
     const newState = licensesSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...licensesSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });

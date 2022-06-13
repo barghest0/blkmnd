@@ -7,7 +7,7 @@ const { setModalVisability } = modalsSlice.actions;
 
 describe('modalsSlice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(modalsSlice.getInitialState()).toEqual(MODALS_INITIAL_STATE);
+    expect(state).toEqual(MODALS_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
     expect(modalsSlice.name).toEqual(MODALS_SLICE_NAME);

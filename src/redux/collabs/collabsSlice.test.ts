@@ -1,14 +1,14 @@
 import { mockCollab } from 'test-utils/mocks';
 
-import { getAllCollabs, getCollab, getPreviewCollabs } from './actions';
 import collabsSlice from './collabsSlice';
+import { getAllCollabs, getCollab, getPreviewCollabs } from './actions';
 import { COLLABS_INITIAL_STATE, COLLABS_SLICE_NAME } from './constants';
 
 const state = collabsSlice.getInitialState();
 
 describe('collabsSlice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(collabsSlice.getInitialState()).toEqual(COLLABS_INITIAL_STATE);
+    expect(state).toEqual(COLLABS_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
     expect(collabsSlice.name).toEqual(COLLABS_SLICE_NAME);
@@ -23,7 +23,7 @@ describe('correct set collabsSlice all collabs with mock action payload', () => 
     };
     const newState = collabsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...collabsSlice.getInitialState(),
+      ...state,
       collabs: [mockCollab],
     });
   });
@@ -32,7 +32,7 @@ describe('correct set collabsSlice all collabs with mock action payload', () => 
     const action = { type: getAllCollabs.pending.type };
     const newState = collabsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...collabsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -41,7 +41,7 @@ describe('correct set collabsSlice all collabs with mock action payload', () => 
     const action = { type: getAllCollabs.rejected.type, payload: 'error' };
     const newState = collabsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...collabsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -55,7 +55,7 @@ describe('correct set collabsSlice preview collabs with mock action payload', ()
     };
     const newState = collabsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...collabsSlice.getInitialState(),
+      ...state,
       collabs: [mockCollab],
     });
   });
@@ -64,7 +64,7 @@ describe('correct set collabsSlice preview collabs with mock action payload', ()
     const action = { type: getPreviewCollabs.pending.type };
     const newState = collabsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...collabsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -73,7 +73,7 @@ describe('correct set collabsSlice preview collabs with mock action payload', ()
     const action = { type: getPreviewCollabs.rejected.type, payload: 'error' };
     const newState = collabsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...collabsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -87,7 +87,7 @@ describe('correct set collabsSlice collab with mock action payload', () => {
     };
     const newState = collabsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...collabsSlice.getInitialState(),
+      ...state,
       collab: mockCollab,
     });
   });
@@ -96,7 +96,7 @@ describe('correct set collabsSlice collab with mock action payload', () => {
     const action = { type: getCollab.pending.type };
     const newState = collabsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...collabsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -105,7 +105,7 @@ describe('correct set collabsSlice collab with mock action payload', () => {
     const action = { type: getCollab.rejected.type, payload: 'error' };
     const newState = collabsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...collabsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });

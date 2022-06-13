@@ -1,19 +1,21 @@
-import { mockBeat } from 'test-utils/mocks';
+import { mockBeat, mockComment } from 'test-utils/mocks';
 
 import beatsSlice from './beatsSlice';
 import {
   getAllBeats,
   getBeat,
   getFeaturedBeat,
+  getFilteredBeats,
   getPreviewBeats,
 } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
 const state = beatsSlice.getInitialState();
+const { pushNewBeatComment } = beatsSlice.actions;
 
 describe('beatsSlice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(beatsSlice.getInitialState()).toEqual(BEATS_INITIAL_STATE);
+    expect(state).toEqual(BEATS_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
     expect(beatsSlice.name).toEqual(BEATS_SLICE_NAME);
@@ -25,7 +27,7 @@ describe('correct set beatsSlice all beats with mock action payload', () => {
     const action = { type: getAllBeats.fulfilled.type, payload: [mockBeat] };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       beats: [mockBeat],
     });
   });
@@ -34,7 +36,7 @@ describe('correct set beatsSlice all beats with mock action payload', () => {
     const action = { type: getAllBeats.pending.type };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -43,7 +45,7 @@ describe('correct set beatsSlice all beats with mock action payload', () => {
     const action = { type: getAllBeats.rejected.type, payload: 'error' };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -57,7 +59,7 @@ describe('correct set beatsSlice preview beats with mock action payload', () => 
     };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       beats: [mockBeat],
     });
   });
@@ -66,7 +68,7 @@ describe('correct set beatsSlice preview beats with mock action payload', () => 
     const action = { type: getPreviewBeats.pending.type };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -75,7 +77,7 @@ describe('correct set beatsSlice preview beats with mock action payload', () => 
     const action = { type: getPreviewBeats.rejected.type, payload: 'error' };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -86,7 +88,7 @@ describe('correct set beatsSlice beat with mock action payload', () => {
     const action = { type: getBeat.fulfilled.type, payload: mockBeat };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       beat: mockBeat,
     });
   });
@@ -95,7 +97,7 @@ describe('correct set beatsSlice beat with mock action payload', () => {
     const action = { type: getBeat.pending.type };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -104,7 +106,7 @@ describe('correct set beatsSlice beat with mock action payload', () => {
     const action = { type: getBeat.rejected.type, payload: 'error' };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
   });
@@ -118,7 +120,7 @@ describe('correct set beatsSlice featured beat with mock action payload', () => 
     };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       featuredBeat: mockBeat,
     });
   });
@@ -127,7 +129,7 @@ describe('correct set beatsSlice featured beat with mock action payload', () => 
     const action = { type: getFeaturedBeat.pending.type };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       isFetching: true,
     });
   });
@@ -136,8 +138,56 @@ describe('correct set beatsSlice featured beat with mock action payload', () => 
     const action = { type: getFeaturedBeat.rejected.type, payload: 'error' };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
-      ...beatsSlice.getInitialState(),
+      ...state,
       errors: 'error',
     });
+  });
+});
+
+describe('correct set beatsSlice filtered beats with mock action payload', () => {
+  test('expect set correct fulfilled filtered beats', () => {
+    const action = {
+      type: getFilteredBeats.fulfilled.type,
+      payload: [mockBeat],
+    };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...state,
+      beats: [mockBeat],
+    });
+  });
+
+  test('expect set isFetching during filtered beats pending', () => {
+    const action = { type: getFilteredBeats.pending.type };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...state,
+      isFetching: true,
+    });
+  });
+
+  test('expect set errors after rejected get  filtered beats', () => {
+    const action = { type: getFilteredBeats.rejected.type, payload: 'error' };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...state,
+      errors: 'error',
+    });
+  });
+});
+
+describe('correct performance sync beatsSlice actions with mock action payload', () => {
+  test('expect correct push beat comment', () => {
+    const action = {
+      type: getBeat.fulfilled.type,
+      payload: mockBeat,
+    };
+
+    const stateWithBeat = beatsSlice.reducer(state, action);
+    const newState = beatsSlice.reducer(
+      stateWithBeat,
+      pushNewBeatComment(mockComment),
+    );
+    expect(newState.beat?.comments).toContain(mockComment);
   });
 });
