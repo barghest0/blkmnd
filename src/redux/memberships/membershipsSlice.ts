@@ -14,7 +14,7 @@ const membershipsSlice = createSlice({
       action: PayloadAction<Membership[]>,
     ) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.memberships = action.payload;
     },
 
@@ -22,7 +22,7 @@ const membershipsSlice = createSlice({
       state.isFetching = true;
     },
 
-    [getMemberships.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getMemberships.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },

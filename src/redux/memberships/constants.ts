@@ -5,7 +5,7 @@ const MEMBERSHIPS_SLICE_NAME = 'memberships';
 const MEMBERSHIPS_INITIAL_STATE: MembershipsState = {
   memberships: [],
   isFetching: false,
-  errors: '',
+  errors: null,
 };
 
 const GET_MEMBERSHIPS_NAME = 'memberships/all';

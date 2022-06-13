@@ -486,6 +486,13 @@ const mockUser = {
   role: 'user',
 } as User;
 
+const mockMembership = {
+  id: 1,
+  title: 'beat downloads',
+  price: 25,
+  details: 'details',
+};
+
 export {
   mockBeat,
   mockCartProduct,
@@ -495,4 +502,5 @@ export {
   mockSoundKit,
   mockTag,
   mockUser,
+  mockMembership
 };
