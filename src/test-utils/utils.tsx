@@ -12,21 +12,21 @@ type Props = {
   children: React.ReactNode;
 };
 
-const MockProviders: FC<Props> = ({ children }) => {
-  const mockStore = store();
+const mockStore = store();
 
-  return (
-    <BrowserRouter>
-      <Provider store={mockStore}>
-        <AuthProvider>
-          <ThemeProvider theme={theme}>{children}</ThemeProvider>
-        </AuthProvider>
-      </Provider>
-    </BrowserRouter>
-  );
-};
+const MockProviders: FC<Props> = ({ children }) => (
+  <BrowserRouter>
+    <Provider store={mockStore}>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      </AuthProvider>
+    </Provider>
+  </BrowserRouter>
+);
 
 const customRender = (ui, options?) =>
   render(ui, { wrapper: MockProviders, ...options });
 
-export { customRender as render };
+const mockDispatch = mockStore.dispatch;
+
+export { customRender as render, mockDispatch };

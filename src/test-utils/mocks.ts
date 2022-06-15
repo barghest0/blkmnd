@@ -1,6 +1,6 @@
-import { CartProduct } from 'redux/cart/types';
-import { SoundKit } from 'redux/soundKits/types';
-import { User } from 'redux/user/types';
+import { CartProduct } from 'reduxStore/cart/types';
+import { SoundKit } from 'reduxStore/soundKits/types';
+import { User } from 'reduxStore/user/types';
 import { Beat, Comment } from 'reduxStore/beats/types';
 
 const mockBeat = {

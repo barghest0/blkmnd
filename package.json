@@ -17,7 +17,10 @@
     "type": "git",
     "url": "git+https://github.com/barghest0/blkmnd.git"
   },
-  "keywords": ["black", "mind"],
+  "keywords": [
+    "black",
+    "mind"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -58,6 +61,7 @@
     "eslint-plugin-react-hooks": "^4.5.0",
     "html-webpack-plugin": "^5.5.0",
     "jest-environment-jsdom": "^28.1.1",
+    "jest-mock-axios": "^4.6.1",
     "mini-css-extract-plugin": "^2.6.0",
     "node-sass": "^7.0.1",
     "resolve-url-loader": "^5.0.0",
@@ -76,8 +80,8 @@
     "@mui/icons-material": "^5.6.2",
     "@mui/material": "^5.6.3",
     "@mui/styled-engine": "^5.6.1",
-    "@testing-library/react": "^13.3.0",
     "@reduxjs/toolkit": "^1.8.1",
+    "@testing-library/react": "^13.3.0",
     "axios": "^0.27.2",
     "concurrently": "^7.2.0",
     "date-fns": "^2.28.0",

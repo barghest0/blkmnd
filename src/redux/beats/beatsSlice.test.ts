@@ -1,4 +1,8 @@
+import { waitFor } from '@testing-library/react';
+
+import * as beatsApi from 'shared/api/beats';
 import { mockBeat, mockComment } from 'test-utils/mocks';
+import { mockDispatch } from 'test-utils/utils';
 
 import beatsSlice from './beatsSlice';
 import {
@@ -189,5 +193,22 @@ describe('correct performance sync beatsSlice actions with mock action payload',
       pushNewBeatComment(mockComment),
     );
     expect(newState.beat?.comments).toContain(mockComment);
+  });
+});
+
+jest.mock('../../shared/api/beats');
+const mockBeatsApi = beatsApi as jest.Mocked<typeof beatsApi>;
+
+describe('get beats with async thunk', () => {
+  test('expect get beats and display their in state', async () => {
+    const mockData = {
+      data: [mockBeat],
+    };
+    mockBeatsApi.fetchAllBeats.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getAllBeats());
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual([mockBeat]);
+    });
   });
 });
