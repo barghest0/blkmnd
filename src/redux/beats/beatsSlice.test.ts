@@ -199,8 +199,8 @@ describe('correct performance sync beatsSlice actions with mock action payload',
 jest.mock('../../shared/api/beats');
 const mockBeatsApi = beatsApi as jest.Mocked<typeof beatsApi>;
 
-describe('get beats with async thunk', () => {
-  test('expect get beats and display their in state', async () => {
+describe('resolved get beats with async thunk', () => {
+  test('expect resolved get all beats response', async () => {
     const mockData = {
       data: [mockBeat],
     };
@@ -209,6 +209,125 @@ describe('get beats with async thunk', () => {
 
     await waitFor(() => {
       expect(beats.payload).toEqual([mockBeat]);
+      expect(mockBeatsApi.fetchAllBeats).toBeCalled();
+    });
+  });
+
+  test('expect resolved get preview beats response', async () => {
+    const mockData = {
+      data: [mockBeat],
+    };
+    mockBeatsApi.fetchPreviewBeats.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getPreviewBeats());
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual([mockBeat]);
+      expect(mockBeatsApi.fetchPreviewBeats).toBeCalled();
+    });
+  });
+
+  test('expect resolved get filtered beats response', async () => {
+    const mockData = {
+      data: [mockBeat],
+    };
+    mockBeatsApi.fetchFilteredBeats.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getFilteredBeats({ query: '' }));
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual([mockBeat]);
+      expect(mockBeatsApi.fetchFilteredBeats).toBeCalledWith({ query: '' });
+    });
+  });
+
+  test('expect resolved get beat response', async () => {
+    const mockData = {
+      data: mockBeat,
+    };
+    mockBeatsApi.fetchBeat.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getBeat(1));
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual(mockBeat);
+      expect(mockBeatsApi.fetchBeat).toBeCalledWith(1);
+    });
+  });
+
+  test('expect resolved get featured beat response', async () => {
+    const mockData = {
+      data: mockBeat,
+    };
+    mockBeatsApi.fetchFeaturedBeat.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getFeaturedBeat());
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual(mockBeat);
+      expect(mockBeatsApi.fetchFeaturedBeat).toBeCalledWith();
+    });
+  });
+});
+
+describe('rejected get beats with async thunk', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expect rejected all beats response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockBeatsApi.fetchAllBeats.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getAllBeats());
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected preview beats response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockBeatsApi.fetchPreviewBeats.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getPreviewBeats());
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected filtered beats response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockBeatsApi.fetchFilteredBeats.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getFilteredBeats({ query: '' }));
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected beat response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockBeatsApi.fetchBeat.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getBeat(1));
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected featured beat response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockBeatsApi.fetchFeaturedBeat.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getFeaturedBeat());
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
     });
   });
 });
