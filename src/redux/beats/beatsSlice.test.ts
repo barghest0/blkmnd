@@ -1,8 +1,8 @@
 import { waitFor } from '@testing-library/react';
 
-import * as beatsApi from 'shared/api/beats';
 import { mockBeat, mockComment } from 'test-utils/mocks';
 import { mockDispatch } from 'test-utils/utils';
+import * as beatsApi from 'shared/api/beats';
 
 import beatsSlice from './beatsSlice';
 import {

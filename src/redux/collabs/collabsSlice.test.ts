@@ -1,8 +1,12 @@
 import { mockCollab } from 'test-utils/mocks';
 
+import * as collabsApi from 'shared/api/collabs';
+import { mockDispatch } from 'test-utils/utils';
+
 import collabsSlice from './collabsSlice';
 import { getAllCollabs, getCollab, getPreviewCollabs } from './actions';
 import { COLLABS_INITIAL_STATE, COLLABS_SLICE_NAME } from './constants';
+import { waitFor } from '@testing-library/react';
 
 const state = collabsSlice.getInitialState();
 
@@ -107,6 +111,92 @@ describe('correct set collabsSlice collab with mock action payload', () => {
     expect(newState).toEqual({
       ...state,
       errors: 'error',
+    });
+  });
+});
+
+jest.mock('../../shared/api/collabs');
+const mockCollabsApi = collabsApi as jest.Mocked<typeof collabsApi>;
+
+describe('resolved get collabs with async thunk', () => {
+  test('expect resolved get all beats response', async () => {
+    const mockData = {
+      data: [mockCollab],
+    };
+    mockCollabsApi.fetchAllCollabs.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getAllCollabs());
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual([mockCollab]);
+      expect(mockCollabsApi.fetchAllCollabs).toBeCalled();
+    });
+  });
+
+  test('expect resolved get preview collabs response', async () => {
+    const mockData = {
+      data: [mockCollab],
+    };
+    mockCollabsApi.fetchPreviewCollabs.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getPreviewCollabs());
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual([mockCollab]);
+      expect(mockCollabsApi.fetchPreviewCollabs).toBeCalled();
+    });
+  });
+
+  test('expect resolved get collab response', async () => {
+    const mockData = {
+      data: [mockCollab],
+    };
+    mockCollabsApi.fetchCollab.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getCollab(1));
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual([mockCollab]);
+      expect(mockCollabsApi.fetchCollab).toBeCalledWith(1);
+    });
+  });
+});
+
+describe('rejected get collabs with async thunk', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expect rejected all collabs response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockCollabsApi.fetchAllCollabs.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getAllCollabs());
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected preview collabs response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockCollabsApi.fetchPreviewCollabs.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getPreviewCollabs());
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected collab response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockCollabsApi.fetchCollab.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getCollab(1));
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
     });
   });
 });
