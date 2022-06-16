@@ -25,8 +25,8 @@ const login = createAsyncThunk(
     try {
       const response = await loginRequest(userData);
       return response.data;
-    } catch (ex: AxiosError<LoginErrors>) {
-      return thunkAPI.rejectWithValue(ex.response.data);
+    } catch (e: AxiosError<LoginErrors>) {
+      return thunkAPI.rejectWithValue(e.response.data);
     }
   },
 );

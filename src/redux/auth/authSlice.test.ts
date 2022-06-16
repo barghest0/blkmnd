@@ -1,7 +1,13 @@
+import { waitFor } from '@testing-library/react';
+
+import { mockDispatch } from 'test-utils/utils';
+import { mockUser } from 'test-utils/mocks';
+import * as authApi from 'shared/api/auth';
+import * as userApi from 'shared/api/user';
+
 import authSlice from './authSlice';
 import { autoLogin, login, register } from './actions';
 import { AUTH_INITIAL_STATE, AUTH_SLICE_NAME } from './constants';
-import { mockUser } from 'test-utils/mocks';
 
 const state = authSlice.getInitialState();
 
@@ -123,6 +129,106 @@ describe('correct logout authSlice', () => {
       isAuth: false,
       token: null,
       user: null,
+    });
+  });
+});
+
+jest.mock('../../shared/api/auth');
+jest.mock('../../shared/api/user');
+const mockAuthApi = authApi as jest.Mocked<typeof authApi>;
+const mockUserApi = userApi as jest.Mocked<typeof userApi>;
+
+const authUserData = {
+  username: 'username',
+  password: 'password',
+  confirmPassword: 'password',
+};
+
+describe('resolved auth actions with async thunk', () => {
+  test('expect resolved register response', async () => {
+    const mockData = {
+      data: [mockUser],
+    };
+    mockAuthApi.registerRequest.mockResolvedValueOnce(mockData);
+    const user = await mockDispatch(register(authUserData));
+
+    await waitFor(() => {
+      expect(user.payload).toEqual([mockUser]);
+      expect(mockAuthApi.registerRequest).toBeCalled();
+    });
+  });
+
+  test('expect resolved login response', async () => {
+    const mockData = {
+      data: [mockUser],
+    };
+    mockAuthApi.loginRequest.mockResolvedValueOnce(mockData);
+    const user = await mockDispatch(login(authUserData));
+
+    await waitFor(() => {
+      expect(user.payload).toEqual([mockUser]);
+      expect(mockAuthApi.loginRequest).toBeCalled();
+    });
+  });
+
+  test('expect resolved auto login response', async () => {
+    const mockData = {
+      data: [mockUser],
+    };
+    mockUserApi.fetchUserData.mockResolvedValueOnce(mockData);
+    const user = await mockDispatch(autoLogin('askldjnk14'));
+
+    await waitFor(() => {
+      expect(user.payload).toEqual([mockUser]);
+      expect(mockUserApi.fetchUserData).toBeCalled();
+    });
+  });
+});
+
+describe('rejected auth actions with async thunk', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expect rejected register response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockAuthApi.registerRequest.mockRejectedValue(mockData);
+    const rejectedRegisterResponse = await mockDispatch(register(authUserData));
+
+    await waitFor(() => {
+      expect(rejectedRegisterResponse.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected login response', async () => {
+    const mockData = {
+      response: {
+        data: {
+          error: 'error',
+        },
+      },
+    };
+    mockAuthApi.loginRequest.mockRejectedValue(mockData);
+
+    const rejectedLoginResponse = await mockDispatch(login(authUserData));
+
+    await waitFor(() => {
+      expect(rejectedLoginResponse.payload).toEqual(mockData.response.data);
+    });
+  });
+
+  test('expect rejected auto login response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockUserApi.fetchUserData.mockRejectedValue(mockData);
+    const user = await mockDispatch(autoLogin('askldjnk14'));
+
+    await waitFor(() => {
+      expect(user.payload).toEqual(mockData);
+      expect(mockUserApi.fetchUserData).toBeCalled();
     });
   });
 });
