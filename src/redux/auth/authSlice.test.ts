@@ -149,6 +149,7 @@ describe('resolved auth actions with async thunk', () => {
     const mockData = {
       data: [mockUser],
     };
+
     mockAuthApi.registerRequest.mockResolvedValueOnce(mockData);
     const user = await mockDispatch(register(authUserData));
 
@@ -162,6 +163,7 @@ describe('resolved auth actions with async thunk', () => {
     const mockData = {
       data: [mockUser],
     };
+
     mockAuthApi.loginRequest.mockResolvedValueOnce(mockData);
     const user = await mockDispatch(login(authUserData));
 
@@ -175,6 +177,7 @@ describe('resolved auth actions with async thunk', () => {
     const mockData = {
       data: [mockUser],
     };
+
     mockUserApi.fetchUserData.mockResolvedValueOnce(mockData);
     const user = await mockDispatch(autoLogin('askldjnk14'));
 
@@ -194,6 +197,7 @@ describe('rejected auth actions with async thunk', () => {
     const mockData = {
       error: 'error',
     };
+
     mockAuthApi.registerRequest.mockRejectedValue(mockData);
     const rejectedRegisterResponse = await mockDispatch(register(authUserData));
 
@@ -210,8 +214,8 @@ describe('rejected auth actions with async thunk', () => {
         },
       },
     };
-    mockAuthApi.loginRequest.mockRejectedValue(mockData);
 
+    mockAuthApi.loginRequest.mockRejectedValue(mockData);
     const rejectedLoginResponse = await mockDispatch(login(authUserData));
 
     await waitFor(() => {

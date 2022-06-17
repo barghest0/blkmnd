@@ -1,8 +1,11 @@
 import { mockBeat } from 'test-utils/mocks';
+import { mockDispatch } from 'test-utils/utils';
+import * as beatsApi from 'shared/api/beats';
 
 import { getDiscographyBeats } from './actions';
 import { DISCOGRAPHY_INITIAL_STATE, DISCORGAPHY_SLICE_NAME } from './constants';
 import discographySlice from './discographySlice';
+import { waitFor } from '@testing-library/react';
 
 const state = discographySlice.getInitialState();
 
@@ -46,6 +49,42 @@ describe('correct set discographySlice all discography beats with mock action pa
     expect(newState).toEqual({
       ...state,
       errors: 'error',
+    });
+  });
+});
+
+jest.mock('../../shared/api/beats');
+const mockBeatsApi = beatsApi as jest.Mocked<typeof beatsApi>;
+
+describe('resolved get collabs with async thunk', () => {
+  test('expect resolved get all beats response', async () => {
+    const mockData = {
+      data: [mockBeat],
+    };
+    mockBeatsApi.fetchDiscographyBeats.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getDiscographyBeats());
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual([mockBeat]);
+      expect(mockBeatsApi.fetchDiscographyBeats).toBeCalled();
+    });
+  });
+});
+
+describe('rejected get collabs with async thunk', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expect rejected all collabs response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockBeatsApi.fetchDiscographyBeats.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getDiscographyBeats());
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
     });
   });
 });
