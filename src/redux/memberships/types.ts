@@ -8,7 +8,7 @@ type Membership = {
 type MembershipsState = {
   memberships: Membership[];
   isFetching: boolean;
-  errors: string;
+  errors: any | null;
 };
 
 export { Membership, MembershipsState };

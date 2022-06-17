@@ -1,8 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosError } from 'axios';
 
-import { loginRequest, registerRequest } from 'shared/api/auth';
-import { fetchUserData } from 'shared/api/user';
+import { loginRequest, registerRequest, fetchUserData } from 'shared/api/auth';
 
 import { AUTO_LOGIN_NAME, LOGIN_NAME, REGISTER_NAME } from './constants';
 import { LoginErrors, LoginValues, RegisterValues } from './types';
@@ -25,8 +24,8 @@ const login = createAsyncThunk(
     try {
       const response = await loginRequest(userData);
       return response.data;
-    } catch (ex: AxiosError<LoginErrors>) {
-      return thunkAPI.rejectWithValue(ex.response.data);
+    } catch (e: AxiosError<LoginErrors>) {
+      return thunkAPI.rejectWithValue(e.response.data);
     }
   },
 );

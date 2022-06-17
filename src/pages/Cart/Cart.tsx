@@ -8,10 +8,10 @@ import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import useActions from 'hooks/useActions';
 import { StyledLink } from 'shared/styles/links';
 import { RouterPaths } from 'shared/router/types';
+import { convertPrice } from 'shared/helpers/priceHelper';
 import * as cartSelectors from 'reduxStore/cart/selectors';
 
 import * as S from './Cart.style';
-import { convertPrice } from 'shared/helpers/priceHelper';
 
 type PaymentValues = {
   hasCoupon: boolean;
@@ -21,13 +21,13 @@ type PaymentValues = {
 const Cart = () => {
   const { getCart } = useActions();
   const products = useTypedSelector(cartSelectors.products);
-  const { productsQuantity, totalCartPrice, cartDiscount } = useTypedSelector(
+  const { totalCartPrice, cartDiscount } = useTypedSelector(
     cartSelectors.details,
   );
 
   useEffect(() => {
     getCart();
-  }, [productsQuantity]);
+  }, []);
 
   const productsCards = products.map((product) => (
     <CartProductCard product={product} key={product.id} />

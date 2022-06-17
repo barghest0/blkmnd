@@ -26,15 +26,12 @@ const authSlice = createSlice({
       state.isFetching = false;
       state.loginErrors = null;
 
-      if (action.payload) {
-        const { token } = action.payload;
-        state.token = token;
-        state.isAuth = true;
-        state.isLoginSuccess = true;
-        setToken(token);
-      }
+      const { token } = action.payload;
+      state.token = token;
+      state.isAuth = true;
+      state.isLoginSuccess = true;
+      setToken(token);
     },
-
     [login.pending.type]: (state) => {
       state.isFetching = true;
     },

@@ -11,7 +11,7 @@ type CollabsState = {
   collabs: Collab[];
   collab: Collab | null;
   isFetching: boolean;
-  errors: string;
+  errors: any | null;
 };
 
 export { Collab, CollabsState };

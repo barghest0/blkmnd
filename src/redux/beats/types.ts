@@ -5,7 +5,7 @@ type BeatsState = {
   beat: Beat | null;
   featuredBeat: Beat | null;
   isFetching: boolean;
-  errors: string;
+  errors: null | any;
 };
 
 type Comment = {

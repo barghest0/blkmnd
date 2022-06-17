@@ -11,7 +11,7 @@ const cartSlice = createSlice({
   extraReducers: {
     [getCart.fulfilled.type]: (state, action: PayloadAction<CartProduct[]>) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.products = action.payload;
       state.quantity = action.payload.length;
       state.totalPrice = action.payload.reduce(
@@ -24,7 +24,7 @@ const cartSlice = createSlice({
       state.isFetching = true;
     },
 
-    [getCart.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getCart.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },
@@ -34,8 +34,9 @@ const cartSlice = createSlice({
       action: PayloadAction<CartProduct>,
     ) => {
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
       state.quantity += 1;
+      state.products.push(action.payload);
       state.totalPrice += action.payload.price;
     },
 
@@ -51,9 +52,18 @@ const cartSlice = createSlice({
       state.errors = action.payload;
     },
 
-    [deleteCartProduct.fulfilled.type]: (state) => {
+    [deleteCartProduct.fulfilled.type]: (
+      state,
+      action: PayloadAction<CartProduct, string, CartProduct>,
+    ) => {
+      const deletedProduct = action.meta.arg;
+
       state.isFetching = false;
-      state.errors = '';
+      state.errors = null;
+      state.products = state.products.filter(
+        (product) => product.id !== deletedProduct.id,
+      );
+      state.totalPrice -= deletedProduct.price;
       state.quantity -= 1;
     },
 
@@ -61,10 +71,7 @@ const cartSlice = createSlice({
       state.isFetching = true;
     },
 
-    [deleteCartProduct.rejected.type]: (
-      state,
-      action: PayloadAction<string>,
-    ) => {
+    [deleteCartProduct.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },

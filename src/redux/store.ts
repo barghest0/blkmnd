@@ -26,7 +26,14 @@ const rootReducer = combineReducers({
   cart: cartSlice.reducer,
 });
 
-const store = () => configureStore({ reducer: rootReducer });
+const store = () =>
+  configureStore({
+    reducer: rootReducer,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: false,
+      }),
+  });
 
 export { rootReducer };
 export default store;

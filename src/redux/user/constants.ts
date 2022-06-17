@@ -4,7 +4,8 @@ const USER_SLICE_NAME = 'user';
 
 const USER_INITIAL_STATE: UserState = {
   user: null,
-  errors: '',
+  isFetching: false,
+  errors: null,
 };
 
 const GET_USER_DATA_NAME = 'user/me';

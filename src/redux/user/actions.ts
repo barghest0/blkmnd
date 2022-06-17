@@ -1,6 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { fetchUserData } from 'shared/api/user';
+import { fetchUserData } from 'shared/api/auth';
+
 import { GET_USER_DATA_NAME } from './constants';
 
 const getUserData = createAsyncThunk(

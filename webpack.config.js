@@ -37,6 +37,7 @@ const config = {
       shared: path.resolve(__dirname, './src/shared'),
       reduxStore: path.resolve(__dirname, './src/redux'),
       admin: path.resolve(__dirname, './src/admin'),
+      'test-utils': path.resolve(__dirname, './src/test-utils'),
       adminComponents: path.resolve(__dirname, './src/admin/components'),
     },
     extensions: ['.ts', '.tsx', '.js'],

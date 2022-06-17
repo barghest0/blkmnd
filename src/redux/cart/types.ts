@@ -17,7 +17,7 @@ type CartState = {
   totalPrice: number;
   discount: number;
   isFetching: boolean;
-  errors: string;
+  errors: any | null;
 };
 
 export { CartState, CartProduct, CartProductDetails };

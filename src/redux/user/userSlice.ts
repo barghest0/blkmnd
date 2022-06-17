@@ -11,11 +11,18 @@ const userSlice = createSlice({
   extraReducers: {
     [getUserData.fulfilled.type]: (state, action: PayloadAction<User>) => {
       state.user = action.payload;
-      state.errors = '';
+      state.errors = null;
+      state.isFetching = false;
     },
 
-    [getUserData.rejected.type]: (state, action: PayloadAction<string>) => {
+    [getUserData.pending.type]: (state) => {
+      state.isFetching = true;
+    },
+
+    [getUserData.rejected.type]: (state, action: PayloadAction<any>) => {
       state.errors = action.payload;
+
+      state.isFetching = false;
     },
   },
 });

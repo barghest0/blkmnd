@@ -8,7 +8,7 @@ const LICENSE_INITIAL_STATE: LicenseState = {
   licenses: [],
   license: null,
   isFetching: false,
-  errors: '',
+  errors: null,
 };
 
 const GET_LICENSE_NAME = 'license/single';
