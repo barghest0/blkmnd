@@ -1,4 +1,8 @@
+import { waitFor } from '@testing-library/react';
+
+import { mockDispatch } from 'test-utils/utils';
 import { mockLicense } from 'test-utils/mocks';
+import * as licensesApi from 'shared/api/licenses';
 
 import licensesSlice from './licensesSlice';
 import { getLicense, getLicenses } from './actions';
@@ -81,6 +85,67 @@ describe('correct set licensesSlice license with mock action payload', () => {
     expect(newState).toEqual({
       ...state,
       errors: 'error',
+    });
+  });
+});
+
+jest.mock('../../shared/api/licenses');
+const mockLicensesApi = licensesApi as jest.Mocked<typeof licensesApi>;
+
+describe('resolved get licenses with async thunk', () => {
+  test('expect resolved get all licenses response', async () => {
+    const mockData = {
+      data: [mockLicense],
+    };
+    mockLicensesApi.fetchLicenses.mockResolvedValueOnce(mockData);
+    const licenses = await mockDispatch(getLicenses());
+
+    await waitFor(() => {
+      expect(licenses.payload).toEqual([mockLicense]);
+      expect(mockLicensesApi.fetchLicenses).toBeCalled();
+    });
+  });
+
+  test('expect resolved get license response', async () => {
+    const mockData = {
+      data: mockLicense,
+    };
+    mockLicensesApi.fetchLicense.mockResolvedValueOnce(mockData);
+    const license = await mockDispatch(getLicense(1));
+
+    await waitFor(() => {
+      expect(license.payload).toEqual(mockLicense);
+      expect(mockLicensesApi.fetchLicense).toBeCalled();
+    });
+  });
+});
+
+describe('rejected get licenses with async thunk', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expect rejected all licenses response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockLicensesApi.fetchLicenses.mockRejectedValue(mockData);
+    const rejectedLicenses = await mockDispatch(getLicenses());
+
+    await waitFor(() => {
+      expect(rejectedLicenses.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected license response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockLicensesApi.fetchLicense.mockRejectedValue(mockData);
+    const rejectedLicense = await mockDispatch(getLicense(1));
+
+    await waitFor(() => {
+      expect(rejectedLicense.payload).toEqual(mockData);
     });
   });
 });

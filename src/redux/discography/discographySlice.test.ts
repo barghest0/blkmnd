@@ -56,7 +56,7 @@ describe('correct set discographySlice all discography beats with mock action pa
 jest.mock('../../shared/api/beats');
 const mockBeatsApi = beatsApi as jest.Mocked<typeof beatsApi>;
 
-describe('resolved get collabs with async thunk', () => {
+describe('resolved get discography beats with async thunk', () => {
   test('expect resolved get all beats response', async () => {
     const mockData = {
       data: [mockBeat],
@@ -71,12 +71,12 @@ describe('resolved get collabs with async thunk', () => {
   });
 });
 
-describe('rejected get collabs with async thunk', () => {
+describe('rejected get discography beats with async thunk', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test('expect rejected all collabs response', async () => {
+  test('expect rejected all beats response', async () => {
     const mockData = {
       error: 'error',
     };
