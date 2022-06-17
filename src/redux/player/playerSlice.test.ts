@@ -1,7 +1,11 @@
 import { mockBeat } from 'test-utils/mocks';
+import * as beatsApi from 'shared/api/beats';
+
 import { getQueueBeats } from './actions';
 import { PLAYER_INITIAL_STATE, PLAYER_SLICE_NAME } from './constants';
 import playerSlice from './playerSlice';
+import { mockDispatch } from 'test-utils/utils';
+import { waitFor } from '@testing-library/react';
 
 const state = playerSlice.getInitialState();
 const {
@@ -121,6 +125,42 @@ describe('correct set playerSlice queue beats with mock action payload', () => {
     expect(newState).toEqual({
       ...state,
       errors: 'error',
+    });
+  });
+});
+
+jest.mock('../../shared/api/beats');
+const mockBeatsApi = beatsApi as jest.Mocked<typeof beatsApi>;
+
+describe('resolved get queue beats with async thunk', () => {
+  test('expect resolved get queue beats response', async () => {
+    const mockData = {
+      data: [mockBeat],
+    };
+    mockBeatsApi.fetchPreviewBeats.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getQueueBeats());
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual([mockBeat]);
+      expect(mockBeatsApi.fetchPreviewBeats).toBeCalled();
+    });
+  });
+});
+
+describe('rejected get queue beats with async thunk', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expect rejected queue beats response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockBeatsApi.fetchPreviewBeats.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getQueueBeats());
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
     });
   });
 });
