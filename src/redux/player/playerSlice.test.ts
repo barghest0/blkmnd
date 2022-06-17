@@ -1,11 +1,12 @@
+import { waitFor } from '@testing-library/react';
+
+import { mockDispatch } from 'test-utils/utils';
 import { mockBeat } from 'test-utils/mocks';
 import * as beatsApi from 'shared/api/beats';
 
 import { getQueueBeats } from './actions';
 import { PLAYER_INITIAL_STATE, PLAYER_SLICE_NAME } from './constants';
 import playerSlice from './playerSlice';
-import { mockDispatch } from 'test-utils/utils';
-import { waitFor } from '@testing-library/react';
 
 const state = playerSlice.getInitialState();
 const {
@@ -129,7 +130,7 @@ describe('correct set playerSlice queue beats with mock action payload', () => {
   });
 });
 
-jest.mock('../../shared/api/beats');
+jest.mock('shared/api/beats');
 const mockBeatsApi = beatsApi as jest.Mocked<typeof beatsApi>;
 
 describe('resolved get queue beats with async thunk', () => {

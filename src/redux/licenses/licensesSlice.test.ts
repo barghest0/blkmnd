@@ -89,7 +89,7 @@ describe('correct set licensesSlice license with mock action payload', () => {
   });
 });
 
-jest.mock('../../shared/api/licenses');
+jest.mock('shared/api/licenses');
 const mockLicensesApi = licensesApi as jest.Mocked<typeof licensesApi>;
 
 describe('resolved get licenses with async thunk', () => {

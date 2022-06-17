@@ -196,7 +196,7 @@ describe('correct performance sync beatsSlice actions with mock action payload',
   });
 });
 
-jest.mock('../../shared/api/beats');
+jest.mock('shared/api/beats');
 const mockBeatsApi = beatsApi as jest.Mocked<typeof beatsApi>;
 
 describe('resolved get beats with async thunk', () => {

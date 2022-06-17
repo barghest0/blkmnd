@@ -3,7 +3,6 @@ import { waitFor } from '@testing-library/react';
 import { mockDispatch } from 'test-utils/utils';
 import { mockUser } from 'test-utils/mocks';
 import * as authApi from 'shared/api/auth';
-import * as userApi from 'shared/api/user';
 
 import authSlice from './authSlice';
 import { autoLogin, login, register } from './actions';
@@ -133,10 +132,8 @@ describe('correct logout authSlice', () => {
   });
 });
 
-jest.mock('../../shared/api/auth');
-jest.mock('../../shared/api/user');
+jest.mock('shared/api/auth');
 const mockAuthApi = authApi as jest.Mocked<typeof authApi>;
-const mockUserApi = userApi as jest.Mocked<typeof userApi>;
 
 const authUserData = {
   username: 'username',
@@ -178,12 +175,12 @@ describe('resolved auth actions with async thunk', () => {
       data: [mockUser],
     };
 
-    mockUserApi.fetchUserData.mockResolvedValueOnce(mockData);
+    mockAuthApi.fetchUserData.mockResolvedValueOnce(mockData);
     const user = await mockDispatch(autoLogin('askldjnk14'));
 
     await waitFor(() => {
       expect(user.payload).toEqual([mockUser]);
-      expect(mockUserApi.fetchUserData).toBeCalled();
+      expect(mockAuthApi.fetchUserData).toBeCalled();
     });
   });
 });
@@ -227,12 +224,12 @@ describe('rejected auth actions with async thunk', () => {
     const mockData = {
       error: 'error',
     };
-    mockUserApi.fetchUserData.mockRejectedValue(mockData);
+    mockAuthApi.fetchUserData.mockRejectedValue(mockData);
     const user = await mockDispatch(autoLogin('askldjnk14'));
 
     await waitFor(() => {
       expect(user.payload).toEqual(mockData);
-      expect(mockUserApi.fetchUserData).toBeCalled();
+      expect(mockAuthApi.fetchUserData).toBeCalled();
     });
   });
 });

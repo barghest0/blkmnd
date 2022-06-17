@@ -115,7 +115,7 @@ describe('correct set collabsSlice collab with mock action payload', () => {
   });
 });
 
-jest.mock('../../shared/api/collabs');
+jest.mock('shared/api/collabs');
 const mockCollabsApi = collabsApi as jest.Mocked<typeof collabsApi>;
 
 describe('resolved get collabs with async thunk', () => {

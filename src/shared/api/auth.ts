@@ -8,4 +8,9 @@ const registerRequest = (userData: RegisterValues) =>
 const loginRequest = (userData: LoginValues) =>
   newInstance.post('/auth/login', userData);
 
-export { registerRequest, loginRequest };
+const fetchUserData = (token: string | null) =>
+  newInstance.get('/auth/me', {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+
+export { registerRequest, loginRequest, fetchUserData };

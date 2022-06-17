@@ -140,7 +140,7 @@ describe('correct performance sync soundKitsSlice actions with mock action paylo
   });
 });
 
-jest.mock('../../shared/api/soundKits');
+jest.mock('shared/api/soundKits');
 const mockSoundKitsApi = soundKitsApi as jest.Mocked<typeof soundKitsApi>;
 
 describe('resolved get sound kits with async thunk', () => {

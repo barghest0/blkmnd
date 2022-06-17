@@ -1,4 +1,8 @@
+import { waitFor } from '@testing-library/react';
+
+import { mockDispatch } from 'test-utils/utils';
 import { mockUser } from 'test-utils/mocks';
+import * as authApi from 'shared/api/auth';
 
 import { getUserData } from './actions';
 import { USER_INITIAL_STATE, USER_SLICE_NAME } from './constants';
@@ -40,6 +44,42 @@ describe('correct set userSlice user data with mock action payload', () => {
     expect(newState).toEqual({
       ...state,
       errors: 'error',
+    });
+  });
+});
+
+jest.mock('shared/api/auth');
+const mockAuthApi = authApi as jest.Mocked<typeof authApi>;
+
+describe('resolved get user data with async thunk', () => {
+  test('expect resolved get user data response', async () => {
+    const mockData = {
+      data: mockUser,
+    };
+    mockAuthApi.fetchUserData.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getUserData('1241sd24'));
+
+    await waitFor(() => {
+      expect(beats.payload).toEqual(mockUser);
+      expect(mockAuthApi.fetchUserData).toBeCalled();
+    });
+  });
+});
+
+describe('rejected get user data with async thunk', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expect rejected user data response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockAuthApi.fetchUserData.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getUserData('1241sd24'));
+
+    await waitFor(() => {
+      expect(rejectedBeats.payload).toEqual(mockData);
     });
   });
 });

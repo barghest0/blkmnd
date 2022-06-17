@@ -50,7 +50,7 @@ describe('correct set membershipsSlice memberships beats with mock action payloa
   });
 });
 
-jest.mock('../../shared/api/memberships');
+jest.mock('shared/api/memberships');
 const mockMembershipsApi = membershipsApi as jest.Mocked<typeof membershipsApi>;
 
 describe('resolved get memberships with async thunk', () => {

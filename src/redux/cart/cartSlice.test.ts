@@ -135,7 +135,7 @@ describe('correct cartSlice delete product to cart with mock action payload', ()
   });
 });
 
-jest.mock('../../shared/api/cart');
+jest.mock('shared/api/cart');
 const mockCartApi = cartApi as jest.Mocked<typeof cartApi>;
 
 describe('resolved cart actions with async thunk', () => {
