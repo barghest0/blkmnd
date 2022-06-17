@@ -1,4 +1,8 @@
+import { waitFor } from '@testing-library/react';
+
+import { mockDispatch } from 'test-utils/utils';
 import { mockComment, mockSoundKit } from 'test-utils/mocks';
+import * as soundKitsApi from 'shared/api/soundKits';
 
 import { getAllSoundKits, getPreviewSoundKits, getSoundKit } from './actions';
 import { SOUND_KITS_INITIAL_STATE, SOUND_KITS_SLICE_NAME } from './constants';
@@ -133,5 +137,91 @@ describe('correct performance sync soundKitsSlice actions with mock action paylo
       soundKitsSlice.actions.pushNewSoundKitComment(mockComment),
     );
     expect(newState.soundKit?.comments).toContain(mockComment);
+  });
+});
+
+jest.mock('../../shared/api/soundKits');
+const mockSoundKitsApi = soundKitsApi as jest.Mocked<typeof soundKitsApi>;
+
+describe('resolved get sound kits with async thunk', () => {
+  test('expect resolved get all sound kits response', async () => {
+    const mockData = {
+      data: [mockSoundKit],
+    };
+    mockSoundKitsApi.fetchAllSoundKits.mockResolvedValueOnce(mockData);
+    const soundKits = await mockDispatch(getAllSoundKits());
+
+    await waitFor(() => {
+      expect(soundKits.payload).toEqual([mockSoundKit]);
+      expect(mockSoundKitsApi.fetchAllSoundKits).toBeCalled();
+    });
+  });
+
+  test('expect resolved get preview sound kits response', async () => {
+    const mockData = {
+      data: [mockSoundKit],
+    };
+    mockSoundKitsApi.fetchPreviewSoundKits.mockResolvedValueOnce(mockData);
+    const soundKits = await mockDispatch(getPreviewSoundKits());
+
+    await waitFor(() => {
+      expect(soundKits.payload).toEqual([mockSoundKit]);
+      expect(mockSoundKitsApi.fetchPreviewSoundKits).toBeCalled();
+    });
+  });
+
+  test('expect resolved get sound kit response', async () => {
+    const mockData = {
+      data: mockSoundKit,
+    };
+    mockSoundKitsApi.fetchSoundKit.mockResolvedValueOnce(mockData);
+    const soundKits = await mockDispatch(getSoundKit(1));
+
+    await waitFor(() => {
+      expect(soundKits.payload).toEqual(mockSoundKit);
+      expect(mockSoundKitsApi.fetchSoundKit).toBeCalledWith(1);
+    });
+  });
+});
+
+describe('rejected get sound kits with async thunk', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('expect rejected all sound kits response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockSoundKitsApi.fetchAllSoundKits.mockRejectedValue(mockData);
+    const rejectedSoundKits = await mockDispatch(getAllSoundKits());
+
+    await waitFor(() => {
+      expect(rejectedSoundKits.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected preview sound kits response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockSoundKitsApi.fetchPreviewSoundKits.mockRejectedValue(mockData);
+    const rejectedSoundKits = await mockDispatch(getPreviewSoundKits());
+
+    await waitFor(() => {
+      expect(rejectedSoundKits.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected sound kit response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockSoundKitsApi.fetchSoundKit.mockRejectedValue(mockData);
+    const rejectedSoundKit = await mockDispatch(getSoundKit(1));
+
+    await waitFor(() => {
+      expect(rejectedSoundKit.payload).toEqual(mockData);
+    });
   });
 });
