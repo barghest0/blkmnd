@@ -4,12 +4,14 @@ import {
   fetchAllSoundKits,
   fetchPreviewSoundKits,
   fetchSoundKit,
+  putSoundKit,
 } from 'shared/api/soundKits';
 
 import {
   GET_ALL_SOUND_KITS_NAME,
   GET_PREVIEW_SOUND_KITS_NAME,
   GET_SOUND_KIT_NAME,
+  UPDATE_SOUND_KIT_NAME,
 } from './constants';
 
 const getPreviewSoundKits = createAsyncThunk(
@@ -48,4 +50,17 @@ const getSoundKit = createAsyncThunk(
   },
 );
 
-export { getPreviewSoundKits, getAllSoundKits, getSoundKit };
+const updateSoundKit = createAsyncThunk(
+  UPDATE_SOUND_KIT_NAME,
+  async (_, thunkAPI) => {
+    try {
+      const beat = thunkAPI.getState().soundKits.soundKit;
+      const response = await putSoundKit(beat);
+      return response.data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  },
+);
+
+export { getPreviewSoundKits, getAllSoundKits, getSoundKit, updateSoundKit };

@@ -101,7 +101,7 @@ describe('correct update beatsSlice beat with mock action payload', () => {
     });
   });
 
-  test('expect isFetching during update beat pending', () => {
+  test('expect set isFetching during update beat pending', () => {
     const action = { type: updateBeat.pending.type };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
