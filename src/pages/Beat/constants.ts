@@ -1,0 +1,4 @@
+const RELATED_BEAT_TAB_STATE = 'related';
+const COMMENTS_BEAT_TAB_STATE = 'comments';
+
+export { RELATED_BEAT_TAB_STATE, COMMENTS_BEAT_TAB_STATE };

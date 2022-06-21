@@ -23,7 +23,9 @@ import Comment from 'components/Comment/Comment';
 import { User } from 'reduxStore/user/types';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
 import AuthContext from 'contexts/AuthContext';
+
 import * as S from './Beat.style';
+import { COMMENTS_BEAT_TAB_STATE, RELATED_BEAT_TAB_STATE } from './constants';
 
 const Beat = () => {
   const params = useParams();
@@ -41,7 +43,7 @@ const Beat = () => {
     updateBeat,
   } = useActions();
 
-  const [value, setValue] = useState('related');
+  const [value, setValue] = useState(RELATED_BEAT_TAB_STATE);
 
   const handleTabChange = (_: SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -154,15 +156,15 @@ const Beat = () => {
           onChange={handleTabChange}
           indicatorColor="secondary"
         >
-          <Tab value="related" label="RELATED TRACKS" />
-          <Tab value="comments" label="COMMENTS" />
+          <Tab value={RELATED_BEAT_TAB_STATE} label="RELATED TRACKS" />
+          <Tab value={COMMENTS_BEAT_TAB_STATE} label="COMMENTS" />
         </Tabs>
       </S.Tabs>
       <S.Container>
-        <S.TabPanel hidden={value !== 'related'}>
+        <S.TabPanel hidden={value !== RELATED_BEAT_TAB_STATE}>
           <BeatsList beats={beats} />
         </S.TabPanel>
-        <S.TabPanel hidden={value !== 'comments'}>
+        <S.TabPanel hidden={value !== COMMENTS_BEAT_TAB_STATE}>
           <S.Comments>{comments}</S.Comments>
         </S.TabPanel>
       </S.Container>
