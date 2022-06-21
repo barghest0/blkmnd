@@ -20,6 +20,7 @@ import { convertErrorsToArray } from 'shared/helpers/errorsHelper';
 import { ToastTextRow, ToastTextContainer } from 'shared/styles/toast';
 
 import * as S from './AuthModal.style';
+import { LOGIN_MODAL_STATE, REGISTER_MODAL_STATE } from './constants';
 
 const loginInitialValues = {
   username: '',
@@ -38,7 +39,7 @@ const AuthModal = memo(() => {
     modalsSelectors.visabilities,
   );
 
-  const [form, setForm] = useState('register');
+  const [form, setForm] = useState(REGISTER_MODAL_STATE);
 
   const { register, setModalVisability, login } = useActions();
 
@@ -91,7 +92,7 @@ const AuthModal = memo(() => {
 
   useEffect(() => {
     if (isRegisterSuccess) {
-      setForm('login');
+      setForm(LOGIN_MODAL_STATE);
       showSuccessRegisterToast();
     }
   }, [isRegisterSuccess]);
@@ -110,10 +111,10 @@ const AuthModal = memo(() => {
   }, [loginErrors, registerErrors]);
 
   const onAuthActionClick = () => {
-    if (form === 'register') {
-      setForm('login');
+    if (form === REGISTER_MODAL_STATE) {
+      setForm(LOGIN_MODAL_STATE);
     } else {
-      setForm('register');
+      setForm(REGISTER_MODAL_STATE);
     }
   };
 
@@ -135,10 +136,12 @@ const AuthModal = memo(() => {
         <S.Modal>
           <Modal
             isOpen={authModalVisability}
-            title={form === 'register' ? 'Registration' : 'Authorization'}
+            title={
+              form === REGISTER_MODAL_STATE ? 'Registration' : 'Authorization'
+            }
             modalType={ModalsTypes.auth}
           >
-            <S.FormContainer hidden={form !== 'register'}>
+            <S.FormContainer hidden={form !== REGISTER_MODAL_STATE}>
               <S.Preloader isFetching={isFetching}>
                 <Preloader />
               </S.Preloader>
@@ -186,7 +189,7 @@ const AuthModal = memo(() => {
                 </S.Submit>
               </S.Form>
             </S.FormContainer>
-            <S.FormContainer hidden={form !== 'login'}>
+            <S.FormContainer hidden={form !== LOGIN_MODAL_STATE}>
               <S.Preloader isFetching={isFetching}>
                 <Preloader />
               </S.Preloader>
@@ -216,7 +219,7 @@ const AuthModal = memo(() => {
               </S.Form>
             </S.FormContainer>
             <S.AuthAction onClick={onAuthActionClick}>
-              {form === 'register' ? 'Login' : 'Register'}
+              {form === REGISTER_MODAL_STATE ? 'Login' : 'Register'}
             </S.AuthAction>
           </Modal>
         </S.Modal>
