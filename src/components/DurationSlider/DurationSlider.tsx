@@ -6,13 +6,14 @@ import { Beat } from 'reduxStore/beats/types';
 import * as playerSelectors from 'reduxStore/player/selectors';
 
 import * as S from './DurationSlider.style';
+import { INITIAL_TRACK_DURATION } from './constants';
 
 type Props = {
   currentBeat: Beat | null;
 };
 
 const DurationSlider: FC<Props> = ({ currentBeat }) => {
-  const [time, setTime] = useState(0);
+  const [time, setTime] = useState(INITIAL_TRACK_DURATION);
   const { audioCurrentTime, audioDuration } = useTypedSelector(
     playerSelectors.controls,
   );

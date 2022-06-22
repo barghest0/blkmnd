@@ -70,6 +70,8 @@ const Header = () => {
     </HeaderNavLink>
   ));
 
+  const isCartEmpty = productsQuantity < 0;
+
   return (
     <S.Header>
       <S.LeftNav>
@@ -88,7 +90,7 @@ const Header = () => {
         <StyledLink to={RouterPaths.cart}>
           <S.Cart>
             <S.CartIcon>
-              {productsQuantity > 0 && (
+              {!isCartEmpty && (
                 <S.CartProductsQuantity>
                   {productsQuantity}
                 </S.CartProductsQuantity>

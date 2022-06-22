@@ -13,7 +13,7 @@ export default {
     '^reduxStore(.*)$': '<rootDir>/redux/$1',
     '^test-utils(.*)$': '<rootDir>/test-utils/$1',
   },
-  setupFilesAfterEnv: ['<rootDir>/test-utils/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/test-utils/setup-tests.ts'],
   transform: {
     '^.+\\.svg$': 'jest-transform-stub',
     '^.+\\.[t|j]sx?$': 'babel-jest',
