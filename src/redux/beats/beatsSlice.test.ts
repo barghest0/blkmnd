@@ -11,6 +11,7 @@ import {
   getFeaturedBeat,
   getFilteredBeats,
   getPreviewBeats,
+  updateBeat,
 } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
@@ -79,6 +80,38 @@ describe('correct set beatsSlice preview beats with mock action payload', () => 
 
   test('expect set errors after rejected get preview beats', () => {
     const action = { type: getPreviewBeats.rejected.type, payload: 'error' };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...state,
+      errors: 'error',
+    });
+  });
+});
+
+describe('correct update beatsSlice beat with mock action payload', () => {
+  test('expect update correct fulfilled beat', () => {
+    const action = {
+      type: updateBeat.fulfilled.type,
+      payload: mockBeat,
+    };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...state,
+      beat: mockBeat,
+    });
+  });
+
+  test('expect set isFetching during update beat pending', () => {
+    const action = { type: updateBeat.pending.type };
+    const newState = beatsSlice.reducer(state, action);
+    expect(newState).toEqual({
+      ...state,
+      isFetching: true,
+    });
+  });
+
+  test('expect set errors after rejected update beat', () => {
+    const action = { type: updateBeat.rejected.type, payload: 'error' };
     const newState = beatsSlice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
@@ -264,6 +297,19 @@ describe('resolved get beats with async thunk', () => {
       expect(mockBeatsApi.fetchFeaturedBeat).toBeCalledWith();
     });
   });
+
+  test('expect resolved update beat response', async () => {
+    const mockData = {
+      data: mockBeat,
+    };
+    mockBeatsApi.putBeat.mockResolvedValueOnce(mockData);
+    const beat = await mockDispatch(updateBeat());
+
+    await waitFor(() => {
+      expect(beat.payload).toEqual(mockBeat);
+      expect(mockBeatsApi.putBeat).toBeCalled();
+    });
+  });
 });
 
 describe('rejected get beats with async thunk', () => {
@@ -328,6 +374,18 @@ describe('rejected get beats with async thunk', () => {
 
     await waitFor(() => {
       expect(rejectedBeats.payload).toEqual(mockData);
+    });
+  });
+
+  test('expect rejected update beat response', async () => {
+    const mockData = {
+      error: 'error',
+    };
+    mockBeatsApi.putBeat.mockRejectedValue(mockData);
+    const rejectedBeat = await mockDispatch(updateBeat());
+
+    await waitFor(() => {
+      expect(rejectedBeat.payload).toEqual(mockData);
     });
   });
 });

@@ -13,13 +13,14 @@ import * as beatsSelectors from 'reduxStore/beats/selectors';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 
 import * as S from './ShareModal.style';
+import { EMBED_TAB_STATE, SHARE_TAB_STATE } from './constants';
 
 const ShareModal: FC = () => {
   const { shareModalVisability } = useTypedSelector(
     modalsSelectors.visabilities,
   );
   const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
-  const [tab, setTab] = useState('share');
+  const [tab, setTab] = useState(SHARE_TAB_STATE);
   const [copiedState, setCopiedState] = useState({
     value: '',
     isCopied: false,
@@ -63,12 +64,12 @@ const ShareModal: FC = () => {
                     onChange={onTabChange}
                     indicatorColor="secondary"
                   >
-                    <Tab value="share" label="SHARE URL" />
-                    <Tab value="embed" label="EMBED" />
+                    <Tab value={SHARE_TAB_STATE} label="SHARE URL" />
+                    <Tab value={EMBED_TAB_STATE} label="EMBED" />
                   </Tabs>
                 </S.Tabs>
                 <S.TabsContent>
-                  <S.TabPanel hidden={tab !== 'share'}>
+                  <S.TabPanel hidden={tab !== SHARE_TAB_STATE}>
                     <S.UrlField>
                       <S.Field
                         name="url"
@@ -91,7 +92,9 @@ const ShareModal: FC = () => {
                       </CopyToClipboard>
                     </S.UrlField>
                   </S.TabPanel>
-                  <S.TabPanel hidden={tab !== 'embed'}>iframe</S.TabPanel>
+                  <S.TabPanel hidden={tab !== EMBED_TAB_STATE}>
+                    iframe
+                  </S.TabPanel>
                 </S.TabsContent>
               </S.Content>
             </Modal>

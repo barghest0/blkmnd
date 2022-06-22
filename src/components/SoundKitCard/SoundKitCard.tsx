@@ -14,6 +14,7 @@ type Props = {
 
 const SoundKitsList: FC<Props> = ({ soundKit }) => {
   const { id, image, title, price } = soundKit;
+  const isSoundKitFree = price !== 0;
 
   return (
     <S.SoundKitCard>
@@ -22,7 +23,7 @@ const SoundKitsList: FC<Props> = ({ soundKit }) => {
           <Image image={image} />
         </S.Thumbnail>
         <S.Title>{title}</S.Title>
-        <S.Price>{price > 0 ? `${convertPrice(price)}` : 'FREE'}</S.Price>
+        <S.Price>{isSoundKitFree ? `${convertPrice(price)}` : 'FREE'}</S.Price>
       </StyledLink>
     </S.SoundKitCard>
   );

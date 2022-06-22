@@ -64,6 +64,16 @@
           },
           "text": "фыв",
           "date": "05.23.2022"
+        },
+        {
+          "user": {
+            "id": 14,
+            "username": "test",
+            "password": "$2y$13$OjjiFgBe2DfawkPs9pr/COqc97IuZ6CyORrwWewziKCy0OKlSZzJe",
+            "role": "user"
+          },
+          "text": "qwe",
+          "date": "06.21.2022"
         }
       ],
       "image": "https://main.v2.beatstars.com/fit-in/tracks/300x300/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgldf1.png",
@@ -594,6 +604,16 @@
           },
           "text": "as",
           "date": "06.01.2022"
+        },
+        {
+          "user": {
+            "id": 14,
+            "username": "test",
+            "password": "$2y$13$OjjiFgBe2DfawkPs9pr/COqc97IuZ6CyORrwWewziKCy0OKlSZzJe",
+            "role": "user"
+          },
+          "text": "asd",
+          "date": "06.21.2022"
         }
       ],
       "price": 30

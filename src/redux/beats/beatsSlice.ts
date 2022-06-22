@@ -7,6 +7,7 @@ import {
   getFeaturedBeat,
   getFilteredBeats,
   getBeat,
+  updateBeat,
 } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
@@ -104,6 +105,19 @@ const beatsSlice = createSlice({
     [getBeat.rejected.type]: (state, action: PayloadAction<any>) => {
       state.errors = action.payload;
       state.isFetching = false;
+    },
+
+    [updateBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
+      state.errors = null;
+      state.beat = action.payload;
+    },
+
+    [updateBeat.pending.type]: (state) => {
+      state.isFetching = true;
+    },
+
+    [updateBeat.rejected.type]: (state, action: PayloadAction<string>) => {
+      state.errors = action.payload;
     },
   },
 });

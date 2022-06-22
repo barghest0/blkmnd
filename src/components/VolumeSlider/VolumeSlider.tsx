@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
 import useAudio from 'hooks/useAudio';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
