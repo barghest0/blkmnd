@@ -3,7 +3,6 @@ import { SelectChangeEvent } from '@mui/material';
 import { useFormik } from 'formik';
 
 import BeatsList from 'components/BeatsList/BeatsList';
-import SearchField from 'components/SearchField/SearchField';
 import Preloader from 'components/Preloader/Preloader';
 import { useSearchParams } from 'react-router-dom';
 import FilterMenu from 'components/FilterMenu/FilterMenu';
@@ -39,10 +38,8 @@ const Beats = () => {
   }, []);
 
   useEffect(() => {
-    if (searchValue) {
-      getFilteredBeats({ search: searchValue });
-    }
-  }, []);
+    getFilteredBeats({ search: searchValue });
+  }, [searchValue]);
 
   const initialFilterValues: FilterValues = {
     genre: 'all',
@@ -145,7 +142,7 @@ const Beats = () => {
               options={sortOptions}
             />
           </S.Filters>
-          <S.Search>
+          <S.Search onSubmit={onSearchSubmit}>
             <S.SearchField
               name={searchFieldName}
               onChange={onSearchChange}

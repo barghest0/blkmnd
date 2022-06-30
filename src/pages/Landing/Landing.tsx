@@ -7,7 +7,6 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 import FeaturedBeat from 'components/FeaturedBeat/FeaturedBeat';
-import SearchField from 'components/SearchField/SearchField';
 import Preloader from 'components/Preloader/Preloader';
 import BeatsList from 'components/BeatsList/BeatsList';
 import { ButtonLink } from 'shared/styles/links';
@@ -20,6 +19,7 @@ import LicenseCard from 'components/LicenseCard/LicenseCard';
 import SoundKitCard from 'components/SoundKitCard/SoundKitCard';
 import DiscographyCard from 'components/DiscographyCard/DiscographyCard';
 import useChannelContent from 'hooks/useChannelContent';
+import useSearch from 'hooks/useSearch';
 import Button from 'components/Button/Button';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
@@ -29,7 +29,6 @@ import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
 import * as collabsSelectors from 'reduxStore/collabs/selectors';
 
 import * as S from './Landing.style';
-import useSearch from 'hooks/useSearch';
 
 const Landing: FC = memo(() => {
   const beats = useTypedSelector(beatsSelectors.allBeats);

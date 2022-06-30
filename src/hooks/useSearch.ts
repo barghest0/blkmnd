@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import { ChangeEvent } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { RouterPaths } from 'shared/router/types';
@@ -31,10 +32,18 @@ const useSearch = ({ initialValue }: Props) => {
     onSubmit: onSearchSubmit,
   });
 
+  const onSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const field = event.target;
+    searchParams.set(searchKey, field.value);
+    setSearchParams(searchParams);
+
+    handleChange(event);
+  };
+
   return {
     searchValue: values.search,
     onSearchSubmit: handleSubmit,
-    onSearchChange: handleChange,
+    onSearchChange,
     searchFieldName: searchKey,
   };
 };
