@@ -8,6 +8,7 @@ import Preloader from 'components/Preloader/Preloader';
 import { useSearchParams } from 'react-router-dom';
 import FilterMenu from 'components/FilterMenu/FilterMenu';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useSearch from 'hooks/useSearch';
 import useActions from 'hooks/useActions';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
 
@@ -28,15 +29,18 @@ const Beats = () => {
 
   const [filters, setFilters] = useSearchParams();
 
-  const filterQuery = filters.get('query');
+  const { searchValue, onSearchSubmit, searchFieldName, onSearchChange } =
+    useSearch({
+      initialValue: '',
+    });
 
   useEffect(() => {
     getAllBeats();
   }, []);
 
   useEffect(() => {
-    if (filterQuery) {
-      getFilteredBeats({ query: filterQuery });
+    if (searchValue) {
+      getFilteredBeats({ search: searchValue });
     }
   }, []);
 
@@ -63,7 +67,7 @@ const Beats = () => {
     const value = event.target.value as string;
     filters.set(name, value);
 
-    getFilteredBeats({ [name]: value, query: filterQuery ?? '' });
+    getFilteredBeats({ [name]: value, search: searchValue });
 
     setFilters(filters);
   };
@@ -141,12 +145,14 @@ const Beats = () => {
               options={sortOptions}
             />
           </S.Filters>
-          <SearchField initialValues={{ query: filterQuery ?? '' }}>
+          <S.Search>
             <S.SearchField
-              name="query"
+              name={searchFieldName}
+              onChange={onSearchChange}
+              value={searchValue}
               placeholder="What type of track are you looking for?"
             />
-          </SearchField>
+          </S.Search>
         </S.SearchContainer>
         <S.BeatsList>
           {isBeatsFetching ? <Preloader /> : <BeatsList beats={beats} />}

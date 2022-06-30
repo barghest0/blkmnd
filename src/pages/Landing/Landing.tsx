@@ -29,6 +29,7 @@ import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
 import * as collabsSelectors from 'reduxStore/collabs/selectors';
 
 import * as S from './Landing.style';
+import useSearch from 'hooks/useSearch';
 
 const Landing: FC = memo(() => {
   const beats = useTypedSelector(beatsSelectors.allBeats);
@@ -86,6 +87,11 @@ const Landing: FC = memo(() => {
     <DiscographyCard beat={beat} key={beat.id} />
   ));
 
+  const { searchValue, onSearchSubmit, searchFieldName, onSearchChange } =
+    useSearch({
+      initialValue: '',
+    });
+
   useEffect(() => {
     if (!featuredBeat) {
       getFeaturedBeat();
@@ -103,18 +109,18 @@ const Landing: FC = memo(() => {
         <S.Container>
           <S.IntroInner>
             <S.IntroTitle>Someone beatstore</S.IntroTitle>
-            <S.Search>
-              <SearchField initialValues={{ query: '' }}>
-                <S.SearchFieldContainer>
-                  <S.SearchField
-                    name="query"
-                    placeholder="What type of track are you looking for?"
-                  />
-                  <S.SearchSubmit>
-                    <Button type="submit">Search</Button>
-                  </S.SearchSubmit>
-                </S.SearchFieldContainer>
-              </SearchField>
+            <S.Search onSubmit={onSearchSubmit}>
+              <S.SearchFieldContainer>
+                <S.SearchField
+                  name={searchFieldName}
+                  placeholder="What type of track are you looking for?"
+                  onChange={onSearchChange}
+                  value={searchValue}
+                />
+                <S.SearchSubmit>
+                  <Button type="submit">Search</Button>
+                </S.SearchSubmit>
+              </S.SearchFieldContainer>
             </S.Search>
             <S.FeaturedBeat>
               {isFeaturedBeatFetching ? (

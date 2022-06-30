@@ -27,8 +27,7 @@ const SearchIcon = styled.div<SearchProps>`
   }}
 `;
 
-const SearchFieldContainer = styled.div`
-  height: 100%;
+const SearchFieldContainer = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;

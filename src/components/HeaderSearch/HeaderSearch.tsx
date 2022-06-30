@@ -1,9 +1,8 @@
 import { FC } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 
-import SearchField from 'components/SearchField/SearchField';
+import useSearch from 'hooks/useSearch';
 
 import * as S from './HeaderSearch.style';
 
@@ -17,7 +16,10 @@ const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
     setIsOpen(!isOpen);
   };
 
-  const [query] = useSearchParams();
+  const { searchValue, onSearchSubmit, searchFieldName, onSearchChange } =
+    useSearch({
+      initialValue: '',
+    });
 
   const onCloseButtonClick = () => {
     setIsOpen(false);
@@ -28,18 +30,18 @@ const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
       <S.SearchIcon isOpen={isOpen} onClick={onSearchIconClick}>
         <SearchIcon />
       </S.SearchIcon>
-      <SearchField initialValues={{ query: query.get('q') }}>
-        <S.SearchFieldContainer>
-          <S.SearchInput
-            isOpen={isOpen}
-            name="query"
-            placeholder="Search beats"
-          />
-          <S.CloseButton isOpen={isOpen} onClick={onCloseButtonClick}>
-            <CloseIcon />
-          </S.CloseButton>
-        </S.SearchFieldContainer>
-      </SearchField>
+      <S.SearchFieldContainer onSubmit={onSearchSubmit}>
+        <S.SearchInput
+          isOpen={isOpen}
+          name={searchFieldName}
+          onChange={onSearchChange}
+          value={searchValue}
+          placeholder="Search beats"
+        />
+        <S.CloseButton isOpen={isOpen} onClick={onCloseButtonClick}>
+          <CloseIcon />
+        </S.CloseButton>
+      </S.SearchFieldContainer>
     </S.HeaderSearch>
   );
 };

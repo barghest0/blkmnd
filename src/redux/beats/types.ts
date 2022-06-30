@@ -16,7 +16,7 @@ type Comment = {
 };
 
 type FiltersState = {
-  query: string;
+  search: string;
   genre: string;
   type: string;
   bpm: string;

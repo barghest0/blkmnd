@@ -46,7 +46,7 @@ const IntroTitle = styled.h1`
   margin: 10px 0;
 `;
 
-const Search = styled.div`
+const Search = styled.form`
   margin-bottom: 40px;
   height: 70px;
   display: block;

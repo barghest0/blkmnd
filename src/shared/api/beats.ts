@@ -13,10 +13,10 @@ const fetchBeat = (id: number) => instance.get<Beat>(`beats/${id}`);
 const fetchAllBeats = () => instance.get<Beat[]>('beats/');
 
 const fetchFilteredBeats = (filters: Partial<FiltersState>) => {
-  const { query, bpm } = filters;
+  const { search, bpm } = filters;
   const queryString = [];
-  if (query !== '') {
-    queryString.push(`title_like=${query}`);
+  if (search !== '') {
+    queryString.push(`title_like=${search}`);
   }
   if (bpm !== 'all') {
     queryString.push(`bpm=${bpm}`);
