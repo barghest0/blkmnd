@@ -3,6 +3,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import CloseIcon from '@mui/icons-material/Close';
 
 import useSearch from 'hooks/useSearch';
+import { RouterPaths } from 'shared/router/types';
 
 import * as S from './HeaderSearch.style';
 
@@ -19,6 +20,7 @@ const HeaderSearch: FC<Props> = ({ isOpen, setIsOpen }) => {
   const { searchValue, onSearchSubmit, searchFieldName, onSearchChange } =
     useSearch({
       initialValue: '',
+      searchPath: RouterPaths.beats,
     });
 
   const onCloseButtonClick = () => {

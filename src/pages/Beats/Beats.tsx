@@ -9,6 +9,7 @@ import FilterMenu from 'components/FilterMenu/FilterMenu';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import useSearch from 'hooks/useSearch';
 import useActions from 'hooks/useActions';
+import { RouterPaths } from 'shared/router/types';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
 
 import * as S from './Beats.style';
@@ -31,6 +32,7 @@ const Beats = () => {
   const { searchValue, onSearchSubmit, searchFieldName, onSearchChange } =
     useSearch({
       initialValue: '',
+      searchPath: RouterPaths.beats,
     });
 
   useEffect(() => {

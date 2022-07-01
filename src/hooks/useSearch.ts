@@ -1,6 +1,10 @@
 import { useFormik } from 'formik';
 import { ChangeEvent } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import {
+  createSearchParams,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 
 import { RouterPaths } from 'shared/router/types';
 
@@ -10,18 +14,23 @@ type SearchValues = {
 
 type Props = {
   initialValue: string;
+  searchPath: RouterPaths;
 };
 
-const useSearch = ({ initialValue }: Props) => {
+const useSearch = ({ initialValue, searchPath }: Props) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const searchKey = 'search';
+  const urlSearch = searchParams.get(searchKey);
 
   const onSearchSubmit = ({ search }: SearchValues) => {
     if (search) {
-      navigate(`${RouterPaths.beats}`);
       searchParams.set(searchKey, search);
       setSearchParams(searchParams);
+      navigate({
+        pathname: searchPath,
+        search: createSearchParams({ search }).toString(),
+      });
     }
   };
 
@@ -41,7 +50,7 @@ const useSearch = ({ initialValue }: Props) => {
   };
 
   return {
-    searchValue: values.search,
+    searchValue: urlSearch ?? values.search,
     onSearchSubmit: handleSubmit,
     onSearchChange,
     searchFieldName: searchKey,
