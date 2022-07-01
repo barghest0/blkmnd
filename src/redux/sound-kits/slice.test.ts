@@ -4,6 +4,7 @@ import { mockDispatch } from 'test-utils/utils';
 import { mockComment, mockSoundKit } from 'test-utils/mocks';
 import * as soundKitsApi from 'shared/api/soundKits';
 
+import soundKitsSlice from './slice';
 import {
   getAllSoundKits,
   getPreviewSoundKits,
@@ -11,7 +12,6 @@ import {
   updateSoundKit,
 } from './actions';
 import { SOUND_KITS_INITIAL_STATE, SOUND_KITS_SLICE_NAME } from './constants';
-import soundKitsSlice from './soundKitsSlice';
 
 const state = soundKitsSlice.getInitialState();
 

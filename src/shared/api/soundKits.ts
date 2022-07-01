@@ -1,4 +1,4 @@
-import { SoundKit } from 'reduxStore/soundKits/types';
+import { SoundKit } from 'reduxStore/sound-kits/types';
 
 import { instance } from './instance';
 

@@ -1,12 +1,13 @@
+import { waitFor } from '@testing-library/react';
+
 import { mockCollab } from 'test-utils/mocks';
 
 import * as collabsApi from 'shared/api/collabs';
 import { mockDispatch } from 'test-utils/utils';
 
-import collabsSlice from './collabsSlice';
+import collabsSlice from './slice';
 import { getAllCollabs, getCollab, getPreviewCollabs } from './actions';
 import { COLLABS_INITIAL_STATE, COLLABS_SLICE_NAME } from './constants';
-import { waitFor } from '@testing-library/react';
 
 const state = collabsSlice.getInitialState();
 

@@ -2,15 +2,15 @@ import { bindActionCreators } from '@reduxjs/toolkit';
 
 import useTypedDispatch from 'hooks/redux/useTypedSelector';
 
-import playerSlice from 'reduxStore/player/playerSlice';
-import modalsSlice from 'reduxStore/modals/modalsSlice';
-import beatsSlice from 'reduxStore/beats/beatsSlice';
-import soundKitsSlice from 'reduxStore/soundKits/soundKitsSlice';
-import authSlice from 'reduxStore/auth/authSlice';
+import playerSlice from 'reduxStore/player/slice';
+import modalsSlice from 'reduxStore/modals/slice';
+import beatsSlice from 'reduxStore/beats/slice';
+import soundKitsSlice from 'reduxStore/sound-kits/slice';
+import authSlice from 'reduxStore/auth/slice';
 
 import * as beatsActions from 'reduxStore/beats/actions';
 import * as licensesActions from 'reduxStore/licenses/actions';
-import * as soundKitsActions from 'reduxStore/soundKits/actions';
+import * as soundKitsActions from 'reduxStore/sound-kits/actions';
 import * as collabsActions from 'reduxStore/collabs/actions';
 import * as discographyActions from 'reduxStore/discography/actions';
 import * as membershipsActions from 'reduxStore/memberships/actions';

@@ -1,16 +1,16 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import authSlice from './auth/authSlice';
-import beatsSlice from './beats/beatsSlice';
-import cartSlice from './cart/cartSlice';
-import collabsSlice from './collabs/collabsSlice';
-import discographySlice from './discography/discographySlice';
-import licensesSlice from './licenses/licensesSlice';
-import membershipsSlice from './memberships/membershipsSlice';
-import modalsSlice from './modals/modalsSlice';
-import playerSlice from './player/playerSlice';
-import soundKitsSlice from './soundKits/soundKitsSlice';
-import userSlice from './user/userSlice';
+import authSlice from './auth/slice';
+import beatsSlice from './beats/slice';
+import cartSlice from './cart/slice';
+import collabsSlice from './collabs/slice';
+import discographySlice from './discography/slice';
+import licensesSlice from './licenses/slice';
+import membershipsSlice from './memberships/slice';
+import modalsSlice from './modals/slice';
+import playerSlice from './player/slice';
+import soundKitsSlice from './sound-kits/slice';
+import userSlice from './user/slice';
 
 const rootReducer = combineReducers({
   beats: beatsSlice.reducer,

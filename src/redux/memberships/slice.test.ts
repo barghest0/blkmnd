@@ -1,11 +1,12 @@
+import { waitFor } from '@testing-library/react';
+
+import { mockDispatch } from 'test-utils/utils';
 import { mockMembership } from 'test-utils/mocks';
 import * as membershipsApi from 'shared/api/memberships';
 
+import membershipsSlice from './slice';
 import { getMemberships } from './actions';
 import { MEMBERSHIPS_INITIAL_STATE, MEMBERSHIPS_SLICE_NAME } from './constants';
-import membershipsSlice from './membershipsSlice';
-import { mockDispatch } from 'test-utils/utils';
-import { waitFor } from '@testing-library/react';
 
 const state = membershipsSlice.getInitialState();
 

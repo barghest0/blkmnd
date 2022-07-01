@@ -25,7 +25,7 @@ import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
 import * as discographySelectors from 'reduxStore/discography/selectors';
 import * as licensesSelectors from 'reduxStore/licenses/selectors';
-import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
+import * as soundKitsSelectors from 'reduxStore/sound-kits/selectors';
 import * as collabsSelectors from 'reduxStore/collabs/selectors';
 
 import * as S from './Landing.style';

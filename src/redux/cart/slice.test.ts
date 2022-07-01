@@ -5,7 +5,7 @@ import { mockCartProduct } from 'test-utils/mocks';
 import * as cartApi from 'shared/api/cart';
 
 import { addProductToCart, deleteCartProduct, getCart } from './actions';
-import cartSlice from './cartSlice';
+import cartSlice from './slice';
 import { CART_INITIAL_STATE, CART_SLICE_NAME } from './constants';
 
 const state = cartSlice.getInitialState();

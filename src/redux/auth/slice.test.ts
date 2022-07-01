@@ -4,7 +4,7 @@ import { mockDispatch } from 'test-utils/utils';
 import { mockUser } from 'test-utils/mocks';
 import * as authApi from 'shared/api/auth';
 
-import authSlice from './authSlice';
+import authSlice from './slice';
 import { autoLogin, login, register } from './actions';
 import { AUTH_INITIAL_STATE, AUTH_SLICE_NAME } from './constants';
 

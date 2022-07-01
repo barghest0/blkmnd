@@ -4,9 +4,9 @@ import { mockDispatch } from 'test-utils/utils';
 import { mockBeat } from 'test-utils/mocks';
 import * as beatsApi from 'shared/api/beats';
 
+import playerSlice from './slice';
 import { getQueueBeats } from './actions';
 import { PLAYER_INITIAL_STATE, PLAYER_SLICE_NAME } from './constants';
-import playerSlice from './playerSlice';
 
 const state = playerSlice.getInitialState();
 const {

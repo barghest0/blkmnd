@@ -4,7 +4,7 @@ import { mockDispatch } from 'test-utils/utils';
 import { mockLicense } from 'test-utils/mocks';
 import * as licensesApi from 'shared/api/licenses';
 
-import licensesSlice from './licensesSlice';
+import licensesSlice from './slice';
 import { getLicense, getLicenses } from './actions';
 import { LICENSE_INITIAL_STATE, LICENSE_SLICE_NAME } from './constants';
 

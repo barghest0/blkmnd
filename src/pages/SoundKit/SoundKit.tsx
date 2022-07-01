@@ -14,7 +14,7 @@ import AuthContext from 'contexts/AuthContext';
 import useActions from 'hooks/useActions';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import { User } from 'reduxStore/user/types';
-import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
+import * as soundKitsSelectors from 'reduxStore/sound-kits/selectors';
 
 import * as S from './SoundKit.style';
 

@@ -4,9 +4,9 @@ import { mockDispatch } from 'test-utils/utils';
 import { mockUser } from 'test-utils/mocks';
 import * as authApi from 'shared/api/auth';
 
+import userSlice from './slice';
 import { getUserData } from './actions';
 import { USER_INITIAL_STATE, USER_SLICE_NAME } from './constants';
-import userSlice from './userSlice';
 
 const state = userSlice.getInitialState();
 

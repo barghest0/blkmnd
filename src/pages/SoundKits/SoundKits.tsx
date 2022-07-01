@@ -4,7 +4,7 @@ import Preloader from 'components/Preloader/Preloader';
 import SoundKitCard from 'components/SoundKitCard/SoundKitCard';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import useActions from 'hooks/useActions';
-import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
+import * as soundKitsSelectors from 'reduxStore/sound-kits/selectors';
 
 import * as S from './SoundKits.style';
 

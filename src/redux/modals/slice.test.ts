@@ -1,5 +1,5 @@
+import modalsSlice from './slice';
 import { MODALS_INITIAL_STATE, MODALS_SLICE_NAME } from './constants';
-import modalsSlice from './modalsSlice';
 import { ModalsTypes } from './types';
 
 const state = modalsSlice.getInitialState();
