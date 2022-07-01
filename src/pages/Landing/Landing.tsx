@@ -7,20 +7,20 @@ import VideocamIcon from '@mui/icons-material/Videocam';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 import FeaturedBeat from 'components/FeaturedBeat/FeaturedBeat';
-import SearchField from 'components/SearchField/SearchField';
 import Preloader from 'components/Preloader/Preloader';
 import BeatsList from 'components/BeatsList/BeatsList';
-import { ButtonLink } from 'shared/styles/links';
-import { RouterPaths } from 'shared/router/types';
-import useActions from 'hooks/useActions';
 import Visualizer from 'components/Visualizer/Visualizer';
 import ContactForm from 'components/ContactForm/ContactForm';
 import CollabCard from 'components/CollabCard/CollabCard';
 import LicenseCard from 'components/LicenseCard/LicenseCard';
 import SoundKitCard from 'components/SoundKitCard/SoundKitCard';
 import DiscographyCard from 'components/DiscographyCard/DiscographyCard';
-import useChannelContent from 'hooks/useChannelContent';
 import Button from 'components/Button/Button';
+import useChannelContent from 'hooks/useChannelContent';
+import useSearch from 'hooks/useSearch';
+import useActions from 'hooks/useActions';
+import { ButtonLink } from 'shared/styles/links';
+import { RouterPaths } from 'shared/router/types';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
 import * as discographySelectors from 'reduxStore/discography/selectors';
@@ -86,6 +86,12 @@ const Landing: FC = memo(() => {
     <DiscographyCard beat={beat} key={beat.id} />
   ));
 
+  const { searchValue, onSearchSubmit, searchFieldName, onSearchChange } =
+    useSearch({
+      initialValue: '',
+      searchPath: RouterPaths.beats,
+    });
+
   useEffect(() => {
     if (!featuredBeat) {
       getFeaturedBeat();
@@ -103,18 +109,18 @@ const Landing: FC = memo(() => {
         <S.Container>
           <S.IntroInner>
             <S.IntroTitle>Someone beatstore</S.IntroTitle>
-            <S.Search>
-              <SearchField initialValues={{ query: '' }}>
-                <S.SearchFieldContainer>
-                  <S.SearchField
-                    name="query"
-                    placeholder="What type of track are you looking for?"
-                  />
-                  <S.SearchSubmit>
-                    <Button type="submit">Search</Button>
-                  </S.SearchSubmit>
-                </S.SearchFieldContainer>
-              </SearchField>
+            <S.Search onSubmit={onSearchSubmit}>
+              <S.SearchFieldContainer>
+                <S.SearchField
+                  name={searchFieldName}
+                  placeholder="What type of track are you looking for?"
+                  onChange={onSearchChange}
+                  value={searchValue}
+                />
+                <S.SearchSubmit>
+                  <Button type="submit">Search</Button>
+                </S.SearchSubmit>
+              </S.SearchFieldContainer>
             </S.Search>
             <S.FeaturedBeat>
               {isFeaturedBeatFetching ? (

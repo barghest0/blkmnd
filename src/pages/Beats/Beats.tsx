@@ -3,12 +3,13 @@ import { SelectChangeEvent } from '@mui/material';
 import { useFormik } from 'formik';
 
 import BeatsList from 'components/BeatsList/BeatsList';
-import SearchField from 'components/SearchField/SearchField';
 import Preloader from 'components/Preloader/Preloader';
 import { useSearchParams } from 'react-router-dom';
 import FilterMenu from 'components/FilterMenu/FilterMenu';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
+import useSearch from 'hooks/useSearch';
 import useActions from 'hooks/useActions';
+import { RouterPaths } from 'shared/router/types';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
 
 import * as S from './Beats.style';
@@ -28,17 +29,19 @@ const Beats = () => {
 
   const [filters, setFilters] = useSearchParams();
 
-  const filterQuery = filters.get('query');
+  const { searchValue, onSearchSubmit, searchFieldName, onSearchChange } =
+    useSearch({
+      initialValue: '',
+      searchPath: RouterPaths.beats,
+    });
 
   useEffect(() => {
     getAllBeats();
   }, []);
 
   useEffect(() => {
-    if (filterQuery) {
-      getFilteredBeats({ query: filterQuery });
-    }
-  }, []);
+    getFilteredBeats({ search: searchValue });
+  }, [searchValue]);
 
   const initialFilterValues: FilterValues = {
     genre: 'all',
@@ -63,7 +66,7 @@ const Beats = () => {
     const value = event.target.value as string;
     filters.set(name, value);
 
-    getFilteredBeats({ [name]: value, query: filterQuery ?? '' });
+    getFilteredBeats({ [name]: value, search: searchValue });
 
     setFilters(filters);
   };
@@ -141,12 +144,14 @@ const Beats = () => {
               options={sortOptions}
             />
           </S.Filters>
-          <SearchField initialValues={{ query: filterQuery ?? '' }}>
+          <S.Search onSubmit={onSearchSubmit}>
             <S.SearchField
-              name="query"
+              name={searchFieldName}
+              onChange={onSearchChange}
+              value={searchValue}
               placeholder="What type of track are you looking for?"
             />
-          </SearchField>
+          </S.Search>
         </S.SearchContainer>
         <S.BeatsList>
           {isBeatsFetching ? <Preloader /> : <BeatsList beats={beats} />}

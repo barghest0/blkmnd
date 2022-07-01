@@ -46,7 +46,7 @@ const IntroTitle = styled.h1`
   margin: 10px 0;
 `;
 
-const Search = styled.div`
+const Search = styled.form`
   margin-bottom: 40px;
   height: 70px;
   display: block;
@@ -72,7 +72,9 @@ const SearchField = styled.input`
   outline: none;
   width: 100%;
   height: 100%;
-  font-size: 16px;
+  font-size: 18px;
+  font-family: inherit;
+
   ::placeholder {
     font-size: 18px;
   }

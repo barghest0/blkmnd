@@ -35,6 +35,8 @@ const Filters = styled.div`
   }
 `;
 
+const Search = styled.form``;
+
 const FilterMenu = MUIstyled(Select)({});
 
 const Option = MUIstyled(MenuItem)({});
@@ -65,4 +67,5 @@ export {
   SearchField,
   BeatsList,
   SearchContainer,
+  Search,
 };
