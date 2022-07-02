@@ -4,7 +4,7 @@ import { deleteCartProduct, addProductToCart, getCart } from './actions';
 import { CART_INITIAL_STATE, CART_SLICE_NAME } from './constants';
 import { CartProduct } from './types';
 
-const cartSlice = createSlice({
+const cart = createSlice({
   name: CART_SLICE_NAME,
   initialState: CART_INITIAL_STATE,
   reducers: {},
@@ -78,4 +78,4 @@ const cartSlice = createSlice({
   },
 });
 
-export default cartSlice;
+export default cart;

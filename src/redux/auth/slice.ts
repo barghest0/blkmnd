@@ -7,7 +7,7 @@ import { autoLogin, login, register } from './actions';
 import { AUTH_INITIAL_STATE, AUTH_SLICE_NAME } from './constants';
 import { LoginErrors, LoginResponseValues, RegisterErrors } from './types';
 
-const authSlice = createSlice({
+const auth = createSlice({
   name: AUTH_SLICE_NAME,
   initialState: AUTH_INITIAL_STATE,
   reducers: {
@@ -77,4 +77,4 @@ const authSlice = createSlice({
   },
 });
 
-export default authSlice;
+export default auth;

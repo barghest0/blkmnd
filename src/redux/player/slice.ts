@@ -5,7 +5,7 @@ import { Beat } from 'reduxStore/beats/types';
 import { getQueueBeats } from './actions';
 import { PLAYER_SLICE_NAME, PLAYER_INITIAL_STATE } from './constants';
 
-const playerSlice = createSlice({
+const player = createSlice({
   name: PLAYER_SLICE_NAME,
   initialState: PLAYER_INITIAL_STATE,
   reducers: {
@@ -100,4 +100,4 @@ const playerSlice = createSlice({
   },
 });
 
-export default playerSlice;
+export default player;

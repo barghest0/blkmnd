@@ -5,6 +5,7 @@ import beatsSlice from './beats/slice';
 import cartSlice from './cart/slice';
 import collabsSlice from './collabs/slice';
 import discographySlice from './discography/slice';
+import landingSlice from './landing/slice';
 import licensesSlice from './licenses/slice';
 import membershipsSlice from './memberships/slice';
 import modalsSlice from './modals/slice';
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   user: userSlice.reducer,
   auth: authSlice.reducer,
   cart: cartSlice.reducer,
+  landing: landingSlice.reducer,
 });
 
 const store = () =>

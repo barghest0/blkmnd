@@ -4,7 +4,7 @@ import { getMemberships } from './actions';
 import { MEMBERSHIPS_INITIAL_STATE, MEMBERSHIPS_SLICE_NAME } from './constants';
 import { Membership } from './types';
 
-const membershipsSlice = createSlice({
+const memberships = createSlice({
   name: MEMBERSHIPS_SLICE_NAME,
   initialState: MEMBERSHIPS_INITIAL_STATE,
   reducers: {},
@@ -29,4 +29,4 @@ const membershipsSlice = createSlice({
   },
 });
 
-export default membershipsSlice;
+export default memberships;

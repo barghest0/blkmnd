@@ -11,7 +11,7 @@ import {
 import { SOUND_KITS_INITIAL_STATE, SOUND_KITS_SLICE_NAME } from './constants';
 import { SoundKit } from './types';
 
-const soundKitsSlice = createSlice({
+const soundKits = createSlice({
   name: SOUND_KITS_SLICE_NAME,
   initialState: SOUND_KITS_INITIAL_STATE,
   reducers: {
@@ -22,26 +22,7 @@ const soundKitsSlice = createSlice({
     },
   },
   extraReducers: {
-    [getPreviewSoundKits.fulfilled.type]: (
-      state,
-      action: PayloadAction<SoundKit[]>,
-    ) => {
-      state.isFetching = false;
-      state.soundKits = action.payload;
-      state.errors = null;
-    },
-
-    [getPreviewSoundKits.pending.type]: (state) => {
-      state.isFetching = true;
-    },
-
-    [getPreviewSoundKits.rejected.type]: (
-      state,
-      action: PayloadAction<string>,
-    ) => {
-      state.isFetching = false;
-      state.errors = action.payload;
-    },
+    
 
     [getAllSoundKits.fulfilled.type]: (
       state,
@@ -92,4 +73,4 @@ const soundKitsSlice = createSlice({
   },
 });
 
-export default soundKitsSlice;
+export default soundKits;

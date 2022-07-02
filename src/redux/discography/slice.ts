@@ -5,7 +5,7 @@ import { Beat } from 'reduxStore/beats/types';
 import { getDiscographyBeats } from './actions';
 import { DISCOGRAPHY_INITIAL_STATE, DISCORGAPHY_SLICE_NAME } from './constants';
 
-const discographySlice = createSlice({
+const discography = createSlice({
   name: DISCORGAPHY_SLICE_NAME,
   initialState: DISCOGRAPHY_INITIAL_STATE,
   reducers: {},
@@ -33,4 +33,4 @@ const discographySlice = createSlice({
   },
 });
 
-export default discographySlice;
+export default discography;

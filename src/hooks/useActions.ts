@@ -18,6 +18,7 @@ import * as asyncPlayerActions from 'reduxStore/player/actions';
 import * as cartActions from 'reduxStore/cart/actions';
 import * as authActions from 'reduxStore/auth/actions';
 import * as userActions from 'reduxStore/user/actions';
+import * as landingActions from 'reduxStore/landing/actions';
 
 const rootActionCreator = {
   ...beatsActions,
@@ -35,6 +36,7 @@ const rootActionCreator = {
   ...asyncPlayerActions,
   ...authActions,
   ...userActions,
+  ...landingActions,
 };
 
 const useActions = () => {

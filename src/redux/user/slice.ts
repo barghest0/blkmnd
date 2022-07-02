@@ -4,7 +4,7 @@ import { getUserData } from './actions';
 import { USER_INITIAL_STATE, USER_SLICE_NAME } from './constants';
 import { User } from './types';
 
-const userSlice = createSlice({
+const user = createSlice({
   name: USER_SLICE_NAME,
   initialState: USER_INITIAL_STATE,
   reducers: {},
@@ -27,4 +27,4 @@ const userSlice = createSlice({
   },
 });
 
-export default userSlice;
+export default user;
