@@ -12,6 +12,7 @@ import membershipsSlice from './memberships/slice';
 import modalsSlice from './modals/slice';
 import playerSlice from './player/slice';
 import soundKitsSlice from './sound-kits/slice';
+import soundKitDetailsSlice from './sound-kit-details/slice';
 import userSlice from './user/slice';
 
 const rootReducer = combineReducers({
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   beatDetails: beatDetails.reducer,
   licenses: licensesSlice.reducer,
   soundKits: soundKitsSlice.reducer,
+  soundKitDetails: soundKitDetailsSlice.reducer,
   collabs: collabsSlice.reducer,
   player: playerSlice.reducer,
   discography: discographySlice.reducer,

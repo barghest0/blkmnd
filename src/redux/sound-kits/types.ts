@@ -1,20 +1,9 @@
-import { Comment } from '../beats/types';
-
-type SoundKit = {
-  id: number;
-  title: string;
-  type: string;
-  image: string;
-  description: string;
-  price: number;
-  comments: Comment[];
-};
+import { SoundKit } from 'redux/sound-kit-details/types';
 
 type SoundKitsState = {
   soundKits: SoundKit[];
-  soundKit: SoundKit | null;
   isFetching: boolean;
   errors: any | string;
 };
 
-export { SoundKit, SoundKitsState };
+export { SoundKitsState };

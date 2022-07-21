@@ -12,7 +12,9 @@ const SoundKits: FC = () => {
   const { getAllSoundKits } = useActions();
 
   const soundKits = useTypedSelector(soundKitsSelectors.allSoundKits);
-  const isSoundKitsFetching = useTypedSelector(soundKitsSelectors.isFetching);
+  const isSoundKitsFetching = useTypedSelector(
+    soundKitsSelectors.isSoundKitsFetching,
+  );
 
   const soundKitsCards = soundKits.map((soundKit) => (
     <SoundKitCard soundKit={soundKit} key={soundKit.id} />
