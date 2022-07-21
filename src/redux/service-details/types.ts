@@ -1,4 +1,4 @@
-type Collab = {
+type Service = {
   id: number;
   title: string;
   description: string;
@@ -7,11 +7,10 @@ type Collab = {
   image: string;
 };
 
-type CollabsState = {
-  collabs: Collab[];
-  collab: Collab | null;
+type ServiceDetailsState = {
+  service: Service | null;
   isFetching: boolean;
   errors: any | null;
 };
 
-export { Collab, CollabsState };
+export { ServiceDetailsState, Service };

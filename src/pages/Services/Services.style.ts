@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import { container, page, pageTitle } from 'shared/styles/mixins';
 
-const Collabs = styled.div`
+const Services = styled.div`
   ${page}
 `;
 
@@ -14,7 +14,7 @@ const Title = styled.h1`
   ${pageTitle}
 `;
 
-const CollabsList = styled.div`
+const ServicesList = styled.div`
   display: grid;
   column-gap: 40px;
   row-gap: 20px;
@@ -24,4 +24,4 @@ const CollabsList = styled.div`
   justify-items: center;
 `;
 
-export { Collabs, Title, Container, CollabsList };
+export { Services, Title, Container, ServicesList };

@@ -25,7 +25,7 @@ const Footer = () => (
             <StyledLink to={RouterPaths.soundKits}>Sound Kits</StyledLink>
           </S.Column>
           <S.Column>
-            <StyledLink to={RouterPaths.collabs}>Collabs</StyledLink>
+            <StyledLink to={RouterPaths.services}>Collabs</StyledLink>
             <StyledLink to={RouterPaths.contact}>Contact</StyledLink>
           </S.Column>
           <S.Column>

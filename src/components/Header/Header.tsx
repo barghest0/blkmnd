@@ -149,7 +149,7 @@ const Header = () => {
               Sound Kits
             </Button>
           </DrawerNavLink>
-          <DrawerNavLink path={RouterPaths.collabs}>
+          <DrawerNavLink path={RouterPaths.services}>
             <Button>
               <GroupsIcon sx={{ marginRight: 1 }} />
               Collabs

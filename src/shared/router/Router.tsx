@@ -7,8 +7,8 @@ import RequireAdmin from 'hocs/RequireAdmin';
 import About from 'pages/About/About';
 import Beat from 'pages/Beat/Beat';
 import Beats from 'pages/Beats/Beats';
-import Collab from 'pages/Collab/Collab';
-import Collabs from 'pages/Collabs/Collabs';
+import Service from 'pages/Service/Service';
+import Services from 'pages/Services/Services';
 import Contact from 'pages/Contact/Contact';
 import Landing from 'pages/Landing/Landing';
 import Layout from 'pages/Layout/Layout';
@@ -79,18 +79,18 @@ const Router = () => {
             }
           />
           <Route
-            path={RouterNames.collabs}
+            path={RouterNames.service}
             element={
               <PageTransition>
-                <Collabs />
+                <Service />
               </PageTransition>
             }
           />
           <Route
-            path={RouterNames.collab}
+            path={RouterNames.services}
             element={
               <PageTransition>
-                <Collab />
+                <Services />
               </PageTransition>
             }
           />

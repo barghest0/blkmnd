@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { breakpoint } from 'shared/styles/breakpoints';
 import { container, page } from 'shared/styles/mixins';
 
-const Collab = styled.div`
+const Service = styled.div`
   ${page}
 `;
 
@@ -48,7 +48,7 @@ const TitleContainer = styled.div`
   }
 `;
 
-const CollabInfo = styled.div`
+const ServiceInfo = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 0.5fr 1fr 40px;
@@ -72,7 +72,7 @@ const Action = styled.div`
 `;
 
 export {
-  Collab,
+  Service,
   Container,
   Title,
   Content,
@@ -81,6 +81,6 @@ export {
   Description,
   Actions,
   Action,
-  CollabInfo,
+  ServiceInfo,
   TitleContainer,
 };

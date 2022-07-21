@@ -6,47 +6,47 @@ import Preloader from 'components/Preloader/Preloader';
 import ShareButton from 'components/ShareButton/ShareButton';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import useActions from 'hooks/useActions';
-import * as collabsSelectors from 'reduxStore/collabs/selectors';
+import * as serviceDetailsSelectors from 'reduxStore/service-details/selectors';
 
-import * as S from './Collab.style';
+import * as S from './Service.style';
 
-const Collab = () => {
+const Service = () => {
   const params = useParams();
-  const collab = useTypedSelector(collabsSelectors.collab);
-  const { getCollab } = useActions();
+  const service = useTypedSelector(serviceDetailsSelectors.serviceDetails);
+  const { getService } = useActions();
 
   useEffect(() => {
-    getCollab(Number(params.id));
+    getService(Number(params.id));
   }, []);
 
   return (
-    <S.Collab>
+    <S.Service>
       <S.Container>
-        {!collab ? (
+        {!service ? (
           <Preloader />
         ) : (
           <S.Content>
-            <S.Thumbnail src={collab.image} />
-            <S.CollabInfo>
+            <S.Thumbnail src={service.image} />
+            <S.ServiceInfo>
               <S.TitleContainer>
-                <S.Title>{collab.title}</S.Title>
+                <S.Title>{service.title}</S.Title>
                 <S.Subtitle>Collaboration by someone</S.Subtitle>
               </S.TitleContainer>
-              <S.Description>{collab.description}</S.Description>
+              <S.Description>{service.description}</S.Description>
               <S.Actions>
                 <S.Action>
-                  <BuyButton price={collab.price} details={collab} />
+                  <BuyButton price={service.price} details={service} />
                 </S.Action>
                 <S.Action>
-                  <ShareButton product={collab} />
+                  <ShareButton product={service} />
                 </S.Action>
               </S.Actions>
-            </S.CollabInfo>
+            </S.ServiceInfo>
           </S.Content>
         )}
       </S.Container>
-    </S.Collab>
+    </S.Service>
   );
 };
 
-export default Collab;
+export default Service;

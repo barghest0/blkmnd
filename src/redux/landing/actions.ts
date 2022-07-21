@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchFeaturedBeat, fetchPreviewBeats } from 'shared/api/beats';
-import { fetchPreviewCollabs } from 'shared/api/collabs';
+import { fetchPreviewServices } from 'shared/api/services';
 import { fetchLicenses } from 'shared/api/licenses';
 import { fetchPreviewSoundKits } from 'shared/api/soundKits';
 import {
@@ -56,11 +56,11 @@ const getPreviewSoundKits = createAsyncThunk(
   },
 );
 
-const getPreviewCollabs = createAsyncThunk(
+const getPreviewServices = createAsyncThunk(
   GET_PREVIEW_COLLABS_NAME,
   async (_, thunkAPI) => {
     try {
-      const response = await fetchPreviewCollabs();
+      const response = await fetchPreviewServices();
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e);
@@ -73,5 +73,5 @@ export {
   getFeaturedBeat,
   getLicenses,
   getPreviewSoundKits,
-  getPreviewCollabs,
+  getPreviewServices,
 };

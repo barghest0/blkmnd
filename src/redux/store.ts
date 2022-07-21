@@ -4,7 +4,8 @@ import authSlice from './auth/slice';
 import beatDetails from './beat-details/slice';
 import beatsSlice from './beats/slice';
 import cartSlice from './cart/slice';
-import collabsSlice from './collabs/slice';
+import servicesSlice from './services/slice';
+import serviceDetailsSlice from './service-details/slice';
 import discographySlice from './discography/slice';
 import landingSlice from './landing/slice';
 import licensesSlice from './licenses/slice';
@@ -21,7 +22,8 @@ const rootReducer = combineReducers({
   licenses: licensesSlice.reducer,
   soundKits: soundKitsSlice.reducer,
   soundKitDetails: soundKitDetailsSlice.reducer,
-  collabs: collabsSlice.reducer,
+  services: servicesSlice.reducer,
+  serviceDetails: serviceDetailsSlice.reducer,
   player: playerSlice.reducer,
   discography: discographySlice.reducer,
   memberships: membershipsSlice.reducer,

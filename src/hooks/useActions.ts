@@ -14,7 +14,8 @@ import * as beatsActions from 'reduxStore/beats/actions';
 import * as beatDetailsActions from 'reduxStore/beat-details/actions';
 import * as licensesActions from 'reduxStore/licenses/actions';
 import * as soundKitsActions from 'reduxStore/sound-kits/actions';
-import * as collabsActions from 'reduxStore/collabs/actions';
+import * as servicesActions from 'reduxStore/services/actions';
+import * as serviceDetailsActions from 'reduxStore/service-details/actions';
 import * as discographyActions from 'reduxStore/discography/actions';
 import * as membershipsActions from 'reduxStore/memberships/actions';
 import * as playerActions from 'reduxStore/player/actions';
@@ -28,12 +29,13 @@ const rootActionCreator = {
   ...beatDetailsActions,
   ...licensesActions,
   ...soundKitsActions,
-  ...collabsActions,
+  ...servicesActions,
   ...cartActions,
   ...discographyActions,
   ...membershipsActions,
   ...beatsSlice.actions,
   ...playerSlice.actions,
+  ...serviceDetailsActions,
   ...soundKitsSlice.actions,
   ...soundKitsDetailsSlice.actions,
   ...soundKitDetailsActions,

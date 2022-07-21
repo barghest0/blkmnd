@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { Tag } from 'reduxStore/beats/types';
+import { Tag } from 'reduxStore/beat-details/types';
 import { RouterPaths } from 'shared/router/types';
 import { StyledLink } from 'shared/styles/links';
 

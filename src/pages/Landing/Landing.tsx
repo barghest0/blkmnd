@@ -11,7 +11,7 @@ import Preloader from 'components/Preloader/Preloader';
 import BeatsList from 'components/BeatsList/BeatsList';
 import Visualizer from 'components/Visualizer/Visualizer';
 import ContactForm from 'components/ContactForm/ContactForm';
-import CollabCard from 'components/CollabCard/CollabCard';
+import ServiceCard from 'components/ServiceCard/ServiceCard';
 import LicenseCard from 'components/LicenseCard/LicenseCard';
 import SoundKitCard from 'components/SoundKitCard/SoundKitCard';
 import DiscographyCard from 'components/DiscographyCard/DiscographyCard';
@@ -33,7 +33,7 @@ const Landing: FC = memo(() => {
   );
   const licenses = useTypedSelector(landingSelectors.licenses);
   const soundKits = useTypedSelector(landingSelectors.soundKits);
-  const collabs = useTypedSelector(landingSelectors.services);
+  const services = useTypedSelector(landingSelectors.services);
 
   const {
     isPreviewBeatsFetching,
@@ -62,12 +62,12 @@ const Landing: FC = memo(() => {
     getLicenses,
     getPreviewSoundKits,
     getPreviewBeats,
-    getPreviewCollabs,
+    getPreviewServices,
     getDiscographyBeats,
   } = useActions();
 
-  const collabsCards = collabs.map((collab) => (
-    <CollabCard collab={collab} key={collab.id} />
+  const servicesCards = services.map((service) => (
+    <ServiceCard service={service} key={service.id} />
   ));
 
   const licensesCards = licenses.map((license) => (
@@ -95,7 +95,7 @@ const Landing: FC = memo(() => {
     getPreviewBeats();
     getLicenses();
     getPreviewSoundKits();
-    getPreviewCollabs();
+    getPreviewServices();
     getDiscographyBeats();
   }, []);
 
@@ -179,12 +179,12 @@ const Landing: FC = memo(() => {
         <S.Container>
           <S.SectionTitle>Services</S.SectionTitle>
           <ScrollContainer>
-            <S.CollabsList>
-              {isPreviewServicesFetching ? <Preloader /> : collabsCards}
-            </S.CollabsList>
+            <S.ServicesList>
+              {isPreviewServicesFetching ? <Preloader /> : servicesCards}
+            </S.ServicesList>
           </ScrollContainer>
           <S.DetailsButton>
-            <ButtonLink to={`${RouterPaths.collabs}`}>
+            <ButtonLink to={`${RouterPaths.services}`}>
               Browse all services
             </ButtonLink>
           </S.DetailsButton>

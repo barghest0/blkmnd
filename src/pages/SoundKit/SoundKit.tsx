@@ -13,7 +13,7 @@ import ShareButton from 'components/ShareButton/ShareButton';
 import AuthContext from 'contexts/AuthContext';
 import useActions from 'hooks/useActions';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
-import { User } from 'reduxStore/user/types';
+import { createUserComment } from 'shared/helpers/userHelpers';
 import * as soundKitDetailsSelectors from 'reduxStore/sound-kit-details/selectors';
 
 import * as S from './SoundKit.style';
@@ -35,17 +35,10 @@ const SoundKit = () => {
     </S.Comment>
   ));
 
-  const onCommentSubmit = (values: CommentValues) => {
+  const onCommentSubmit = ({ comment }: CommentValues) => {
     if (user) {
-      const date = format(new Date(), 'MM.dd.yyyy');
-      const commentUser: User = {
-        id: user.id,
-        username: user.username,
-        password: user.password,
-        role: 'user',
-      };
-      const comment = { user: commentUser, text: values.comment, date };
-      pushNewSoundKitComment(comment);
+      const userComment = createUserComment(user, comment);
+      pushNewSoundKitComment(userComment);
       updateSoundKit();
     }
   };

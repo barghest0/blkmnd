@@ -4,28 +4,28 @@ import Image from 'components/Image/Image';
 import { RouterPaths } from 'shared/router/types';
 import { StyledLink } from 'shared/styles/links';
 import { convertPrice } from 'shared/helpers/priceHelper';
-import { Collab } from 'reduxStore/collabs/types';
+import { Service } from 'reduxStore/service-details/types';
 
-import * as S from './CollabCard.style';
+import * as S from './ServiceCard.style';
 
 type Props = {
-  collab: Collab;
+  service: Service;
 };
 
-const CollabCard: FC<Props> = ({ collab }) => {
-  const { image, title, id, price } = collab;
+const ServiceCard: FC<Props> = ({ service }) => {
+  const { image, title, id, price } = service;
 
   return (
-    <S.CollabCard>
-      <StyledLink to={`${RouterPaths.collabs}/${id}`}>
+    <S.ServiceCard>
+      <StyledLink to={`${RouterPaths.services}/${id}`}>
         <S.Thumbnail>
           <Image image={image} />
         </S.Thumbnail>
         <S.Title>{title}</S.Title>
         <S.Price>{convertPrice(price)}</S.Price>
       </StyledLink>
-    </S.CollabCard>
+    </S.ServiceCard>
   );
 };
 
-export default CollabCard;
+export default ServiceCard;

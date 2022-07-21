@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const CollabCard = styled.div`
+const ServiceCard = styled.div`
   width: 100%;
 `;
 
@@ -24,4 +24,4 @@ const Price = styled.p`
   font-size: 14px;
 `;
 
-export { CollabCard, Thumbnail, Title, Price };
+export { ServiceCard, Thumbnail, Title, Price };

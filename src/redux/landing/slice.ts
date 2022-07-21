@@ -1,14 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Beat, License } from 'redux/beats/types';
-import { Collab } from 'redux/collabs/types';
-import { SoundKit } from 'redux/sound-kits/types';
+import { Service } from 'redux/service-details/types';
+import { SoundKit } from 'redux/sound-kit-details/types';
 
 import {
   getFeaturedBeat,
   getLicenses,
   getPreviewBeats,
-  getPreviewCollabs,
+  getPreviewServices,
   getPreviewSoundKits,
 } from './actions';
 import { LANDING_INITIAL_STATE, LANDING_SLICE_NAME } from './constants';
@@ -91,20 +91,20 @@ const landing = createSlice({
       state.previewSoundKitsErrors = action.payload;
     },
 
-    [getPreviewCollabs.fulfilled.type]: (
+    [getPreviewServices.fulfilled.type]: (
       state,
-      action: PayloadAction<Collab[]>,
+      action: PayloadAction<Service[]>,
     ) => {
       state.isPreviewServicesFetching = false;
       state.previewServicesErrors = null;
       state.previewServices = action.payload;
     },
 
-    [getPreviewCollabs.pending.type]: (state) => {
+    [getPreviewServices.pending.type]: (state) => {
       state.isPreviewServicesFetching = true;
     },
 
-    [getPreviewCollabs.rejected.type]: (
+    [getPreviewServices.rejected.type]: (
       state,
       action: PayloadAction<string>,
     ) => {

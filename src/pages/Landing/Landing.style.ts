@@ -132,7 +132,7 @@ const DetailsButton = styled.div`
   margin-top: 50px;
 `;
 
-const CollabsList = styled.div`
+const ServicesList = styled.div`
   display: grid;
   column-gap: 40px;
   margin: 0 auto;
@@ -271,7 +271,7 @@ export {
   ContactForm,
   DiscographyList,
   Section,
-  CollabsList,
+  ServicesList,
   Visualizer,
   SearchFieldContainer,
   SearchSubmit,
