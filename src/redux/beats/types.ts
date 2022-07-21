@@ -1,18 +1,9 @@
-import { User } from 'reduxStore/user/types';
+import { Beat } from 'redux/beat-details/types';
 
 type BeatsState = {
   beats: Beat[];
-  beat: Beat | null;
-  featuredBeat: Beat | null;
   isFetching: boolean;
   errors: null | any;
-};
-
-type Comment = {
-  id?: number;
-  user: User;
-  text: string;
-  date: string;
 };
 
 type FiltersState = {
@@ -22,11 +13,6 @@ type FiltersState = {
   bpm: string;
   mood: string;
   sort: string;
-};
-
-type Tag = {
-  id: number;
-  name: string;
 };
 
 type ContractValues = {
@@ -49,27 +35,4 @@ type License = {
   contractValues: ContractValues;
 };
 
-type Musician = {
-  id: number;
-  name: string;
-};
-
-type Beat = {
-  id: number;
-  title: string;
-  bpm: number;
-  type: string;
-  chord: string;
-  date: string;
-  tags: Tag[];
-  price: number;
-  featured: boolean;
-  time: string;
-  image: string;
-  musician: Musician;
-  track: string;
-  licenses: License[];
-  comments: Comment[];
-};
-
-export { BeatsState, FiltersState, Beat, Tag, License, Comment };
+export { BeatsState, FiltersState, Beat, License };

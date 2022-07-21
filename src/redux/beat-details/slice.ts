@@ -1,41 +1,53 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Beat } from 'redux/beats/types';
-import { getBeat, updateBeat } from './actions';
+import { getBeatDetails, updateBeatDetails } from './actions';
 import {
   BEAT_DETAILS_INITIAL_STATE,
   BEAT_DETAILS_SLICE_NAME,
 } from './constants';
+import { Beat, Comment } from './types';
 
 const beatDetails = createSlice({
   name: BEAT_DETAILS_SLICE_NAME,
   initialState: BEAT_DETAILS_INITIAL_STATE,
-  reducers: {},
+  reducers: {
+    pushNewBeatComment: (state, action: PayloadAction<Comment>) => {
+      if (state.beat) {
+        state.beat.comments.push(action.payload);
+      }
+    },
+  },
   extraReducers: {
-    [getBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
+    [getBeatDetails.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
       state.errors = null;
       state.beat = action.payload;
       state.isBeatFetching = false;
     },
 
-    [getBeat.pending.type]: (state) => {
+    [getBeatDetails.pending.type]: (state) => {
       state.isBeatFetching = true;
     },
 
-    [getBeat.rejected.type]: (state, action: PayloadAction<any>) => {
+    [getBeatDetails.rejected.type]: (state, action: PayloadAction<any>) => {
       state.errors = action.payload;
       state.isBeatFetching = false;
     },
 
-    [updateBeat.fulfilled.type]: (state, action: PayloadAction<Beat>) => {
+    [updateBeatDetails.fulfilled.type]: (
+      state,
+      action: PayloadAction<Beat>,
+    ) => {
       state.errors = null;
       state.beat = action.payload;
     },
 
-    [updateBeat.pending.type]: (state) => {
+    [updateBeatDetails.pending.type]: (state) => {
       state.isBeatFetching = true;
     },
 
-    [updateBeat.rejected.type]: (state, action: PayloadAction<string>) => {
+    [updateBeatDetails.rejected.type]: (
+      state,
+      action: PayloadAction<string>,
+    ) => {
       state.errors = action.payload;
     },
   },

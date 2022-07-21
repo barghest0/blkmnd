@@ -41,7 +41,7 @@ const Landing: FC = memo(() => {
     isPreviewServicesFetching,
     isPreviewSoundKitsFetching,
     isFeaturedBeatFetching,
-  } = useTypedSelector(landingSelectors.fetchings);
+  } = useTypedSelector(landingSelectors.landingFetchings);
 
   const discographyBeats = useTypedSelector(discographySelectors.allBeats);
   const isDiscographyFetching = useTypedSelector(

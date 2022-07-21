@@ -3,7 +3,6 @@ import { useParams } from 'react-router-dom';
 import MusicNoteSharpIcon from '@mui/icons-material/MusicNoteSharp';
 import SpeedIcon from '@mui/icons-material/Speed';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
-import format from 'date-fns/format';
 
 import PlayButton from 'components/PlayButton/PlayButton';
 import Preloader from 'components/Preloader/Preloader';
@@ -20,33 +19,34 @@ import CommentField, {
 } from 'components/CommentField/CommentField';
 import ChooseLicenseButton from 'components/ChooseLicenseButton/ChooseLicenseButton';
 import Comment from 'components/Comment/Comment';
-import { User } from 'reduxStore/user/types';
+import * as beatDetailsSelectors from 'reduxStore/beat-details/selectors';
 import * as beatsSelectors from 'reduxStore/beats/selectors';
+import { createUserComment } from 'shared/helpers/userHelpers';
 import AuthContext from 'contexts/AuthContext';
 
-import * as S from './Beat.style';
 import { COMMENTS_BEAT_TAB_STATE, RELATED_BEAT_TAB_STATE } from './constants';
+import * as S from './Beat.style';
 
 const Beat = () => {
   const params = useParams();
 
   const beats = useTypedSelector(beatsSelectors.allBeats);
-  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
+  const beat = useTypedSelector(beatDetailsSelectors.beatDetails);
 
   const {
-    getBeat,
+    getBeatDetails,
     setBeat,
     togglePlaying,
     getAllBeats,
     openPlayer,
     pushNewBeatComment,
-    updateBeat,
+    updateBeatDetails,
   } = useActions();
 
-  const [value, setValue] = useState(RELATED_BEAT_TAB_STATE);
+  const [tabState, setTabState] = useState(RELATED_BEAT_TAB_STATE);
 
-  const handleTabChange = (_: SyntheticEvent, newValue: string) => {
-    setValue(newValue);
+  const handleTabChange = (_: SyntheticEvent, newState: string) => {
+    setTabState(newState);
   };
 
   const { user } = useContext(AuthContext);
@@ -59,18 +59,11 @@ const Beat = () => {
     }
   };
 
-  const onCommentSubmit = (values: CommentValues) => {
+  const onCommentSubmit = ({ comment }: CommentValues) => {
     if (user) {
-      const date = format(new Date(), 'MM.dd.yyyy');
-      const commentUser: User = {
-        id: user.id,
-        username: user.username,
-        password: user.password,
-        role: 'user',
-      };
-      const comment = { user: commentUser, text: values.comment, date };
-      pushNewBeatComment(comment);
-      updateBeat();
+      const userComment = createUserComment(user, comment);
+      pushNewBeatComment(userComment);
+      updateBeatDetails();
     }
   };
 
@@ -87,7 +80,7 @@ const Beat = () => {
   ));
 
   useEffect(() => {
-    getBeat(Number(params.id));
+    getBeatDetails(Number(params.id));
     getAllBeats();
   }, []);
 
@@ -152,7 +145,7 @@ const Beat = () => {
 
       <S.Tabs>
         <Tabs
-          value={value}
+          value={tabState}
           onChange={handleTabChange}
           indicatorColor="secondary"
         >
@@ -161,10 +154,10 @@ const Beat = () => {
         </Tabs>
       </S.Tabs>
       <S.Container>
-        <S.TabPanel hidden={value !== RELATED_BEAT_TAB_STATE}>
+        <S.TabPanel hidden={tabState !== RELATED_BEAT_TAB_STATE}>
           <BeatsList beats={beats} />
         </S.TabPanel>
-        <S.TabPanel hidden={value !== COMMENTS_BEAT_TAB_STATE}>
+        <S.TabPanel hidden={tabState !== COMMENTS_BEAT_TAB_STATE}>
           <S.Comments>{comments}</S.Comments>
         </S.TabPanel>
       </S.Container>

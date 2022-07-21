@@ -8,13 +8,13 @@ import useActions from 'hooks/useActions';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import * as modalsSelectors from 'reduxStore/modals/selectors';
 import { ModalsTypes } from 'reduxStore/modals/types';
-import * as beatsSelectors from 'reduxStore/beats/selectors';
+import * as beatDetailsSelectors from 'reduxStore/beat-details/selectors';
 
 import * as S from './BuyModal.style';
 
 const BuyModal = () => {
   const { buyModalVisability } = useTypedSelector(modalsSelectors.visabilities);
-  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
+  const beat = useTypedSelector(beatDetailsSelectors.beatDetails);
 
   const licensesCards = beat?.licenses.map((license) => (
     <ChooseLicenseCard license={license} beat={beat} key={license.id} />

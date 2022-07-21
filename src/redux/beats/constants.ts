@@ -9,8 +9,6 @@ const GET_FILTERED_BEATS_NAME = 'beats/filtered';
 const BEATS_INITIAL_STATE: BeatsState = {
   beats: [],
   isFetching: false,
-  featuredBeat: null,
-  beat: null,
   errors: null,
 };
 

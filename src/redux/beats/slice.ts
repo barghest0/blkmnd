@@ -1,19 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { Beat, Comment } from './types';
+import { Beat } from './types';
 import { getAllBeats, getFilteredBeats } from './actions';
 import { BEATS_INITIAL_STATE, BEATS_SLICE_NAME } from './constants';
 
 const beats = createSlice({
   name: BEATS_SLICE_NAME,
   initialState: BEATS_INITIAL_STATE,
-  reducers: {
-    pushNewBeatComment: (state, action: PayloadAction<Comment>) => {
-      if (state.beat) {
-        state.beat.comments.push(action.payload);
-      }
-    },
-  },
+  reducers: {},
   extraReducers: {
     [getAllBeats.fulfilled.type]: (state, action: PayloadAction<Beat[]>) => {
       state.isFetching = false;

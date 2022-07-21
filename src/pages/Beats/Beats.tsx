@@ -25,7 +25,7 @@ type FilterValues = {
 const Beats = () => {
   const { getAllBeats, getFilteredBeats } = useActions();
   const beats = useTypedSelector(beatsSelectors.allBeats);
-  const isBeatsFetching = useTypedSelector(beatsSelectors.isFetching);
+  const isBeatsFetching = useTypedSelector(beatsSelectors.beatsFetching);
 
   const [filters, setFilters] = useSearchParams();
 

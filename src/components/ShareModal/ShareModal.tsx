@@ -9,7 +9,7 @@ import Preloader from 'components/Preloader/Preloader';
 import ModalContainer from 'components/ModalContainer/ModalContainer';
 import { ModalsTypes } from 'reduxStore/modals/types';
 import * as modalsSelectors from 'reduxStore/modals/selectors';
-import * as beatsSelectors from 'reduxStore/beats/selectors';
+import * as beatDetailsSelectors from 'reduxStore/beat-details/selectors';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 
 import * as S from './ShareModal.style';
@@ -19,7 +19,7 @@ const ShareModal: FC = () => {
   const { shareModalVisability } = useTypedSelector(
     modalsSelectors.visabilities,
   );
-  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
+  const beat = useTypedSelector(beatDetailsSelectors.beatDetails);
   const [tab, setTab] = useState(SHARE_TAB_STATE);
   const [copiedState, setCopiedState] = useState({
     value: '',

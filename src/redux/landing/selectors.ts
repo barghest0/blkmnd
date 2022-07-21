@@ -1,6 +1,6 @@
 import { State } from 'redux/types';
 
-const fetchings = ({
+const landingFetchings = ({
   landing: {
     isPreviewBeatsFetching,
     isFeaturedBeatFetching,
@@ -45,4 +45,4 @@ const errors = ({
   licensesErrors,
 });
 
-export { fetchings, beats, soundKits, services, licenses, errors };
+export { landingFetchings, beats, soundKits, services, licenses, errors };

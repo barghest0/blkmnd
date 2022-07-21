@@ -10,7 +10,7 @@ import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import downloadValidation from 'shared/formValidations/download';
 import * as modalsSelectors from 'reduxStore/modals/selectors';
 import { ModalsTypes } from 'reduxStore/modals/types';
-import * as beatsSelectors from 'reduxStore/beats/selectors';
+import * as beatDetailsSelectors from 'reduxStore/beat-details/selectors';
 
 import * as S from './DownloadModal.style';
 
@@ -26,7 +26,7 @@ const DownloadModal: FC = () => {
   const { downloadModalVisability } = useTypedSelector(
     modalsSelectors.visabilities,
   );
-  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
+  const beat = useTypedSelector(beatDetailsSelectors.beatDetails);
 
   const initialDownloadValues: DownloadValues = {
     email: '',
