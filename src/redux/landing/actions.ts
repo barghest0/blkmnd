@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import { fetchFeaturedBeat, fetchPreviewBeats } from 'shared/api/beats';
 import { fetchPreviewServices } from 'shared/api/services';
 import { fetchLicenses } from 'shared/api/licenses';
-import { fetchPreviewSoundKits } from 'shared/api/soundKits';
+import { fetchPreviewSoundKits } from 'shared/api/sound-kits';
 import {
   GET_FEATURED_BEAT_NAME,
   GET_LICENSES_NAME,

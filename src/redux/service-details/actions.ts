@@ -4,7 +4,7 @@ import { fetchService } from 'shared/api/services';
 
 import { GET_SERVICE_DETAILS_NAME } from './constants';
 
-const getService = createAsyncThunk(
+const getServiceDetails = createAsyncThunk(
   GET_SERVICE_DETAILS_NAME,
   async (id: number, thunkAPI) => {
     try {
@@ -16,4 +16,4 @@ const getService = createAsyncThunk(
   },
 );
 
-export { getService };
+export { getServiceDetails };

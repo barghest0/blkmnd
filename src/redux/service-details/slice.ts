@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { getService } from './actions';
+import { getServiceDetails } from './actions';
 import {
   SERVICE_DETAILS_INITIAL_STATE,
   SERVICE_DETAILS_SLICE_NAME,
@@ -12,17 +12,20 @@ const serviceDetails = createSlice({
   initialState: SERVICE_DETAILS_INITIAL_STATE,
   reducers: {},
   extraReducers: {
-    [getService.fulfilled.type]: (state, action: PayloadAction<Service>) => {
+    [getServiceDetails.fulfilled.type]: (
+      state,
+      action: PayloadAction<Service>,
+    ) => {
       state.isFetching = false;
       state.errors = null;
       state.service = action.payload;
     },
 
-    [getService.pending.type]: (state) => {
+    [getServiceDetails.pending.type]: (state) => {
       state.isFetching = true;
     },
 
-    [getService.rejected.type]: (state, action: PayloadAction<any>) => {
+    [getServiceDetails.rejected.type]: (state, action: PayloadAction<any>) => {
       state.isFetching = false;
       state.errors = action.payload;
     },

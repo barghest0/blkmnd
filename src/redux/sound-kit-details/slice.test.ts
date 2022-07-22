@@ -2,70 +2,33 @@ import { waitFor } from '@testing-library/react';
 
 import { mockDispatch } from 'test-utils/utils';
 import { mockComment, mockSoundKit } from 'test-utils/mocks';
-import * as soundKitsApi from 'shared/api/soundKits';
+import * as soundKitsApi from 'shared/api/sound-kits';
 
-import soundKitsSlice from './slice';
+import slice from './slice';
+import { getSoundKit, updateSoundKit } from './actions';
 import {
-  getAllSoundKits,
-  getPreviewSoundKits,
-  getSoundKit,
-  updateSoundKit,
-} from './actions';
-import { SOUND_KITS_INITIAL_STATE, SOUND_KITS_SLICE_NAME } from './constants';
+  SOUND_KIT_DETAILS_INITIAL_STATE,
+  SOUND_KIT_DETAILS_SLICE_NAME,
+} from './constants';
 
-const state = soundKitsSlice.getInitialState();
+const state = slice.getInitialState();
 
-describe('soundKitsSlice state tests', () => {
+describe('sound kit details slice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(state).toEqual(SOUND_KITS_INITIAL_STATE);
+    expect(state).toEqual(SOUND_KIT_DETAILS_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
-    expect(soundKitsSlice.name).toEqual(SOUND_KITS_SLICE_NAME);
+    expect(slice.name).toEqual(SOUND_KIT_DETAILS_SLICE_NAME);
   });
 });
 
-describe('correct set soundKitsSlice all sound kits with mock action payload', () => {
-  test('expect set correct fulfilled sound kits', () => {
-    const action = {
-      type: getAllSoundKits.fulfilled.type,
-      payload: [mockSoundKit],
-    };
-    const newState = soundKitsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      soundKits: [mockSoundKit],
-    });
-  });
-
-  test('expect set isFetching during sound kits pending', () => {
-    const action = { type: getAllSoundKits.pending.type };
-    const newState = soundKitsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      isFetching: true,
-    });
-  });
-
-  test('expect set errors after rejected get sound kits', () => {
-    const action = {
-      type: getAllSoundKits.rejected.type,
-      payload: 'error',
-    };
-    const newState = soundKitsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      errors: 'error',
-    });
-  });
-});
-
-describe('correct update soundKitsSlice sound kit with mock action payload', () => {
+describe('correct update sound kit with mock action payload', () => {
   test('expect correct update fulfilled sound kit', () => {
     const action = {
       type: updateSoundKit.fulfilled.type,
       payload: mockSoundKit,
     };
-    const newState = soundKitsSlice.reducer(state, action);
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       soundKit: mockSoundKit,
@@ -74,7 +37,7 @@ describe('correct update soundKitsSlice sound kit with mock action payload', () 
 
   test('expect set isFetching during sound kit update pending', () => {
     const action = { type: updateSoundKit.pending.type };
-    const newState = soundKitsSlice.reducer(state, action);
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       isFetching: true,
@@ -86,7 +49,7 @@ describe('correct update soundKitsSlice sound kit with mock action payload', () 
       type: updateSoundKit.rejected.type,
       payload: 'error',
     };
-    const newState = soundKitsSlice.reducer(state, action);
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       errors: 'error',
@@ -94,48 +57,13 @@ describe('correct update soundKitsSlice sound kit with mock action payload', () 
   });
 });
 
-describe('correct set soundKitsSlice preview sound kits with mock action payload', () => {
-  test('expect set correct fulfilled preview sound kits', () => {
-    const action = {
-      type: getPreviewSoundKits.fulfilled.type,
-      payload: [mockSoundKit],
-    };
-    const newState = soundKitsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      soundKits: [mockSoundKit],
-    });
-  });
-
-  test('expect set isFetching during preview sound kits pending', () => {
-    const action = { type: getPreviewSoundKits.pending.type };
-    const newState = soundKitsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      isFetching: true,
-    });
-  });
-
-  test('expect set errors after rejected get preview sound kits', () => {
-    const action = {
-      type: getPreviewSoundKits.rejected.type,
-      payload: 'error',
-    };
-    const newState = soundKitsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      errors: 'error',
-    });
-  });
-});
-
-describe('correct set soundKitsSlice sound kits with mock action payload', () => {
+describe('correct set sound kit with mock action payload', () => {
   test('expect set correct fulfilled sound kit', () => {
     const action = {
       type: getSoundKit.fulfilled.type,
       payload: mockSoundKit,
     };
-    const newState = soundKitsSlice.reducer(state, action);
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       soundKit: mockSoundKit,
@@ -144,7 +72,7 @@ describe('correct set soundKitsSlice sound kits with mock action payload', () =>
 
   test('expect set isFetching during sound kit pending', () => {
     const action = { type: getSoundKit.pending.type };
-    const newState = soundKitsSlice.reducer(state, action);
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       isFetching: true,
@@ -156,7 +84,7 @@ describe('correct set soundKitsSlice sound kits with mock action payload', () =>
       type: getSoundKit.rejected.type,
       payload: 'error',
     };
-    const newState = soundKitsSlice.reducer(state, action);
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       errors: 'error',
@@ -164,66 +92,40 @@ describe('correct set soundKitsSlice sound kits with mock action payload', () =>
   });
 });
 
-describe('correct performance sync soundKitsSlice actions with mock action payload', () => {
+describe('correct performance sync slice actions with mock action payload', () => {
   test('expect correct push comment to sound kit', () => {
     const action = {
       type: getSoundKit.fulfilled.type,
       payload: mockSoundKit,
     };
-    const stateWithSoundKit = soundKitsSlice.reducer(state, action);
+    const stateWithSoundKit = slice.reducer(state, action);
 
-    const newState = soundKitsSlice.reducer(
+    const newState = slice.reducer(
       stateWithSoundKit,
-      soundKitsSlice.actions.pushNewSoundKitComment(mockComment),
+      slice.actions.pushNewSoundKitComment(mockComment),
     );
     expect(newState.soundKit?.comments).toContain(mockComment);
   });
 });
 
-jest.mock('shared/api/soundKits');
+jest.mock('shared/api/sound-kits');
 const mockSoundKitsApi = soundKitsApi as jest.Mocked<typeof soundKitsApi>;
 
-describe('resolved get sound kits with async thunk', () => {
-  test('expect resolved get all sound kits response', async () => {
-    const mockData = {
-      data: [mockSoundKit],
-    };
-    mockSoundKitsApi.fetchAllSoundKits.mockResolvedValueOnce(mockData);
-    const soundKits = await mockDispatch(getAllSoundKits());
-
-    await waitFor(() => {
-      expect(soundKits.payload).toEqual([mockSoundKit]);
-      expect(mockSoundKitsApi.fetchAllSoundKits).toBeCalled();
-    });
-  });
-
-  test('expect resolved update sound kit response', async () => {
+describe('resolved get sound kit details with async thunk', () => {
+  test('expect resolved update sound kit details response', async () => {
     const mockData = {
       data: mockSoundKit,
     };
     mockSoundKitsApi.putSoundKit.mockResolvedValueOnce(mockData);
-    const soundKits = await mockDispatch(updateSoundKit());
+    const soundKit = await mockDispatch(updateSoundKit());
 
     await waitFor(() => {
-      expect(soundKits.payload).toEqual(mockSoundKit);
+      expect(soundKit.payload).toEqual(mockSoundKit);
       expect(mockSoundKitsApi.putSoundKit).toBeCalled();
     });
   });
 
-  test('expect resolved get preview sound kits response', async () => {
-    const mockData = {
-      data: [mockSoundKit],
-    };
-    mockSoundKitsApi.fetchPreviewSoundKits.mockResolvedValueOnce(mockData);
-    const soundKits = await mockDispatch(getPreviewSoundKits());
-
-    await waitFor(() => {
-      expect(soundKits.payload).toEqual([mockSoundKit]);
-      expect(mockSoundKitsApi.fetchPreviewSoundKits).toBeCalled();
-    });
-  });
-
-  test('expect resolved get sound kit response', async () => {
+  test('expect resolved get sound kit details response', async () => {
     const mockData = {
       data: mockSoundKit,
     };
@@ -237,33 +139,9 @@ describe('resolved get sound kits with async thunk', () => {
   });
 });
 
-describe('rejected get sound kits with async thunk', () => {
+describe('rejected get sound kit details with async thunk', () => {
   afterEach(() => {
     jest.clearAllMocks();
-  });
-
-  test('expect rejected get all sound kits response', async () => {
-    const mockData = {
-      error: 'error',
-    };
-    mockSoundKitsApi.fetchAllSoundKits.mockRejectedValue(mockData);
-    const rejectedSoundKits = await mockDispatch(getAllSoundKits());
-
-    await waitFor(() => {
-      expect(rejectedSoundKits.payload).toEqual(mockData);
-    });
-  });
-
-  test('expect rejected get preview sound kits response', async () => {
-    const mockData = {
-      error: 'error',
-    };
-    mockSoundKitsApi.fetchPreviewSoundKits.mockRejectedValue(mockData);
-    const rejectedSoundKits = await mockDispatch(getPreviewSoundKits());
-
-    await waitFor(() => {
-      expect(rejectedSoundKits.payload).toEqual(mockData);
-    });
   });
 
   test('expect rejected get sound kit response', async () => {

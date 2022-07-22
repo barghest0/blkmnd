@@ -5,7 +5,7 @@ import { mockLicense } from 'test-utils/mocks';
 import * as licensesApi from 'shared/api/licenses';
 
 import licensesSlice from './slice';
-import { getLicense, getLicenses } from './actions';
+import { getLicense } from './actions';
 import { LICENSE_INITIAL_STATE, LICENSE_SLICE_NAME } from './constants';
 
 const state = licensesSlice.getInitialState();
@@ -16,41 +16,6 @@ describe('licensesSlice state tests', () => {
   });
   test('expect set correct slice name', () => {
     expect(licensesSlice.name).toEqual(LICENSE_SLICE_NAME);
-  });
-});
-
-describe('correct set licensesSlice all licenses with mock action payload', () => {
-  test('expect set correct fulfilled licenses', () => {
-    const action = {
-      type: getLicenses.fulfilled.type,
-      payload: [mockLicense],
-    };
-    const newState = licensesSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      licenses: [mockLicense],
-    });
-  });
-
-  test('expect set isFetching during licenses pending', () => {
-    const action = { type: getLicenses.pending.type };
-    const newState = licensesSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      isFetching: true,
-    });
-  });
-
-  test('expect set errors after rejected get licenses beats', () => {
-    const action = {
-      type: getLicenses.rejected.type,
-      payload: 'error',
-    };
-    const newState = licensesSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      errors: 'error',
-    });
   });
 });
 
@@ -93,19 +58,6 @@ jest.mock('shared/api/licenses');
 const mockLicensesApi = licensesApi as jest.Mocked<typeof licensesApi>;
 
 describe('resolved get licenses with async thunk', () => {
-  test('expect resolved get all licenses response', async () => {
-    const mockData = {
-      data: [mockLicense],
-    };
-    mockLicensesApi.fetchLicenses.mockResolvedValueOnce(mockData);
-    const licenses = await mockDispatch(getLicenses());
-
-    await waitFor(() => {
-      expect(licenses.payload).toEqual([mockLicense]);
-      expect(mockLicensesApi.fetchLicenses).toBeCalled();
-    });
-  });
-
   test('expect resolved get license response', async () => {
     const mockData = {
       data: mockLicense,
@@ -123,18 +75,6 @@ describe('resolved get licenses with async thunk', () => {
 describe('rejected get licenses with async thunk', () => {
   afterEach(() => {
     jest.clearAllMocks();
-  });
-
-  test('expect rejected all licenses response', async () => {
-    const mockData = {
-      error: 'error',
-    };
-    mockLicensesApi.fetchLicenses.mockRejectedValue(mockData);
-    const rejectedLicenses = await mockDispatch(getLicenses());
-
-    await waitFor(() => {
-      expect(rejectedLicenses.payload).toEqual(mockData);
-    });
   });
 
   test('expect rejected license response', async () => {

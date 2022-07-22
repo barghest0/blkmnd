@@ -2,49 +2,49 @@ import { waitFor } from '@testing-library/react';
 
 import { mockCollab } from 'test-utils/mocks';
 
-import * as collabsApi from 'shared/api/collabs';
+import * as ServicesApi from 'shared/api/services';
 import { mockDispatch } from 'test-utils/utils';
 
-import collabsSlice from './slice';
-import { getAllCollabs, getCollab, getPreviewCollabs } from './actions';
-import { COLLABS_INITIAL_STATE, COLLABS_SLICE_NAME } from './constants';
+import slice from './slice';
+import { getAllServices } from './actions';
+import { SERVICES_INITIAL_STATE, SERVICES_SLICE_NAME } from './constants';
 
-const state = collabsSlice.getInitialState();
+const state = slice.getInitialState();
 
-describe('collabsSlice state tests', () => {
+describe('services slice tate tests', () => {
   test('expect set correct initial state', () => {
-    expect(state).toEqual(COLLABS_INITIAL_STATE);
+    expect(state).toEqual(SERVICES_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
-    expect(collabsSlice.name).toEqual(COLLABS_SLICE_NAME);
+    expect(slice.name).toEqual(SERVICES_SLICE_NAME);
   });
 });
 
-describe('correct set collabsSlice all collabs with mock action payload', () => {
-  test('expect set correct fulfilled all collabs', () => {
+describe('correct set sliceall collabs with mock action payload', () => {
+  test('expect set correct fulfilled all services', () => {
     const action = {
-      type: getAllCollabs.fulfilled.type,
+      type: getAllServices.fulfilled.type,
       payload: [mockCollab],
     };
-    const newState = collabsSlice.reducer(state, action);
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
-      collabs: [mockCollab],
+      services: [mockCollab],
     });
   });
 
-  test('expect set isFetching during all collabs pending', () => {
-    const action = { type: getAllCollabs.pending.type };
-    const newState = collabsSlice.reducer(state, action);
+  test('expect set isFetching during all services pending', () => {
+    const action = { type: getAllServices.pending.type };
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       isFetching: true,
     });
   });
 
-  test('expect set errors after rejected get all collabs', () => {
-    const action = { type: getAllCollabs.rejected.type, payload: 'error' };
-    const newState = collabsSlice.reducer(state, action);
+  test('expect set errors after rejected get all services', () => {
+    const action = { type: getAllServices.rejected.type, payload: 'error' };
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       errors: 'error',
@@ -52,149 +52,35 @@ describe('correct set collabsSlice all collabs with mock action payload', () => 
   });
 });
 
-describe('correct set collabsSlice preview collabs with mock action payload', () => {
-  test('expect set correct fulfilled preview collabs', () => {
-    const action = {
-      type: getPreviewCollabs.fulfilled.type,
-      payload: [mockCollab],
-    };
-    const newState = collabsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      collabs: [mockCollab],
-    });
-  });
-
-  test('expect set isFetching during preview collabs pending', () => {
-    const action = { type: getPreviewCollabs.pending.type };
-    const newState = collabsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      isFetching: true,
-    });
-  });
-
-  test('expect set errors after rejected get preview collabs', () => {
-    const action = { type: getPreviewCollabs.rejected.type, payload: 'error' };
-    const newState = collabsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      errors: 'error',
-    });
-  });
-});
-
-describe('correct set collabsSlice collab with mock action payload', () => {
-  test('expect set correct fulfilled collab', () => {
-    const action = {
-      type: getCollab.fulfilled.type,
-      payload: mockCollab,
-    };
-    const newState = collabsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      collab: mockCollab,
-    });
-  });
-
-  test('expect set isFetching during collab pending', () => {
-    const action = { type: getCollab.pending.type };
-    const newState = collabsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      isFetching: true,
-    });
-  });
-
-  test('expect set errors after rejected get collab', () => {
-    const action = { type: getCollab.rejected.type, payload: 'error' };
-    const newState = collabsSlice.reducer(state, action);
-    expect(newState).toEqual({
-      ...state,
-      errors: 'error',
-    });
-  });
-});
-
-jest.mock('shared/api/collabs');
-const mockCollabsApi = collabsApi as jest.Mocked<typeof collabsApi>;
+jest.mock('shared/api/services');
+const mockServicesApi = ServicesApi as jest.Mocked<typeof ServicesApi>;
 
 describe('resolved get collabs with async thunk', () => {
-  test('expect resolved get all beats response', async () => {
+  test('expect resolved get all services response', async () => {
     const mockData = {
       data: [mockCollab],
     };
-    mockCollabsApi.fetchAllCollabs.mockResolvedValueOnce(mockData);
-    const beats = await mockDispatch(getAllCollabs());
+    mockServicesApi.fetchAllServices.mockResolvedValueOnce(mockData);
+    const beats = await mockDispatch(getAllServices());
 
     await waitFor(() => {
       expect(beats.payload).toEqual([mockCollab]);
-      expect(mockCollabsApi.fetchAllCollabs).toBeCalled();
-    });
-  });
-
-  test('expect resolved get preview collabs response', async () => {
-    const mockData = {
-      data: [mockCollab],
-    };
-    mockCollabsApi.fetchPreviewCollabs.mockResolvedValueOnce(mockData);
-    const beats = await mockDispatch(getPreviewCollabs());
-
-    await waitFor(() => {
-      expect(beats.payload).toEqual([mockCollab]);
-      expect(mockCollabsApi.fetchPreviewCollabs).toBeCalled();
-    });
-  });
-
-  test('expect resolved get collab response', async () => {
-    const mockData = {
-      data: [mockCollab],
-    };
-    mockCollabsApi.fetchCollab.mockResolvedValueOnce(mockData);
-    const beats = await mockDispatch(getCollab(1));
-
-    await waitFor(() => {
-      expect(beats.payload).toEqual([mockCollab]);
-      expect(mockCollabsApi.fetchCollab).toBeCalledWith(1);
+      expect(mockServicesApi.fetchAllServices).toBeCalled();
     });
   });
 });
 
-describe('rejected get collabs with async thunk', () => {
+describe('rejected get services with async thunk', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  test('expect rejected all collabs response', async () => {
+  test('expect rejected all services response', async () => {
     const mockData = {
       error: 'error',
     };
-    mockCollabsApi.fetchAllCollabs.mockRejectedValue(mockData);
-    const rejectedBeats = await mockDispatch(getAllCollabs());
-
-    await waitFor(() => {
-      expect(rejectedBeats.payload).toEqual(mockData);
-    });
-  });
-
-  test('expect rejected preview collabs response', async () => {
-    const mockData = {
-      error: 'error',
-    };
-    mockCollabsApi.fetchPreviewCollabs.mockRejectedValue(mockData);
-    const rejectedBeats = await mockDispatch(getPreviewCollabs());
-
-    await waitFor(() => {
-      expect(rejectedBeats.payload).toEqual(mockData);
-    });
-  });
-
-  test('expect rejected collab response', async () => {
-    const mockData = {
-      error: 'error',
-    };
-    mockCollabsApi.fetchCollab.mockRejectedValue(mockData);
-    const rejectedBeats = await mockDispatch(getCollab(1));
+    mockServicesApi.fetchAllServices.mockRejectedValue(mockData);
+    const rejectedBeats = await mockDispatch(getAllServices());
 
     await waitFor(() => {
       expect(rejectedBeats.payload).toEqual(mockData);

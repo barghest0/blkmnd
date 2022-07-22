@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { fetchAllSoundKits } from 'shared/api/soundKits';
+import { fetchAllSoundKits } from 'shared/api/sound-kits';
 
 import { GET_ALL_SOUND_KITS_NAME } from './constants';
 
