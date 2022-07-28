@@ -18,6 +18,7 @@ import {
 } from 'shared/formValidations/auth';
 import { convertErrorsToArray } from 'shared/helpers/errorsHelper';
 import { ToastTextRow, ToastTextContainer } from 'shared/styles/toast';
+import * as authSelectors from 'reduxStore/auth/selectors';
 
 import * as S from './AuthModal.style';
 import { LOGIN_MODAL_STATE, REGISTER_MODAL_STATE } from './constants';
@@ -43,17 +44,17 @@ const AuthModal = memo(() => {
 
   const { register, setModalVisability, login } = useActions();
 
-  const {
-    isFetching,
-    isRegisterSuccess,
-    isLoginSuccess,
-    loginErrors,
-    user,
-    registerErrors,
-  } = useTypedSelector((state) => state.auth);
+  const isAuthFetching = useTypedSelector(authSelectors.isAuthFetching);
+  const { loginErrors, registerErrors } = useTypedSelector(
+    authSelectors.authErrors,
+  );
+  const { isLoginSuccess, isRegisterSuccess } = useTypedSelector(
+    authSelectors.authSuccesses,
+  );
+  const userInfo = useTypedSelector(authSelectors.userInfo);
 
   const showSuccessLoginToast = () => {
-    toast.success(`Привет! ${user?.username}`);
+    toast.success(`Привет! ${userInfo?.username}`);
   };
 
   const loginErrorsArray = loginErrors && convertErrorsToArray(loginErrors);
@@ -98,11 +99,11 @@ const AuthModal = memo(() => {
   }, [isRegisterSuccess]);
 
   useEffect(() => {
-    if (isLoginSuccess && user) {
+    if (isLoginSuccess && userInfo) {
       closeModalAfterAuth();
       showSuccessLoginToast();
     }
-  }, [isLoginSuccess, user]);
+  }, [isLoginSuccess, userInfo]);
 
   useEffect(() => {
     if (loginErrors) {
@@ -142,7 +143,7 @@ const AuthModal = memo(() => {
             modalType={ModalsTypes.auth}
           >
             <S.FormContainer hidden={form !== REGISTER_MODAL_STATE}>
-              <S.Preloader isFetching={isFetching}>
+              <S.Preloader isFetching={isAuthFetching}>
                 <Preloader />
               </S.Preloader>
               <S.Form onSubmit={registerFormik.handleSubmit}>
@@ -190,7 +191,7 @@ const AuthModal = memo(() => {
               </S.Form>
             </S.FormContainer>
             <S.FormContainer hidden={form !== LOGIN_MODAL_STATE}>
-              <S.Preloader isFetching={isFetching}>
+              <S.Preloader isFetching={isAuthFetching}>
                 <Preloader />
               </S.Preloader>
               <S.Form onSubmit={loginFormik.handleSubmit}>

@@ -20,9 +20,9 @@ type PaymentValues = {
 
 const Cart = () => {
   const { getCart } = useActions();
-  const products = useTypedSelector(cartSelectors.products);
+  const products = useTypedSelector(cartSelectors.cartProducts);
   const { totalCartPrice, cartDiscount } = useTypedSelector(
-    cartSelectors.details,
+    cartSelectors.cartDetails,
   );
 
   useEffect(() => {

@@ -43,9 +43,11 @@ const Landing: FC = memo(() => {
     isFeaturedBeatFetching,
   } = useTypedSelector(landingSelectors.landingFetchings);
 
-  const discographyBeats = useTypedSelector(discographySelectors.allBeats);
+  const discographyBeats = useTypedSelector(
+    discographySelectors.allDiscographyBeats,
+  );
   const isDiscographyFetching = useTypedSelector(
-    discographySelectors.isFetching,
+    discographySelectors.isDiscographyFetching,
   );
 
   const channel = {

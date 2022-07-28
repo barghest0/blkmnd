@@ -2,10 +2,10 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import { fetchUserData } from 'shared/api/auth';
 
-import { GET_USER_DATA_NAME } from './constants';
+import { GET_PROFILE_DATA_NAME } from './constants';
 
-const getUserData = createAsyncThunk(
-  GET_USER_DATA_NAME,
+const getProfileData = createAsyncThunk(
+  GET_PROFILE_DATA_NAME,
   async (token: string | null, thunkAPI) => {
     try {
       const response = await fetchUserData(token);
@@ -16,4 +16,4 @@ const getUserData = createAsyncThunk(
   },
 );
 
-export { getUserData };
+export { getProfileData };

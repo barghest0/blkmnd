@@ -21,7 +21,7 @@ import * as membershipsActions from 'reduxStore/memberships/actions';
 import * as playerActions from 'reduxStore/player/actions';
 import * as cartActions from 'reduxStore/cart/actions';
 import * as authActions from 'reduxStore/auth/actions';
-import * as userActions from 'reduxStore/user/actions';
+import * as profileActions from 'reduxStore/profile/actions';
 import * as landingActions from 'reduxStore/landing/actions';
 
 const rootActionCreator = {
@@ -44,7 +44,7 @@ const rootActionCreator = {
   ...playerActions,
   ...beatDetailsSlice.actions,
   ...authActions,
-  ...userActions,
+  ...profileActions,
   ...landingActions,
 };
 

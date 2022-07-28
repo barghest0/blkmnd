@@ -11,13 +11,13 @@ const player = createSlice({
   reducers: {
     togglePlaying: (state, action: PayloadAction<Beat | null>) => {
       const previousBeat = action.payload;
-      const { beat } = state;
+      const { currentBeat, isPlaying } = state;
 
       if (previousBeat) {
-        if (beat?.id === previousBeat.id) {
+        if (currentBeat?.id === previousBeat.id) {
           state.isPlaying = !state.isPlaying;
         }
-        if (!state.isPlaying && previousBeat.id !== beat?.id) {
+        if (!isPlaying && previousBeat.id !== currentBeat?.id) {
           state.isPlaying = !state.isPlaying;
         }
       } else {
@@ -32,11 +32,11 @@ const player = createSlice({
     },
 
     setBeat: (state, action: PayloadAction<Beat>) => {
-      state.beat = action.payload;
+      state.currentBeat = action.payload;
       const firstBeat = state.queue[0];
 
       const currentBeatIndex = state.queue.findIndex(
-        (beat) => beat.id === state.beat?.id,
+        (beat) => beat.id === state.currentBeat?.id,
       );
       const randomIndex = Math.round(Math.random() * (state.queue.length - 1));
       const nextBeatIndex = state.isShuffle

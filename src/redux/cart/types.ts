@@ -1,8 +1,8 @@
 import { Beat, License } from 'reduxStore/beats/types';
-import { Collab } from 'reduxStore/collabs/types';
-import { SoundKit } from 'reduxStore/soundKits/types';
+import { Service } from 'reduxStore/service-details/types';
+import { SoundKit } from 'reduxStore/sound-kit-details/types';
 
-type CartProductDetails = Beat | Collab | SoundKit;
+type CartProductDetails = Beat | Service | SoundKit;
 
 type CartProduct = {
   id?: number;
@@ -13,9 +13,9 @@ type CartProduct = {
 
 type CartState = {
   products: CartProduct[];
-  quantity: number;
-  totalPrice: number;
-  discount: number;
+  productsQuantity: number;
+  totalCartPrice: number;
+  cartDiscount: number;
   isFetching: boolean;
   errors: any | null;
 };

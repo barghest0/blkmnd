@@ -1,21 +1,30 @@
 import { State } from 'reduxStore/types';
 
-const token = (state: State) => state.auth.token;
+const authAccessToken = ({ auth: { token } }: State) => token;
 
-const isAuth = (state: State) => state.auth.isAuth;
+const isUserAuth = ({ auth: { isAuth } }: State) => isAuth;
 
-const user = (state: State) => state.auth.user;
+const userInfo = ({ auth: { user } }: State) => user;
 
-const errors = (state: State) => ({
-  loginErrors: state.auth.loginErrors,
-  registerErrors: state.auth.registerErrors,
+const authErrors = ({ auth: { loginErrors, registerErrors } }: State) => ({
+  loginErrors,
+  registerErrors,
 });
 
-const succeses = (state: State) => ({
-  isLoginSucces: state.auth.isLoginSuccess,
-  isRegisterSucces: state.auth.isRegisterSuccess,
+const authSuccesses = ({
+  auth: { isLoginSuccess, isRegisterSuccess },
+}: State) => ({
+  isLoginSuccess,
+  isRegisterSuccess,
 });
 
-const isFetching = (state: State) => state.auth.isFetching;
+const isAuthFetching = ({ auth: { isFetching } }: State) => isFetching;
 
-export { token, isAuth, user, succeses, isFetching, errors };
+export {
+  authAccessToken,
+  isUserAuth,
+  userInfo,
+  isAuthFetching,
+  authSuccesses,
+  authErrors,
+};

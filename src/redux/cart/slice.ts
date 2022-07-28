@@ -13,8 +13,8 @@ const cart = createSlice({
       state.isFetching = false;
       state.errors = null;
       state.products = action.payload;
-      state.quantity = action.payload.length;
-      state.totalPrice = action.payload.reduce(
+      state.productsQuantity = action.payload.length;
+      state.totalCartPrice = action.payload.reduce(
         (totalPrice, product) => (totalPrice += product.price),
         0,
       );
@@ -35,9 +35,9 @@ const cart = createSlice({
     ) => {
       state.isFetching = false;
       state.errors = null;
-      state.quantity += 1;
+      state.productsQuantity += 1;
       state.products.push(action.payload);
-      state.totalPrice += action.payload.price;
+      state.totalCartPrice += action.payload.price;
     },
 
     [addProductToCart.pending.type]: (state) => {
@@ -63,8 +63,8 @@ const cart = createSlice({
       state.products = state.products.filter(
         (product) => product.id !== deletedProduct.id,
       );
-      state.totalPrice -= deletedProduct.price;
-      state.quantity -= 1;
+      state.totalCartPrice -= deletedProduct.price;
+      state.productsQuantity -= 1;
     },
 
     [deleteCartProduct.pending.type]: (state) => {

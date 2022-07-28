@@ -14,7 +14,7 @@ import modalsSlice from './modals/slice';
 import playerSlice from './player/slice';
 import soundKitsSlice from './sound-kits/slice';
 import soundKitDetailsSlice from './sound-kit-details/slice';
-import userSlice from './user/slice';
+import profileSlice from './profile/slice';
 
 const rootReducer = combineReducers({
   beats: beatsSlice.reducer,
@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
   discography: discographySlice.reducer,
   memberships: membershipsSlice.reducer,
   modals: modalsSlice.reducer,
-  user: userSlice.reducer,
+  profile: profileSlice.reducer,
   auth: authSlice.reducer,
   cart: cartSlice.reducer,
   landing: landingSlice.reducer,

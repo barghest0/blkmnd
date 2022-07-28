@@ -37,7 +37,7 @@ const Header = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
 
   const { productsQuantity, totalCartPrice } = useTypedSelector(
-    cartSelectors.details,
+    cartSelectors.cartDetails,
   );
   const { setModalVisability, logout } = useActions();
 

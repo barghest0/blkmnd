@@ -26,8 +26,8 @@ describe('correct cartSlice get cart with mock action payload', () => {
     expect(newState).toEqual({
       ...state,
       products: [mockCartProduct],
-      quantity: 1,
-      totalPrice: mockCartProduct.price,
+      productsQuantity: 1,
+      totalCartPrice: mockCartProduct.price,
     });
   });
 
@@ -63,8 +63,8 @@ describe('correct cartSlice add product to cart with mock action payload', () =>
     expect(newState).toEqual({
       ...state,
       products: [mockCartProduct],
-      quantity: 1,
-      totalPrice: mockCartProduct.price,
+      productsQuantity: 1,
+      totalCartPrice: mockCartProduct.price,
     });
   });
 
@@ -108,8 +108,8 @@ describe('correct cartSlice delete product to cart with mock action payload', ()
     expect(newState).toEqual({
       ...state,
       products: [],
-      quantity: 0,
-      totalPrice: 0,
+      productsQuantity: 0,
+      totalCartPrice: 0,
     });
   });
 

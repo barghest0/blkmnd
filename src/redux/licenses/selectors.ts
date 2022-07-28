@@ -1,11 +1,9 @@
 import { State } from '../types';
 
-const allLicenses = (state: State) => state.licenses.licenses;
+const allLicenses = ({ licenses: { licenses } }: State) => licenses;
 
-const license = (state: State) => state.licenses.license;
+const isLicensesFetching = ({ licenses: { isFetching } }: State) => isFetching;
 
-const isFetching = (state: State) => state.licenses.isFetching;
+const licensesErrors = ({ licenses: { errors } }: State) => errors;
 
-const errors = (state: State) => state.licenses.errors;
-
-export { allLicenses, license, isFetching, errors };
+export { allLicenses, isLicensesFetching, licensesErrors };

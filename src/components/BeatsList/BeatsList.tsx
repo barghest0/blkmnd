@@ -12,7 +12,7 @@ type Props = {
 };
 
 const BeatsList: FC<Props> = ({ beats }) => {
-  const { currentPlayerBeat } = useTypedSelector(playerSelecors.beats);
+  const { currentPlayerBeat } = useTypedSelector(playerSelecors.playerBeats);
 
   const beatsRows = beats.map((beat) => (
     <BeatsListRow

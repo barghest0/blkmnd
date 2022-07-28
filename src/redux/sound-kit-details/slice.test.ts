@@ -58,7 +58,7 @@ describe('correct update sound kit with mock action payload', () => {
 });
 
 describe('correct set sound kit with mock action payload', () => {
-  test('expect set correct fulfilled sound kit', () => {
+  test('expect set correct fulfilled get sound kit', () => {
     const action = {
       type: getSoundKit.fulfilled.type,
       payload: mockSoundKit,
@@ -70,7 +70,7 @@ describe('correct set sound kit with mock action payload', () => {
     });
   });
 
-  test('expect set isFetching during sound kit pending', () => {
+  test('expect set isFetching during get sound kit pending', () => {
     const action = { type: getSoundKit.pending.type };
     const newState = slice.reducer(state, action);
     expect(newState).toEqual({
@@ -82,6 +82,41 @@ describe('correct set sound kit with mock action payload', () => {
   test('expect set errors after rejected get sound kit', () => {
     const action = {
       type: getSoundKit.rejected.type,
+      payload: 'error',
+    };
+    const newState = slice.reducer(state, action);
+    expect(newState).toEqual({
+      ...state,
+      errors: 'error',
+    });
+  });
+});
+
+describe('correct update sound kit with mock action payload', () => {
+  test('expect correct fulfilled update sound kit', () => {
+    const action = {
+      type: updateSoundKit.fulfilled.type,
+      payload: mockSoundKit,
+    };
+    const newState = slice.reducer(state, action);
+    expect(newState).toEqual({
+      ...state,
+      soundKit: mockSoundKit,
+    });
+  });
+
+  test('expect set isFetching during update sound kit pending', () => {
+    const action = { type: updateSoundKit.pending.type };
+    const newState = slice.reducer(state, action);
+    expect(newState).toEqual({
+      ...state,
+      isFetching: true,
+    });
+  });
+
+  test('expect set errors after rejected update sound kit', () => {
+    const action = {
+      type: updateSoundKit.rejected.type,
       payload: 'error',
     };
     const newState = slice.reducer(state, action);

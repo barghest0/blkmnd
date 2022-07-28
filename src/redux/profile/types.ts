@@ -7,10 +7,10 @@ type User = {
   role: UserRoles;
 };
 
-type UserState = {
-  user: User | null;
+type ProfileState = {
+  profileDetails: User | null;
   isFetching: boolean;
   errors: null | any;
 };
 
-export { User, UserState };
+export { User, ProfileState };

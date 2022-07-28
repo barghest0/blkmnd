@@ -1,15 +1,17 @@
 import { State } from 'reduxStore/types';
 
-const products = (state: State) => state.cart.products;
+const cartProducts = ({ cart: { products } }: State) => products;
 
-const details = (state: State) => ({
-  productsQuantity: state.cart.quantity,
-  totalCartPrice: state.cart.totalPrice,
-  cartDiscount: state.cart.discount,
+const cartDetails = ({
+  cart: { productsQuantity, totalCartPrice, cartDiscount },
+}: State) => ({
+  productsQuantity,
+  totalCartPrice,
+  cartDiscount,
 });
 
-const errors = (state: State) => state.cart.errors;
+const cartErrors = ({ cart: { errors } }: State) => errors;
 
-const isFetching = (state: State) => state.cart.isFetching;
+const isCartFetching = ({ cart: { isFetching } }: State) => isFetching;
 
-export { products, details, errors, isFetching };
+export { cartErrors, cartDetails, cartProducts, isCartFetching };

@@ -70,7 +70,7 @@ describe('correct controls playerSlice with mock action payload', () => {
     expect(newState).toEqual({
       ...state,
       queue,
-      beat: mockBeat,
+      currentBeat: mockBeat,
       nextBeat: mockBeat,
       previousBeat: null,
     });

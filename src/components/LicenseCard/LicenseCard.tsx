@@ -14,11 +14,11 @@ type Props = {
 
 const LicenseCard: FC<Props> = ({ license }) => {
   const { id, name, price } = license;
-  const { setModalVisability, getLicense } = useActions();
+  const { setModalVisability, getModalLicense } = useActions();
 
   const onDetailsButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.license });
-    getLicense(id);
+    getModalLicense(id);
   };
 
   return (

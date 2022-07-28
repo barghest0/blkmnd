@@ -19,10 +19,12 @@ import BiograpyImage from './images/biography-image.png';
 
 const About = () => {
   const { getDiscographyBeats } = useActions();
-  const discographyBeats = useTypedSelector(discographySelectors.allBeats);
+  const discographyBeats = useTypedSelector(
+    discographySelectors.allDiscographyBeats,
+  );
 
   const isDiscographyFetching = useTypedSelector(
-    discographySelectors.isFetching,
+    discographySelectors.isDiscographyFetching,
   );
 
   const gallery = [GalleryImage, GalleryImage, GalleryImage];

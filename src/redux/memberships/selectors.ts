@@ -1,9 +1,10 @@
 import { State } from 'reduxStore/types';
 
-const allMemberships = (state: State) => state.memberships.memberships;
+const allMemberships = ({ memberships: { memberships } }: State) => memberships;
 
-const isFetching = (state: State) => state.memberships.isFetching;
+const isMembeshipsFetching = ({ memberships: { isFetching } }: State) =>
+  isFetching;
 
-const errors = (state: State) => state.memberships.errors;
+const membershipsErrors = ({ memberships: { errors } }: State) => errors;
 
-export { allMemberships, isFetching, errors };
+export { allMemberships, isMembeshipsFetching, membershipsErrors };

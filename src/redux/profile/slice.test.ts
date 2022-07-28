@@ -4,25 +4,25 @@ import { mockDispatch } from 'test-utils/utils';
 import { mockUser } from 'test-utils/mocks';
 import * as authApi from 'shared/api/auth';
 
-import userSlice from './slice';
-import { getUserData } from './actions';
-import { USER_INITIAL_STATE, USER_SLICE_NAME } from './constants';
+import slice from './slice';
+import { getProfileData } from './actions';
+import { PROFILE_INITIAL_STATE, PROFILE_SLICE_NAME } from './constants';
 
-const state = userSlice.getInitialState();
+const state = slice.getInitialState();
 
-describe('userSlice state tests', () => {
+describe('slice state tests', () => {
   test('expect set correct initial state', () => {
-    expect(state).toEqual(USER_INITIAL_STATE);
+    expect(state).toEqual(PROFILE_INITIAL_STATE);
   });
   test('expect set correct slice name', () => {
-    expect(userSlice.name).toEqual(USER_SLICE_NAME);
+    expect(slice.name).toEqual(PROFILE_SLICE_NAME);
   });
 });
 
-describe('correct set userSlice user data with mock action payload', () => {
+describe('correct set slice user data with mock action payload', () => {
   test('expect correct fulfilled user data', () => {
-    const action = { type: getUserData.fulfilled.type, payload: mockUser };
-    const newState = userSlice.reducer(state, action);
+    const action = { type: getProfileData.fulfilled.type, payload: mockUser };
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       user: mockUser,
@@ -30,8 +30,8 @@ describe('correct set userSlice user data with mock action payload', () => {
   });
 
   test('expect set isFetching during user data pending', () => {
-    const action = { type: getUserData.pending.type };
-    const newState = userSlice.reducer(state, action);
+    const action = { type: getProfileData.pending.type };
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       isFetching: true,
@@ -39,8 +39,8 @@ describe('correct set userSlice user data with mock action payload', () => {
   });
 
   test('expect set errors after rejected get user data', () => {
-    const action = { type: getUserData.rejected.type, payload: 'error' };
-    const newState = userSlice.reducer(state, action);
+    const action = { type: getProfileData.rejected.type, payload: 'error' };
+    const newState = slice.reducer(state, action);
     expect(newState).toEqual({
       ...state,
       errors: 'error',
@@ -57,7 +57,7 @@ describe('resolved get user data with async thunk', () => {
       data: mockUser,
     };
     mockAuthApi.fetchUserData.mockResolvedValueOnce(mockData);
-    const beats = await mockDispatch(getUserData('1241sd24'));
+    const beats = await mockDispatch(getProfileData('1241sd24'));
 
     await waitFor(() => {
       expect(beats.payload).toEqual(mockUser);
@@ -76,7 +76,7 @@ describe('rejected get user data with async thunk', () => {
       error: 'error',
     };
     mockAuthApi.fetchUserData.mockRejectedValue(mockData);
-    const rejectedBeats = await mockDispatch(getUserData('1241sd24'));
+    const rejectedBeats = await mockDispatch(getProfileData('1241sd24'));
 
     await waitFor(() => {
       expect(rejectedBeats.payload).toEqual(mockData);
