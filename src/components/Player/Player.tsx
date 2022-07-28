@@ -24,18 +24,20 @@ import * as playerSelectors from 'reduxStore/player/selectors';
 import * as S from './Player.style';
 
 const Player: FC = memo(() => {
-  const { isPlayerOpen } = useTypedSelector(playerSelectors.state);
+  const { isPlayerOpen } = useTypedSelector(playerSelectors.playbackState);
 
   const { audioShuffle, audioLoop } = useTypedSelector(
     playerSelectors.controls,
   );
 
-  const isPlayerBeatFeatching = useTypedSelector(playerSelectors.isFetching);
+  const isPlayerBeatFeatching = useTypedSelector(
+    playerSelectors.isPlayerFetching,
+  );
 
-  const queue = useTypedSelector(playerSelectors.queue);
+  const queue = useTypedSelector(playerSelectors.playerQueue);
 
   const { currentPlayerBeat, nextPlayerBeat, previousPlayerBeat } =
-    useTypedSelector(playerSelectors.beats);
+    useTypedSelector(playerSelectors.playerBeats);
 
   const {
     getQueueBeats,

@@ -1,22 +1,34 @@
 import { State } from 'reduxStore/types';
 
-const visabilities = (state: State) => ({
-  buyModalVisability: state.modals.isBuyOpen,
-  shareModalVisability: state.modals.isShareOpen,
-  downloadModalVisability: state.modals.isDownloadOpen,
-  termsModalVisability: state.modals.isTermsOpen,
-  privacyPolicyModalVisability: state.modals.isPrivacyPolicyOpen,
-  licenseModalVisability: state.modals.isLicenseOpen,
-  authModalVisability: state.modals.isAuthOpen,
+const modalsVisabilities = ({
+  modals: {
+    isBuyOpen,
+    isShareOpen,
+    isDownloadOpen,
+    isTermsOpen,
+    isPrivacyPolicyOpen,
+    isLicenseOpen,
+    isAuthOpen,
+  },
+}: State) => ({
+  buyModalVisability: isBuyOpen,
+  shareModalVisability: isShareOpen,
+  downloadModalVisability: isDownloadOpen,
+  termsModalVisability: isTermsOpen,
+  privacyPolicyModalVisability: isPrivacyPolicyOpen,
+  licenseModalVisability: isLicenseOpen,
+  authModalVisability: isAuthOpen,
 });
 
-const details = (state: State) => ({
-  modalBeat: state.modals.beat,
-  modalLicense: state.modals.license,
-  modalPrivacyPolicy: state.modals.privacyPolicy,
-  modalTerm: state.modals.term,
+const modalDetails = ({
+  modals: { beat, license, privacyPolicy, term },
+}: State) => ({
+  modalBeat: beat,
+  modalLicense: license,
+  modalPrivacyPolicy: privacyPolicy,
+  modalTerm: term,
 });
 
-const errors = (state: State) => state.modals.errors;
+const modalsErrors = ({ modals: { errors } }: State) => errors;
 
-export { visabilities, details, errors };
+export { modalsVisabilities, modalDetails, modalsErrors };

@@ -23,6 +23,7 @@ type ModalsState = {
   isPrivacyPolicyOpen: boolean;
   isTermsOpen: boolean;
   isAuthOpen: boolean;
+  isFetching: boolean;
   beat: Beat | null;
   license: License | null;
   privacyPolicy: string;

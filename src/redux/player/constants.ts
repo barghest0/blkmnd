@@ -7,7 +7,7 @@ const GET_PLAYER_QUEUE_BEATS = 'player/queue';
 const PLAYER_INITIAL_STATE: PlayerState = {
   isPlaying: false,
   isOpen: false,
-  beat: null,
+  currentBeat: null,
   nextBeat: null,
   previousBeat: null,
   duration: 0,

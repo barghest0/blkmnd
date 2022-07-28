@@ -3,7 +3,7 @@ import { Beat } from 'reduxStore/beats/types';
 type PlayerState = {
   isPlaying: boolean;
   isOpen: boolean;
-  beat: Beat | null;
+  currentBeat: Beat | null;
   nextBeat: Beat | null;
   previousBeat: Beat | null;
   duration: number;

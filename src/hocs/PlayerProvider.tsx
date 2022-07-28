@@ -11,11 +11,11 @@ type Props = {
 };
 
 const PlayerProvider: FC<Props> = memo(({ children, audio }) => {
-  const playerState = useTypedSelector(playerSelectors.fullState);
+  const playerState = useTypedSelector(playerSelectors.fullPlayerState);
   const { currentPlayerBeat, nextPlayerBeat } = useTypedSelector(
-    playerSelectors.beats,
+    playerSelectors.playerBeats,
   );
-  const { isPlayerPlaying } = useTypedSelector(playerSelectors.state);
+  const { isPlayerPlaying } = useTypedSelector(playerSelectors.playbackState);
   const { audioVolume } = useTypedSelector(playerSelectors.controls);
 
   const { setCurrentTime, setDuration, setBeat, setVolume } = useActions();

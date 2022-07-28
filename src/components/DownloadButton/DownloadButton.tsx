@@ -12,11 +12,11 @@ type Props = {
 };
 
 const DownloadButton: FC<Props> = ({ beatId }) => {
-  const { setModalVisability, getBeat } = useActions();
+  const { setModalVisability, getModalBeat } = useActions();
 
   const onDownloadButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.download });
-    getBeat(beatId);
+    getModalBeat(beatId);
   };
 
   return (

@@ -8,8 +8,8 @@ import VisualizerContext from 'contexts/VisualizerContext';
 import * as S from './Visualizer.style';
 
 const Visualizer: FC = memo(() => {
-  const { currentPlayerBeat } = useTypedSelector(playerSelectors.beats);
-  const { isPlayerPlaying } = useTypedSelector(playerSelectors.state);
+  const { currentPlayerBeat } = useTypedSelector(playerSelectors.playerBeats);
+  const { isPlayerPlaying } = useTypedSelector(playerSelectors.playbackState);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const canvas = canvasRef.current;
 

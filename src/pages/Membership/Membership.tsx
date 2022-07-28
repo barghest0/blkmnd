@@ -12,7 +12,7 @@ const Membership = () => {
   const { getMemberships } = useActions();
   const memberships = useTypedSelector(membershipsSelectors.allMemberships);
   const isMembershipsFetching = useTypedSelector(
-    membershipsSelectors.isFetching,
+    membershipsSelectors.isMembeshipsFetching,
   );
 
   const membershipsCard = memberships.map((membership) => (

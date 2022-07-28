@@ -13,7 +13,7 @@ const navigation = [
   },
   {
     id: 3,
-    path: RouterPaths.collabs,
+    path: RouterPaths.services,
     text: 'Collabs',
   },
   {

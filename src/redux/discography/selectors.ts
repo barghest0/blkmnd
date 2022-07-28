@@ -1,9 +1,10 @@
 import { State } from 'reduxStore/types';
 
-const allBeats = (state: State) => state.discography.beats;
+const allDiscographyBeats = ({ discography: { beats } }: State) => beats;
 
-const isFetching = (state: State) => state.discography.isFetching;
+const isDiscographyFetching = ({ discography: { isFetching } }: State) =>
+  isFetching;
 
-const errors = (state: State) => state.discography.errors;
+const discographyErrors = ({ discography: { errors } }: State) => errors;
 
-export { allBeats, isFetching, errors };
+export { allDiscographyBeats, isDiscographyFetching, discographyErrors };

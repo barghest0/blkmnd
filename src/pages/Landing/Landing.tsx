@@ -11,7 +11,7 @@ import Preloader from 'components/Preloader/Preloader';
 import BeatsList from 'components/BeatsList/BeatsList';
 import Visualizer from 'components/Visualizer/Visualizer';
 import ContactForm from 'components/ContactForm/ContactForm';
-import CollabCard from 'components/CollabCard/CollabCard';
+import ServiceCard from 'components/ServiceCard/ServiceCard';
 import LicenseCard from 'components/LicenseCard/LicenseCard';
 import SoundKitCard from 'components/SoundKitCard/SoundKitCard';
 import DiscographyCard from 'components/DiscographyCard/DiscographyCard';
@@ -22,34 +22,33 @@ import useActions from 'hooks/useActions';
 import { ButtonLink } from 'shared/styles/links';
 import { RouterPaths } from 'shared/router/types';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
-import * as beatsSelectors from 'reduxStore/beats/selectors';
+import * as landingSelectors from 'reduxStore/landing/selectors';
 import * as discographySelectors from 'reduxStore/discography/selectors';
-import * as licensesSelectors from 'reduxStore/licenses/selectors';
-import * as soundKitsSelectors from 'reduxStore/soundKits/selectors';
-import * as collabsSelectors from 'reduxStore/collabs/selectors';
 
 import * as S from './Landing.style';
 
 const Landing: FC = memo(() => {
-  const beats = useTypedSelector(beatsSelectors.allBeats);
-  const isBeatsFetching = useTypedSelector(beatsSelectors.isFetching);
-  const { featuredBeat } = useTypedSelector(beatsSelectors.separatedBeats);
-
-  const licenses = useTypedSelector(licensesSelectors.allLicenses);
-  const isLicensesFetching = useTypedSelector(licensesSelectors.isFetching);
-
-  const discographyBeats = useTypedSelector(discographySelectors.allBeats);
-  const isDiscographyFetching = useTypedSelector(
-    discographySelectors.isFetching,
+  const { featuredBeat, previewBeats } = useTypedSelector(
+    landingSelectors.beats,
   );
+  const licenses = useTypedSelector(landingSelectors.licenses);
+  const soundKits = useTypedSelector(landingSelectors.soundKits);
+  const services = useTypedSelector(landingSelectors.services);
 
-  const soundKits = useTypedSelector(soundKitsSelectors.allSoundKits);
-  const isSoundKitsFetching = useTypedSelector(soundKitsSelectors.isFetching);
+  const {
+    isPreviewBeatsFetching,
+    isLicensesFetching,
+    isPreviewServicesFetching,
+    isPreviewSoundKitsFetching,
+    isFeaturedBeatFetching,
+  } = useTypedSelector(landingSelectors.landingFetchings);
 
-  const collabs = useTypedSelector(collabsSelectors.allCollabs);
-  const isCollabsFetching = useTypedSelector(collabsSelectors.isFetching);
-
-  const { getDiscographyBeats } = useActions();
+  const discographyBeats = useTypedSelector(
+    discographySelectors.allDiscographyBeats,
+  );
+  const isDiscographyFetching = useTypedSelector(
+    discographySelectors.isDiscographyFetching,
+  );
 
   const channel = {
     user: 'UCpi4NSNZrV3oBtgpdaEGeyw',
@@ -60,18 +59,17 @@ const Landing: FC = memo(() => {
 
   const video = Parser(channelVideo);
 
-  const isFeaturedBeatFetching = !featuredBeat;
-
   const {
     getFeaturedBeat,
     getLicenses,
     getPreviewSoundKits,
     getPreviewBeats,
-    getPreviewCollabs,
+    getPreviewServices,
+    getDiscographyBeats,
   } = useActions();
 
-  const collabsCards = collabs.map((collab) => (
-    <CollabCard collab={collab} key={collab.id} />
+  const servicesCards = services.map((service) => (
+    <ServiceCard service={service} key={service.id} />
   ));
 
   const licensesCards = licenses.map((license) => (
@@ -99,7 +97,7 @@ const Landing: FC = memo(() => {
     getPreviewBeats();
     getLicenses();
     getPreviewSoundKits();
-    getPreviewCollabs();
+    getPreviewServices();
     getDiscographyBeats();
   }, []);
 
@@ -123,10 +121,10 @@ const Landing: FC = memo(() => {
               </S.SearchFieldContainer>
             </S.Search>
             <S.FeaturedBeat>
-              {isFeaturedBeatFetching ? (
-                <Preloader />
-              ) : (
+              {!isFeaturedBeatFetching && featuredBeat ? (
                 <FeaturedBeat beat={featuredBeat} />
+              ) : (
+                <Preloader />
               )}
             </S.FeaturedBeat>
           </S.IntroInner>
@@ -139,7 +137,11 @@ const Landing: FC = memo(() => {
       <S.Section>
         <S.Container>
           <S.BeatsList>
-            {isBeatsFetching ? <Preloader /> : <BeatsList beats={beats} />}
+            {isPreviewBeatsFetching ? (
+              <Preloader />
+            ) : (
+              <BeatsList beats={previewBeats} />
+            )}
           </S.BeatsList>
           <S.DetailsButton>
             <ButtonLink to={RouterPaths.beats}>Browse all tracks</ButtonLink>
@@ -163,7 +165,7 @@ const Landing: FC = memo(() => {
           <S.SectionTitle>Sound Kits</S.SectionTitle>
           <ScrollContainer>
             <S.SoundKitsList>
-              {isSoundKitsFetching ? <Preloader /> : soundKitsCards}
+              {isPreviewSoundKitsFetching ? <Preloader /> : soundKitsCards}
             </S.SoundKitsList>
           </ScrollContainer>
 
@@ -179,12 +181,12 @@ const Landing: FC = memo(() => {
         <S.Container>
           <S.SectionTitle>Services</S.SectionTitle>
           <ScrollContainer>
-            <S.CollabsList>
-              {isCollabsFetching ? <Preloader /> : collabsCards}
-            </S.CollabsList>
+            <S.ServicesList>
+              {isPreviewServicesFetching ? <Preloader /> : servicesCards}
+            </S.ServicesList>
           </ScrollContainer>
           <S.DetailsButton>
-            <ButtonLink to={`${RouterPaths.collabs}`}>
+            <ButtonLink to={`${RouterPaths.services}`}>
               Browse all services
             </ButtonLink>
           </S.DetailsButton>

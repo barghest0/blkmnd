@@ -17,7 +17,7 @@ const DurationSlider: FC<Props> = ({ currentBeat }) => {
   const { audioCurrentTime, audioDuration } = useTypedSelector(
     playerSelectors.controls,
   );
-  const { currentPlayerBeat } = useTypedSelector(playerSelectors.beats);
+  const { currentPlayerBeat } = useTypedSelector(playerSelectors.playerBeats);
 
   const { setAudioCurrentTime } = useAudio();
 

@@ -11,9 +11,9 @@ type Props = {
 };
 
 const AuthProvider: FC<Props> = ({ children }) => {
-  const isAuth = useTypedSelector(authSelectors.isAuth);
-  const user = useTypedSelector(authSelectors.user);
-  const token = useTypedSelector(authSelectors.token);
+  const isAuth = useTypedSelector(authSelectors.isUserAuth);
+  const user = useTypedSelector(authSelectors.userInfo);
+  const authAccessToken = useTypedSelector(authSelectors.authAccessToken);
   const { autoLogin } = useActions();
 
   const getAuthContextValue = () => ({ user, isAuth });
@@ -21,7 +21,7 @@ const AuthProvider: FC<Props> = ({ children }) => {
   const authContextValue = useMemo(getAuthContextValue, [user]);
 
   useEffect(() => {
-    if (token) {
+    if (authAccessToken) {
       autoLogin(getToken());
     }
   }, [isAuth]);

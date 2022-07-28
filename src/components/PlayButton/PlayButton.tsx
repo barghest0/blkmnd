@@ -11,8 +11,8 @@ type Props = {
 };
 
 const PlayButton: FC<Props> = ({ currentBeat }) => {
-  const { isPlayerPlaying } = useTypedSelector(playerSelectors.state);
-  const { currentPlayerBeat } = useTypedSelector(playerSelectors.beats);
+  const { isPlayerPlaying } = useTypedSelector(playerSelectors.playbackState);
+  const { currentPlayerBeat } = useTypedSelector(playerSelectors.playerBeats);
 
   return (
     <S.PlayButton>

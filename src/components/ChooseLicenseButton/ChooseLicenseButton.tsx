@@ -14,11 +14,11 @@ type Props = {
 };
 
 const ChooseLicenseButton: FC<Props> = ({ price, beat }) => {
-  const { setModalVisability, getBeat } = useActions();
+  const { setModalVisability, getModalBeat } = useActions();
 
   const onBuyButtonClick = () => {
     setModalVisability({ visability: true, modalType: ModalsTypes.buy });
-    getBeat(beat.id);
+    getModalBeat(beat.id);
   };
 
   return (

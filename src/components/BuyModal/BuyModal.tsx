@@ -8,25 +8,26 @@ import useActions from 'hooks/useActions';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import * as modalsSelectors from 'reduxStore/modals/selectors';
 import { ModalsTypes } from 'reduxStore/modals/types';
-import * as beatsSelectors from 'reduxStore/beats/selectors';
 
 import * as S from './BuyModal.style';
 
 const BuyModal = () => {
-  const { buyModalVisability } = useTypedSelector(modalsSelectors.visabilities);
-  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
+  const { buyModalVisability } = useTypedSelector(
+    modalsSelectors.modalsVisabilities,
+  );
+  const { modalBeat } = useTypedSelector(modalsSelectors.modalDetails);
 
-  const licensesCards = beat?.licenses.map((license) => (
-    <ChooseLicenseCard license={license} beat={beat} key={license.id} />
+  const licensesCards = modalBeat?.licenses.map((license) => (
+    <ChooseLicenseCard license={license} beat={modalBeat} key={license.id} />
   ));
 
   const { setBeat, openPlayer, togglePlaying } = useActions();
 
   const onPlayButtonClick = () => {
-    if (beat) {
+    if (modalBeat) {
       openPlayer();
-      togglePlaying(beat);
-      setBeat(beat);
+      togglePlaying(modalBeat);
+      setBeat(modalBeat);
     }
   };
 
@@ -34,7 +35,7 @@ const BuyModal = () => {
     <S.BuyModal>
       <ModalContainer isOpen={buyModalVisability} modalType={ModalsTypes.buy}>
         <S.Modal>
-          {!beat ? (
+          {!modalBeat ? (
             <Preloader />
           ) : (
             <Modal
@@ -46,14 +47,14 @@ const BuyModal = () => {
                 <S.Beat onClick={onPlayButtonClick}>
                   <S.ThumbnailContainer>
                     <S.Thumbnail>
-                      <Image image={beat.image} />
+                      <Image image={modalBeat.image} />
                     </S.Thumbnail>
                     <S.PlayButton>
-                      <PlayButton currentBeat={beat} />
+                      <PlayButton currentBeat={modalBeat} />
                     </S.PlayButton>
                   </S.ThumbnailContainer>
-                  <S.Title>{beat.title}</S.Title>
-                  <S.Musician>{beat.musician.name}</S.Musician>
+                  <S.Title>{modalBeat.title}</S.Title>
+                  <S.Musician>{modalBeat.musician.name}</S.Musician>
                 </S.Beat>
                 <S.Licenses>{licensesCards}</S.Licenses>
               </S.Content>

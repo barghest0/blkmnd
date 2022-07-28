@@ -6,16 +6,15 @@ import Preloader from 'components/Preloader/Preloader';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import * as modalSelectors from 'reduxStore/modals/selectors';
 import { ModalsTypes } from 'reduxStore/modals/types';
-import * as licensesSelectors from 'reduxStore/licenses/selectors';
 
 import * as S from './LicensesModal.style';
 
 const LicensesModal: FC = () => {
   const { licenseModalVisability } = useTypedSelector(
-    modalSelectors.visabilities,
+    modalSelectors.modalsVisabilities,
   );
 
-  const license = useTypedSelector(licensesSelectors.license);
+  const { modalLicense } = useTypedSelector(modalSelectors.modalDetails);
 
   return (
     <S.LicensesModal>
@@ -24,12 +23,12 @@ const LicensesModal: FC = () => {
         modalType={ModalsTypes.license}
       >
         <S.Modal>
-          {!license ? (
+          {!modalLicense ? (
             <Preloader />
           ) : (
             <Modal
               isOpen={licenseModalVisability}
-              title={`${license.name} license preview`}
+              title={`${modalLicense.name} license preview`}
               modalType={ModalsTypes.license}
             >
               <S.Content>

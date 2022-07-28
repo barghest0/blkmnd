@@ -4,7 +4,7 @@ import Image from 'components/Image/Image';
 import { RouterPaths } from 'shared/router/types';
 import { StyledLink } from 'shared/styles/links';
 import { convertPrice } from 'shared/helpers/priceHelper';
-import { SoundKit } from 'reduxStore/soundKits/types';
+import { SoundKit } from 'reduxStore/sound-kit-details/types';
 
 import * as S from './SoundKitCard.style';
 

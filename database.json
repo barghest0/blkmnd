@@ -376,7 +376,18 @@
         "name": "musician"
       },
       "image": "https://main.v2.beatstars.com/fit-in/tracks/500x500/filters:format(.jpeg):quality(50):fill(000000)/users/prod/1062484/imrtgbptq.png",
-      "comments": [],
+      "comments": [
+        {
+          "user": {
+            "id": 14,
+            "username": "test",
+            "password": "$2y$13$OjjiFgBe2DfawkPs9pr/COqc97IuZ6CyORrwWewziKCy0OKlSZzJe",
+            "role": "user"
+          },
+          "text": "123",
+          "date": "07.21.2022"
+        }
+      ],
       "track": "https://main.v2.beatstars.com/stream?id=7678167&return=audio&timestamp=1652727489&cf=true",
       "excerpt": "https://main.v2.beatstars.com/stream?id=7678167&return=audio&timestamp=1652727489&cf=true",
       "licenses": [
@@ -554,6 +565,16 @@
           },
           "text": "asd",
           "date": "06.01.2022"
+        },
+        {
+          "user": {
+            "id": 14,
+            "username": "test",
+            "password": "$2y$13$OjjiFgBe2DfawkPs9pr/COqc97IuZ6CyORrwWewziKCy0OKlSZzJe",
+            "role": "user"
+          },
+          "text": "123",
+          "date": "07.21.2022"
         }
       ],
       "price": 0

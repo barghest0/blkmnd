@@ -9,7 +9,6 @@ import Preloader from 'components/Preloader/Preloader';
 import ModalContainer from 'components/ModalContainer/ModalContainer';
 import { ModalsTypes } from 'reduxStore/modals/types';
 import * as modalsSelectors from 'reduxStore/modals/selectors';
-import * as beatsSelectors from 'reduxStore/beats/selectors';
 import useTypedSelector from 'hooks/redux/useTypedDispatch';
 
 import * as S from './ShareModal.style';
@@ -17,16 +16,16 @@ import { EMBED_TAB_STATE, SHARE_TAB_STATE } from './constants';
 
 const ShareModal: FC = () => {
   const { shareModalVisability } = useTypedSelector(
-    modalsSelectors.visabilities,
+    modalsSelectors.modalsVisabilities,
   );
-  const { beat } = useTypedSelector(beatsSelectors.separatedBeats);
+  const { modalBeat } = useTypedSelector(modalsSelectors.modalDetails);
   const [tab, setTab] = useState(SHARE_TAB_STATE);
   const [copiedState, setCopiedState] = useState({
     value: '',
     isCopied: false,
   });
 
-  const url = `http://localhost:8080/beats/${beat?.id}`;
+  const url = `http://localhost:8080/beats/${modalBeat?.id}`;
 
   const onCopyToClipboard = () => {
     setCopiedState({ value: url, isCopied: true });
@@ -49,12 +48,12 @@ const ShareModal: FC = () => {
         modalType={ModalsTypes.share}
       >
         <S.Modal>
-          {!beat ? (
+          {!modalBeat ? (
             <Preloader />
           ) : (
             <Modal
               isOpen={shareModalVisability}
-              title={`Share: ${beat.title}`}
+              title={`Share: ${modalBeat.title}`}
               modalType={ModalsTypes.share}
             >
               <S.Content>
