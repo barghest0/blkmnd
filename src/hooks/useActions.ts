@@ -11,6 +11,7 @@ import beatDetailsSlice from 'reduxStore/beat-details/slice';
 import soundKitsDetailsSlice from 'reduxStore/sound-kit-details/slice';
 import * as soundKitDetailsActions from 'reduxStore/sound-kit-details/actions';
 import * as beatsActions from 'reduxStore/beats/actions';
+import * as modalsActions from 'reduxStore/modals/actions';
 import * as beatDetailsActions from 'reduxStore/beat-details/actions';
 import * as licensesActions from 'reduxStore/licenses/actions';
 import * as soundKitsActions from 'reduxStore/sound-kits/actions';
@@ -38,6 +39,7 @@ const rootActionCreator = {
   ...serviceDetailsActions,
   ...soundKitsSlice.actions,
   ...soundKitsDetailsSlice.actions,
+  ...modalsActions,
   ...soundKitDetailsActions,
   ...modalsSlice.actions,
   ...authSlice.actions,

@@ -11,10 +11,10 @@ import * as S from './LicensesModal.style';
 
 const LicensesModal: FC = () => {
   const { licenseModalVisability } = useTypedSelector(
-    modalSelectors.visabilities,
+    modalSelectors.modalsVisabilities,
   );
 
-  const { modalLicense } = useTypedSelector(modalSelectors.details);
+  const { modalLicense } = useTypedSelector(modalSelectors.modalDetails);
 
   return (
     <S.LicensesModal>

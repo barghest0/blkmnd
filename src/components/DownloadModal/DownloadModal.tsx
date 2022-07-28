@@ -10,7 +10,6 @@ import useTypedSelector from 'hooks/redux/useTypedDispatch';
 import downloadValidation from 'shared/formValidations/download';
 import * as modalsSelectors from 'reduxStore/modals/selectors';
 import { ModalsTypes } from 'reduxStore/modals/types';
-import * as beatDetailsSelectors from 'reduxStore/beat-details/selectors';
 
 import * as S from './DownloadModal.style';
 
@@ -24,9 +23,9 @@ type DownloadValues = {
 
 const DownloadModal: FC = () => {
   const { downloadModalVisability } = useTypedSelector(
-    modalsSelectors.visabilities,
+    modalsSelectors.modalsVisabilities,
   );
-  const beat = useTypedSelector(beatDetailsSelectors.beatDetails);
+  const { modalBeat } = useTypedSelector(modalsSelectors.modalDetails);
 
   const initialDownloadValues: DownloadValues = {
     email: '',
@@ -53,13 +52,13 @@ const DownloadModal: FC = () => {
         isOpen={downloadModalVisability}
         modalType={ModalsTypes.download}
       >
-        <S.Modal background={beat?.image}>
-          {!beat ? (
+        <S.Modal background={modalBeat?.image}>
+          {!modalBeat ? (
             <Preloader />
           ) : (
             <Modal
               isOpen={downloadModalVisability}
-              title={`Download: ${beat.title}`}
+              title={`Download: ${modalBeat.title}`}
               modalType={ModalsTypes.download}
             >
               <S.Content>

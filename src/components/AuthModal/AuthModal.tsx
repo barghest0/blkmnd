@@ -37,7 +37,7 @@ const registerInitialValues = {
 
 const AuthModal = memo(() => {
   const { authModalVisability } = useTypedSelector(
-    modalsSelectors.visabilities,
+    modalsSelectors.modalsVisabilities,
   );
 
   const [form, setForm] = useState(REGISTER_MODAL_STATE);

@@ -2,9 +2,9 @@ import { ModalsState } from './types';
 
 const MODALS_SLICE_NAME = 'modals';
 
-const GET_MODALS_BEAT = 'modals/beat';
+const GET_MODALS_BEAT_NAME = 'modals/beat';
 
-const GET_MODALS_LICENSE = 'modals/license';
+const GET_MODALS_LICENSE_NAME = 'modals/license';
 
 const MODALS_INITIAL_STATE: ModalsState = {
   isBuyOpen: false,
@@ -14,6 +14,7 @@ const MODALS_INITIAL_STATE: ModalsState = {
   isLicenseOpen: false,
   isPrivacyPolicyOpen: false,
   isAuthOpen: false,
+  isFetching: false,
   beat: null,
   license: null,
   term: '',
@@ -24,6 +25,6 @@ const MODALS_INITIAL_STATE: ModalsState = {
 export {
   MODALS_INITIAL_STATE,
   MODALS_SLICE_NAME,
-  GET_MODALS_BEAT,
-  GET_MODALS_LICENSE,
+  GET_MODALS_BEAT_NAME,
+  GET_MODALS_LICENSE_NAME,
 };
